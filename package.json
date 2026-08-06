@@ -1,0 +1,17 @@
+{
+    "name": "cocina-inteligente",
+    "private": true,
+    "packageManager": "pnpm@11.18.0",
+    "scripts": {
+        "dev": "concurrently -n server,client -c blue,green \"pnpm --filter @cooking/server dev\" \"pnpm --filter @cooking/client dev\"",
+        "build": "pnpm --filter @cooking/client build",
+        "typecheck": "pnpm -r typecheck",
+        "lint": "biome check .",
+        "security:audit": "pnpm audit --audit-level high",
+        "check": "pnpm typecheck && pnpm lint && pnpm security:audit"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.5.7",
+        "concurrently": "^10.0.4"
+    }
+}

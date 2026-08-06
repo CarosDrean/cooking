@@ -1,0 +1,2756 @@
+{
+  "profiles": [
+    {
+      "id": "p1",
+      "name": "Ana",
+      "emoji": "👩",
+      "dietPreferences": [
+        "vegetariano"
+      ],
+      "dislikedIngredients": [
+        "pimiento picante"
+      ],
+      "householdSize": 2,
+      "mealsPerDay": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ],
+      "favoriteRecipeIds": [
+        "r5",
+        "r1"
+      ],
+      "ratingByRecipe": {
+        "r2": 4,
+        "r4": 5,
+        "r5": 5,
+        "r8": 4
+      }
+    },
+    {
+      "id": "p2",
+      "name": "Marco",
+      "emoji": "👨",
+      "dietPreferences": [
+        "sin-gluten",
+        "alta-proteina"
+      ],
+      "dislikedIngredients": [
+        "hongos",
+        "champiñones"
+      ],
+      "householdSize": 1,
+      "mealsPerDay": [
+        "almuerzo",
+        "cena"
+      ],
+      "favoriteRecipeIds": [
+        "r3"
+      ],
+      "ratingByRecipe": {
+        "r3": 5,
+        "r6": 4,
+        "r12": 4
+      }
+    }
+  ],
+  "activeProfileId": "p2",
+  "recipes": [
+    {
+      "title": "Ensalada de quinoa y garbanzos",
+      "description": "Quinoa esponjosa, garbanzos, pepino, tomate y un aderezo de limón. Fresca, completa y lista en minutos.",
+      "emoji": "🥗",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "alta-proteina",
+        "sin-lactosa"
+      ],
+      "cuisine": "mediterranea",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "quinoa",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "garbanzos cocidos",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "pepino",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla morada",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "perejil fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Enjuaga la quinoa bajo agua fría y cuécela en 400 ml de agua con una pizca de sal durante 15 minutos.",
+          "tip": "Enjuagar la quinoa elimina la saponina que la vuelve amarga."
+        },
+        {
+          "text": "Deja reposar la quinoa tapada 5 minutos y espónjala con un tenedor.",
+          "tip": "Reposar tapada hace que los granos queden sueltos, no pastosos."
+        },
+        {
+          "text": "Pica el tomate, el pepino, la cebolla morada y el perejil."
+        },
+        {
+          "text": "Mezcla el jugo de limón, el aceite, el comino y la sal en un bol pequeño.",
+          "tip": "Emulsiona batiendo con un tenedor mientras agregas el aceite."
+        },
+        {
+          "text": "Combina todo en un bol grande, mezcla con el aderezo y sirve tibio o frío."
+        }
+      ],
+      "tips": [
+        "Los garbanzos cocidos en lata van perfectos: escúrrelos y enjuágalos bien.",
+        "Se conserva hasta 2 días en la nevera, ideal para meal-prep.",
+        "Puedes sumarle aguacate o semillas para más saciedad."
+      ],
+      "nutrition": {
+        "kcal": 420,
+        "protein": 16,
+        "carbs": 62,
+        "fat": 12
+      },
+      "id": "r1",
+      "source": "local"
+    },
+    {
+      "title": "Pollo al horno con hierbas",
+      "description": "Pechugas jugosas con romero, tomillo y limón, horneadas a la perfección con verduras de temporada.",
+      "emoji": "🍗",
+      "diets": [
+        "sin-gluten",
+        "alta-proteina",
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pechuga de pollo",
+          "quantity": 600,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "papa",
+          "quantity": 400,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "romero seco",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "tomillo seco",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Precalienta el horno a 200 °C y engrasa una bandeja con aceite."
+        },
+        {
+          "text": "Corta las papas en gajos y las zanahorias en rodajas gruesas."
+        },
+        {
+          "text": "Mezcla las verduras con aceite, sal, pimienta, romero y tomillo; extiéndelas en la bandeja.",
+          "tip": "No amontones las verduras o se cocerán al vapor en vez de dorarse."
+        },
+        {
+          "text": "Coloca las pechugas encima, unta con aceite y el jugo de medio limón, y sazona.",
+          "tip": "Secar las pechugas con papel de cocina antes de sazonar ayuda a dorarlas."
+        },
+        {
+          "text": "Hornea 30-35 minutos hasta que el pollo alcance 74 °C en el centro."
+        },
+        {
+          "text": "Deja reposar 5 minutos antes de servir con rodajas de limón."
+        }
+      ],
+      "tips": [
+        "Un termómetro de cocina evita que el pollo quede seco.",
+        "Las sobras se pueden usar para ensaladas al día siguiente.",
+        "Si usas hierbas frescas, triplica la cantidad."
+      ],
+      "nutrition": {
+        "kcal": 480,
+        "protein": 38,
+        "carbs": 34,
+        "fat": 20
+      },
+      "id": "r2",
+      "source": "local"
+    },
+    {
+      "title": "Salmón a la plancha con espárragos",
+      "description": "Filete de salmón con piel crujiente y espárragos dorados, en menos de 20 minutos.",
+      "emoji": "🐟",
+      "diets": [
+        "keto",
+        "sin-gluten",
+        "alta-proteina",
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 12,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "filete de salmón",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "espárragos",
+          "quantity": 1,
+          "unit": "manojos",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "mantequilla",
+          "quantity": 20,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Seca el salmón y sazona ambos lados; no le pongas aceite todavía."
+        },
+        {
+          "text": "Calienta una sartén a fuego alto y coloca el salmón con la piel hacia abajo.",
+          "tip": "La piel crujiente se logra empezando en sartén fría apenas tibia y subiendo el fuego, o directamente a fuego alto sin mover el pescado."
+        },
+        {
+          "text": "Cocina 4-5 minutos sin tocarlo, luego voltea y cocina 2-3 minutos más."
+        },
+        {
+          "text": "Retira el salmón y saltea los espárragos con ajo y mantequilla 3-4 minutos."
+        },
+        {
+          "text": "Sirve con jugo de limón y la mantequilla de la sartén por encima."
+        }
+      ],
+      "tips": [
+        "El salmón estará en su punto cuando se separe en láminas con el tenedor.",
+        "No sobrecocines: a fuego alto, 4 minutos por lado es suficiente para 2 cm de grosor.",
+        "Si no tienes mantequilla, usa aceite de oliva extra."
+      ],
+      "nutrition": {
+        "kcal": 430,
+        "protein": 34,
+        "carbs": 8,
+        "fat": 30
+      },
+      "id": "r3",
+      "source": "local"
+    },
+    {
+      "title": "Tortilla española",
+      "description": "La clásica tortilla de patatas y huevo, dorada por fuera y jugosa por dentro.",
+      "emoji": "🍳",
+      "diets": [
+        "vegetariano",
+        "sin-gluten",
+        "alta-proteina"
+      ],
+      "cuisine": "española",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "huevo",
+          "quantity": 6,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "papa",
+          "quantity": 500,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Pela y corta las papas en láminas finas y la cebolla en juliana."
+        },
+        {
+          "text": "Calienta el aceite a fuego medio y pocha las papas y la cebolla 15 minutos, sin dorar.",
+          "tip": "El truco está en confitar a fuego medio, no freír a fuego alto."
+        },
+        {
+          "text": "Bate los huevos con sal y mezcla con las papas escurridas.",
+          "tip": "Deja reposar la mezcla 2 minutos antes de cuajar para que el huevo penetre."
+        },
+        {
+          "text": "Cuaja en una sartén antiadherente, voltea con ayuda de un plato y cocina el otro lado."
+        },
+        {
+          "text": "Deja reposar 5 minutos antes de cortar para que no se desarme."
+        }
+      ],
+      "tips": [
+        "El punto jugoso se consigue cocinando el segundo lado solo 1-2 minutos.",
+        "Las papas se escurren del aceite con una espumadera; ese aceite se puede reutilizar.",
+        "Una tortilla bien hecha debe estar dorada fuera y cremosa dentro."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 13,
+        "carbs": 26,
+        "fat": 25
+      },
+      "id": "r4",
+      "source": "local"
+    },
+    {
+      "title": "Curry de lentejas con coco",
+      "description": "Lentejas rojas en una salsa cremosa de coco, tomate y especias. Rinde mucho y congela bien.",
+      "emoji": "🍛",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "alta-proteina",
+        "sin-lactosa"
+      ],
+      "cuisine": "india",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "lentejas rojas",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "leche de coco",
+          "quantity": 400,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "tomate triturado",
+          "quantity": 400,
+          "unit": "g",
+          "category": "despensa"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "jengibre fresco",
+          "quantity": 2,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "curry en polvo",
+          "quantity": 2,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "cúrcuma",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "cilantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla picada con el aceite 4-5 minutos a fuego medio."
+        },
+        {
+          "text": "Agrega ajo, jengibre, curry y cúrcuma; cocina 1 minuto hasta que huelan.",
+          "tip": "Cocinar las especias en grasa 'despierta' sus aromas antes de añadir líquido."
+        },
+        {
+          "text": "Añade las lentejas, el tomate y 400 ml de agua; cocina 15 minutos."
+        },
+        {
+          "text": "Incorpora la leche de coco y cocina 5 minutos más hasta que espese."
+        },
+        {
+          "text": "Rectifica de sal y sirve con cilantro fresco."
+        }
+      ],
+      "tips": [
+        "Las lentejas rojas se deshacen al cocinar: perfectas para una salsa cremosa.",
+        "Acompaña con arroz basmati para una comida completa.",
+        "El curry mejora de sabor al reposar; ideal para preparar con antelación."
+      ],
+      "nutrition": {
+        "kcal": 360,
+        "protein": 16,
+        "carbs": 45,
+        "fat": 13
+      },
+      "id": "r5",
+      "source": "local"
+    },
+    {
+      "title": "Tacos de pescado",
+      "description": "Tortillas de maíz con pescado blanco dorado, crema de aguacate y repollo fresco.",
+      "emoji": "🌮",
+      "diets": [
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "mexicana",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 15,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "filete de pescado blanco",
+          "quantity": 500,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "tortillas de maíz",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "aguacate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "repollo",
+          "quantity": 200,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "pimentón dulce",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Condimenta el pescado con sal, pimienta, pimentón y el ajo picado."
+        },
+        {
+          "text": "Dora el pescado en una sartén con aceite 3-4 minutos por lado y desmenúzalo."
+        },
+        {
+          "text": "Machaca el aguacate con el jugo de medio limón y sal para la crema.",
+          "tip": "Un chorrito de agua ayuda a que la crema quede más suave."
+        },
+        {
+          "text": "Corta el repollo en juliana fina y adereza con el limón restante."
+        },
+        {
+          "text": "Calienta las tortillas y arma los tacos: pescado, repollo y crema de aguacate."
+        }
+      ],
+      "tips": [
+        "El repollo en juliana aderezado con limón aporta el toque ácido crujiente.",
+        "Si el pescado se te pega, espera a que se dore antes de voltear.",
+        "Puedes asar el pescado en vez de freírlo para una versión más ligera."
+      ],
+      "nutrition": {
+        "kcal": 420,
+        "protein": 28,
+        "carbs": 40,
+        "fat": 16
+      },
+      "id": "r6",
+      "source": "local"
+    },
+    {
+      "title": "Pasta con salsa de tomate y albahaca",
+      "description": "Espaguetis al dente con una salsa de tomate casera perfumada con albahaca fresca.",
+      "emoji": "🍝",
+      "diets": [
+        "vegetariano"
+      ],
+      "cuisine": "italiana",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "espaguetis",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "tomates maduros",
+          "quantity": 6,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "albahaca fresca",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 4,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        },
+        {
+          "name": "pimienta negra",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "parmesano",
+          "quantity": 50,
+          "unit": "g",
+          "category": "lacteos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Cocina la pasta en agua salada hirviendo hasta que esté al dente."
+        },
+        {
+          "text": "Reserva una taza del agua de cocción antes de escurrir.",
+          "tip": "El agua de la pasta, rica en almidón, es el secreto para que la salsa ligue."
+        },
+        {
+          "text": "Sofríe el ajo en el aceite, añade los tomates rallados y cocina 10 minutos."
+        },
+        {
+          "text": "Mezcla la pasta con la salsa y un chorrito del agua reservada."
+        },
+        {
+          "text": "Apaga el fuego, añade albahaca y parmesano, y remueve bien."
+        }
+      ],
+      "tips": [
+        "Rallar los tomates por el lado grueso del rallador da una salsa lista en minutos.",
+        "La salsa gana sabor si reposa; prepara doble y congela la mitad.",
+        "El parmesano recién rallado hace toda la diferencia."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 15,
+        "carbs": 82,
+        "fat": 14
+      },
+      "id": "r7",
+      "source": "local"
+    },
+    {
+      "title": "Bowl de avena con frutas y mantequilla de maní",
+      "description": "Avena cremosa con plátano, frutos rojos, mantequilla de maní y semillas. Energía para toda la mañana.",
+      "emoji": "🥣",
+      "diets": [
+        "vegano",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "desayunos",
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 8,
+      "servings": 1,
+      "ingredients": [
+        {
+          "name": "avena",
+          "quantity": 50,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "leche de almendras",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "plátano",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "frutos rojos",
+          "quantity": 80,
+          "unit": "g",
+          "category": "frutas"
+        },
+        {
+          "name": "mantequilla de maní",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "semillas de chía",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        },
+        {
+          "name": "canela",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Cocina la avena con la leche de almendras a fuego medio 5-6 minutos, removiendo."
+        },
+        {
+          "text": "Apaga y agrega la chía y la canela; mezcla y deja reposar 2 minutos."
+        },
+        {
+          "text": "Sirve con el plátano en rodajas, los frutos rojos y la mantequilla de maní."
+        },
+        {
+          "text": "Decora con las semillas y un toque extra de canela."
+        }
+      ],
+      "tips": [
+        "La avena absorbe líquido: añade más leche si la prefieres más líquida.",
+        "Para más proteína, añade una cucharada de proteína en polvo al final.",
+        "Puedes prepararla la noche anterior en la nevera (overnight oats)."
+      ],
+      "nutrition": {
+        "kcal": 430,
+        "protein": 14,
+        "carbs": 60,
+        "fat": 15
+      },
+      "id": "r8",
+      "source": "local"
+    },
+    {
+      "title": "Huevos revueltos con espinaca y feta",
+      "description": "Huevos cremosos con espinaca salteada y queso feta desmenuzado. Perfectos en 10 minutos.",
+      "emoji": "🍳",
+      "diets": [
+        "keto",
+        "sin-gluten",
+        "vegetariano",
+        "alta-proteina"
+      ],
+      "cuisine": "desayunos",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 8,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "huevo",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "espinaca",
+          "quantity": 150,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "queso feta",
+          "quantity": 80,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "ajo",
+          "quantity": 1,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Saltea la espinaca con el ajo y el aceite hasta que reduzca (2 minutos)."
+        },
+        {
+          "text": "Bate los huevos con sal y pimienta hasta que estén uniformes.",
+          "tip": "Un batido homogéneo da una textura más cremosa y uniforme."
+        },
+        {
+          "text": "Vierte los huevos sobre la espinaca y cocina a fuego bajo removiendo.",
+          "tip": "Retíralos cuando aún se vean ligeramente húmedos: terminarán de cuajar en el plato."
+        },
+        {
+          "text": "Añade el feta desmenuzado y retira del fuego, mezclando suavemente."
+        }
+      ],
+      "tips": [
+        "El truco para huevos cremosos: fuego bajo y mover constantemente.",
+        "El feta se desmenuza mejor si está a temperatura ambiente.",
+        "Acompáñalos con tostadas de pan de masa madre si no estás en keto."
+      ],
+      "nutrition": {
+        "kcal": 340,
+        "protein": 22,
+        "carbs": 6,
+        "fat": 25
+      },
+      "id": "r9",
+      "source": "local"
+    },
+    {
+      "title": "Sopa de verduras con pollo",
+      "description": "Caldo reconfortante con pollo, zanahoria, apio y calabacín. La receta de 'día frío' por excelencia.",
+      "emoji": "🍲",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "casera",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 40,
+      "servings": 6,
+      "ingredients": [
+        {
+          "name": "pechuga de pollo",
+          "quantity": 500,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "apio",
+          "quantity": 2,
+          "unit": "tallos",
+          "category": "verduras"
+        },
+        {
+          "name": "calabacín",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "caldo de pollo",
+          "quantity": 1500,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "laurel",
+          "quantity": 1,
+          "unit": "hoja",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo y el apio picados en el aceite 5 minutos."
+        },
+        {
+          "text": "Añade la zanahoria en rodajas, el laurel y el caldo; lleva a hervor."
+        },
+        {
+          "text": "Agrega el pollo entero y cocina 20 minutos a fuego medio."
+        },
+        {
+          "text": "Retira el pollo, desmenúzalo y vuelve a incorporarlo con el calabacín."
+        },
+        {
+          "text": "Cocina 8 minutos más, ajusta de sal y sirve caliente."
+        }
+      ],
+      "tips": [
+        "Cocer el pollo entero en el caldo lo mantiene jugoso; desmenúzalo al final.",
+        "Esta sopa congela muy bien: prepara doble tanda.",
+        "Sirve con limón por encima para un toque fresco."
+      ],
+      "nutrition": {
+        "kcal": 220,
+        "protein": 26,
+        "carbs": 14,
+        "fat": 7
+      },
+      "id": "r10",
+      "source": "local"
+    },
+    {
+      "title": "Burrito de frijoles y aguacate",
+      "description": "Frijoles negros refritos, arroz, aguacate y pico de gallo envueltos en tortilla de harina.",
+      "emoji": "🌯",
+      "diets": [
+        "vegano",
+        "sin-lactosa"
+      ],
+      "cuisine": "mexicana",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 10,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "frijoles negros cocidos",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "tortillas de harina grandes",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "arroz cocido",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "aguacate",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "tomate",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cilantro",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Calienta los frijoles con el comino y el aceite y machácalos ligeramente."
+        },
+        {
+          "text": "Prepara el pico de gallo: tomate, cebolla y cilantro picados con jugo de limón y sal."
+        },
+        {
+          "text": "Calienta las tortillas en una sartén seca 30 segundos por lado."
+        },
+        {
+          "text": "Monta cada burrito: arroz, frijoles, pico de gallo y aguacate en láminas."
+        },
+        {
+          "text": "Envuelve doblando los lados hacia dentro y enrollando bien."
+        }
+      ],
+      "tips": [
+        "Calentar las tortillas las vuelve flexibles y evita que se rompan.",
+        "Un burrito bien enrollado no se abre: dobla los extremos primero.",
+        "Añade jalapeño si te gusta el toque picante."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 17,
+        "carbs": 78,
+        "fat": 15
+      },
+      "id": "r11",
+      "source": "local"
+    },
+    {
+      "title": "Ceviche de camarón",
+      "description": "Camarones 'cocidos' en jugo de limón con cebolla morada, tomate y cilantro. Fresco y ligero.",
+      "emoji": "🦐",
+      "diets": [
+        "keto",
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "latina",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 25,
+      "cookMinutes": 0,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "camarón",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "limón",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "cebolla morada",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cilantro",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aguacate",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        },
+        {
+          "name": "pimiento picante",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Limpia y parte los camarones en trozos medianos."
+        },
+        {
+          "text": "Mezcla los camarones con el jugo de los limones y sal; deja reposar 20 minutos.",
+          "tip": "El ácido del limón 'cocina' el camarón: no lo dejes más de 25 minutos o se pone duro."
+        },
+        {
+          "text": "Escurre parte del jugo y añade la cebolla en juliana, el tomate en cubos y el picante."
+        },
+        {
+          "text": "Deja reposar 5 minutos más y mezcla con el cilantro."
+        },
+        {
+          "text": "Sirve frío con aguacate por encima."
+        }
+      ],
+      "tips": [
+        "Usa camarones frescos o bien descongelados para el mejor resultado.",
+        "El ceviche no aguanta mucho tiempo: consúmelo el mismo día.",
+        "Acompáñalo con tostadas de maíz para darle textura."
+      ],
+      "nutrition": {
+        "kcal": 280,
+        "protein": 30,
+        "carbs": 12,
+        "fat": 12
+      },
+      "id": "r12",
+      "source": "local"
+    },
+    {
+      "title": "Pechuga con arroz y brócoli",
+      "description": "El clásico plato de alto rendimiento: pechuga jugosa, arroz y brócoli al vapor.",
+      "emoji": "🍚",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "casera",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 25,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "pechuga de pollo",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "arroz",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "brócoli",
+          "quantity": 300,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "salsa de soja",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Cocina el arroz en 400 ml de agua con sal, tapado, durante 15 minutos."
+        },
+        {
+          "text": "Aplana las pechugas para que tengan grosor uniforme y sazona.",
+          "tip": "Un grosor uniforme garantiza una cocción pareja, sin zonas secas."
+        },
+        {
+          "text": "Sella las pechugas en sartén con aceite 5 minutos por lado; retíralas y deja reposar."
+        },
+        {
+          "text": "Saltea el brócoli con el ajo 3-4 minutos y añade la soja."
+        },
+        {
+          "text": "Sirve el arroz, el brócoli y la pechuga en láminas."
+        }
+      ],
+      "tips": [
+        "Dejar reposar la carne 5 minutos reparte los jugos antes de cortar.",
+        "La salsa de soja sola ya aporta sal: prueba antes de añadir más.",
+        "Cocina el arroz a fuego muy bajo con la tapa puesta para que quede suelto."
+      ],
+      "nutrition": {
+        "kcal": 560,
+        "protein": 46,
+        "carbs": 62,
+        "fat": 12
+      },
+      "id": "r13",
+      "source": "local"
+    },
+    {
+      "title": "Ensalada caprese",
+      "description": "Tomates maduros, mozzarella fresca, albahaca y aceite de oliva. La esencia de Italia en un plato.",
+      "emoji": "🧀",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "italiana",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 0,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "tomates maduros",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "mozzarella fresca",
+          "quantity": 250,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "albahaca fresca",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "vinagre balsámico",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "sal en escamas",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        },
+        {
+          "name": "pimienta negra",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Corta los tomates y la mozzarella en rodajas de grosor similar."
+        },
+        {
+          "text": "Intercala las rodajas en un plato, salseando con sal, pimienta y albahaca."
+        },
+        {
+          "text": "Riega con aceite de oliva y un hilo de balsámico justo antes de servir."
+        }
+      ],
+      "tips": [
+        "Los tomates a temperatura ambiente saben muchísimo mejor que fríos.",
+        "La sal en escamas añade textura y potencia el sabor del tomate.",
+        "El balsámico se añade al final para que no empape la mozzarella."
+      ],
+      "nutrition": {
+        "kcal": 320,
+        "protein": 16,
+        "carbs": 10,
+        "fat": 25
+      },
+      "id": "r14",
+      "source": "local"
+    },
+    {
+      "title": "Smoothie bowl de mango",
+      "description": "Batido espeso de mango y plátano con granola, fruta fresca y coco rallado.",
+      "emoji": "🥭",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "desayunos",
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 8,
+      "cookMinutes": 0,
+      "servings": 1,
+      "ingredients": [
+        {
+          "name": "mango congelado",
+          "quantity": 200,
+          "unit": "g",
+          "category": "frutas"
+        },
+        {
+          "name": "plátano",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "leche de coco",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "granola",
+          "quantity": 30,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "coco rallado",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "semillas de chía",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Licúa el mango congelado, el plátano y la leche de coco hasta lograr textura espesa."
+        },
+        {
+          "text": "Sirve en un bol y alisa la superficie con una cuchara."
+        },
+        {
+          "text": "Decora con granola, coco rallado y chía por encima."
+        }
+      ],
+      "tips": [
+        "Usa fruta congelada para una textura de helado sin hielo.",
+        "Si queda muy líquido, añade más plátano o mango congelado.",
+        "Monta los toppings justo antes de servir para que queden crujientes."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 7,
+        "carbs": 68,
+        "fat": 10
+      },
+      "id": "r15",
+      "source": "local"
+    },
+    {
+      "title": "Albóndigas de lentejas con salsa",
+      "description": "Albóndigas veganas de lentejas y avena en una salsa de tomate con especias.",
+      "emoji": "🍅",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "mediterranea",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "lentejas cocidas",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "avena",
+          "quantity": 60,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate triturado",
+          "quantity": 400,
+          "unit": "g",
+          "category": "despensa"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "orégano",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "pimentón dulce",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Machaca las lentejas con un tenedor dejando algunos trozos enteros."
+        },
+        {
+          "text": "Añade la avena, la cebolla y el ajo muy picados, comino, pimentón y sal; mezcla bien."
+        },
+        {
+          "text": "Forma las albóndigas y deja reposar 10 minutos en la nevera.",
+          "tip": "Reposarlas ayuda a que la avena absorba y se compacten al dorarse."
+        },
+        {
+          "text": "Dora las albóndigas en aceite 5 minutos, dando la vuelta para dorar todos los lados."
+        },
+        {
+          "text": "Vierte el tomate con el orégano, tapa y cocina 12 minutos a fuego suave."
+        }
+      ],
+      "tips": [
+        "La avena actúa como aglutinante: no la sustituyas por pan rallado si buscas sin gluten.",
+        "Las albóndigas se deshacen menos si no las mueves hasta que se doren.",
+        "Quedan espectaculares sobre puré de papas o polenta."
+      ],
+      "nutrition": {
+        "kcal": 330,
+        "protein": 15,
+        "carbs": 42,
+        "fat": 11
+      },
+      "id": "r16",
+      "source": "local"
+    },
+    {
+      "title": "Salteado de verduras con tofu",
+      "description": "Tofu crujiente con pimiento, brócoli y zanahoria en salsa de jengibre y soja.",
+      "emoji": "🥢",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "asiatica",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 12,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "tofu firme",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "brócoli",
+          "quantity": 250,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "pimiento rojo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "jengibre fresco",
+          "quantity": 2,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "salsa de soja",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de sésamo",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "maicena",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Prensa el tofu 10 minutos para eliminar el exceso de agua y córtalo en cubos."
+        },
+        {
+          "text": "Reboza los cubos en maicena y dóralos en aceite hasta que estén crujientes.",
+          "tip": "La maicena crea una capa crujiente que además ayuda a que la salsa se adhiera."
+        },
+        {
+          "text": "Saltea el brócoli, el pimiento y la zanahoria 4 minutos a fuego alto."
+        },
+        {
+          "text": "Añade ajo y jengibre, y cocina 1 minuto más."
+        },
+        {
+          "text": "Incorpora la soja y el tofu crujiente; saltea 2 minutos para integrar."
+        }
+      ],
+      "tips": [
+        "El tofu prensado absorbe mejor los sabores y queda más crujiente.",
+        "Cocina las verduras a fuego alto: deben quedar al dente, no blandas.",
+        "Acompaña con arroz jazmín o fideos de arroz."
+      ],
+      "nutrition": {
+        "kcal": 340,
+        "protein": 22,
+        "carbs": 26,
+        "fat": 17
+      },
+      "id": "r17",
+      "source": "local"
+    },
+    {
+      "title": "Pescado al papel con limón",
+      "description": "Filete de pescado al horno en paquetes de papel con limón, tomillo y verduras en su jugo.",
+      "emoji": "🍋",
+      "diets": [
+        "keto",
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "mediterranea",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 18,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "filete de pescado blanco",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "tomate cherry",
+          "quantity": 200,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "calabacín",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomillo fresco",
+          "quantity": 1,
+          "unit": "ramitas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Precalienta el horno a 200 °C y corta dos hojas grandes de papel de horno."
+        },
+        {
+          "text": "Coloca el pescado en el centro, sazona y cubre con rodajas de limón y tomillo."
+        },
+        {
+          "text": "Añade los tomates cherry y el calabacín en medias lunas a los lados."
+        },
+        {
+          "text": "Riega con aceite, cierra los paquetes doblando los bordes, y hornea 18 minutos."
+        },
+        {
+          "text": "Deja reposar 3 minutos y abre los paquetes con cuidado del vapor.",
+          "tip": "Abrir el paquete en la mesa hace que el aroma sorprenda antes de comer."
+        }
+      ],
+      "tips": [
+        "El papel sella los jugos: el pescado queda increíblemente tierno.",
+        "Si no tienes papel de horno, usa papel de aluminio engrasado.",
+        "Prueba con cualquier pescado blanco: merluza, tilapia o dorada."
+      ],
+      "nutrition": {
+        "kcal": 300,
+        "protein": 32,
+        "carbs": 10,
+        "fat": 15
+      },
+      "id": "r18",
+      "source": "local"
+    }
+  ],
+  "pantry": [
+    {
+      "id": "pn1",
+      "ingredientName": "huevo",
+      "quantity": 12,
+      "unit": "unidades",
+      "expiryDate": "2026-08-01",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn2",
+      "ingredientName": "espinaca",
+      "quantity": 200,
+      "unit": "g",
+      "expiryDate": "2026-08-05",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn3",
+      "ingredientName": "tomate",
+      "quantity": 5,
+      "unit": "unidades",
+      "expiryDate": "2026-08-02",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn4",
+      "ingredientName": "cebolla",
+      "quantity": 4,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn5",
+      "ingredientName": "ajo",
+      "quantity": 6,
+      "unit": "dientes",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn6",
+      "ingredientName": "arroz",
+      "quantity": 500,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn7",
+      "ingredientName": "garbanzos cocidos",
+      "quantity": 400,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn8",
+      "ingredientName": "quinoa",
+      "quantity": 300,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn9",
+      "ingredientName": "lentejas rojas",
+      "quantity": 400,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn10",
+      "ingredientName": "leche de coco",
+      "quantity": 400,
+      "unit": "ml",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn11",
+      "ingredientName": "pechuga de pollo",
+      "quantity": 600,
+      "unit": "g",
+      "expiryDate": "2026-08-04",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn12",
+      "ingredientName": "salmón",
+      "quantity": 300,
+      "unit": "g",
+      "expiryDate": "2026-08-03",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn13",
+      "ingredientName": "tofu firme",
+      "quantity": 300,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn14",
+      "ingredientName": "aguacate",
+      "quantity": 2,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn15",
+      "ingredientName": "limón",
+      "quantity": 4,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn16",
+      "ingredientName": "aceite de oliva",
+      "quantity": 500,
+      "unit": "ml",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn17",
+      "ingredientName": "mantequilla de maní",
+      "quantity": 250,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn18",
+      "ingredientName": "avena",
+      "quantity": 400,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn19",
+      "ingredientName": "frijoles negros cocidos",
+      "quantity": 400,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn20",
+      "ingredientName": "queso feta",
+      "quantity": 200,
+      "unit": "g",
+      "expiryDate": "2026-08-03",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn21",
+      "ingredientName": "camarón",
+      "quantity": 300,
+      "unit": "g",
+      "expiryDate": "2026-08-05",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn22",
+      "ingredientName": "salsa de soja",
+      "quantity": 250,
+      "unit": "ml",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn23",
+      "ingredientName": "brócoli",
+      "quantity": 300,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn24",
+      "ingredientName": "espaguetis",
+      "quantity": 400,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn25",
+      "ingredientName": "arroz",
+      "quantity": 300,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn26",
+      "ingredientName": "sal",
+      "quantity": 1000,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn27",
+      "ingredientName": "pimienta negra",
+      "quantity": 100,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn28",
+      "ingredientName": "comino",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn29",
+      "ingredientName": "curry en polvo",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn30",
+      "ingredientName": "cúrcuma",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn31",
+      "ingredientName": "orégano",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn32",
+      "ingredientName": "pimentón dulce",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn33",
+      "ingredientName": "tomillo seco",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn34",
+      "ingredientName": "romero seco",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn35",
+      "ingredientName": "maicena",
+      "quantity": 200,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn36",
+      "ingredientName": "aceite de sésamo",
+      "quantity": 250,
+      "unit": "ml",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn37",
+      "ingredientName": "caldo de pollo",
+      "quantity": 1000,
+      "unit": "ml",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn38",
+      "ingredientName": "tomate triturado",
+      "quantity": 800,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn39",
+      "ingredientName": "tortillas de maíz",
+      "quantity": 12,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn40",
+      "ingredientName": "tortillas de harina grandes",
+      "quantity": 4,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn41",
+      "ingredientName": "granola",
+      "quantity": 300,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn42",
+      "ingredientName": "leche de almendras",
+      "quantity": 500,
+      "unit": "ml",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn43",
+      "ingredientName": "pepino",
+      "quantity": 2,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn44",
+      "ingredientName": "cebolla morada",
+      "quantity": 2,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn45",
+      "ingredientName": "perejil fresco",
+      "quantity": 1,
+      "unit": "puñados",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn46",
+      "ingredientName": "mango congelado",
+      "quantity": 300,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn47",
+      "ingredientName": "plátano",
+      "quantity": 4,
+      "unit": "unidades",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn48",
+      "ingredientName": "coco rallado",
+      "quantity": 100,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn49",
+      "ingredientName": "semillas de chía",
+      "quantity": 50,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn50",
+      "ingredientName": "papa",
+      "quantity": 1000,
+      "unit": "g",
+      "dateAdded": "2026-08-06"
+    },
+    {
+      "id": "pn51",
+      "ingredientName": "cilantro fresco",
+      "quantity": 1,
+      "unit": "puñados",
+      "dateAdded": "2026-08-06"
+    }
+  ],
+  "weeklyPlan": {
+    "id": "446c0453-6f15-4141-8895-c6caca6759a0",
+    "weekStart": "2026-08-03",
+    "slots": [
+      {
+        "id": "f54669b1-f7c6-4be3-855f-2834ecf0094d",
+        "day": "lunes",
+        "meal": "almuerzo",
+        "recipeId": "r3",
+        "servings": 1
+      },
+      {
+        "id": "cbcc26d1-006f-4a01-aa04-02be71e018bf",
+        "day": "lunes",
+        "meal": "cena",
+        "recipeId": "r12",
+        "servings": 1
+      },
+      {
+        "id": "c8add22f-ec04-48ab-a11d-619c8da55b0f",
+        "day": "martes",
+        "meal": "almuerzo",
+        "recipeId": "r1",
+        "servings": 1
+      },
+      {
+        "id": "82f7a72f-9a16-4eb0-8a60-4eef6ddb03de",
+        "day": "martes",
+        "meal": "cena",
+        "recipeId": "r4",
+        "servings": 1
+      },
+      {
+        "id": "1690b880-1d47-44d1-83b7-01343e4430a8",
+        "day": "miercoles",
+        "meal": "almuerzo",
+        "recipeId": "r9",
+        "servings": 1
+      },
+      {
+        "id": "4d2815aa-cc3c-44a1-a5b5-04645f2bae65",
+        "day": "miercoles",
+        "meal": "cena",
+        "recipeId": "r13",
+        "servings": 1
+      },
+      {
+        "id": "002db0d5-05af-4779-9021-3e7b4cbc6017",
+        "day": "jueves",
+        "meal": "almuerzo",
+        "recipeId": "r5",
+        "servings": 1
+      },
+      {
+        "id": "d8e6ed2f-e1e8-41e2-856d-5216863a16b4",
+        "day": "jueves",
+        "meal": "cena",
+        "recipeId": "r2",
+        "servings": 1
+      },
+      {
+        "id": "db9b916c-dcc3-4d9e-a7ad-4055a63d81fa",
+        "day": "viernes",
+        "meal": "almuerzo",
+        "recipeId": "r16",
+        "servings": 1
+      },
+      {
+        "id": "466ebbe2-25aa-4cc1-8f76-08d86830a4a8",
+        "day": "viernes",
+        "meal": "cena",
+        "recipeId": "r18",
+        "servings": 1
+      },
+      {
+        "id": "572c46ed-44e3-4648-a3d3-f23fd8e1ccf0",
+        "day": "sabado",
+        "meal": "almuerzo",
+        "recipeId": "r3",
+        "servings": 1
+      },
+      {
+        "id": "26c9f1a6-2666-42e1-8aa5-18cd5bf4a4e7",
+        "day": "sabado",
+        "meal": "cena",
+        "recipeId": "r3",
+        "servings": 1
+      },
+      {
+        "id": "0dcc9837-ac9d-4830-b019-27669c12fe50",
+        "day": "domingo",
+        "meal": "almuerzo",
+        "recipeId": "r3",
+        "servings": 1
+      },
+      {
+        "id": "5260b02d-3ee0-41db-bd96-fe147248d150",
+        "day": "domingo",
+        "meal": "cena",
+        "recipeId": "r3",
+        "servings": 1
+      }
+    ]
+  },
+  "history": [
+    {
+      "id": "h1",
+      "profileId": "p1",
+      "recipeId": "r2",
+      "date": "2026-08-04",
+      "meal": "cena",
+      "servings": 2,
+      "rating": 4,
+      "source": "plan"
+    },
+    {
+      "id": "h2",
+      "profileId": "p1",
+      "recipeId": "r7",
+      "date": "2026-08-01",
+      "meal": "almuerzo",
+      "servings": 2,
+      "rating": 5,
+      "source": "manual"
+    },
+    {
+      "id": "h3",
+      "profileId": "p1",
+      "recipeId": "r4",
+      "date": "2026-07-28",
+      "meal": "cena",
+      "servings": 2,
+      "source": "manual"
+    },
+    {
+      "id": "h4",
+      "profileId": "p1",
+      "recipeId": "r8",
+      "date": "2026-08-03",
+      "meal": "desayuno",
+      "servings": 1,
+      "rating": 4,
+      "source": "plan"
+    }
+  ],
+  "shoppingList": {
+    "id": "f227f633-5f59-41fc-8224-350325ce9813",
+    "weekStart": "2026-08-03",
+    "items": [
+      {
+        "name": "ajo",
+        "category": "verduras",
+        "needed": 7,
+        "unit": "dientes",
+        "inPantry": 6,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "cebolla",
+        "category": "verduras",
+        "needed": 2,
+        "unit": "unidades",
+        "inPantry": 2,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "cebolla morada",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "cilantro fresco",
+        "category": "verduras",
+        "needed": 0.5,
+        "unit": "puñados",
+        "inPantry": 0.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "espárragos",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "manojos",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "papa",
+        "category": "verduras",
+        "needed": 450,
+        "unit": "g",
+        "inPantry": 450,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "pepino",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "perejil fresco",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "puñados",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "repollo",
+        "category": "verduras",
+        "needed": 100,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 100,
+        "checked": false
+      },
+      {
+        "name": "tomate",
+        "category": "verduras",
+        "needed": 2,
+        "unit": "unidades",
+        "inPantry": 2,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "zanahoria",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "aguacate",
+        "category": "frutas",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "frutos rojos",
+        "category": "frutas",
+        "needed": 80,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 80,
+        "checked": false
+      },
+      {
+        "name": "limón",
+        "category": "frutas",
+        "needed": 3.5,
+        "unit": "unidades",
+        "inPantry": 3.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "plátano",
+        "category": "frutas",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "filete de pescado blanco",
+        "category": "proteinas",
+        "needed": 250,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 250,
+        "checked": false
+      },
+      {
+        "name": "filete de salmón",
+        "category": "proteinas",
+        "needed": 300,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 300,
+        "checked": false
+      },
+      {
+        "name": "huevo",
+        "category": "proteinas",
+        "needed": 3,
+        "unit": "unidades",
+        "inPantry": 3,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "pechuga de pollo",
+        "category": "proteinas",
+        "needed": 300,
+        "unit": "g",
+        "inPantry": 300,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "leche de almendras",
+        "category": "lacteos",
+        "needed": 250,
+        "unit": "ml",
+        "inPantry": 250,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "mantequilla",
+        "category": "lacteos",
+        "needed": 20,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 20,
+        "checked": false
+      },
+      {
+        "name": "avena",
+        "category": "granos",
+        "needed": 80,
+        "unit": "g",
+        "inPantry": 80,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "garbanzos cocidos",
+        "category": "granos",
+        "needed": 400,
+        "unit": "g",
+        "inPantry": 400,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "lentejas cocidas",
+        "category": "granos",
+        "needed": 200,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 200,
+        "checked": false
+      },
+      {
+        "name": "lentejas rojas",
+        "category": "granos",
+        "needed": 150,
+        "unit": "g",
+        "inPantry": 150,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "quinoa",
+        "category": "granos",
+        "needed": 200,
+        "unit": "g",
+        "inPantry": 200,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "tortillas de maíz",
+        "category": "granos",
+        "needed": 6,
+        "unit": "unidades",
+        "inPantry": 6,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "canela",
+        "category": "condimentos",
+        "needed": 1,
+        "unit": "cucharaditas",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "comino",
+        "category": "condimentos",
+        "needed": 1.5,
+        "unit": "cucharaditas",
+        "inPantry": 1.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "cúrcuma",
+        "category": "condimentos",
+        "needed": 0.5,
+        "unit": "cucharaditas",
+        "inPantry": 0.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "curry en polvo",
+        "category": "condimentos",
+        "needed": 1,
+        "unit": "cucharaditas",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "jengibre fresco",
+        "category": "condimentos",
+        "needed": 1,
+        "unit": "cucharaditas",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "orégano",
+        "category": "condimentos",
+        "needed": 0.5,
+        "unit": "cucharaditas",
+        "inPantry": 0.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "pimentón dulce",
+        "category": "condimentos",
+        "needed": 1,
+        "unit": "cucharaditas",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "romero seco",
+        "category": "condimentos",
+        "needed": 0.5,
+        "unit": "cucharaditas",
+        "inPantry": 0.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "tomillo seco",
+        "category": "condimentos",
+        "needed": 0.5,
+        "unit": "cucharaditas",
+        "inPantry": 0.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "aceite de oliva",
+        "category": "despensa",
+        "needed": 12.33,
+        "unit": "cucharadas",
+        "inPantry": 12.33,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "leche de coco",
+        "category": "despensa",
+        "needed": 200,
+        "unit": "ml",
+        "inPantry": 200,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "mantequilla de maní",
+        "category": "despensa",
+        "needed": 1,
+        "unit": "cucharadas",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "sal",
+        "category": "despensa",
+        "needed": 2,
+        "unit": "cucharaditas",
+        "inPantry": 2,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "sal y pimienta",
+        "category": "despensa",
+        "needed": 2.5,
+        "unit": "cucharaditas",
+        "inPantry": 0,
+        "toBuy": 2.5,
+        "checked": false
+      },
+      {
+        "name": "semillas de chía",
+        "category": "despensa",
+        "needed": 1,
+        "unit": "cucharaditas",
+        "inPantry": 1,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "tomate triturado",
+        "category": "despensa",
+        "needed": 400,
+        "unit": "g",
+        "inPantry": 400,
+        "toBuy": 0,
+        "checked": false
+      }
+    ],
+    "generatedAt": "2026-08-06T19:15:39.010Z"
+  }
+}
