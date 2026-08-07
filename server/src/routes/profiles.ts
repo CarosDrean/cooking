@@ -1,8 +1,21 @@
-import type { Profile } from "@cooking/shared";
+import type { IngredientRestriction, Profile } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 
 export const profilesRouter = Router();
+
+function cleanRestrictions(value: unknown): IngredientRestriction[] {
+    if (!Array.isArray(value)) return [];
+    const result: IngredientRestriction[] = [];
+    for (const r of value) {
+        if (typeof r !== "object" || r === null) continue;
+        const { name, level } = r as { name?: unknown; level?: unknown };
+        const trimmed = typeof name === "string" ? name.trim() : "";
+        if (!trimmed) continue;
+        result.push({ name: trimmed, level: level === "poco" ? "poco" : "no" });
+    }
+    return result;
+}
 
 profilesRouter.get("/", (_req, res) => {
     const state = getState();
@@ -27,7 +40,7 @@ profilesRouter.post("/", (req, res) => {
         name: body.name.trim(),
         emoji: body.emoji ?? "🙂",
         dietPreferences: body.dietPreferences ?? [],
-        dislikedIngredients: body.dislikedIngredients ?? [],
+        restrictions: cleanRestrictions(body.restrictions),
         householdSize: Math.max(1, body.householdSize ?? 2),
         mealsPerDay: body.mealsPerDay?.length ? body.mealsPerDay : ["desayuno", "almuerzo", "cena"],
         favoriteRecipeIds: [],
@@ -52,7 +65,7 @@ profilesRouter.put("/:id", (req, res) => {
         name: body.name?.trim() || current.name,
         emoji: body.emoji ?? current.emoji,
         dietPreferences: body.dietPreferences ?? current.dietPreferences,
-        dislikedIngredients: body.dislikedIngredients ?? current.dislikedIngredients,
+        restrictions: body.restrictions !== undefined ? cleanRestrictions(body.restrictions) : current.restrictions,
         householdSize: Math.max(1, body.householdSize ?? current.householdSize),
         mealsPerDay: body.mealsPerDay?.length ? body.mealsPerDay : current.mealsPerDay,
     };

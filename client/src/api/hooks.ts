@@ -1,12 +1,14 @@
 import type {
     AppState,
     Day,
+    Location,
     MealLogEntry,
     MealType,
     PantryItem,
     Profile,
     Recipe,
     Recommendation,
+    Season,
     ShoppingList,
     WeeklyPlan,
 } from "@cooking/shared";
@@ -96,6 +98,7 @@ export interface RecipeFilters {
     mode?: "all" | "any";
     makeable?: boolean;
     meal?: MealType;
+    season?: Season;
 }
 
 export function useRecipes(filters: RecipeFilters = {}) {
@@ -106,6 +109,7 @@ export function useRecipes(filters: RecipeFilters = {}) {
     if (filters.mode) params.set("mode", filters.mode);
     if (filters.makeable) params.set("makeable", "true");
     if (filters.meal) params.set("meal", filters.meal);
+    if (filters.season) params.set("season", filters.season);
     const qs = params.toString();
     return useQuery({
         queryKey: ["recipes", qs],
@@ -413,5 +417,31 @@ export function useDailyTip() {
     return useQuery({
         queryKey: ["tips", "daily"],
         queryFn: () => api.get<{ tip: string }>("/tips/daily"),
+    });
+}
+
+/* ---------- Settings ---------- */
+export interface SettingsInfo {
+    location: Location;
+    season: Season;
+}
+
+export function useSettings() {
+    return useQuery({
+        queryKey: ["settings"],
+        queryFn: () => api.get<SettingsInfo>("/settings"),
+        staleTime: 30_000,
+    });
+}
+
+export function useUpdateSettings() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: (body: Partial<Location>) => api.put<SettingsInfo>("/settings", body),
+        onSuccess: () => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["settings"] });
+            qc.invalidateQueries({ queryKey: ["recommendations"] });
+        },
     });
 }

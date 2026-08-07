@@ -1,4 +1,4 @@
-import { DIETS, MEAL_LABELS, MEALS, type MealType } from "@cooking/shared";
+import { DIETS, type IngredientRestriction, MEAL_LABELS, MEALS, type MealType } from "@cooking/shared";
 import { useState } from "react";
 import {
     useActivateProfile,
@@ -9,6 +9,80 @@ import {
     useUpdateProfile,
 } from "../api/hooks";
 import { useToast } from "../lib/toast";
+
+const LEVEL_LABELS: Record<IngredientRestriction["level"], string> = {
+    no: "No come",
+    poco: "Come poco",
+};
+
+function RestrictionsEditor({
+    value,
+    onChange,
+}: {
+    value: IngredientRestriction[];
+    onChange: (next: IngredientRestriction[]) => void;
+}) {
+    const [name, setName] = useState("");
+    const [level, setLevel] = useState<IngredientRestriction["level"]>("no");
+
+    const add = () => {
+        const trimmed = name.trim().toLowerCase();
+        if (!trimmed) return;
+        const next = [...value.filter((r) => r.name !== trimmed), { name: trimmed, level }];
+        onChange(next);
+        setName("");
+    };
+
+    return (
+        <div className="field">
+            <span>Restricciones de ingredientes</span>
+            <div className="restriction-add">
+                <input
+                    className="input"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            add();
+                        }
+                    }}
+                    placeholder="Ej. pescado, ají, lactosa…"
+                />
+                <select
+                    className="input"
+                    value={level}
+                    onChange={(e) => setLevel(e.target.value as IngredientRestriction["level"])}
+                >
+                    <option value="no">No come</option>
+                    <option value="poco">Come poco</option>
+                </select>
+                <button className="btn ghost" type="button" onClick={add}>
+                    Añadir
+                </button>
+            </div>
+            {value.length > 0 ? (
+                <ul className="restriction-list">
+                    {value.map((r) => (
+                        <li key={r.name}>
+                            <span className="restriction-level">{LEVEL_LABELS[r.level]}</span>
+                            <strong>{r.name}</strong>
+                            <button
+                                className="icon-btn"
+                                type="button"
+                                onClick={() => onChange(value.filter((x) => x.name !== r.name))}
+                            >
+                                ✕
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p className="muted small">Sin restricciones. Todo cuenta como permitido.</p>
+            )}
+        </div>
+    );
+}
 
 export default function ProfilesPage() {
     const { data: state } = useAppState();
@@ -21,13 +95,13 @@ export default function ProfilesPage() {
 
     const [name, setName] = useState("");
     const [diets, setDiets] = useState<string[]>([]);
-    const [disliked, setDisliked] = useState("");
+    const [restrictions, setRestrictions] = useState<IngredientRestriction[]>([]);
     const [household, setHousehold] = useState(2);
     const [meals, setMeals] = useState<MealType[]>(["desayuno", "almuerzo", "cena"]);
 
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editName, setEditName] = useState("");
-    const [editDisliked, setEditDisliked] = useState("");
+    const [editRestrictions, setEditRestrictions] = useState<IngredientRestriction[]>([]);
 
     const profiles = state?.profiles ?? [];
 
@@ -42,10 +116,7 @@ export default function ProfilesPage() {
             {
                 name: name.trim(),
                 dietPreferences: diets,
-                dislikedIngredients: disliked
-                    .split(",")
-                    .map((s) => s.trim())
-                    .filter(Boolean),
+                restrictions,
                 householdSize: household,
                 mealsPerDay: meals,
             },
@@ -54,7 +125,7 @@ export default function ProfilesPage() {
                     toast(`Perfil creado: ${name.trim()}`);
                     setName("");
                     setDiets([]);
-                    setDisliked("");
+                    setRestrictions([]);
                     setHousehold(2);
                     setMeals(["desayuno", "almuerzo", "cena"]);
                 },
@@ -67,7 +138,7 @@ export default function ProfilesPage() {
         if (!p) return;
         setEditingId(id);
         setEditName(p.name);
-        setEditDisliked(p.dislikedIngredients.join(", "));
+        setEditRestrictions(p.restrictions ?? []);
     };
 
     const saveEdit = () => {
@@ -76,10 +147,7 @@ export default function ProfilesPage() {
             id: editingId,
             body: {
                 name: editName.trim(),
-                dislikedIngredients: editDisliked
-                    .split(",")
-                    .map((s) => s.trim())
-                    .filter(Boolean),
+                restrictions: editRestrictions,
             },
         });
         setEditingId(null);
@@ -126,15 +194,7 @@ export default function ProfilesPage() {
                                 </div>
                             </div>
 
-                            <label className="field">
-                                <span>Ingredientes que no le gustan (separados por coma)</span>
-                                <input
-                                    className="input"
-                                    value={disliked}
-                                    onChange={(e) => setDisliked(e.target.value)}
-                                    placeholder="Ej. cebolla, pescado"
-                                />
-                            </label>
+                            <RestrictionsEditor value={restrictions} onChange={setRestrictions} />
 
                             <label className="field">
                                 <span>Personas en el hogar</span>
@@ -186,6 +246,9 @@ export default function ProfilesPage() {
                                             {p.householdSize} pers. ·{" "}
                                             {p.dietPreferences.length ? p.dietPreferences.join(", ") : "sin dieta"} ·{" "}
                                             {p.mealsPerDay.length} comidas/día
+                                            {p.restrictions?.length
+                                                ? ` · ${p.restrictions.length} ${p.restrictions.length === 1 ? "restricción" : "restricciones"}`
+                                                : ""}
                                         </span>
                                     </div>
                                     <div className="profile-actions">
@@ -226,14 +289,7 @@ export default function ProfilesPage() {
                                         onChange={(e) => setEditName(e.target.value)}
                                     />
                                 </label>
-                                <label className="field">
-                                    <span>Disgustos</span>
-                                    <input
-                                        className="input"
-                                        value={editDisliked}
-                                        onChange={(e) => setEditDisliked(e.target.value)}
-                                    />
-                                </label>
+                                <RestrictionsEditor value={editRestrictions} onChange={setEditRestrictions} />
                                 <div className="page-actions">
                                     <button className="btn primary" onClick={saveEdit}>
                                         Guardar

@@ -1,4 +1,4 @@
-import { DIETS, MEAL_OPTIONS, type MealType } from "@cooking/shared";
+import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "@cooking/shared";
 import { useState } from "react";
 import { useMakeable, useRecipes } from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
@@ -8,6 +8,7 @@ export default function Recipes() {
     const [diets, setDiets] = useState<string[]>([]);
     const [makeableOnly, setMakeableOnly] = useState(false);
     const [meal, setMeal] = useState("");
+    const [season, setSeason] = useState("");
 
     const toggleDiet = (d: string) => setDiets((cur) => (cur.includes(d) ? cur.filter((x) => x !== d) : [...cur, d]));
 
@@ -16,6 +17,7 @@ export default function Recipes() {
         diets,
         makeable: makeableOnly || undefined,
         meal: meal ? (meal as MealType) : undefined,
+        season: season ? (season as Season) : undefined,
     });
     const makeable = useMakeable();
     const makeableIds = new Set((makeable.data ?? []).map((m) => m.recipe.id));
@@ -47,6 +49,14 @@ export default function Recipes() {
                         {MEAL_OPTIONS.map((m) => (
                             <option key={m.value} value={m.value}>
                                 {m.label}
+                            </option>
+                        ))}
+                    </select>
+                    <select className="input" value={season} onChange={(e) => setSeason(e.target.value)}>
+                        <option value="">Cualquier temporada</option>
+                        {SEASONS.map((s) => (
+                            <option key={s} value={s}>
+                                {SEASON_LABELS[s]}
                             </option>
                         ))}
                     </select>
@@ -98,6 +108,7 @@ export default function Recipes() {
                                 setDiets([]);
                                 setMakeableOnly(false);
                                 setMeal("");
+                                setSeason("");
                             }}
                         >
                             Limpiar filtros

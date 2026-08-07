@@ -1,4 +1,5 @@
-import type { MakeableInfo, MealType, Recipe } from "@cooking/shared";
+import type { MakeableInfo, MealType, Recipe, Season } from "@cooking/shared";
+import { SEASONS } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 import { normalize } from "../services/diet.js";
@@ -18,6 +19,7 @@ recipesRouter.get("/", (req, res) => {
     const ingredientMode = (req.query.mode as string | undefined) ?? "all";
     const makeableOnly = req.query.makeable === "true";
     const meal = req.query.meal as MealType | undefined;
+    const season = req.query.season as Season | undefined;
 
     let recipes = state.recipes;
 
@@ -48,6 +50,10 @@ recipesRouter.get("/", (req, res) => {
 
     if (meal) {
         recipes = recipes.filter((r) => r.suitableFor.includes(meal));
+    }
+
+    if (season && SEASONS.includes(season)) {
+        recipes = recipes.filter((r) => !r.seasonal?.length || r.seasonal.includes(season));
     }
 
     if (makeableOnly) {

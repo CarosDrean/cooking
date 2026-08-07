@@ -1,17 +1,20 @@
 import type { AppState, Recommendation } from "@cooking/shared";
-import { isDietCompatible, isDisliked } from "./diet.js";
+import { SEASON_LABELS } from "@cooking/shared";
+import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays, timesEaten } from "./history.js";
+import { availability, currentSeason, seasonFit } from "./location.js";
 import { isMakeable, missingIngredients } from "./shoppingList.js";
 
 export function recommendRecipes(state: AppState, limit = 10): Recommendation[] {
     const profile = state.profiles.find((p) => p.id === state.activeProfileId) ?? state.profiles[0];
     const plannedIds = new Set(state.weeklyPlan?.slots.map((s) => s.recipeId) ?? []);
+    const season = currentSeason(new Date(), state.location.country);
 
     const results: Recommendation[] = [];
 
     for (const recipe of state.recipes) {
         if (!isDietCompatible(recipe, profile)) continue;
-        if (isDisliked(recipe, profile)) continue;
+        if (isForbidden(recipe, profile)) continue;
 
         let score = 0;
         const reasons: string[] = [];
@@ -19,6 +22,25 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
         if (profile.dietPreferences.length > 0) {
             score += 1;
             reasons.push(`Encaja con ${profile.dietPreferences.join(", ")}`);
+        }
+
+        const limited = restrictedCount(recipe, profile);
+        if (limited > 0) {
+            score -= limited * 3;
+            const names = profile.restrictions
+                .filter((r) => r.level === "poco")
+                .map((r) => r.name)
+                .filter((n) => recipe.ingredients.some((i) => i.name === n));
+            reasons.push(`Contiene ${names.join(", ")} (consume con moderación)`);
+        }
+
+        const avail = availability(recipe, season, state.location.country);
+        score += avail.score;
+        reasons.push(avail.label);
+
+        const fit = seasonFit(recipe, season);
+        if (fit.seasonal && fit.inSeason) {
+            reasons.push(`En temporada (${SEASON_LABELS[season]})`);
         }
 
         if (profile.favoriteRecipeIds.includes(recipe.id)) {

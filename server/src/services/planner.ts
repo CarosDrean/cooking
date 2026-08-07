@@ -1,7 +1,8 @@
 import type { AppState, Day, MealSlot, MealType, Recipe, WeeklyPlan } from "@cooking/shared";
 import { DAYS, MEALS } from "@cooking/shared";
-import { isDietCompatible, isDisliked } from "./diet.js";
+import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays } from "./history.js";
+import { availability, currentSeason } from "./location.js";
 import { isMakeable, missingIngredients } from "./shoppingList.js";
 
 export interface PickContext {
@@ -42,8 +43,38 @@ function scoreRecipe(state: AppState, recipe: Recipe, ctx: PickContext): number 
         : 0;
     score += rating * 0.5;
 
+    if (profile) {
+        const limited = restrictedCount(recipe, profile);
+        if (limited > 0) score -= limited * 3;
+    }
+
+    const season = currentSeason(new Date(), state.location.country);
+    const avail = availability(recipe, season, state.location.country);
+    score += avail.score;
+
     score += Math.random() * 0.6;
     return score;
+}
+
+function pickFromCandidates(
+    state: AppState,
+    candidates: Recipe[],
+    ctx: PickContext,
+    allowUsed: boolean,
+): Recipe | null {
+    if (candidates.length === 0) return null;
+
+    let best: Recipe | null = null;
+    let bestScore = -Infinity;
+    for (const candidate of candidates) {
+        if (!allowUsed && (ctx.usedIds.has(candidate.id) || candidate.id === ctx.excludeId)) continue;
+        const s = scoreRecipe(state, candidate, ctx);
+        if (s > bestScore) {
+            bestScore = s;
+            best = candidate;
+        }
+    }
+    return best;
 }
 
 function pickRecipe(state: AppState, ctx: PickContext): Recipe | null {
@@ -53,22 +84,13 @@ function pickRecipe(state: AppState, ctx: PickContext): Recipe | null {
     const candidates = state.recipes.filter((r) => {
         if (!r.suitableFor.includes(ctx.meal)) return false;
         if (!isDietCompatible(r, profile)) return false;
-        if (isDisliked(r, profile)) return false;
+        if (isForbidden(r, profile)) return false;
         return true;
     });
 
-    if (candidates.length === 0) return null;
-
-    let best = candidates[0];
-    let bestScore = -Infinity;
-    for (const candidate of candidates) {
-        const s = scoreRecipe(state, candidate, ctx);
-        if (s > bestScore) {
-            bestScore = s;
-            best = candidate;
-        }
-    }
-    return best;
+    // Prefer unused recipes first; if none are available, fall back to reusing one
+    // so no slot is left empty (e.g. few breakfast recipes).
+    return pickFromCandidates(state, candidates, ctx, false) ?? pickFromCandidates(state, candidates, ctx, true);
 }
 
 export function generateWeekPlan(state: AppState, weekStart: string): WeeklyPlan {

@@ -12,6 +12,7 @@ import {
     useSetRating,
 } from "../api/hooks";
 import { dietLabel } from "../components/DietBadge";
+import { RecipeContextBadges } from "../components/RecipeContextBadges";
 import Stars from "../components/Stars";
 import { fmtQty, startOfWeek, toISODate } from "../lib/format";
 import { navigate } from "../lib/router";
@@ -103,6 +104,7 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                             </span>
                         ))}
                     </div>
+                    <RecipeContextBadges recipe={r} />
                 </div>
                 <div className="detail-actions">
                     <Stars

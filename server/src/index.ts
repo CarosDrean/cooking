@@ -6,6 +6,7 @@ import { planRouter } from "./routes/plan.js";
 import { profilesRouter } from "./routes/profiles.js";
 import { recipesRouter } from "./routes/recipes.js";
 import { recommendationsRouter } from "./routes/recommendations.js";
+import { settingsRouter } from "./routes/settings.js";
 import { shoppingRouter } from "./routes/shopping.js";
 import { themealdbRouter } from "./routes/themealdb.js";
 import { tipsRouter } from "./routes/tips.js";
@@ -35,6 +36,7 @@ app.use("/api/plan", planRouter);
 app.use("/api/history", historyRouter);
 app.use("/api/shopping", shoppingRouter);
 app.use("/api/recommendations", recommendationsRouter);
+app.use("/api/settings", settingsRouter);
 app.use("/api/tips", tipsRouter);
 app.use("/api/themealdb", themealdbRouter);
 

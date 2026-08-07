@@ -2,6 +2,7 @@ import type { Recipe } from "@cooking/shared";
 import { totalMinutes } from "../lib/format";
 import { navigate } from "../lib/router";
 import { DietChips } from "./DietBadge";
+import { RecipeContextBadges } from "./RecipeContextBadges";
 
 export default function RecipeCard({
     recipe,
@@ -29,6 +30,7 @@ export default function RecipeCard({
                         <span>{recipe.servings} rac.</span>
                     </div>
                     <DietChips diets={recipe.diets} />
+                    <RecipeContextBadges recipe={recipe} />
                 </div>
                 {right}
             </div>

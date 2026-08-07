@@ -1,4 +1,4 @@
-import type { Profile, Recipe } from "@cooking/shared";
+import type { IngredientRestriction, Profile, Recipe } from "@cooking/shared";
 
 const VEGAN = "vegano";
 const VEGETARIANO = "vegetariano";
@@ -33,10 +33,28 @@ export function isDietCompatible(recipe: Recipe, profile: Profile): boolean {
     return profile.dietPreferences.every((diet) => satisfiesDiet(recipe, diet));
 }
 
-export function isDisliked(recipe: Recipe, profile: Profile): boolean {
-    if (profile.dislikedIngredients.length === 0) return false;
-    const disliked = profile.dislikedIngredients.map((x) => normalize(x));
-    return recipe.ingredients.some((i) => disliked.includes(normalize(i.name)));
+function matchingRestrictions(recipe: Recipe, profile: Profile): IngredientRestriction[] {
+    if (profile.restrictions.length === 0) return [];
+    const normalized = profile.restrictions.map((r) => ({ ...r, name: normalize(r.name) }));
+    const ingredientNames = new Set(recipe.ingredients.map((i) => normalize(i.name)));
+    return normalized.filter((r) => ingredientNames.has(r.name));
+}
+
+/** A recipe is excluded when it contains an ingredient the profile cannot eat. */
+export function isForbidden(recipe: Recipe, profile: Profile): boolean {
+    return matchingRestrictions(recipe, profile).some((r) => r.level === "no");
+}
+
+/** Number of ingredients the profile should eat sparingly ("poco"). */
+export function restrictedCount(recipe: Recipe, profile: Profile): number {
+    return matchingRestrictions(recipe, profile).filter((r) => r.level === "poco").length;
+}
+
+/** Ingredients (normalized) the profile cannot eat, matching a recipe. */
+export function forbiddenNames(recipe: Recipe, profile: Profile): string[] {
+    return matchingRestrictions(recipe, profile)
+        .filter((r) => r.level === "no")
+        .map((r) => r.name);
 }
 
 export function normalize(value: string): string {

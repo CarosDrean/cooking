@@ -8,6 +8,7 @@ import PantryPage from "./pages/Pantry";
 import ProfilesPage from "./pages/Profiles";
 import RecipeDetail from "./pages/RecipeDetail";
 import Recipes from "./pages/Recipes";
+import Settings from "./pages/Settings";
 import ShoppingPage from "./pages/Shopping";
 import WeeklyPlan from "./pages/WeeklyPlan";
 
@@ -72,6 +73,9 @@ export default function App() {
             case "profiles":
                 content = <ProfilesPage />;
                 break;
+            case "settings":
+                content = <Settings />;
+                break;
             default:
                 content = <Dashboard />;
         }
@@ -105,6 +109,9 @@ export default function App() {
                     </NavItem>
                     <NavItem active={route.page === "profiles"} onClick={() => setPage("profiles")}>
                         Perfiles
+                    </NavItem>
+                    <NavItem active={route.page === "settings"} onClick={() => setPage("settings")}>
+                        Ajustes
                     </NavItem>
                 </nav>
                 <div className="sidebar-foot">

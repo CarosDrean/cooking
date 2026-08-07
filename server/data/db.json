@@ -7,8 +7,11 @@
       "dietPreferences": [
         "vegetariano"
       ],
-      "dislikedIngredients": [
-        "pimiento picante"
+      "restrictions": [
+        {
+          "name": "pimiento picante",
+          "level": "no"
+        }
       ],
       "householdSize": 2,
       "mealsPerDay": [
@@ -35,9 +38,15 @@
         "sin-gluten",
         "alta-proteina"
       ],
-      "dislikedIngredients": [
-        "hongos",
-        "champiñones"
+      "restrictions": [
+        {
+          "name": "hongos",
+          "level": "no"
+        },
+        {
+          "name": "champiñones",
+          "level": "no"
+        }
       ],
       "householdSize": 1,
       "mealsPerDay": [
@@ -52,9 +61,33 @@
         "r6": 4,
         "r12": 4
       }
+    },
+    {
+      "id": "1b017308-65ae-4833-8ee6-92a832adba0c",
+      "name": "Oscar",
+      "emoji": "🙂",
+      "dietPreferences": [],
+      "restrictions": [
+        {
+          "name": "pimiento",
+          "level": "no"
+        },
+        {
+          "name": "cebolla",
+          "level": "poco"
+        }
+      ],
+      "householdSize": 2,
+      "mealsPerDay": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ],
+      "favoriteRecipeIds": [],
+      "ratingByRecipe": {}
     }
   ],
-  "activeProfileId": "p2",
+  "activeProfileId": "1b017308-65ae-4833-8ee6-92a832adba0c",
   "recipes": [
     {
       "title": "Ensalada de quinoa y garbanzos",
@@ -1846,6 +1879,4553 @@
       },
       "id": "r18",
       "source": "local"
+    },
+    {
+      "title": "Pan con chicharrón",
+      "description": "El clásico desayuno peruano: pan crocante, chicharrón de cerdo, camote frito y salsa criolla.",
+      "emoji": "🥪",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "pan francés",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "chicharrón de cerdo",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "camote",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají limo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "cilantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Prepara la salsa criolla: cebolla roja en juliana fina, ají limo en tiritas, cilantro, jugo de limón y sal. Deja reposar 10 minutos."
+        },
+        {
+          "text": "Fríe el camote en láminas hasta que esté dorado y crujiente."
+        },
+        {
+          "text": "Calienta el pan en el horno o en una sartén seca hasta que esté crocante."
+        },
+        {
+          "text": "Abre el pan, coloca el chicharrón, el camote frito y un buen chorro de salsa criolla."
+        }
+      ],
+      "tips": [
+        "La salsa criolla reposada 10 minutos en limón 'cocina' la cebolla y suaviza su sabor.",
+        "Si el chicharrón ya está comprado, solo recaliéntalo en sartén para que suelte la grasa.",
+        "Acompaña con café pasado o emoliente para el desayuno completo."
+      ],
+      "nutrition": {
+        "kcal": 620,
+        "protein": 26,
+        "carbs": 58,
+        "fat": 32
+      },
+      "id": "r19",
+      "source": "local"
+    },
+    {
+      "title": "Tamal verde",
+      "description": "Tamal de masa de maíz relleno de pollo, suave y aromático, envuelto en hojas y cocido al vapor.",
+      "emoji": "🫔",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 30,
+      "cookMinutes": 45,
+      "servings": 6,
+      "ingredients": [
+        {
+          "name": "maíz molido",
+          "quantity": 500,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "pechuga de pollo",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "hojas de bijao",
+          "quantity": 6,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo y el ají amarillo; licúa con culantro y un poco de caldo."
+        },
+        {
+          "text": "Mezcla el maíz molido con el aderezo, la sal y el aceite hasta formar una masa húmeda."
+        },
+        {
+          "text": "Precocina el pollo y desméchalo."
+        },
+        {
+          "text": "Coloca una porción de masa, pollo y otra capa de masa sobre la hoja; envuelve y ata con un cordel."
+        },
+        {
+          "text": "Cuece al vapor 45 minutos o hasta que la masa esté firme."
+        }
+      ],
+      "tips": [
+        "La masa debe estar húmeda pero no aguada: si se pega al dedo, agregar harina de maíz.",
+        "Abre un tamal al final para probar el punto antes de retirar todo el vapor.",
+        "Congelan muy bien: recalienta al vapor y quedan como recién hechos."
+      ],
+      "nutrition": {
+        "kcal": 340,
+        "protein": 18,
+        "carbs": 42,
+        "fat": 11
+      },
+      "id": "r20",
+      "source": "local"
+    },
+    {
+      "title": "Humitas dulces",
+      "description": "Pastelillos de choclo tierno molido, dulces y perfumados con anís, al vapor en sus propias hojas.",
+      "emoji": "🌽",
+      "diets": [
+        "vegetariano",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "seasonal": [
+        "verano",
+        "otonio"
+      ],
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 25,
+      "cookMinutes": 40,
+      "servings": 6,
+      "ingredients": [
+        {
+          "name": "choclo",
+          "quantity": 6,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "azúcar",
+          "quantity": 100,
+          "unit": "g",
+          "category": "despensa"
+        },
+        {
+          "name": "queso fresco",
+          "quantity": 100,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "canela",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "anís",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "mantequilla",
+          "quantity": 30,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "hojas de choclo",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Desgrana el choclo y licúa los granos con un poco de leche o agua hasta obtener masa."
+        },
+        {
+          "text": "Mezcla la masa con azúcar, canela, anís, mantequilla y queso desmenuzado."
+        },
+        {
+          "text": "Coloca porciones sobre las hojas, envuelve en paquetes y amarra."
+        },
+        {
+          "text": "Cuece al vapor 35-40 minutos hasta que estén firmes."
+        }
+      ],
+      "tips": [
+        "El choclo dulce en temporada (verano) hace las mejores humitas.",
+        "Puedes hacerlas saladas omitiendo el azúcar y añadiendo ají amarillo.",
+        "Si no consigues hojas de choclo, usa papel film o hojas de bijao."
+      ],
+      "nutrition": {
+        "kcal": 290,
+        "protein": 7,
+        "carbs": 48,
+        "fat": 9
+      },
+      "id": "r21",
+      "source": "local"
+    },
+    {
+      "title": "Quinoa con leche",
+      "description": "Desayuno andino de quinoa cremosa con leche, canela y uvas pasas. Abriga y nutre.",
+      "emoji": "🥛",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "quinoa",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 400,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "azúcar",
+          "quantity": 4,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "canela en rama",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "condimentos"
+        },
+        {
+          "name": "clavo de olor",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "condimentos"
+        },
+        {
+          "name": "uvas pasas",
+          "quantity": 50,
+          "unit": "g",
+          "category": "frutas"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "pizca",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Lava la quinoa y cuécela en 400 ml de agua con canela y clavo por 15 minutos."
+        },
+        {
+          "text": "Agrega la leche evaporada, el azúcar y una pizca de sal; cocina 8 minutos a fuego bajo."
+        },
+        {
+          "text": "Retira la canela y el clavo, añade las uvas pasas y sirve tibia."
+        }
+      ],
+      "tips": [
+        "Remueve constantemente al añadir la leche para que no se pegue.",
+        "Si la quieres más cremosa, añade leche condensada al gusto.",
+        "Es un desayuno clásico de la sierra: ideal para días fríos."
+      ],
+      "nutrition": {
+        "kcal": 340,
+        "protein": 12,
+        "carbs": 58,
+        "fat": 7
+      },
+      "id": "r22",
+      "source": "local"
+    },
+    {
+      "title": "Huevos a la peruana",
+      "description": "Huevos revueltos con tomate, cebolla y ají amarillo, servidos con pan. El desayuno criollo.",
+      "emoji": "🍳",
+      "diets": [
+        "sin-gluten",
+        "vegetariano",
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 10,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "huevo",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla china",
+          "quantity": 2,
+          "unit": "tallos",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Pica la cebolla, el tomate y el ají amarillo en cubos pequeños."
+        },
+        {
+          "text": "Sofríe la cebolla y el ají en el aceite 3 minutos; añade el tomate y cocina 2 más."
+        },
+        {
+          "text": "Vierte los huevos batidos con sal y revuelve a fuego medio hasta que cuajen."
+        },
+        {
+          "text": "Termina con cebolla china picada y sirve con pan tostado."
+        }
+      ],
+      "tips": [
+        "El ají amarillo da el toque peruano: si no quieres picante, quítale las semillas.",
+        "Huevos a fuego medio-bajo quedan más cremosos.",
+        "Añade queso fresco desmenuzado al final si no lo evitas."
+      ],
+      "nutrition": {
+        "kcal": 280,
+        "protein": 18,
+        "carbs": 10,
+        "fat": 19
+      },
+      "id": "r23",
+      "source": "local"
+    },
+    {
+      "title": "Soltero de queso",
+      "description": "Ensalada típica de Ica con queso fresco, habas, choclo y un aderezo de limón. Fresca y completa.",
+      "emoji": "🥗",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "seasonal": [
+        "verano"
+      ],
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 15,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "queso fresco",
+          "quantity": 250,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "habas cocidas",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "choclo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 10,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "limón",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Cocina el choclo y las habas al vapor hasta que estén tiernos; deja enfriar."
+        },
+        {
+          "text": "Corta el queso fresco, el tomate y la cebolla roja en cubos."
+        },
+        {
+          "text": "Desgrana el choclo y mezcla todo con las aceitunas."
+        },
+        {
+          "text": "Adereza con jugo de limón, aceite, sal y pimienta justo antes de servir."
+        }
+      ],
+      "tips": [
+        "En Ica se prepara con pallares en vez de habas según la temporada.",
+        "El queso fresco deshidratado y ligeramente salado es ideal para esta ensalada.",
+        "Sírvelo frío: reposar 10 minutos en la nevera potencia el aderezo."
+      ],
+      "nutrition": {
+        "kcal": 360,
+        "protein": 18,
+        "carbs": 30,
+        "fat": 19
+      },
+      "id": "r24",
+      "source": "local"
+    },
+    {
+      "title": "Batido de lúcuma",
+      "description": "Batido cremoso de lúcuma, la fruta andina favorita, con plátano y canela.",
+      "emoji": "🥤",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "seasonal": [
+        "otonio",
+        "invierno"
+      ],
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 0,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "pulpa de lúcuma",
+          "quantity": 200,
+          "unit": "g",
+          "category": "frutas"
+        },
+        {
+          "name": "plátano",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "azúcar",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "canela",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "hielo",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Licúa la lúcuma con el plátano, la leche evaporada y el azúcar."
+        },
+        {
+          "text": "Añade hielo y licúa hasta lograr textura cremosa."
+        },
+        {
+          "text": "Sirve con canela espolvoreada por encima."
+        }
+      ],
+      "tips": [
+        "La lúcuma está en temporada en otoño e invierno: es el momento de aprovecharla.",
+        "Usa pulpa congelada si no consigues fruta fresca.",
+        "Para una versión vegana, usa leche de almendras o coco."
+      ],
+      "nutrition": {
+        "kcal": 260,
+        "protein": 8,
+        "carbs": 52,
+        "fat": 5
+      },
+      "id": "r25",
+      "source": "local"
+    },
+    {
+      "title": "Pan con palta y huevo",
+      "description": "Desayuno simple y rendidor: pan crujiente, palta aplastada con limón y huevo sancochado.",
+      "emoji": "🥑",
+      "diets": [
+        "vegetariano",
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 10,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "pan francés",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "palta",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha los huevos 9 minutos; enfríalos y pélalos."
+        },
+        {
+          "text": "Aplasta la palta con jugo de limón, sal y pimienta."
+        },
+        {
+          "text": "Tuesta el pan y unta la palta; corta el huevo en rodajas encima."
+        },
+        {
+          "text": "Termina con un toque de sal en escamas y pimienta."
+        }
+      ],
+      "tips": [
+        "La palta peruana se consigue todo el año y es una de las más cremosas.",
+        "Añade rodajas de tomate para una versión más completa.",
+        "Si evitas el pan, sirve sobre galletas o tortillas de maíz."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 15,
+        "carbs": 38,
+        "fat": 19
+      },
+      "id": "r26",
+      "source": "local"
+    },
+    {
+      "title": "Ceviche de pescado clásico",
+      "description": "Pescado blanco fresco 'cocido' en limón, con cebolla, ají limo, camote y choclo. El plato bandera.",
+      "emoji": "🐟",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 30,
+      "cookMinutes": 10,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pescado blanco",
+          "quantity": 600,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "limón",
+          "quantity": 6,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají limo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "camote",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "choclo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        },
+        {
+          "name": "pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Corta el pescado en cubos de 2 cm y sazona con sal y pimienta."
+        },
+        {
+          "text": "Mezcla con el jugo de limón recién exprimido y deja reposar 8-10 minutos."
+        },
+        {
+          "text": "Añade la cebolla en juliana fina, el ají limo picado y el culantro."
+        },
+        {
+          "text": "Sancocha el camote en rodajas y el choclo en rodajas para acompañar."
+        },
+        {
+          "text": "Sirve frío con el camote, el choclo y las hojas de lechuga si gustas."
+        }
+      ],
+      "tips": [
+        "El punto exacto: el pescado debe quedar blanco por fuera y jugoso por dentro (8-10 min).",
+        "Usa pescado fresco del día; si es congelado, descongela en nevera.",
+        "El ceviche se toma recién hecho: no reposa más de 20 minutos."
+      ],
+      "nutrition": {
+        "kcal": 280,
+        "protein": 34,
+        "carbs": 26,
+        "fat": 6
+      },
+      "id": "r27",
+      "source": "local"
+    },
+    {
+      "title": "Lomo saltado",
+      "description": "El clásico limeño: lomo de res salteado con cebolla, tomate y ají, servido con papas fritas y arroz.",
+      "emoji": "🥘",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "lomo de res",
+          "quantity": 600,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla china",
+          "quantity": 3,
+          "unit": "tallos",
+          "category": "verduras"
+        },
+        {
+          "name": "salsa de soja",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "vinagre",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "papa",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "arroz",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "aceite vegetal",
+          "quantity": 4,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Corta la carne en tiras, sazona y sofríe a fuego muy alto en el aceite hasta dorar; reserva."
+        },
+        {
+          "text": "Corta las papas en bastones y fríelas hasta dorar; reserva."
+        },
+        {
+          "text": "En el mismo wok saltea la cebolla, el ají y el tomate 2-3 minutos."
+        },
+        {
+          "text": "Vuelve a colocar la carne, añade soja, vinagre y cebolla china; saltea 2 minutos."
+        },
+        {
+          "text": "Sirve sobre el arroz con las papas fritas encima."
+        }
+      ],
+      "tips": [
+        "El secreto es el fuego alto: la carne debe dorarse sin soltar agua.",
+        "Prepara el arroz y las papas antes para que todo esté caliente al final.",
+        "Un chorrito de vino tinto o pisco al final realza la salsa."
+      ],
+      "nutrition": {
+        "kcal": 640,
+        "protein": 42,
+        "carbs": 70,
+        "fat": 20
+      },
+      "id": "r28",
+      "source": "local"
+    },
+    {
+      "title": "Ají de gallina",
+      "description": "Pollo deshilachado en una salsa cremosa de ají amarillo, nueces y pan, sobre papas sancochadas.",
+      "emoji": "🍗",
+      "diets": [
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pechuga de pollo",
+          "quantity": 500,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "pan",
+          "quantity": 3,
+          "unit": "rebanadas",
+          "category": "granos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "nueces",
+          "quantity": 50,
+          "unit": "g",
+          "category": "otros"
+        },
+        {
+          "name": "papa amarilla",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha el pollo en agua con sal hasta que esté tierno; desméchalo y reserva el caldo."
+        },
+        {
+          "text": "Sofríe la cebolla y el ajo; añade el ají amarillo y cocina 3 minutos."
+        },
+        {
+          "text": "Licúa el sofrito con las nueces, el pan remojado en leche y parte del caldo."
+        },
+        {
+          "text": "Vuelca la salsa sobre el pollo y cocina a fuego bajo 10 minutos hasta espesar."
+        },
+        {
+          "text": "Sirve sobre las papas sancochadas en rodajas."
+        }
+      ],
+      "tips": [
+        "La papa amarilla es la clave: es la papa nativa peruana, cremosa y dulce.",
+        "El ají amarillo se suaviza al cocinar: no temas usarlo.",
+        "Acompaña con arroz blanco para el plato completo."
+      ],
+      "nutrition": {
+        "kcal": 480,
+        "protein": 34,
+        "carbs": 38,
+        "fat": 20
+      },
+      "id": "r29",
+      "source": "local"
+    },
+    {
+      "title": "Arroz con pollo",
+      "description": "Arroz verde perfumado con culantro, pollo dorado y verduras. El domingo peruano por excelencia.",
+      "emoji": "🍛",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 40,
+      "servings": 6,
+      "ingredients": [
+        {
+          "name": "pollo entero o presas",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "arroz",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 2,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "guisantes",
+          "quantity": 100,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "cerveza rubia",
+          "quantity": 200,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Dora las presas de pollo sazonadas en el aceite y reserva."
+        },
+        {
+          "text": "Licúa el culantro con el ají amarillo y un poco de agua."
+        },
+        {
+          "text": "Sofríe la cebolla y el ajo; añade la mezcla de culantro y cocina 2 minutos."
+        },
+        {
+          "text": "Incorpora el arroz, la cerveza, el caldo y el pollo; cocina tapado 20 minutos."
+        },
+        {
+          "text": "Añade la zanahoria en cubitos y los guisantes; cocina 8 minutos más."
+        }
+      ],
+      "tips": [
+        "Licuar el culantro y cocinarlo un momento libera su aroma sin que se vuelva amargo.",
+        "El arroz debe quedar grano suelto: no lo remuevas mientras se cocina.",
+        "La cerveza es opcional; puedes sustituirla por más caldo."
+      ],
+      "nutrition": {
+        "kcal": 540,
+        "protein": 30,
+        "carbs": 62,
+        "fat": 17
+      },
+      "id": "r30",
+      "source": "local"
+    },
+    {
+      "title": "Causa limeña",
+      "description": "Capas de puré de papa amarilla con ají y limón, rellenas de atún, palta y mayonesa.",
+      "emoji": "🥔",
+      "diets": [
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 40,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "papa amarilla",
+          "quantity": 800,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "atún en lata",
+          "quantity": 2,
+          "unit": "lata",
+          "category": "proteinas"
+        },
+        {
+          "name": "palta",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "mayonesa",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha las papas y hazlas puré mientras estén calientes."
+        },
+        {
+          "text": "Licúa el ají amarillo con aceite y limón; mezcla con el puré, sal y más limón al gusto."
+        },
+        {
+          "text": "Mezcla el atún con mayonesa y un poco de ají."
+        },
+        {
+          "text": "En un molde, alterna capas: masa de papa, atún, palta en láminas y otra capa de papa."
+        },
+        {
+          "text": "Refrigera 30 minutos, desmolda y decora con aceitunas."
+        }
+      ],
+      "tips": [
+        "La papa amarilla tiene que estar caliente al hacer el puré para que la masa sea maleable.",
+        "Humedecer ligeramente las manos al moldear evita que se pegue la masa.",
+        "La causa mejora fría: prepárala con antelación."
+      ],
+      "nutrition": {
+        "kcal": 420,
+        "protein": 18,
+        "carbs": 52,
+        "fat": 16
+      },
+      "id": "r31",
+      "source": "local"
+    },
+    {
+      "title": "Papa a la huancaína",
+      "description": "Papas sancochadas bañadas en la clásica salsa de queso fresco y ají amarillo, con huevo y aceituna.",
+      "emoji": "🥔",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "papa amarilla",
+          "quantity": 800,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "queso fresco",
+          "quantity": 300,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "galletas de soda",
+          "quantity": 6,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha las papas enteras hasta que estén tiernas y pélalas."
+        },
+        {
+          "text": "Licúa el queso fresco, el ají amarillo, las galletas, la leche, el aceite y la sal hasta lograr una salsa cremosa."
+        },
+        {
+          "text": "Si la salsa queda espesa, añade más leche; si queda líquida, más galleta."
+        },
+        {
+          "text": "Sirve las papas en rodajas bañadas con la salsa, huevo sancochado en cuartos y aceitunas."
+        }
+      ],
+      "tips": [
+        "La salsa huancaína se puede guardar 2 días en la nevera en frasco cerrado.",
+        "El ají amarillo fresco licuado da el mejor color; el en pasta es buen sustituto.",
+        "Puedes sustituir la galleta por pan remojado si la prefieres menos crujiente."
+      ],
+      "nutrition": {
+        "kcal": 460,
+        "protein": 18,
+        "carbs": 52,
+        "fat": 21
+      },
+      "id": "r32",
+      "source": "local"
+    },
+    {
+      "title": "Seco de res",
+      "description": "Carne de res en salsa espesa de culantro y ají amarillo, con papas, zanahoria y alverjas.",
+      "emoji": "🍖",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 60,
+      "servings": 6,
+      "ingredients": [
+        {
+          "name": "carne de res",
+          "quantity": 800,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 2,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 4,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "cerveza rubia",
+          "quantity": 200,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "papa",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "alverjas",
+          "quantity": 150,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Corta la carne en trozos y dórala en el aceite; reserva."
+        },
+        {
+          "text": "Licúa el culantro con el ají amarillo, el ajo y un poco de cerveza."
+        },
+        {
+          "text": "Sofríe la cebolla; añade la mezcla verde y el comino, y cocina 3 minutos."
+        },
+        {
+          "text": "Vuelve la carne, agrega la cerveza restante y agua; tapa y cocina 40 minutos a fuego suave."
+        },
+        {
+          "text": "Añade papas, zanahoria y alverjas; cocina 15 minutos más hasta que estén tiernas."
+        }
+      ],
+      "tips": [
+        "El seco clásico se acompaña de frejoles refritos y arroz.",
+        "La carne más tierna es la de paleta o tapa de res cocinada a fuego lento.",
+        "Si el culantro se oxida, licúa con un hielo para conservar el color verde."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 40,
+        "carbs": 40,
+        "fat": 20
+      },
+      "id": "r33",
+      "source": "local"
+    },
+    {
+      "title": "Tallarines verdes",
+      "description": "Espaguetis con la salsa verde peruana de albahaca y espinaca, servidos con bistec y papa.",
+      "emoji": "🍝",
+      "diets": [
+        "vegetariano"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "espaguetis",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "albahaca fresca",
+          "quantity": 2,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "espinaca",
+          "quantity": 100,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "queso fresco",
+          "quantity": 100,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 4,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Cocina la pasta al dente en agua con sal; reserva un poco del agua."
+        },
+        {
+          "text": "Licúa la albahaca, la espinaca, el queso, la leche, el ajo, el aceite y la sal."
+        },
+        {
+          "text": "Vuelca la salsa en una sartén a fuego bajo 2-3 minutos hasta calentar."
+        },
+        {
+          "text": "Mezcla con la pasta y un chorrito del agua de cocción."
+        }
+      ],
+      "tips": [
+        "La salsa verde se sirve normalmente sobre bistec y papa sancochada en rodajas.",
+        "No sobrecalientes la salsa para que la albahaca no pierda su color.",
+        "Añade nueces pecanas para una textura más rica."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 17,
+        "carbs": 80,
+        "fat": 16
+      },
+      "id": "r34",
+      "source": "local"
+    },
+    {
+      "title": "Escabeche de pescado",
+      "description": "Pescado frito cubierto con cebolla roja escabechada en vinagre y ají, con papa y aceituna.",
+      "emoji": "🐠",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 25,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pescado blanco",
+          "quantity": 600,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "vinagre tinto",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "condimentos"
+        },
+        {
+          "name": "harina",
+          "quantity": 100,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "papa",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 5,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sazona el pescado, pásalo por harina y fríelo hasta dorar; reserva."
+        },
+        {
+          "text": "En el mismo aceite, sofríe la cebolla en aros y el ají amarillo en tiras."
+        },
+        {
+          "text": "Agrega el vinagre, la zanahoria en rodajas y sal; cocina 5 minutos."
+        },
+        {
+          "text": "Coloca el pescado en una fuente, cúbrelo con el escabeche y deja reposar al menos 30 minutos."
+        },
+        {
+          "text": "Sirve con papa sancochada, huevo y aceitunas."
+        }
+      ],
+      "tips": [
+        "El reposo hace el escabeche: los sabores se integran al día siguiente.",
+        "El vinagre tinto es el tradicional, pero el de manzana también funciona.",
+        "Consumir dentro de 2 días, conservado en la nevera."
+      ],
+      "nutrition": {
+        "kcal": 460,
+        "protein": 34,
+        "carbs": 44,
+        "fat": 16
+      },
+      "id": "r35",
+      "source": "local"
+    },
+    {
+      "title": "Chupe de camarones",
+      "description": "Sopa espesa y cremosa de camarones con papa, choclo, arroz y huevo. La joya de Arequipa.",
+      "emoji": "🍤",
+      "diets": [
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "camarón",
+          "quantity": 500,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "papa",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "choclo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "queso fresco",
+          "quantity": 150,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 200,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "arroz",
+          "quantity": 100,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla y el ají amarillo; añade las cabezas de camarón y 1.5 litros de agua."
+        },
+        {
+          "text": "Cuece 15 minutos, cuela el caldo y desmenuza las cabezas para aprovechar la carne."
+        },
+        {
+          "text": "Agrega el arroz, la papa en cubos y el choclo; cocina 12 minutos."
+        },
+        {
+          "text": "Incorpora los camarones, el queso, la leche y deja 5 minutos a fuego bajo."
+        },
+        {
+          "text": "Rompe los huevos dentro y cocina 2 minutos; termina con culantro."
+        }
+      ],
+      "tips": [
+        "El 'chupe' espesa gracias al arroz y al queso: no lo cueles después de espesar.",
+        "Aprovechar las cabezas de camarón concentra todo el sabor marino.",
+        "Es un plato festivo: ideal para los domingos."
+      ],
+      "nutrition": {
+        "kcal": 460,
+        "protein": 34,
+        "carbs": 44,
+        "fat": 18
+      },
+      "id": "r36",
+      "source": "local"
+    },
+    {
+      "title": "Parihuela",
+      "description": "Caldo de mariscos bien concentrado, con pescado, calamar, camarones y conchas. Levanta muertos.",
+      "emoji": "🦀",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pescado blanco",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "calamar",
+          "quantity": 200,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "camarón",
+          "quantity": 250,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "conchas",
+          "quantity": 200,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "vinagre",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo, el tomate y el ají amarillo con el vinagre."
+        },
+        {
+          "text": "Agrega 1 litro de agua, sal y pimienta; cuece 15 minutos."
+        },
+        {
+          "text": "Añade el pescado en trozos y cuece 8 minutos."
+        },
+        {
+          "text": "Incorpora calamar, camarones y conchas; cocina 5 minutos más hasta que se abran."
+        },
+        {
+          "text": "Rectifica la sazón y termina con culantro picado."
+        }
+      ],
+      "tips": [
+        "Los mariscos se agregan al final para que no se endurezcan.",
+        "El 'levanta muertos' se acompaña con ají limo picado y limón al gusto.",
+        "Pide en la pescadería un mix de mariscos para no comprar por separado."
+      ],
+      "nutrition": {
+        "kcal": 320,
+        "protein": 42,
+        "carbs": 18,
+        "fat": 9
+      },
+      "id": "r37",
+      "source": "local"
+    },
+    {
+      "title": "Jalea mixta",
+      "description": "Mariscos y pescado fritos en masa crocante, con salsa criolla, camote y choclo.",
+      "emoji": "🍤",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 25,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pescado blanco",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "calamar",
+          "quantity": 200,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "camarón",
+          "quantity": 200,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "harina",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "maicena",
+          "quantity": 100,
+          "unit": "g",
+          "category": "despensa"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "limón",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají limo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "camote",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "choclo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite vegetal",
+          "quantity": 500,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sazona el pescado y los mariscos con limón y sal."
+        },
+        {
+          "text": "Prepara la masa: harina, maicena, huevo y un poco de agua fría hasta lograr una pasta espesa."
+        },
+        {
+          "text": "Reboza y fríe en aceite bien caliente hasta dorar; escurre en papel."
+        },
+        {
+          "text": "Prepara la salsa criolla con cebolla roja, ají limo, limón y sal."
+        },
+        {
+          "text": "Sirve con camote frito, choclo y la salsa criolla encima."
+        }
+      ],
+      "tips": [
+        "El agua fría y el aceite caliente hacen la masa crocante y no aceitosa.",
+        "Fríe en pequeñas tandas para no bajar la temperatura del aceite.",
+        "La jalea se acompaña de ají criollo hecho con rocoto y limón."
+      ],
+      "nutrition": {
+        "kcal": 580,
+        "protein": 40,
+        "carbs": 62,
+        "fat": 20
+      },
+      "id": "r38",
+      "source": "local"
+    },
+    {
+      "title": "Arroz con mariscos",
+      "description": "Arroz cremoso y sabroso con mariscos, ají amarillo, tomate y un toque de pisco.",
+      "emoji": "🍚",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "arroz",
+          "quantity": 350,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "mariscos mixtos",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "camarón",
+          "quantity": 200,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "pisco",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo, el tomate y el ají amarillo en el aceite."
+        },
+        {
+          "text": "Agrega el arroz y el pisco; cocina 1 minuto y añade el caldo de pescado."
+        },
+        {
+          "text": "Cocina tapado 15 minutos a fuego medio."
+        },
+        {
+          "text": "Incorpora los mariscos, el camarón y el culantro; cocina 8 minutos más."
+        }
+      ],
+      "tips": [
+        "Usa caldo de pescado para darle el sabor marino profundo.",
+        "Los mariscos se agregan al final para que no se pasen.",
+        "El arroz debe quedar jugoso, no seco ni pegado."
+      ],
+      "nutrition": {
+        "kcal": 560,
+        "protein": 36,
+        "carbs": 68,
+        "fat": 14
+      },
+      "id": "r39",
+      "source": "local"
+    },
+    {
+      "title": "Tacu tacu",
+      "description": "Tortilla de arroz y frejoles refritos dorada, con huevo frito y cebolla china. La comida del criollo.",
+      "emoji": "🥘",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "arroz cocido",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "frejoles refritos",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla china",
+          "quantity": 2,
+          "unit": "tallos",
+          "category": "verduras"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "aceite vegetal",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo y el ají amarillo; mezcla con los frejoles y el arroz."
+        },
+        {
+          "text": "Condimenta con sal y presiona la mezcla en una sartén con aceite caliente."
+        },
+        {
+          "text": "Dora por ambos lados hasta que esté dorado y compacto."
+        },
+        {
+          "text": "Sirve con el huevo frito encima y cebolla china picada."
+        }
+      ],
+      "tips": [
+        "El tacu tacu es la forma clásica de aprovechar arroz y frejoles del día anterior.",
+        "Presiona bien al dorar para que la tortilla no se deshaga.",
+        "Acompaña con bistec apanado o chorizo si quieres el plato completo."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 20,
+        "carbs": 74,
+        "fat": 16
+      },
+      "id": "r40",
+      "source": "local"
+    },
+    {
+      "title": "Papa rellena",
+      "description": "Masa de papa dorada rellena de carne molida, cebolla, huevo y aceituna. Aperitivo y plato de fondo.",
+      "emoji": "🥔",
+      "diets": [
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 30,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "papa amarilla",
+          "quantity": 800,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "carne molida",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "huevo",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "harina",
+          "quantity": 100,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite vegetal",
+          "quantity": 400,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha las papas y hazlas puré; sazona y deja enfriar."
+        },
+        {
+          "text": "Sofríe la carne con cebolla, ajo, ají, comino, sal y pimienta; añade 1 huevo duro picado y aceitunas."
+        },
+        {
+          "text": "Toma una porción de puré, forma una bolita y ahueca; rellena con el sofrito y cierra."
+        },
+        {
+          "text": "Pasa por harina, luego huevo batido y fríe hasta dorar."
+        }
+      ],
+      "tips": [
+        "Enfría bien el puré: una masa fría se moldea y fríe mejor.",
+        "El relleno seco (sin mucho jugo) evita que la papa se abra al freír.",
+        "Se sirve con salsa criolla y una rodaja de camote frito."
+      ],
+      "nutrition": {
+        "kcal": 480,
+        "protein": 22,
+        "carbs": 56,
+        "fat": 19
+      },
+      "id": "r41",
+      "source": "local"
+    },
+    {
+      "title": "Estofado de pollo",
+      "description": "Pollo guisado en salsa de tomate, vino y especias, con papas, zanahoria y aceitunas.",
+      "emoji": "🍗",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 40,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pollo entero o presas",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "vino tinto",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "papa",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 10,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "arroz",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal, comino y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Dora las presas de pollo sazonadas y reserva."
+        },
+        {
+          "text": "Sofríe la cebolla, el ajo y el tomate; añade comino y pimienta."
+        },
+        {
+          "text": "Vuelve el pollo, agrega el vino y agua hasta cubrir; cocina 20 minutos tapado."
+        },
+        {
+          "text": "Incorpora papas y zanahorias en trozos; cocina 15 minutos más."
+        },
+        {
+          "text": "Añade las aceitunas y sirve con arroz blanco."
+        }
+      ],
+      "tips": [
+        "El estofado de pollo es el clásico de los lunes en la costa peruana.",
+        "Se espesa naturalmente al cocer la papa: no añadas harina.",
+        "Deja reposar antes de servir para que los sabores se asienten."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 34,
+        "carbs": 58,
+        "fat": 15
+      },
+      "id": "r42",
+      "source": "local"
+    },
+    {
+      "title": "Carapulcra",
+      "description": "Guiso de papa seca con carne de cerdo, ají panca y maní. Plato afroperuano y de fiesta.",
+      "emoji": "🍛",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 30,
+      "cookMinutes": 45,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "papa seca",
+          "quantity": 400,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "carne de cerdo",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "ají panca",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "maní tostado",
+          "quantity": 50,
+          "unit": "g",
+          "category": "otros"
+        },
+        {
+          "name": "vino tinto",
+          "quantity": 100,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal, comino y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Remoja la papa seca en agua 30 minutos y escurre."
+        },
+        {
+          "text": "Sofríe la cebolla, el ajo y el ají panca licuado con un poco de vino."
+        },
+        {
+          "text": "Añade la carne de cerdo en trozos y dora bien."
+        },
+        {
+          "text": "Agrega la papa seca, el vino restante y agua; cocina 30 minutos a fuego bajo."
+        },
+        {
+          "text": "Disuelve el maní molido en un poco de caldo y añade; cocina 10 minutos más."
+        }
+      ],
+      "tips": [
+        "La papa seca es la protagonista: es papa deshidratada andina, muy aromática.",
+        "El maní espesa y da el sabor característico: no lo omitas.",
+        "Tradicionalmente se sirve con arroz y camote frito."
+      ],
+      "nutrition": {
+        "kcal": 540,
+        "protein": 28,
+        "carbs": 58,
+        "fat": 21
+      },
+      "id": "r43",
+      "source": "local"
+    },
+    {
+      "title": "Olluquito con charqui",
+      "description": "Olluco salteado con charqui (carne seca de res), cebolla y ají. Plato serrano lleno de sabor.",
+      "emoji": "🥘",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 30,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "olluco",
+          "quantity": 800,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "charqui",
+          "quantity": 250,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "cúrcuma",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Pela los ollucos, córtalos en bastones y hiérvelos 10 minutos; escurre."
+        },
+        {
+          "text": "Deshilacha el charqui y sofríelo en aceite hasta que suelte su aroma."
+        },
+        {
+          "text": "Añade cebolla, ajo y ají amarillo; cocina 5 minutos."
+        },
+        {
+          "text": "Incorpora los ollucos, la cúrcuma y un poco de agua; cocina 10 minutos."
+        }
+      ],
+      "tips": [
+        "El olluco es un tubérculo andino de textura firme que no se deshace.",
+        "El charqui ya viene salado: prueba antes de añadir sal.",
+        "Se acompaña tradicionalmente con arroz."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 24,
+        "carbs": 44,
+        "fat": 12
+      },
+      "id": "r44",
+      "source": "local"
+    },
+    {
+      "title": "Lentejas con arroz y salsa criolla",
+      "description": "Lentejas guisadas con comino y ají sobre arroz, coronadas con salsa criolla fresca.",
+      "emoji": "🍛",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "lentejas",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "arroz",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "cilantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla y el ajo; añade comino y el tomate picado."
+        },
+        {
+          "text": "Agrega las lentejas y agua; cocina 25 minutos hasta que estén tiernas y jugosas."
+        },
+        {
+          "text": "Cocina el arroz aparte."
+        },
+        {
+          "text": "Prepara la salsa criolla: cebolla roja en juliana, tomate, cilantro, limón y sal."
+        },
+        {
+          "text": "Sirve las lentejas sobre el arroz con la salsa criolla encima."
+        }
+      ],
+      "tips": [
+        "Las lentejas se hacen más rápido si las dejas en remojo 30 minutos.",
+        "El comino es el condimento clave del guiso peruano de lentejas.",
+        "Esta es la comida de los lunes en muchos hogares peruanos."
+      ],
+      "nutrition": {
+        "kcal": 520,
+        "protein": 22,
+        "carbs": 88,
+        "fat": 8
+      },
+      "id": "r45",
+      "source": "local"
+    },
+    {
+      "title": "Pallares de Ica",
+      "description": "Guiso de pallares verdes (las habas de Ica), con tomate, ají y culantro. Manjar iqueño.",
+      "emoji": "🫛",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "seasonal": [
+        "verano"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pallares verdes",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha los pallares hasta que estén tiernos pero firmes; escurre."
+        },
+        {
+          "text": "Sofríe la cebolla, el ajo y el ají amarillo; añade el tomate picado."
+        },
+        {
+          "text": "Incorpora los pallares, sal y comino; cocina 10 minutos a fuego bajo."
+        },
+        {
+          "text": "Termina con culantro picado y sirve con arroz blanco."
+        }
+      ],
+      "tips": [
+        "El pallar es la legumbre emblemática de Ica: se cosecha en verano.",
+        "No los cocines de más: deben mantener su forma.",
+        "En Ica se sirve también con chicharrón o sobre arroz."
+      ],
+      "nutrition": {
+        "kcal": 360,
+        "protein": 16,
+        "carbs": 60,
+        "fat": 7
+      },
+      "id": "r46",
+      "source": "local"
+    },
+    {
+      "title": "Locro de zapallo",
+      "description": "Crema espesa de zapallo con papa, queso fresco y culantro. El guiso reconfortante de la costa.",
+      "emoji": "🎃",
+      "diets": [
+        "vegetariano"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "seasonal": [
+        "otonio",
+        "invierno"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "zapallo",
+          "quantity": 800,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "papa",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "queso fresco",
+          "quantity": 150,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 150,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla y el ajo; añade el zapallo en cubos y la papa."
+        },
+        {
+          "text": "Cubre con agua y cocina 20 minutos hasta que esté muy tierno."
+        },
+        {
+          "text": "Licúa la mitad del guiso para espesar y vuelve a la olla."
+        },
+        {
+          "text": "Agrega leche, queso, sal y comino; cocina 5 minutos."
+        },
+        {
+          "text": "Sirve caliente con culantro picado por encima."
+        }
+      ],
+      "tips": [
+        "El zapallo peruano es dulce y cremoso: ideal para el locro.",
+        "Licuar parte del guiso le da cuerpo sin usar crema.",
+        "El queso fresco se desmenuza al servir: no lo mezcles al principio."
+      ],
+      "nutrition": {
+        "kcal": 320,
+        "protein": 12,
+        "carbs": 48,
+        "fat": 10
+      },
+      "id": "r47",
+      "source": "local"
+    },
+    {
+      "title": "Saltado de verduras",
+      "description": "Verduras salteadas al wok con jengibre, ajo y salsa de soja. Sencillo, sano y rápido.",
+      "emoji": "🥬",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 10,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "brócoli",
+          "quantity": 250,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "pimiento rojo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla china",
+          "quantity": 3,
+          "unit": "tallos",
+          "category": "verduras"
+        },
+        {
+          "name": "jengibre fresco",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "salsa de soja",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de sésamo",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "aceite vegetal",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Corta todas las verduras en trozos parejos."
+        },
+        {
+          "text": "Calienta el wok con el aceite vegetal a fuego alto."
+        },
+        {
+          "text": "Saltea la cebolla, el ajo y el jengibre 1 minuto."
+        },
+        {
+          "text": "Agrega el brócoli y la zanahoria; saltea 3 minutos."
+        },
+        {
+          "text": "Añade el pimiento, la soja y el aceite de sésamo; saltea 2 minutos y termina con cebolla china."
+        }
+      ],
+      "tips": [
+        "El fuego alto y los movimientos rápidos son la clave del salteado.",
+        "Precorta todo antes de encender el fuego: el wok no espera.",
+        "Acompaña con arroz o quinoa para un plato completo."
+      ],
+      "nutrition": {
+        "kcal": 180,
+        "protein": 6,
+        "carbs": 24,
+        "fat": 8
+      },
+      "id": "r48",
+      "source": "local"
+    },
+    {
+      "title": "Quinua saltada con verduras",
+      "description": "Quinua tostada y salteada con verduras, al estilo peruano, con un toque de culantro.",
+      "emoji": "🍚",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "quinoa",
+          "quantity": 300,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "guisantes",
+          "quantity": 100,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Lava y tuesta la quinoa en seco 2 minutos; añade el doble de agua y cocina 15 minutos."
+        },
+        {
+          "text": "Sofríe la cebolla y el ají amarillo; añade zanahoria y guisantes, y saltea 4 minutos."
+        },
+        {
+          "text": "Incorpora la quinoa cocida, sal y un chorrito de agua; saltea 3 minutos."
+        },
+        {
+          "text": "Termina con culantro picado."
+        }
+      ],
+      "tips": [
+        "Tostar la quinoa en seco le da un sabor a nuez característico.",
+        "La quinoa absorbe el aderezo mejor si se saltea después de cocida.",
+        "Es una alternativa completa y alta en proteína al arroz."
+      ],
+      "nutrition": {
+        "kcal": 320,
+        "protein": 12,
+        "carbs": 52,
+        "fat": 8
+      },
+      "id": "r49",
+      "source": "local"
+    },
+    {
+      "title": "Sudado de pescado",
+      "description": "Pescado al vapor en salsa de cebolla, tomate y ají, con papa y choclo. Recién de la pescadería.",
+      "emoji": "🐟",
+      "diets": [
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pescado blanco",
+          "quantity": 600,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "culantro fresco",
+          "quantity": 1,
+          "unit": "puñados",
+          "category": "verduras"
+        },
+        {
+          "name": "papa",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "choclo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sazona el pescado con sal, pimienta y un chorrito de limón."
+        },
+        {
+          "text": "Coloca en la olla una cama de cebolla en aros, tomate y ají amarillo."
+        },
+        {
+          "text": "Pon el pescado encima, agrega el resto de verduras y medio vaso de agua."
+        },
+        {
+          "text": "Tapa y cocina a fuego medio 15 minutos, sin destapar."
+        },
+        {
+          "text": "Sirve con papa sancochada, choclo y un poco del caldo por encima."
+        }
+      ],
+      "tips": [
+        "El vapor concentra los jugos: no añadas mucha agua.",
+        "El sudado se sirve con abundante caldo, como una sopa espesa.",
+        "La cocción a vapor deja el pescado increíblemente jugoso."
+      ],
+      "nutrition": {
+        "kcal": 340,
+        "protein": 36,
+        "carbs": 32,
+        "fat": 8
+      },
+      "id": "r50",
+      "source": "local"
+    },
+    {
+      "title": "Empanadas de carne al horno",
+      "description": "Empanadas criollas de carne molida, huevo y aceituna, doradas al horno. Para compartir.",
+      "emoji": "🥟",
+      "diets": [],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 30,
+      "cookMinutes": 25,
+      "servings": 6,
+      "ingredients": [
+        {
+          "name": "masa para empanadas",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "carne molida",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "huevo",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla y el ají amarillo; añade la carne, comino, sal y pimienta."
+        },
+        {
+          "text": "Agrega 1 huevo duro picado y las aceitunas en rodajas; deja enfriar."
+        },
+        {
+          "text": "Rellena las masas, cierra presionando los bordes con un tenedor."
+        },
+        {
+          "text": "Pinta con huevo batido y hornea a 200 °C por 25 minutos hasta dorar."
+        }
+      ],
+      "tips": [
+        "El relleno frío evita que la masa se humedezca y se abra.",
+        "Sella bien los bordes con tenedor para que no se derramen.",
+        "Las empanadas de pollo o queso son variantes clásicas."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 18,
+        "carbs": 40,
+        "fat": 16
+      },
+      "id": "r51",
+      "source": "local"
+    },
+    {
+      "title": "Shakshuka",
+      "description": "Huevos pochados en una salsa de tomate con pimiento, comino y pimentón. Ideal para compartir.",
+      "emoji": "🍳",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "mediterranea",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 20,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "huevo",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "tomate triturado",
+          "quantity": 400,
+          "unit": "g",
+          "category": "despensa"
+        },
+        {
+          "name": "pimiento rojo",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "pimentón dulce",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla y el pimiento en el aceite 6 minutos."
+        },
+        {
+          "text": "Agrega el ajo, comino y pimentón; cocina 1 minuto."
+        },
+        {
+          "text": "Vierte el tomate triturado y cocina 10 minutos hasta espesar."
+        },
+        {
+          "text": "Haz huecos en la salsa y rompe los huevos dentro; tapa y cocina 5-6 minutos."
+        },
+        {
+          "text": "Sirve directo de la sartén con pan."
+        }
+      ],
+      "tips": [
+        "La salsa debe estar espesa antes de añadir los huevos.",
+        "El comino y el pimentón son el sabor característico.",
+        "Termina con perejil o cilantro fresco y queso feta si gustas."
+      ],
+      "nutrition": {
+        "kcal": 320,
+        "protein": 20,
+        "carbs": 20,
+        "fat": 19
+      },
+      "id": "r52",
+      "source": "local"
+    },
+    {
+      "title": "Ensalada griega",
+      "description": "Tomate, pepino, cebolla, aceitunas y queso feta con orégano y aceite de oliva. Fresca en minutos.",
+      "emoji": "🥗",
+      "diets": [
+        "vegetariano",
+        "sin-gluten"
+      ],
+      "cuisine": "mediterranea",
+      "seasonal": [
+        "primavera",
+        "verano"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 12,
+      "cookMinutes": 0,
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "tomate",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "pepino",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla roja",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "queso feta",
+          "quantity": 150,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "orégano seco",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "vinagre de vino",
+          "quantity": 1,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Corta el tomate en gajos, el pepino en rodajas gruesas y la cebolla en aros."
+        },
+        {
+          "text": "Agrega las aceitunas y el queso feta en cubos grandes."
+        },
+        {
+          "text": "Adereza con aceite, vinagre, orégano y un toque de sal."
+        }
+      ],
+      "tips": [
+        "El queso feta y las aceitunas ya aportan sal: ve con cuidado.",
+        "La ensalada griega se adereza en el plato, no se revuelve.",
+        "El tomate en temporada (verano) hace toda la diferencia."
+      ],
+      "nutrition": {
+        "kcal": 340,
+        "protein": 12,
+        "carbs": 18,
+        "fat": 26
+      },
+      "id": "r53",
+      "source": "local"
+    },
+    {
+      "title": "Hamburguesa de lentejas",
+      "description": "Medallones de lentejas y avena con especias, servidos en pan con lechuga y tomate.",
+      "emoji": "🍔",
+      "diets": [
+        "vegano",
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 15,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "lentejas cocidas",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "avena",
+          "quantity": 60,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "pan de hamburguesa",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "granos"
+        },
+        {
+          "name": "tomate",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "lechuga",
+          "quantity": 4,
+          "unit": "hojas",
+          "category": "verduras"
+        },
+        {
+          "name": "comino",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "pimentón dulce",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Machaca las lentejas con un tenedor dejando textura."
+        },
+        {
+          "text": "Añade la avena, cebolla y ajo muy picados, comino, pimentón y sal; mezcla."
+        },
+        {
+          "text": "Forma 4 medallones y refrigera 15 minutos."
+        },
+        {
+          "text": "Dora en sartén con aceite 4-5 minutos por lado."
+        },
+        {
+          "text": "Arma con pan, lechuga, tomate y la salsa que prefieras."
+        }
+      ],
+      "tips": [
+        "Refrigerar los medallones evita que se deshagan al dorar.",
+        "La avena actúa como aglutinante natural.",
+        "Una salsa de palta o mayonesa vegana le va genial."
+      ],
+      "nutrition": {
+        "kcal": 460,
+        "protein": 22,
+        "carbs": 62,
+        "fat": 13
+      },
+      "id": "r54",
+      "source": "local"
+    },
+    {
+      "title": "Sopa criolla",
+      "description": "Sopa peruana de fideos con carne de res, cebolla, ají y un toque de leche. Calienta el alma.",
+      "emoji": "🍜",
+      "diets": [
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "carne de res",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "fideos",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 150,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "orégano",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal y pimienta",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo y el ají amarillo; añade la carne en tiras y dora."
+        },
+        {
+          "text": "Agrega 1 litro de agua, sal, pimienta y orégano; cuece 15 minutos."
+        },
+        {
+          "text": "Añade los fideos y cocina 6 minutos."
+        },
+        {
+          "text": "Incorpora la leche y los huevos batidos en hilo; cocina 2 minutos más."
+        }
+      ],
+      "tips": [
+        "La sopa criolla es la típica sopa de lluvia limeña.",
+        "Añade el huevo batido en hilo para el toque final.",
+        "Sirve bien caliente con pan tostado."
+      ],
+      "nutrition": {
+        "kcal": 460,
+        "protein": 32,
+        "carbs": 46,
+        "fat": 16
+      },
+      "id": "r55",
+      "source": "local"
+    },
+    {
+      "title": "Arroz frito",
+      "description": "Arroz salteado con huevo, verduras y soja, al estilo chifa peruano.",
+      "emoji": "🍚",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "chifa",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 10,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "arroz cocido",
+          "quantity": 500,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "huevo",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "cebolla china",
+          "quantity": 4,
+          "unit": "tallos",
+          "category": "verduras"
+        },
+        {
+          "name": "zanahoria",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "guisantes",
+          "quantity": 100,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "salsa de soja",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "condimentos"
+        },
+        {
+          "name": "aceite vegetal",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Bate los huevos y fríelos en el wok hasta que estén cuajados; reserva."
+        },
+        {
+          "text": "Saltea la zanahoria y los guisantes 3 minutos."
+        },
+        {
+          "text": "Agrega el arroz cocido y la soja; saltea 3 minutos a fuego alto."
+        },
+        {
+          "text": "Incorpora los huevos y la cebolla china; saltea 1 minuto."
+        }
+      ],
+      "tips": [
+        "El arroz del día anterior (seco) saltea mucho mejor que el recién hecho.",
+        "El fuego alto y el wok caliente dan el 'sabor chifa'.",
+        "Añade pollo o cerdo en tiras si quieres la versión con carne."
+      ],
+      "nutrition": {
+        "kcal": 420,
+        "protein": 14,
+        "carbs": 66,
+        "fat": 11
+      },
+      "id": "r56",
+      "source": "local"
+    },
+    {
+      "title": "Panqueques con frutas",
+      "description": "Panqueques esponjosos con miel y frutas frescas. Un desayuno clásico para el fin de semana.",
+      "emoji": "🥞",
+      "diets": [
+        "vegetariano"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 15,
+      "servings": 3,
+      "ingredients": [
+        {
+          "name": "harina",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "leche",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "azúcar",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "polvo de hornear",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        },
+        {
+          "name": "mantequilla",
+          "quantity": 20,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "plátano",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "miel",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Mezcla la harina, el azúcar y el polvo de hornear."
+        },
+        {
+          "text": "Agrega los huevos y la leche; bate hasta que no haya grumos."
+        },
+        {
+          "text": "Vierte porciones en una sartén engrasada a fuego medio; voltea al salir burbujas."
+        },
+        {
+          "text": "Sirve apilados con plátano en rodajas y miel."
+        }
+      ],
+      "tips": [
+        "No mezcles de más: unos grumitos hacen panqueques más esponjosos.",
+        "La sartén debe estar caliente pero no humeando.",
+        "Los frutos rojos o el mango van perfectos de topping."
+      ],
+      "nutrition": {
+        "kcal": 420,
+        "protein": 13,
+        "carbs": 64,
+        "fat": 13
+      },
+      "id": "r57",
+      "source": "local"
+    },
+    {
+      "title": "Torrijas de pan",
+      "description": "Rebanadas de pan empapadas en leche con canela, doradas y bañadas en miel. Dulce clásico.",
+      "emoji": "🍞",
+      "diets": [
+        "vegetariano"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "desayuno"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 15,
+      "servings": 3,
+      "ingredients": [
+        {
+          "name": "pan de molde",
+          "quantity": 8,
+          "unit": "rebanadas",
+          "category": "granos"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "leche",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "azúcar",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "canela",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "mantequilla",
+          "quantity": 20,
+          "unit": "g",
+          "category": "lacteos"
+        },
+        {
+          "name": "miel",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Mezcla la leche con azúcar y canela; remoja el pan 20 segundos por lado."
+        },
+        {
+          "text": "Pasa las rebanadas por huevo batido."
+        },
+        {
+          "text": "Dora en mantequilla por ambos lados hasta que estén doradas."
+        },
+        {
+          "text": "Baña con miel y canela al servir."
+        }
+      ],
+      "tips": [
+        "No dejes el pan mucho tiempo en la leche o se deshace.",
+        "El pan del día anterior absorbe mejor la leche.",
+        "Sirve con fruta fresca para equilibrar el dulce."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 11,
+        "carbs": 58,
+        "fat": 12
+      },
+      "id": "r58",
+      "source": "local"
+    },
+    {
+      "title": "Curry de garbanzos",
+      "description": "Garbanzos en salsa de tomate, coco y especias. Reconfortante, vegano y lleno de proteína.",
+      "emoji": "🍛",
+      "diets": [
+        "vegano",
+        "sin-gluten",
+        "sin-lactosa",
+        "alta-proteina"
+      ],
+      "cuisine": "india",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 25,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "garbanzos cocidos",
+          "quantity": 400,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "leche de coco",
+          "quantity": 400,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "tomate triturado",
+          "quantity": 400,
+          "unit": "g",
+          "category": "despensa"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 2,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "jengibre fresco",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "curry en polvo",
+          "quantity": 2,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "cúrcuma",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "condimentos"
+        },
+        {
+          "name": "espinaca",
+          "quantity": 100,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sofríe la cebolla, el ajo y el jengibre 4 minutos."
+        },
+        {
+          "text": "Añade el curry y la cúrcuma; cocina 1 minuto."
+        },
+        {
+          "text": "Agrega el tomate, los garbanzos y la leche de coco; cocina 15 minutos."
+        },
+        {
+          "text": "Incorpora la espinaca y cocina 3 minutos más."
+        }
+      ],
+      "tips": [
+        "Cocinar las especias en aceite activa sus aromas.",
+        "Acompaña con arroz basmati o quinoa.",
+        "El curry espesa al reposar: perfecto para meal-prep."
+      ],
+      "nutrition": {
+        "kcal": 380,
+        "protein": 16,
+        "carbs": 42,
+        "fat": 17
+      },
+      "id": "r59",
+      "source": "local"
+    },
+    {
+      "title": "Causa de pollo",
+      "description": "Variante de la causa limeña rellena con pollo deshilachado en mayonesa y palta.",
+      "emoji": "🥔",
+      "diets": [
+        "sin-gluten"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 40,
+      "cookMinutes": 20,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "papa amarilla",
+          "quantity": 800,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "limón",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "pechuga de pollo",
+          "quantity": 300,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "palta",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "frutas"
+        },
+        {
+          "name": "mayonesa",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 2,
+          "unit": "cucharadas",
+          "category": "despensa"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "sal",
+          "quantity": 1,
+          "unit": "cucharaditas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha el pollo y desméchalo; mezcla con mayonesa, un poco de ají y limón."
+        },
+        {
+          "text": "Sancocha las papas y hazlas puré con el ají amarillo licuado, aceite, limón y sal."
+        },
+        {
+          "text": "Arma capas de masa de papa y relleno de pollo en un molde."
+        },
+        {
+          "text": "Refrigera 30 minutos, desmolda y decora con palta y aceitunas."
+        }
+      ],
+      "tips": [
+        "La masa de papa debe quedar firme pero húmeda: ajusta con limón.",
+        "El pollo desmechado con mayonesa se adhiere mejor entre las capas.",
+        "Sirve fría: la causa es el plato fresco por excelencia."
+      ],
+      "nutrition": {
+        "kcal": 420,
+        "protein": 24,
+        "carbs": 48,
+        "fat": 15
+      },
+      "id": "r60",
+      "source": "local"
+    },
+    {
+      "title": "Ají de gallina con papa",
+      "description": "La versión clásica de ají de gallina coronada con aceitunas y huevo duro.",
+      "emoji": "🍛",
+      "diets": [
+        "alta-proteina"
+      ],
+      "cuisine": "peruana",
+      "regions": [
+        "Perú"
+      ],
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 35,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "pechuga de pollo",
+          "quantity": 500,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "ají amarillo",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "cebolla",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "ajo",
+          "quantity": 3,
+          "unit": "dientes",
+          "category": "verduras"
+        },
+        {
+          "name": "pan",
+          "quantity": 3,
+          "unit": "rebanadas",
+          "category": "granos"
+        },
+        {
+          "name": "leche evaporada",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "lacteos"
+        },
+        {
+          "name": "nueces",
+          "quantity": 50,
+          "unit": "g",
+          "category": "otros"
+        },
+        {
+          "name": "papa amarilla",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "aceitunas",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "huevo",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "aceite de oliva",
+          "quantity": 3,
+          "unit": "cucharadas",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sancocha el pollo, desméchalo y guarda el caldo."
+        },
+        {
+          "text": "Sofríe cebolla y ajo; añade el ají amarillo y cocina 3 minutos."
+        },
+        {
+          "text": "Licúa el sofrito con pan remojado, nueces y caldo."
+        },
+        {
+          "text": "Une la salsa con el pollo y cocina 10 minutos a fuego bajo."
+        },
+        {
+          "text": "Sirve sobre papa sancochada con aceitunas y huevo duro."
+        }
+      ],
+      "tips": [
+        "El ají amarillo se suaviza al cocinar: no temas usarlo.",
+        "La papa amarilla es la que mejor acompaña el ají de gallina.",
+        "Acompaña con arroz blanco para el plato completo."
+      ],
+      "nutrition": {
+        "kcal": 480,
+        "protein": 34,
+        "carbs": 40,
+        "fat": 20
+      },
+      "id": "r61",
+      "source": "local"
     }
   ],
   "pantry": [
@@ -2215,106 +6795,155 @@
     }
   ],
   "weeklyPlan": {
-    "id": "446c0453-6f15-4141-8895-c6caca6759a0",
+    "id": "cff62cbf-aeb6-4143-9ca7-d0ea814a7d05",
     "weekStart": "2026-08-03",
     "slots": [
       {
-        "id": "f54669b1-f7c6-4be3-855f-2834ecf0094d",
+        "id": "74b9f242-d060-494e-8b16-d2a7a0153247",
         "day": "lunes",
-        "meal": "almuerzo",
-        "recipeId": "r3",
-        "servings": 1
+        "meal": "desayuno",
+        "recipeId": "r15",
+        "servings": 2
       },
       {
-        "id": "cbcc26d1-006f-4a01-aa04-02be71e018bf",
+        "id": "1286b49b-bd3b-4403-ac52-ee9f7d0004c3",
         "day": "lunes",
-        "meal": "cena",
-        "recipeId": "r12",
-        "servings": 1
-      },
-      {
-        "id": "c8add22f-ec04-48ab-a11d-619c8da55b0f",
-        "day": "martes",
-        "meal": "almuerzo",
-        "recipeId": "r1",
-        "servings": 1
-      },
-      {
-        "id": "82f7a72f-9a16-4eb0-8a60-4eef6ddb03de",
-        "day": "martes",
-        "meal": "cena",
-        "recipeId": "r4",
-        "servings": 1
-      },
-      {
-        "id": "1690b880-1d47-44d1-83b7-01343e4430a8",
-        "day": "miercoles",
-        "meal": "almuerzo",
-        "recipeId": "r9",
-        "servings": 1
-      },
-      {
-        "id": "4d2815aa-cc3c-44a1-a5b5-04645f2bae65",
-        "day": "miercoles",
-        "meal": "cena",
-        "recipeId": "r13",
-        "servings": 1
-      },
-      {
-        "id": "002db0d5-05af-4779-9021-3e7b4cbc6017",
-        "day": "jueves",
         "meal": "almuerzo",
         "recipeId": "r5",
-        "servings": 1
+        "servings": 2
       },
       {
-        "id": "d8e6ed2f-e1e8-41e2-856d-5216863a16b4",
+        "id": "5eee741c-64d8-40c2-abd7-9dd5fa4950a5",
+        "day": "lunes",
+        "meal": "cena",
+        "recipeId": "r1",
+        "servings": 2
+      },
+      {
+        "id": "f81ed27a-c168-4500-b723-207d652c36ee",
+        "day": "martes",
+        "meal": "desayuno",
+        "recipeId": "r25",
+        "servings": 2
+      },
+      {
+        "id": "86413e6c-1d00-44f2-b326-726f48608088",
+        "day": "martes",
+        "meal": "almuerzo",
+        "recipeId": "r11",
+        "servings": 2
+      },
+      {
+        "id": "553fe7fd-994b-4a5a-a686-52cfb27691b2",
+        "day": "martes",
+        "meal": "cena",
+        "recipeId": "r14",
+        "servings": 2
+      },
+      {
+        "id": "b1782c6f-0de3-49e1-b307-6fb712fa0c74",
+        "day": "miercoles",
+        "meal": "desayuno",
+        "recipeId": "r58",
+        "servings": 2
+      },
+      {
+        "id": "c3132274-b171-4f87-8db3-602c1abd8760",
+        "day": "miercoles",
+        "meal": "almuerzo",
+        "recipeId": "r17",
+        "servings": 2
+      },
+      {
+        "id": "e19f2769-d1c7-47b6-a49d-b0737fe44800",
+        "day": "miercoles",
+        "meal": "cena",
+        "recipeId": "r45",
+        "servings": 2
+      },
+      {
+        "id": "8c836f9d-376c-4440-807f-d5a95676b8b8",
+        "day": "jueves",
+        "meal": "desayuno",
+        "recipeId": "r52",
+        "servings": 2
+      },
+      {
+        "id": "6fdfa2d9-6936-4df8-bbc3-8f5ab7f7d4bd",
+        "day": "jueves",
+        "meal": "almuerzo",
+        "recipeId": "r9",
+        "servings": 2
+      },
+      {
+        "id": "3f23e917-4e30-41c9-b7a1-8d560c763b18",
         "day": "jueves",
         "meal": "cena",
-        "recipeId": "r2",
-        "servings": 1
+        "recipeId": "r59",
+        "servings": 2
       },
       {
-        "id": "db9b916c-dcc3-4d9e-a7ad-4055a63d81fa",
+        "id": "409a1667-091d-437a-ad62-53f6b1364c08",
         "day": "viernes",
+        "meal": "desayuno",
+        "recipeId": "r4",
+        "servings": 2
+      },
+      {
+        "id": "6f04b0e5-a2d1-4424-abbb-1dba850c7ed7",
+        "day": "viernes",
+        "meal": "almuerzo",
+        "recipeId": "r54",
+        "servings": 2
+      },
+      {
+        "id": "67f5eabb-f362-4a65-86d0-08fa22ca921e",
+        "day": "viernes",
+        "meal": "cena",
+        "recipeId": "r47",
+        "servings": 2
+      },
+      {
+        "id": "1d34ba10-abaa-4e9a-bc80-858433c2a76f",
+        "day": "sabado",
+        "meal": "desayuno",
+        "recipeId": "r57",
+        "servings": 2
+      },
+      {
+        "id": "47f57b0d-59db-4801-8bc1-d131be4b1b9c",
+        "day": "sabado",
         "meal": "almuerzo",
         "recipeId": "r16",
-        "servings": 1
+        "servings": 2
       },
       {
-        "id": "466ebbe2-25aa-4cc1-8f76-08d86830a4a8",
-        "day": "viernes",
-        "meal": "cena",
-        "recipeId": "r18",
-        "servings": 1
-      },
-      {
-        "id": "572c46ed-44e3-4648-a3d3-f23fd8e1ccf0",
-        "day": "sabado",
-        "meal": "almuerzo",
-        "recipeId": "r3",
-        "servings": 1
-      },
-      {
-        "id": "26c9f1a6-2666-42e1-8aa5-18cd5bf4a4e7",
+        "id": "f3ae332f-6aee-4b93-841d-29946e234b86",
         "day": "sabado",
         "meal": "cena",
-        "recipeId": "r3",
-        "servings": 1
+        "recipeId": "r49",
+        "servings": 2
       },
       {
-        "id": "0dcc9837-ac9d-4830-b019-27669c12fe50",
+        "id": "3c60ad0a-4b41-4465-b6f2-cf9347d66126",
+        "day": "domingo",
+        "meal": "desayuno",
+        "recipeId": "r22",
+        "servings": 2
+      },
+      {
+        "id": "fdc4f4cd-dadd-4236-8173-cd2c17b0bc43",
         "day": "domingo",
         "meal": "almuerzo",
-        "recipeId": "r3",
-        "servings": 1
+        "recipeId": "r53",
+        "servings": 2
       },
       {
-        "id": "5260b02d-3ee0-41db-bd96-fe147248d150",
+        "id": "e643ab57-ac19-4797-a85a-9412129cea2e",
         "day": "domingo",
         "meal": "cena",
-        "recipeId": "r3",
-        "servings": 1
+        "recipeId": "r48",
+        "servings": 2
       }
     ]
   },
@@ -2360,29 +6989,74 @@
     }
   ],
   "shoppingList": {
-    "id": "f227f633-5f59-41fc-8224-350325ce9813",
+    "id": "68af199c-de30-4dd4-b489-1548428e4fe6",
     "weekStart": "2026-08-03",
     "items": [
       {
+        "name": "ají amarillo",
+        "category": "verduras",
+        "needed": 0.5,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 0.5,
+        "checked": false
+      },
+      {
+        "name": "ají limo",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
         "name": "ajo",
         "category": "verduras",
-        "needed": 7,
+        "needed": 14,
         "unit": "dientes",
         "inPantry": 6,
+        "toBuy": 8,
+        "checked": false
+      },
+      {
+        "name": "albahaca fresca",
+        "category": "verduras",
+        "needed": 1.5,
+        "unit": "puñados",
+        "inPantry": 0,
+        "toBuy": 1.5,
+        "checked": false
+      },
+      {
+        "name": "brócoli",
+        "category": "verduras",
+        "needed": 675,
+        "unit": "g",
+        "inPantry": 300,
+        "toBuy": 375,
+        "checked": false
+      },
+      {
+        "name": "calabacín",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "camote",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 0,
         "toBuy": 1,
         "checked": false
       },
       {
         "name": "cebolla",
-        "category": "verduras",
-        "needed": 2,
-        "unit": "unidades",
-        "inPantry": 2,
-        "toBuy": 0,
-        "checked": false
-      },
-      {
-        "name": "cebolla morada",
         "category": "verduras",
         "needed": 1,
         "unit": "unidades",
@@ -2391,12 +7065,48 @@
         "checked": false
       },
       {
+        "name": "cebolla china",
+        "category": "verduras",
+        "needed": 5,
+        "unit": "tallos",
+        "inPantry": 0,
+        "toBuy": 5,
+        "checked": false
+      },
+      {
+        "name": "cebolla morada",
+        "category": "verduras",
+        "needed": 2,
+        "unit": "unidades",
+        "inPantry": 2,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "cebolla roja",
+        "category": "verduras",
+        "needed": 3,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 3,
+        "checked": false
+      },
+      {
+        "name": "cilantro",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "puñados",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
         "name": "cilantro fresco",
         "category": "verduras",
-        "needed": 0.5,
+        "needed": 1.5,
         "unit": "puñados",
-        "inPantry": 0.5,
-        "toBuy": 0,
+        "inPantry": 1,
+        "toBuy": 0.5,
         "checked": false
       },
       {
@@ -2409,20 +7119,47 @@
         "checked": false
       },
       {
+        "name": "espinaca",
+        "category": "verduras",
+        "needed": 150,
+        "unit": "g",
+        "inPantry": 150,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "guisantes",
+        "category": "verduras",
+        "needed": 50,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 50,
+        "checked": false
+      },
+      {
         "name": "papa",
         "category": "verduras",
-        "needed": 450,
+        "needed": 1.5,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 1.5,
+        "checked": false
+      },
+      {
+        "name": "papa",
+        "category": "verduras",
+        "needed": 250,
         "unit": "g",
-        "inPantry": 450,
+        "inPantry": 250,
         "toBuy": 0,
         "checked": false
       },
       {
         "name": "pepino",
         "category": "verduras",
-        "needed": 1,
+        "needed": 2,
         "unit": "unidades",
-        "inPantry": 1,
+        "inPantry": 2,
         "toBuy": 0,
         "checked": false
       },
@@ -2433,6 +7170,24 @@
         "unit": "puñados",
         "inPantry": 1,
         "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "pimiento picante",
+        "category": "verduras",
+        "needed": 1,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "pimiento rojo",
+        "category": "verduras",
+        "needed": 1.5,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 1.5,
         "checked": false
       },
       {
@@ -2447,6 +7202,42 @@
       {
         "name": "tomate",
         "category": "verduras",
+        "needed": 8,
+        "unit": "unidades",
+        "inPantry": 5,
+        "toBuy": 3,
+        "checked": false
+      },
+      {
+        "name": "tomate cherry",
+        "category": "verduras",
+        "needed": 200,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 200,
+        "checked": false
+      },
+      {
+        "name": "tomates maduros",
+        "category": "verduras",
+        "needed": 6,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 6,
+        "checked": false
+      },
+      {
+        "name": "zanahoria",
+        "category": "verduras",
+        "needed": 2.5,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 2.5,
+        "checked": false
+      },
+      {
+        "name": "aguacate",
+        "category": "frutas",
         "needed": 2,
         "unit": "unidades",
         "inPantry": 2,
@@ -2454,57 +7245,75 @@
         "checked": false
       },
       {
-        "name": "zanahoria",
-        "category": "verduras",
-        "needed": 1,
-        "unit": "unidades",
-        "inPantry": 0,
-        "toBuy": 1,
-        "checked": false
-      },
-      {
-        "name": "aguacate",
-        "category": "frutas",
-        "needed": 1,
-        "unit": "unidades",
-        "inPantry": 1,
-        "toBuy": 0,
-        "checked": false
-      },
-      {
         "name": "frutos rojos",
         "category": "frutas",
-        "needed": 80,
+        "needed": 160,
         "unit": "g",
         "inPantry": 0,
-        "toBuy": 80,
+        "toBuy": 160,
         "checked": false
       },
       {
         "name": "limón",
         "category": "frutas",
-        "needed": 3.5,
+        "needed": 9,
         "unit": "unidades",
-        "inPantry": 3.5,
-        "toBuy": 0,
+        "inPantry": 4,
+        "toBuy": 5,
+        "checked": false
+      },
+      {
+        "name": "mango congelado",
+        "category": "frutas",
+        "needed": 400,
+        "unit": "g",
+        "inPantry": 300,
+        "toBuy": 100,
         "checked": false
       },
       {
         "name": "plátano",
         "category": "frutas",
-        "needed": 1,
+        "needed": 5,
         "unit": "unidades",
-        "inPantry": 1,
+        "inPantry": 4,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "pulpa de lúcuma",
+        "category": "frutas",
+        "needed": 200,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 200,
+        "checked": false
+      },
+      {
+        "name": "camarón",
+        "category": "proteinas",
+        "needed": 300,
+        "unit": "g",
+        "inPantry": 300,
         "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "chicharrón de cerdo",
+        "category": "proteinas",
+        "needed": 300,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 300,
         "checked": false
       },
       {
         "name": "filete de pescado blanco",
         "category": "proteinas",
-        "needed": 250,
+        "needed": 650,
         "unit": "g",
         "inPantry": 0,
-        "toBuy": 250,
+        "toBuy": 650,
         "checked": false
       },
       {
@@ -2519,14 +7328,32 @@
       {
         "name": "huevo",
         "category": "proteinas",
-        "needed": 3,
+        "needed": 9.83,
         "unit": "unidades",
-        "inPantry": 3,
+        "inPantry": 9.83,
         "toBuy": 0,
         "checked": false
       },
       {
+        "name": "lomo de res",
+        "category": "proteinas",
+        "needed": 300,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 300,
+        "checked": false
+      },
+      {
         "name": "pechuga de pollo",
+        "category": "proteinas",
+        "needed": 400,
+        "unit": "g",
+        "inPantry": 400,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "tofu firme",
         "category": "proteinas",
         "needed": 300,
         "unit": "g",
@@ -2535,29 +7362,101 @@
         "checked": false
       },
       {
+        "name": "leche",
+        "category": "lacteos",
+        "needed": 166.67,
+        "unit": "ml",
+        "inPantry": 0,
+        "toBuy": 166.67,
+        "checked": false
+      },
+      {
         "name": "leche de almendras",
+        "category": "lacteos",
+        "needed": 500,
+        "unit": "ml",
+        "inPantry": 500,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "leche evaporada",
         "category": "lacteos",
         "needed": 250,
         "unit": "ml",
-        "inPantry": 250,
-        "toBuy": 0,
+        "inPantry": 0,
+        "toBuy": 250,
         "checked": false
       },
       {
         "name": "mantequilla",
         "category": "lacteos",
-        "needed": 20,
+        "needed": 33.33,
         "unit": "g",
         "inPantry": 0,
-        "toBuy": 20,
+        "toBuy": 33.33,
+        "checked": false
+      },
+      {
+        "name": "mozzarella fresca",
+        "category": "lacteos",
+        "needed": 250,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 250,
+        "checked": false
+      },
+      {
+        "name": "parmesano",
+        "category": "lacteos",
+        "needed": 25,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 25,
+        "checked": false
+      },
+      {
+        "name": "queso feta",
+        "category": "lacteos",
+        "needed": 230,
+        "unit": "g",
+        "inPantry": 200,
+        "toBuy": 30,
+        "checked": false
+      },
+      {
+        "name": "arroz",
+        "category": "granos",
+        "needed": 350,
+        "unit": "g",
+        "inPantry": 350,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "arroz cocido",
+        "category": "granos",
+        "needed": 250,
+        "unit": "g",
+        "inPantry": 0,
+        "toBuy": 250,
         "checked": false
       },
       {
         "name": "avena",
         "category": "granos",
-        "needed": 80,
+        "needed": 100,
         "unit": "g",
-        "inPantry": 80,
+        "inPantry": 100,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "espaguetis",
+        "category": "granos",
+        "needed": 200,
+        "unit": "g",
+        "inPantry": 200,
         "toBuy": 0,
         "checked": false
       },
@@ -2571,12 +7470,12 @@
         "checked": false
       },
       {
-        "name": "lentejas cocidas",
+        "name": "granola",
         "category": "granos",
-        "needed": 200,
+        "needed": 60,
         "unit": "g",
-        "inPantry": 0,
-        "toBuy": 200,
+        "inPantry": 60,
+        "toBuy": 0,
         "checked": false
       },
       {
@@ -2586,6 +7485,24 @@
         "unit": "g",
         "inPantry": 150,
         "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "pan de molde",
+        "category": "granos",
+        "needed": 5.33,
+        "unit": "rebanadas",
+        "inPantry": 0,
+        "toBuy": 5.33,
+        "checked": false
+      },
+      {
+        "name": "pan francés",
+        "category": "granos",
+        "needed": 4,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 4,
         "checked": false
       },
       {
@@ -2609,18 +7526,18 @@
       {
         "name": "canela",
         "category": "condimentos",
-        "needed": 1,
+        "needed": 3.67,
         "unit": "cucharaditas",
         "inPantry": 0,
-        "toBuy": 1,
+        "toBuy": 3.67,
         "checked": false
       },
       {
         "name": "comino",
         "category": "condimentos",
-        "needed": 1.5,
+        "needed": 1,
         "unit": "cucharaditas",
-        "inPantry": 1.5,
+        "inPantry": 1,
         "toBuy": 0,
         "checked": false
       },
@@ -2645,6 +7562,15 @@
       {
         "name": "jengibre fresco",
         "category": "condimentos",
+        "needed": 3.5,
+        "unit": "cucharaditas",
+        "inPantry": 0,
+        "toBuy": 3.5,
+        "checked": false
+      },
+      {
+        "name": "orégano seco",
+        "category": "condimentos",
         "needed": 1,
         "unit": "cucharaditas",
         "inPantry": 0,
@@ -2652,61 +7578,124 @@
         "checked": false
       },
       {
-        "name": "orégano",
-        "category": "condimentos",
-        "needed": 0.5,
-        "unit": "cucharaditas",
-        "inPantry": 0.5,
-        "toBuy": 0,
-        "checked": false
-      },
-      {
         "name": "pimentón dulce",
         "category": "condimentos",
+        "needed": 0.5,
+        "unit": "cucharaditas",
+        "inPantry": 0.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "pimienta negra",
+        "category": "condimentos",
+        "needed": 1.5,
+        "unit": "cucharaditas",
+        "inPantry": 1.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "salsa de soja",
+        "category": "condimentos",
+        "needed": 9.5,
+        "unit": "cucharadas",
+        "inPantry": 9.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "tomillo fresco",
+        "category": "condimentos",
         "needed": 1,
-        "unit": "cucharaditas",
-        "inPantry": 1,
-        "toBuy": 0,
+        "unit": "ramitas",
+        "inPantry": 0,
+        "toBuy": 1,
         "checked": false
       },
       {
-        "name": "romero seco",
+        "name": "vinagre",
         "category": "condimentos",
         "needed": 0.5,
-        "unit": "cucharaditas",
-        "inPantry": 0.5,
-        "toBuy": 0,
+        "unit": "cucharadas",
+        "inPantry": 0,
+        "toBuy": 0.5,
         "checked": false
       },
       {
-        "name": "tomillo seco",
+        "name": "vinagre balsámico",
         "category": "condimentos",
-        "needed": 0.5,
-        "unit": "cucharaditas",
-        "inPantry": 0.5,
-        "toBuy": 0,
+        "needed": 1,
+        "unit": "cucharadas",
+        "inPantry": 0,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "vinagre de vino",
+        "category": "condimentos",
+        "needed": 1,
+        "unit": "cucharadas",
+        "inPantry": 0,
+        "toBuy": 1,
         "checked": false
       },
       {
         "name": "aceite de oliva",
         "category": "despensa",
-        "needed": 12.33,
+        "needed": 22.33,
         "unit": "cucharadas",
-        "inPantry": 12.33,
+        "inPantry": 22.33,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "aceite de sésamo",
+        "category": "despensa",
+        "needed": 1.5,
+        "unit": "cucharadas",
+        "inPantry": 1.5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "aceite vegetal",
+        "category": "despensa",
+        "needed": 4.5,
+        "unit": "cucharadas",
+        "inPantry": 0,
+        "toBuy": 4.5,
+        "checked": false
+      },
+      {
+        "name": "azúcar",
+        "category": "despensa",
+        "needed": 4,
+        "unit": "cucharadas",
+        "inPantry": 0,
+        "toBuy": 4,
+        "checked": false
+      },
+      {
+        "name": "coco rallado",
+        "category": "despensa",
+        "needed": 2,
+        "unit": "cucharadas",
+        "inPantry": 2,
         "toBuy": 0,
         "checked": false
       },
       {
         "name": "leche de coco",
         "category": "despensa",
-        "needed": 200,
+        "needed": 400,
         "unit": "ml",
-        "inPantry": 200,
+        "inPantry": 400,
         "toBuy": 0,
         "checked": false
       },
       {
-        "name": "mantequilla de maní",
+        "name": "maicena",
         "category": "despensa",
         "needed": 1,
         "unit": "cucharadas",
@@ -2715,42 +7704,91 @@
         "checked": false
       },
       {
-        "name": "sal",
+        "name": "mantequilla de maní",
         "category": "despensa",
         "needed": 2,
-        "unit": "cucharaditas",
+        "unit": "cucharadas",
         "inPantry": 2,
         "toBuy": 0,
         "checked": false
       },
       {
-        "name": "sal y pimienta",
+        "name": "miel",
         "category": "despensa",
-        "needed": 2.5,
+        "needed": 2,
+        "unit": "cucharadas",
+        "inPantry": 0,
+        "toBuy": 2,
+        "checked": false
+      },
+      {
+        "name": "sal",
+        "category": "despensa",
+        "needed": 5,
+        "unit": "cucharaditas",
+        "inPantry": 5,
+        "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "sal en escamas",
+        "category": "despensa",
+        "needed": 1,
         "unit": "cucharaditas",
         "inPantry": 0,
-        "toBuy": 2.5,
+        "toBuy": 1,
+        "checked": false
+      },
+      {
+        "name": "sal y pimienta",
+        "category": "despensa",
+        "needed": 5,
+        "unit": "cucharaditas",
+        "inPantry": 0,
+        "toBuy": 5,
         "checked": false
       },
       {
         "name": "semillas de chía",
         "category": "despensa",
-        "needed": 1,
+        "needed": 4,
         "unit": "cucharaditas",
-        "inPantry": 1,
+        "inPantry": 4,
         "toBuy": 0,
         "checked": false
       },
       {
         "name": "tomate triturado",
         "category": "despensa",
-        "needed": 400,
+        "needed": 200,
         "unit": "g",
-        "inPantry": 400,
+        "inPantry": 200,
         "toBuy": 0,
+        "checked": false
+      },
+      {
+        "name": "aceitunas",
+        "category": "otros",
+        "needed": 12,
+        "unit": "unidades",
+        "inPantry": 0,
+        "toBuy": 12,
+        "checked": false
+      },
+      {
+        "name": "hielo",
+        "category": "otros",
+        "needed": 1,
+        "unit": "puñados",
+        "inPantry": 0,
+        "toBuy": 1,
         "checked": false
       }
     ],
-    "generatedAt": "2026-08-06T19:15:39.010Z"
+    "generatedAt": "2026-08-06T19:40:42.035Z"
+  },
+  "location": {
+    "country": "Perú",
+    "city": "Ica"
   }
 }

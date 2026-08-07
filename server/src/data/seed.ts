@@ -1,4 +1,5 @@
 import type { AppState, IngredientCategory, MealType, Recipe, RecipeIngredient, RecipeStep } from "@cooking/shared";
+import { extraRecipes } from "./recipes.js";
 
 function ing(name: string, quantity: number, unit: string, category: IngredientCategory): RecipeIngredient {
     return { name, quantity, unit, category };
@@ -683,11 +684,18 @@ const R: Array<Omit<Recipe, "id" | "source">> = [
     },
 ];
 
-export const seedRecipes: Recipe[] = R.map((r, i) => ({
-    ...r,
-    id: `r${i + 1}`,
-    source: "local",
-}));
+export const seedRecipes: Recipe[] = [
+    ...R.map((r, i) => ({
+        ...r,
+        id: `r${i + 1}`,
+        source: "local" as const,
+    })),
+    ...extraRecipes.map((r, i) => ({
+        ...r,
+        id: `r${R.length + i + 1}`,
+        source: "local" as const,
+    })),
+];
 
 export function seedState(): AppState {
     const now = new Date();
@@ -702,7 +710,7 @@ export function seedState(): AppState {
                 name: "Ana",
                 emoji: "👩",
                 dietPreferences: ["vegetariano"],
-                dislikedIngredients: ["pimiento picante"],
+                restrictions: [{ name: "pimiento picante", level: "no" }],
                 householdSize: 2,
                 mealsPerDay: ["desayuno", "almuerzo", "cena"],
                 favoriteRecipeIds: ["r5", "r1"],
@@ -713,7 +721,10 @@ export function seedState(): AppState {
                 name: "Marco",
                 emoji: "👨",
                 dietPreferences: ["sin-gluten", "alta-proteina"],
-                dislikedIngredients: ["hongos", "champiñones"],
+                restrictions: [
+                    { name: "hongos", level: "no" },
+                    { name: "champiñones", level: "no" },
+                ],
                 householdSize: 1,
                 mealsPerDay: ["almuerzo", "cena"],
                 favoriteRecipeIds: ["r3"],
@@ -886,6 +897,7 @@ export function seedState(): AppState {
             },
         ],
         shoppingList: null,
+        location: { country: "Perú", city: "Ica" },
     };
 }
 

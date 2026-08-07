@@ -601,6 +601,130 @@ code {
     color: var(--danger);
 }
 
+/* ================= Context (temporada / región) badges ================= */
+
+.context-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.context-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--line);
+    color: var(--muted);
+}
+
+.context-badge.ok {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+}
+
+.context-badge.warn {
+    background: var(--gold-soft);
+    color: #8a6a1f;
+}
+
+/* ================= Restrictions editor ================= */
+
+.restriction-add {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.restriction-add .input {
+    flex: 1;
+    min-width: 140px;
+}
+
+.restriction-add select {
+    width: auto;
+}
+
+.restriction-list {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.restriction-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+}
+
+.restriction-list strong {
+    flex: 1;
+}
+
+.restriction-level {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: #8a6a1f;
+}
+
+.small {
+    font-size: 13px;
+}
+
+/* ================= Settings / season banner ================= */
+
+.season-banner {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    margin-top: 12px;
+}
+
+.season-banner p {
+    margin: 4px 0 0;
+}
+
+.season-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.season-verano {
+    background: #fff6e0;
+    border-color: #f2dcae;
+}
+
+.season-otonio {
+    background: var(--warm-soft);
+    border-color: #eccfb8;
+}
+
+.season-invierno {
+    background: var(--accent-soft);
+    border-color: #c6dccb;
+}
+
+.season-primavera {
+    background: #f3eefa;
+    border-color: #dcccec;
+}
+
 /* ================= Dashboard ================= */
 
 .tip-card {
