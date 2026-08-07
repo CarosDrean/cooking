@@ -20,7 +20,7 @@ export default function RecipeCard({
         <article className={`recipe-card ${makeable ? "makeable" : ""}`} onClick={onClick ?? open}>
             <div className="recipe-card-top">
                 <div className="recipe-thumb" aria-hidden>
-                    {recipe.emoji ?? "🍲"}
+                    {recipe.image ? <img src={recipe.image} alt="" loading="lazy" /> : (recipe.emoji ?? "🍲")}
                 </div>
                 <div className="recipe-card-info">
                     <h3 className="recipe-name">{recipe.title}</h3>

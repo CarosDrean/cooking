@@ -480,8 +480,8 @@ code {
 }
 
 .recipe-thumb {
-    width: 62px;
-    height: 62px;
+    width: 64px;
+    height: 64px;
     flex-shrink: 0;
     border-radius: var(--radius-sm);
     display: flex;
@@ -489,6 +489,14 @@ code {
     justify-content: center;
     font-size: 30px;
     background: linear-gradient(135deg, var(--accent-soft), var(--warm-soft));
+    overflow: hidden;
+}
+
+.recipe-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .recipe-card-info {
@@ -775,6 +783,29 @@ code {
 .today-list li .link-btn {
     flex: 1;
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mini-thumb {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background: linear-gradient(135deg, var(--accent-soft), var(--warm-soft));
+}
+
+.mini-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* ================= Recipe detail ================= */
@@ -789,6 +820,25 @@ code {
     box-shadow: var(--shadow);
     padding: 24px;
     margin-top: 4px;
+}
+
+.detail-photo {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-soft), var(--warm-soft));
+}
+
+.detail-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .detail-emoji {
@@ -942,6 +992,28 @@ code {
     font-size: 22px;
     flex: 1;
     min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cooking-thumb {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-soft), var(--warm-soft));
+}
+
+.cooking-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .cooking-timer {
@@ -1104,6 +1176,18 @@ code {
 
 .plan-recipe .link-btn {
     text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    flex: 1;
+}
+
+.plan-recipe .link-btn .mini-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-size: 12px;
 }
 
 .plan-slot-actions {

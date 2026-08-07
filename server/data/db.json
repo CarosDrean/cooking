@@ -149,7 +149,8 @@
         "fat": 12
       },
       "id": "r1",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/b29ddf8d-092f-4a83-9596-b74f32afe9ae/thumb/"
     },
     {
       "title": "Pollo al horno con hierbas",
@@ -264,7 +265,8 @@
         "fat": 20
       },
       "id": "r2",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/63216b70-3908-45d3-bc69-30664b6d45fb/thumb/"
     },
     {
       "title": "Tortilla española",
@@ -347,7 +349,8 @@
         "fat": 25
       },
       "id": "r3",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/54a9c75e-c7b0-4803-8892-f92b73aeb349/thumb/"
     },
     {
       "title": "Curry de lentejas con coco",
@@ -465,7 +468,8 @@
         "fat": 13
       },
       "id": "r4",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/d15b0c3f-b6db-449b-8c8f-7832eced8dad/thumb/"
     },
     {
       "title": "Pasta con salsa de tomate y albahaca",
@@ -562,7 +566,8 @@
         "fat": 14
       },
       "id": "r5",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/9c17b13d-c39d-4dce-a6a5-0297b85439d3/thumb/"
     },
     {
       "title": "Bowl de avena con frutas y mantequilla de maní",
@@ -650,7 +655,8 @@
         "fat": 15
       },
       "id": "r6",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/2179f518-2e87-4442-8731-9273c97541fd/thumb/"
     },
     {
       "title": "Huevos revueltos con espinaca y feta",
@@ -736,7 +742,8 @@
         "fat": 25
       },
       "id": "r7",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/16b9b643-a51e-43c5-859f-79ad4d1f9c09/thumb/"
     },
     {
       "title": "Sopa de verduras con pollo",
@@ -845,7 +852,8 @@
         "fat": 7
       },
       "id": "r8",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/b943ffb7-07eb-4691-ad3b-0ff436e79b0f/thumb/"
     },
     {
       "title": "Ceviche de camarón",
@@ -945,7 +953,8 @@
         "fat": 12
       },
       "id": "r9",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/d698a9fd-c5a0-4b66-9ba2-f76e65467236/thumb/"
     },
     {
       "title": "Pechuga con arroz y brócoli",
@@ -1038,7 +1047,8 @@
         "fat": 12
       },
       "id": "r10",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/86093170-23b0-446b-8010-42d82fffc98f/thumb/"
     },
     {
       "title": "Smoothie bowl de mango",
@@ -1117,7 +1127,8 @@
         "fat": 10
       },
       "id": "r11",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/df3f1c33-a3cd-4f37-a923-9b34d43058be/thumb/"
     },
     {
       "title": "Albóndigas de lentejas con salsa",
@@ -1229,7 +1240,8 @@
         "fat": 11
       },
       "id": "r12",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/d865c3e0-7734-4c17-8ff5-d222436b0824/thumb/"
     },
     {
       "title": "Pescado al papel con limón",
@@ -1329,7 +1341,8 @@
         "fat": 15
       },
       "id": "r13",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/db584cb2-6323-4578-ae20-9edd848842c9/thumb/"
     },
     {
       "title": "Pan con chicharrón",
@@ -1425,7 +1438,8 @@
         "fat": 32
       },
       "id": "r14",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/705ab4a6-4f1a-4c9c-8536-8d173f6977ec/thumb/"
     },
     {
       "title": "Tamal verde",
@@ -1536,7 +1550,8 @@
         "fat": 11
       },
       "id": "r15",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/9c6daa0d-32df-4309-8688-65062d9341d0/thumb/"
     },
     {
       "title": "Humitas dulces",
@@ -1630,7 +1645,8 @@
         "fat": 9
       },
       "id": "r16",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/02533f2f-1f9d-4f5e-b47f-71c5bcf779ea/thumb/"
     },
     {
       "title": "Quinoa con leche",
@@ -1717,7 +1733,8 @@
         "fat": 7
       },
       "id": "r17",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/7e2ce076-675d-49f3-913a-60ecb2c6acb9/thumb/"
     },
     {
       "title": "Huevos a la peruana",
@@ -1809,7 +1826,8 @@
         "fat": 19
       },
       "id": "r18",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/7e22f4d2-2b7d-4d98-a5bf-3cfdeb50d76b/thumb/"
     },
     {
       "title": "Soltero de queso",
@@ -1915,7 +1933,8 @@
         "fat": 19
       },
       "id": "r19",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/27cb4b28-dc62-4c4c-b29f-0de1bffd6fa9/thumb/"
     },
     {
       "title": "Batido de lúcuma",
@@ -2003,7 +2022,8 @@
       "source": "local",
       "protagonist": [
         "leche evaporada"
-      ]
+      ],
+      "image": "https://api.openverse.org/v1/images/78864b18-f8a4-4161-b683-020cc960af7a/thumb/"
     },
     {
       "title": "Pan con palta y huevo",
@@ -2081,7 +2101,8 @@
         "fat": 19
       },
       "id": "r21",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/0c0cb0a6-09b2-4719-931c-bb46bfd3d8a3/thumb/"
     },
     {
       "title": "Ceviche de pescado clásico",
@@ -2188,7 +2209,8 @@
         "fat": 6
       },
       "id": "r22",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/6f0e60a6-7c8d-4a7e-85be-83c4bf27d63b/thumb/"
     },
     {
       "title": "Lomo saltado",
@@ -2305,7 +2327,8 @@
         "fat": 20
       },
       "id": "r23",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/06b4aae4-36f9-4e22-94d1-539f02b91692/thumb/"
     },
     {
       "title": "Ají de gallina",
@@ -2416,7 +2439,8 @@
         "fat": 20
       },
       "id": "r24",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/4a8ab27e-0bb8-4825-a8dc-24f148c12d1d/thumb/"
     },
     {
       "title": "Arroz con pollo",
@@ -2533,7 +2557,8 @@
         "fat": 17
       },
       "id": "r25",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/d964cd58-2949-441a-ab4f-84d458a56b79/thumb/"
     },
     {
       "title": "Causa limeña",
@@ -2638,7 +2663,8 @@
         "fat": 16
       },
       "id": "r26",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/2b2e3ea6-8358-4158-bf90-1f0b9d288911/thumb/"
     },
     {
       "title": "Papa a la huancaína",
@@ -2744,7 +2770,8 @@
       "source": "local",
       "protagonist": [
         "queso fresco"
-      ]
+      ],
+      "image": "https://api.openverse.org/v1/images/4f1818f6-b03b-4692-bf34-c7efd0814e2d/thumb/"
     },
     {
       "title": "Seco de res",
@@ -2867,7 +2894,8 @@
         "fat": 20
       },
       "id": "r28",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/17b37d86-ead2-4108-ac07-8941f1b83e72/thumb/"
     },
     {
       "title": "Tallarines verdes",
@@ -2963,7 +2991,8 @@
         "fat": 16
       },
       "id": "r29",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/ae44b6d5-06bc-4688-9bec-802e005e074a/thumb/"
     },
     {
       "title": "Escabeche de pescado",
@@ -3082,7 +3111,8 @@
         "fat": 16
       },
       "id": "r30",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/4c9f501b-e0fb-499a-b95c-836ce2bfd26d/thumb/"
     },
     {
       "title": "Chupe de camarones",
@@ -3205,7 +3235,8 @@
         "fat": 18
       },
       "id": "r31",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/b717d176-d0e5-474c-9d04-3347c843a467/thumb/"
     },
     {
       "title": "Parihuela",
@@ -3328,7 +3359,8 @@
         "fat": 9
       },
       "id": "r32",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/42f6e9d7-11dd-42fd-90da-0c46f64fb2ca/thumb/"
     },
     {
       "title": "Jalea mixta",
@@ -3457,7 +3489,8 @@
         "fat": 20
       },
       "id": "r33",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/41931b56-fdce-4055-baf4-8fcb60c1e43f/thumb/"
     },
     {
       "title": "Arroz con mariscos",
@@ -3571,7 +3604,8 @@
         "fat": 14
       },
       "id": "r34",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/a7c83c82-8def-4163-b371-ff2e34e4b2d0/thumb/"
     },
     {
       "title": "Tacu tacu",
@@ -3673,7 +3707,8 @@
         "fat": 16
       },
       "id": "r35",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/1379387f-a527-4b16-9bea-0ff6acbff963/thumb/"
     },
     {
       "title": "Papa rellena",
@@ -3787,7 +3822,8 @@
         "fat": 19
       },
       "id": "r36",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/f537726d-5e14-407a-8637-bd2a1a4a8d0e/thumb/"
     },
     {
       "title": "Estofado de pollo",
@@ -3904,7 +3940,8 @@
         "fat": 15
       },
       "id": "r37",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/616e055c-e9b4-4a37-a2a7-a82c5239c963/thumb/"
     },
     {
       "title": "Carapulcra",
@@ -4010,7 +4047,8 @@
         "fat": 21
       },
       "id": "r38",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/6ac5cf3a-6c04-41f2-b2db-ab0c7a11d117/thumb/"
     },
     {
       "title": "Olluquito con charqui",
@@ -4107,7 +4145,8 @@
         "fat": 12
       },
       "id": "r39",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/453af1de-a86c-4c7d-a0ed-1775d4f320f8/thumb/"
     },
     {
       "title": "Lentejas con arroz y salsa criolla",
@@ -4220,7 +4259,8 @@
         "fat": 8
       },
       "id": "r40",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/aafad9de-7f29-43e5-95c1-b0aecd66d81e/thumb/"
     },
     {
       "title": "Pallares de Ica",
@@ -4321,7 +4361,8 @@
         "fat": 7
       },
       "id": "r41",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/4480bb9e-0b2f-4369-847a-6d3a095ccec8/thumb/"
     },
     {
       "title": "Locro de zapallo",
@@ -4430,7 +4471,8 @@
         "fat": 10
       },
       "id": "r42",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/4e4b3d1d-a2b3-440b-9a40-8c34094eb805/thumb/"
     },
     {
       "title": "Saltado de verduras",
@@ -4543,7 +4585,8 @@
         "fat": 8
       },
       "id": "r43",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/4e176f75-5bc9-45e5-8f47-e99b2b4da0b5/thumb/"
     },
     {
       "title": "Quinua saltada con verduras",
@@ -4641,7 +4684,8 @@
         "fat": 8
       },
       "id": "r44",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/fa54d063-f40e-4c5b-b60f-5848dc489f5c/thumb/"
     },
     {
       "title": "Sudado de pescado",
@@ -4754,7 +4798,8 @@
         "fat": 8
       },
       "id": "r45",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/a0faa27b-3b35-4d6e-9133-6c6a2ff8b2b4/thumb/"
     },
     {
       "title": "Empanadas de carne al horno",
@@ -4854,7 +4899,8 @@
         "fat": 16
       },
       "id": "r46",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/60f91427-5395-41ce-ac3b-d6e0fe251907/thumb/"
     },
     {
       "title": "Shakshuka",
@@ -4957,7 +5003,8 @@
         "fat": 19
       },
       "id": "r47",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/7317ba2f-b8b5-4241-a559-d65ba39bf268/thumb/"
     },
     {
       "title": "Ensalada griega",
@@ -5052,7 +5099,8 @@
         "fat": 26
       },
       "id": "r48",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/9c50531d-4bf6-47cc-87f6-1b32c143c247/thumb/"
     },
     {
       "title": "Hamburguesa de lentejas",
@@ -5167,7 +5215,8 @@
         "fat": 13
       },
       "id": "r49",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/e93beeb3-a47b-4cdd-a04c-d0d591aa68aa/thumb/"
     },
     {
       "title": "Sopa criolla",
@@ -5275,7 +5324,8 @@
         "fat": 16
       },
       "id": "r50",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/daa8931c-54e7-41fb-b66f-f8d191e0b711/thumb/"
     },
     {
       "title": "Arroz frito",
@@ -5371,7 +5421,8 @@
         "fat": 11
       },
       "id": "r51",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/27655c25-adc0-41e2-b419-83b973722c60/thumb/"
     },
     {
       "title": "Panqueques con frutas",
@@ -5463,7 +5514,8 @@
         "fat": 13
       },
       "id": "r52",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/ec56e49e-2070-4c1d-ac8a-b024086915a0/thumb/"
     },
     {
       "title": "Torrijas de pan",
@@ -5552,7 +5604,8 @@
       "source": "local",
       "protagonist": [
         "leche"
-      ]
+      ],
+      "image": "https://api.openverse.org/v1/images/d38cdbd4-f71f-4865-b8c2-90190ac2b789/thumb/"
     },
     {
       "title": "Curry de garbanzos",
@@ -5666,7 +5719,8 @@
         "fat": 17
       },
       "id": "r54",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/b38756ea-8114-48de-bf8c-0d58d80c3701/thumb/"
     },
     {
       "title": "Causa de pollo",
@@ -5768,7 +5822,8 @@
         "fat": 15
       },
       "id": "r55",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/ec13301b-bf48-4004-8739-6f403251fe6f/thumb/"
     },
     {
       "title": "Ají de gallina con papa",
@@ -5885,7 +5940,8 @@
         "fat": 20
       },
       "id": "r56",
-      "source": "local"
+      "source": "local",
+      "image": "https://api.openverse.org/v1/images/863b822b-2f20-4787-ae6d-dc8dd2592bb6/thumb/"
     }
   ],
   "pantry": [
@@ -5942,80 +5998,89 @@
       "dateAdded": "2026-08-07T03:24:20.642Z",
       "category": "granos",
       "unitPrice": 5
+    },
+    {
+      "id": "47ae6ade-7d15-4c0d-ba0a-e3f436e08141",
+      "ingredientName": "sal",
+      "quantity": 2,
+      "unit": "bolsas",
+      "dateAdded": "2026-08-07T14:59:28.620Z",
+      "category": "despensa",
+      "unitPrice": 3
     }
   ],
   "weeklyPlan": {
-    "id": "bb4d8ae3-83cb-49b9-9a8d-7b92b8b069de",
-    "weekStart": "2026-08-04",
+    "id": "1d46e89d-82a8-4054-ad3b-7dc80607af0b",
+    "weekStart": "2026-08-03",
     "slots": [
       {
-        "id": "8d3a9080-0500-4b44-9814-052fdf811887",
+        "id": "63ee62da-a9c5-4462-addf-1fa3184ac937",
         "day": "viernes",
         "meal": "desayuno",
         "recipeId": "r3",
         "servings": 4
       },
       {
-        "id": "664a5ce2-a6db-4ec4-8cb4-20ae4cf49d8b",
+        "id": "ded6cde7-3a47-41de-aa1d-d8f962a693e0",
         "day": "viernes",
         "meal": "almuerzo",
         "recipeId": "r4",
         "servings": 4,
-        "drink": "Limonada"
+        "drink": "Agua de manzanilla"
       },
       {
-        "id": "4f18fc8a-c621-4239-ad6f-1efc7e56a922",
+        "id": "1a5067a5-8fe0-415c-bf58-675296817d20",
         "day": "viernes",
         "meal": "cena",
         "recipeId": "r9",
         "servings": 4,
-        "drink": "Mate de hierbas"
+        "drink": "Emoliente"
       },
       {
-        "id": "286f8b43-7b9d-4af8-8d98-c74a1b74ac07",
+        "id": "dba8da3e-e414-4fb6-95e3-0675fdb44767",
         "day": "sabado",
         "meal": "desayuno",
         "recipeId": "r6",
         "servings": 4
       },
       {
-        "id": "f1f6ec6a-2cfa-4ffd-9c5b-763d61e4c841",
+        "id": "50e4519e-e11a-4d5b-9d65-f28cfcb15bcb",
         "day": "sabado",
         "meal": "almuerzo",
-        "recipeId": "r1",
+        "recipeId": "r13",
         "servings": 4,
-        "drink": "Refresco de maracuyá"
+        "drink": "Chocolate caliente"
       },
       {
-        "id": "54d63d75-d320-453a-97c0-047e9897827c",
+        "id": "ce8e5719-b632-4aba-8a3c-3b3d201d50ff",
         "day": "sabado",
         "meal": "cena",
         "recipeId": "r2",
         "servings": 4,
-        "drink": "Limonada"
+        "drink": "Refresco de maracuyá"
       },
       {
-        "id": "57efc921-11b8-4dc9-8a87-586aeb065534",
+        "id": "c3a1f6c1-8b4c-47b9-b714-e3d2dcafd406",
         "day": "domingo",
         "meal": "desayuno",
-        "recipeId": "r20",
+        "recipeId": "r15",
         "servings": 4
       },
       {
-        "id": "0266b19c-b59c-4a4f-bd66-4b1a208353db",
+        "id": "65fd9fb8-89c5-4f65-8dfc-4e86417964c0",
         "day": "domingo",
         "meal": "almuerzo",
         "recipeId": "r10",
         "servings": 4,
-        "drink": "Café pasado"
+        "drink": "Mate de anís"
       },
       {
-        "id": "4bef471c-66cb-4928-a1e1-29935fa41d52",
+        "id": "d6cd2de7-5143-4b61-82a7-db540a347cc7",
         "day": "domingo",
         "meal": "cena",
-        "recipeId": "r13",
+        "recipeId": "r1",
         "servings": 4,
-        "drink": "Chocolate caliente"
+        "drink": "Mate de hierbas"
       }
     ]
   },
@@ -6132,6 +6197,18 @@
       "category": "granos",
       "kind": "compra",
       "id": "90e5c3ca-ba08-4a3b-a66e-a87bdb2bfecd",
+      "date": "2026-08-07"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "sal",
+      "quantity": 2,
+      "unit": "bolsas",
+      "unitPrice": 3,
+      "total": 6,
+      "category": "despensa",
+      "kind": "compra",
+      "id": "364f573e-8e09-492f-898f-58034edd2580",
       "date": "2026-08-07"
     }
   ]

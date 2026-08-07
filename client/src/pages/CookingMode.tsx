@@ -103,7 +103,14 @@ export default function CookingMode({ recipeId }: { recipeId?: string }) {
                     ← Salir del modo cocina
                 </button>
                 <h1>
-                    {r.emoji ?? "🍲"} {r.title}
+                    {r.image ? (
+                        <span className="cooking-thumb">
+                            <img src={r.image} alt="" />
+                        </span>
+                    ) : (
+                        <span aria-hidden>{r.emoji ?? "🍲"} </span>
+                    )}
+                    {r.title}
                 </h1>
                 <div className="serving-stepper">
                     <button className="btn ghost sm" onClick={() => setServings((s) => Math.max(1, s - 1))}>

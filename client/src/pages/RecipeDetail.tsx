@@ -96,7 +96,13 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                 ← Volver a recetas
             </button>
             <div className="detail-head">
-                <div className="detail-emoji">{r.emoji ?? "🍲"}</div>
+                <div className="detail-photo">
+                    {r.image ? (
+                        <img src={r.image} alt={r.title} />
+                    ) : (
+                        <span className="detail-emoji">{r.emoji ?? "🍲"}</span>
+                    )}
+                </div>
                 <div className="detail-title">
                     <h1>{r.title}</h1>
                     <div className="detail-meta">

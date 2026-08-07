@@ -43,6 +43,7 @@ export default function WeeklyPlan() {
     const slots = plan.data?.plan?.slots ?? [];
     const slotByKey = new Map(slots.map((s) => [`${s.day}|${s.meal}`, s]));
     const recipeNames = new Map((state?.recipes ?? []).map((r) => [r.id, r.title]));
+    const recipeById = new Map((state?.recipes ?? []).map((r) => [r.id, r]));
 
     const dateForDay = (day: Day) => {
         const offset = DAYS.indexOf(day);
@@ -147,6 +148,15 @@ export default function WeeklyPlan() {
                                                     className="link-btn"
                                                     onClick={() => navigate(`recipes/${slot.recipeId}`)}
                                                 >
+                                                    {recipeById.get(slot.recipeId)?.image ? (
+                                                        <span className="mini-thumb">
+                                                            <img
+                                                                src={recipeById.get(slot.recipeId)?.image}
+                                                                alt=""
+                                                                loading="lazy"
+                                                            />
+                                                        </span>
+                                                    ) : null}
                                                     {recipeNames.get(slot.recipeId) ?? "Receta"}
                                                 </button>
                                                 <span className="muted">×{slot.servings}</span>

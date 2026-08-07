@@ -117,7 +117,7 @@ Fases ordenadas por impacto/esfuerzo. Cada ítem incluye el estado actual, qué 
 ## Fase 5 — Presentación de recetas
 
 ### 5.1 Vista de recetas más llamativa con fotos reales
-- **Estado actual**: todas las recetas se muestran solo con un emoji en un recuadro de color: `RecipeCard.tsx:22` (`.recipe-thumb`, 62px, CSS `index.css:482`), `RecipeDetail.tsx:96` (`.detail-emoji`, 52px), `CookingMode.tsx:106` y `Dashboard.tsx:99`. El campo `Recipe.image` ya existe en `types.ts:112` (server + espejo cliente), pero solo lo rellenan las importaciones de TheMealDB (`server/src/services/themealdb.ts:149`); ninguna receta local de `server/data/recipes.json` tiene `image`, así que las tarjetas nunca muestran fotos.
+- **Estado actual**: ✅ completo. Las 56 recetas locales de `server/data/recipes.json` y `server/data/db.json` tienen `image` con URLs de Openverse (CC por `/v1/images/<uuid>/thumb/`, proxied por Openverse, verificadas con HEAD 200). `RecipeCard` muestra la foto en `.recipe-thumb` con fallback a emoji (`RecipeCard.tsx:22`); el detalle muestra la foto en `.detail-photo` (`RecipeDetail.tsx:99`), el modo cocina en `.cooking-thumb` (`CookingMode.tsx:105`), y el plan semanal / dashboard en `.mini-thumb` (`WeeklyPlan.tsx:150`, `Dashboard.tsx:104`).
 - **Cambio**:
   - Poblar `image` en las recetas locales con fotos reales de la comida (p. ej. URLs de fuentes con licencia libre como TheMealDB/Unsplash/Openverse añadidas a `recipes.json`, o búsqueda por título).
   - Rediseñar `RecipeCard` con foto destacada (imagen de fondo/portada con título encima o foto en la tarjeta), manteniendo el emoji como fallback si no hay imagen.

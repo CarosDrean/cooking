@@ -101,7 +101,14 @@ export default function Dashboard() {
                             {(makeable.data ?? []).slice(0, 3).map(({ recipe, missingCount }) => (
                                 <li key={recipe.id}>
                                     <button className="link-btn" onClick={() => navigate(`recipes/${recipe.id}`)}>
-                                        {recipe.emoji} {recipe.title}
+                                        {recipe.image ? (
+                                            <span className="mini-thumb">
+                                                <img src={recipe.image} alt="" loading="lazy" />
+                                            </span>
+                                        ) : (
+                                            <span className="mini-thumb emoji">{recipe.emoji ?? "🍲"}</span>
+                                        )}
+                                        {recipe.title}
                                     </button>
                                     <span className="muted">
                                         {missingCount === 0 ? "listo" : `faltan ${missingCount}`}
