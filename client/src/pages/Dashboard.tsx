@@ -148,7 +148,7 @@ export default function Dashboard() {
                     <h2>Recomendaciones para ti</h2>
                     <span className="muted">Según tus gustos, dieta y despensa</span>
                 </div>
-                <div className="card-list">
+                <div className="recipe-grid">
                     {(recommendations.data ?? []).map((rec) => (
                         <RecipeCard
                             key={rec.recipe.id}
