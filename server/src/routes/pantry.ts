@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
-import type { PantryItem } from "../types.js";
+import { findCatalogIngredient, inferCategory } from "../services/ingredients.js";
+import type { IngredientCategory, PantryItem } from "../types.js";
 
 export const pantryRouter = Router();
 
@@ -9,6 +10,51 @@ function daysUntil(expiry: string | undefined): number | null {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return Math.round((Date.parse(expiry) - today.getTime()) / 86400000);
+}
+
+function normalize(value: string): string {
+    return value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+}
+
+const UNIT_SINGULAR_ALIASES: Record<string, string> = {
+    unidad: "unidades",
+    gramo: "gramos",
+    litro: "litros",
+    mililitro: "mililitros",
+    kilogramo: "kilogramos",
+    cucharada: "cucharadas",
+    cucharadita: "cucharaditas",
+    puñado: "puñados",
+    tallo: "tallos",
+    hoja: "hojas",
+    rebanada: "rebanadas",
+    diente: "dientes",
+    paquete: "paquetes",
+    lata: "latas",
+};
+
+/** Canonical unit: singular forms are treated as their plural ("unidad" ≡ "unidades"). */
+function normalizeUnit(unit: string): string {
+    const n = normalize(unit);
+    if (!n) return n;
+    return UNIT_SINGULAR_ALIASES[n] ?? n;
+}
+
+function round(n: number): number {
+    return Math.round(n * 1000) / 1000;
+}
+
+/** Merge key: same normalized name + same unit (inconsistent units never sum). */
+function sameItem(nameA: string, unitA: string, nameB: string, unitB: string): boolean {
+    return normalize(nameA) === normalize(nameB) && normalizeUnit(unitA) === normalizeUnit(unitB);
+}
+
+function categoryFor(name: string, catalogCategory?: IngredientCategory): IngredientCategory | undefined {
+    return catalogCategory ?? inferCategory(name);
 }
 
 pantryRouter.get("/", (_req, res) => {
@@ -29,18 +75,34 @@ pantryRouter.get("/expiring", (req, res) => {
 
 pantryRouter.post("/", (req, res) => {
     const body = req.body as Partial<PantryItem>;
-    if (!body.ingredientName?.trim()) {
+    const name = body.ingredientName?.trim();
+    if (!name) {
         res.status(400).json({ error: "El nombre del ingrediente es obligatorio" });
         return;
     }
+    const catalog = findCatalogIngredient(name);
+    const unit = (body.unit?.trim() || catalog?.defaultUnit || "unidades").toLowerCase();
+    const quantity = Math.max(0, body.quantity ?? 1);
     const state = getState();
+
+    const existing = state.pantry.find((i) => sameItem(i.ingredientName, i.unit, name, unit));
+    if (existing) {
+        existing.quantity = round(existing.quantity + quantity);
+        existing.expiryDate = body.expiryDate || existing.expiryDate;
+        existing.category = existing.category ?? categoryFor(name, catalog?.category);
+        saveState();
+        res.status(200).json(existing);
+        return;
+    }
+
     const item: PantryItem = {
         id: crypto.randomUUID(),
-        ingredientName: body.ingredientName.trim(),
-        quantity: Math.max(0, body.quantity ?? 1),
-        unit: body.unit || "unidades",
+        ingredientName: name,
+        quantity,
+        unit,
         expiryDate: body.expiryDate || undefined,
         dateAdded: new Date().toISOString(),
+        category: categoryFor(name, catalog?.category),
     };
     state.pantry.push(item);
     saveState();
@@ -55,12 +117,30 @@ pantryRouter.put("/:id", (req, res) => {
         return;
     }
     const body = req.body as Partial<PantryItem>;
+    const current = state.pantry[index];
+    const name = body.ingredientName?.trim() || current.ingredientName;
+    const unit = (body.unit?.trim() || current.unit).toLowerCase();
+    const quantity = body.quantity != null ? Math.max(0, body.quantity) : current.quantity;
+    const catalog = findCatalogIngredient(name);
+
+    // If the edited item collides with another one (same name + unit), merge into it.
+    const other = state.pantry.find((i, idx) => idx !== index && sameItem(i.ingredientName, i.unit, name, unit));
+    if (other) {
+        other.quantity = round(other.quantity + quantity);
+        other.category = other.category ?? categoryFor(name, catalog?.category);
+        state.pantry.splice(index, 1);
+        saveState();
+        res.json(other);
+        return;
+    }
+
     state.pantry[index] = {
-        ...state.pantry[index],
-        ingredientName: body.ingredientName?.trim() || state.pantry[index].ingredientName,
-        quantity: body.quantity != null ? Math.max(0, body.quantity) : state.pantry[index].quantity,
-        unit: body.unit || state.pantry[index].unit,
-        expiryDate: body.expiryDate !== undefined ? body.expiryDate || undefined : state.pantry[index].expiryDate,
+        ...current,
+        ingredientName: name,
+        quantity,
+        unit,
+        expiryDate: body.expiryDate !== undefined ? body.expiryDate || undefined : current.expiryDate,
+        category: body.category ?? categoryFor(name, catalog?.category) ?? current.category,
     };
     saveState();
     res.json(state.pantry[index]);

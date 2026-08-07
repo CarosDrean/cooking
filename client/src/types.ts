@@ -84,6 +84,14 @@ export interface RecipeIngredient {
     category: IngredientCategory;
 }
 
+/** Entry of the ingredient catalog: canonical name, category and allowed/default units. */
+export interface CatalogIngredient {
+    name: string;
+    category: IngredientCategory;
+    defaultUnit: string;
+    units: string[];
+}
+
 export interface RecipeStep {
     text: string;
     tip?: string;
@@ -128,6 +136,8 @@ export interface PantryItem {
     unit: string;
     expiryDate?: string;
     dateAdded: string;
+    /** Category from the ingredient catalog (optional: legacy/custom items). */
+    category?: IngredientCategory;
 }
 
 export interface MealSlot {

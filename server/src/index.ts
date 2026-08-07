@@ -1,6 +1,7 @@
 import express from "express";
 import { getState } from "./db.js";
 import { historyRouter } from "./routes/history.js";
+import { ingredientsRouter } from "./routes/ingredients.js";
 import { pantryRouter } from "./routes/pantry.js";
 import { planRouter } from "./routes/plan.js";
 import { profilesRouter } from "./routes/profiles.js";
@@ -32,6 +33,7 @@ app.get("/api/state", (_req, res) => {
 app.use("/api/profiles", profilesRouter);
 app.use("/api/recipes", recipesRouter);
 app.use("/api/pantry", pantryRouter);
+app.use("/api/ingredients", ingredientsRouter);
 app.use("/api/plan", planRouter);
 app.use("/api/history", historyRouter);
 app.use("/api/shopping", shoppingRouter);

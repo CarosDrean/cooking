@@ -1177,6 +1177,15 @@ code {
     min-width: 180px;
 }
 
+.pantry-form .input-unit {
+    width: 140px;
+}
+
+.pantry-hint {
+    margin: 6px 2px 14px;
+    font-size: 0.85rem;
+}
+
 .pantry-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

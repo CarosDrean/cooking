@@ -5883,11 +5883,36 @@
   ],
   "pantry": [
     {
-      "id": "3332e9a2-7e3b-4e0c-9102-7754b916c830",
+      "id": "d0f9a490-6ce0-4b93-9b56-b772eacf9c54",
+      "ingredientName": "aceite vegetal",
+      "quantity": 3,
+      "unit": "l",
+      "dateAdded": "2026-08-07T02:31:21.001Z",
+      "category": "despensa"
+    },
+    {
+      "id": "4aea2f57-4c4a-45dd-a166-e7e2e2bf8dc4",
       "ingredientName": "aceite",
-      "quantity": 1,
-      "unit": "unidad",
-      "dateAdded": "2026-08-07T02:16:03.540Z"
+      "quantity": 2,
+      "unit": "unidades",
+      "dateAdded": "2026-08-07T02:33:26.114Z",
+      "category": "despensa"
+    },
+    {
+      "id": "0ef1aebf-5823-4d25-a34f-caa636c7b6af",
+      "ingredientName": "huevo",
+      "quantity": 5,
+      "unit": "unidades",
+      "dateAdded": "2026-08-07T02:33:48.682Z",
+      "category": "proteinas"
+    },
+    {
+      "id": "a4caad0e-2dfc-43b1-b8f7-3f1438e1007e",
+      "ingredientName": "arroz",
+      "quantity": 5,
+      "unit": "kg",
+      "dateAdded": "2026-08-07T02:34:07.207Z",
+      "category": "granos"
     }
   ],
   "weeklyPlan": {

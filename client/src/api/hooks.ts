@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type {
     AppState,
+    CatalogIngredient,
     Day,
     Location,
     MealLogEntry,
@@ -192,6 +193,14 @@ export function useThemealdbImport() {
 }
 
 /* ---------- Pantry ---------- */
+export function useIngredientCatalog() {
+    return useQuery({
+        queryKey: ["ingredients"],
+        queryFn: () => api.get<CatalogIngredient[]>("/ingredients"),
+        staleTime: 60_000,
+    });
+}
+
 export function usePantry() {
     const { data } = useAppState();
     return useQuery({
