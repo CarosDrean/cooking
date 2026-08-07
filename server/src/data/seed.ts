@@ -3,218 +3,53 @@ import { fileURLToPath } from "node:url";
 import type { AppState, Recipe } from "../types.js";
 
 const recipesFile = fileURLToPath(new URL("../../data/recipes.json", import.meta.url));
+const seedFile = fileURLToPath(new URL("../../data/seed.json", import.meta.url));
 
 export const seedRecipes: Recipe[] = JSON.parse(readFileSync(recipesFile, "utf8"));
 
+interface SeedData {
+    profiles: AppState["profiles"];
+    activeProfileId: string;
+    pantry: AppState["pantry"];
+    weeklyPlan: AppState["weeklyPlan"];
+    history: AppState["history"];
+    shoppingList: AppState["shoppingList"];
+    location: AppState["location"];
+}
+
+/** Resolves `{{token}}` placeholders for relative dates so seed.json stays static. */
+function resolveDates(value: unknown, resolve: (token: string) => string): unknown {
+    if (typeof value === "string") {
+        const match = value.match(/^\{\{([^}]+)\}\}$/);
+        return match ? resolve(match[1]) : value;
+    }
+    if (Array.isArray(value)) return value.map((v) => resolveDates(v, resolve));
+    if (value && typeof value === "object") {
+        return Object.fromEntries(
+            Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, resolveDates(v, resolve)]),
+        );
+    }
+    return value;
+}
+
 export function seedState(): AppState {
+    const raw = JSON.parse(readFileSync(seedFile, "utf8")) as SeedData;
     const now = new Date();
     const today = toISODate(now);
     const weekStart = startOfWeek(now);
     const daysAgo = (n: number) => toISODate(new Date(Date.now() - n * 86400000));
 
+    const resolve = (token: string): string => {
+        if (token === "today") return today;
+        if (token === "weekStart") return weekStart;
+        const match = token.match(/^daysAgo\((\d+)\)$/);
+        if (match) return daysAgo(Number(match[1]));
+        return token;
+    };
+
     return {
-        profiles: [
-            {
-                id: "p1",
-                name: "Ana",
-                emoji: "👩",
-                dietPreferences: ["vegetariano"],
-                restrictions: [
-                    { name: "pimiento picante", level: "no" },
-                    { name: "leche", level: "no-principal" },
-                    { name: "leche evaporada", level: "no-principal" },
-                    { name: "leche deslactosada", level: "poco" },
-                    { name: "queso", level: "no" },
-                    { name: "queso fresco", level: "no" },
-                    { name: "queso feta", level: "no" },
-                ],
-                householdSize: 2,
-                mealsPerDay: ["desayuno", "almuerzo", "cena"],
-                favoriteRecipeIds: ["r4", "r1"],
-                ratingByRecipe: { r2: 4, r3: 5, r4: 5, r6: 4 },
-            },
-            {
-                id: "p2",
-                name: "Marco",
-                emoji: "👨",
-                dietPreferences: ["sin-gluten", "alta-proteina"],
-                restrictions: [
-                    { name: "hongos", level: "no" },
-                    { name: "champiñones", level: "no" },
-                ],
-                householdSize: 1,
-                mealsPerDay: ["almuerzo", "cena"],
-                favoriteRecipeIds: ["r9"],
-                ratingByRecipe: { r13: 5, r10: 4, r9: 4 },
-            },
-        ],
-        activeProfileId: "p1",
+        ...(resolveDates(raw, resolve) as SeedData),
         recipes: seedRecipes,
-        pantry: [
-            {
-                id: "pn1",
-                ingredientName: "huevo",
-                quantity: 12,
-                unit: "unidades",
-                expiryDate: daysAgo(5),
-                dateAdded: today,
-            },
-            {
-                id: "pn2",
-                ingredientName: "espinaca",
-                quantity: 200,
-                unit: "g",
-                expiryDate: daysAgo(1),
-                dateAdded: today,
-            },
-            {
-                id: "pn3",
-                ingredientName: "tomate",
-                quantity: 5,
-                unit: "unidades",
-                expiryDate: daysAgo(4),
-                dateAdded: today,
-            },
-            { id: "pn4", ingredientName: "cebolla", quantity: 4, unit: "unidades", dateAdded: today },
-            { id: "pn5", ingredientName: "ajo", quantity: 6, unit: "dientes", dateAdded: today },
-            { id: "pn6", ingredientName: "arroz", quantity: 500, unit: "g", dateAdded: today },
-            { id: "pn7", ingredientName: "garbanzos cocidos", quantity: 400, unit: "g", dateAdded: today },
-            { id: "pn8", ingredientName: "quinoa", quantity: 300, unit: "g", dateAdded: today },
-            { id: "pn9", ingredientName: "lentejas rojas", quantity: 400, unit: "g", dateAdded: today },
-            { id: "pn10", ingredientName: "leche de coco", quantity: 400, unit: "ml", dateAdded: today },
-            {
-                id: "pn11",
-                ingredientName: "pechuga de pollo",
-                quantity: 600,
-                unit: "g",
-                expiryDate: daysAgo(2),
-                dateAdded: today,
-            },
-            {
-                id: "pn12",
-                ingredientName: "salmón",
-                quantity: 300,
-                unit: "g",
-                expiryDate: daysAgo(3),
-                dateAdded: today,
-            },
-            { id: "pn13", ingredientName: "tofu firme", quantity: 300, unit: "g", dateAdded: today },
-            { id: "pn14", ingredientName: "aguacate", quantity: 2, unit: "unidades", dateAdded: today },
-            { id: "pn15", ingredientName: "limón", quantity: 4, unit: "unidades", dateAdded: today },
-            { id: "pn16", ingredientName: "aceite de oliva", quantity: 500, unit: "ml", dateAdded: today },
-            { id: "pn17", ingredientName: "mantequilla de maní", quantity: 250, unit: "g", dateAdded: today },
-            { id: "pn18", ingredientName: "avena", quantity: 400, unit: "g", dateAdded: today },
-            { id: "pn19", ingredientName: "frijoles negros cocidos", quantity: 400, unit: "g", dateAdded: today },
-            {
-                id: "pn20",
-                ingredientName: "queso feta",
-                quantity: 200,
-                unit: "g",
-                expiryDate: daysAgo(3),
-                dateAdded: today,
-            },
-            {
-                id: "pn21",
-                ingredientName: "camarón",
-                quantity: 300,
-                unit: "g",
-                expiryDate: daysAgo(1),
-                dateAdded: today,
-            },
-            { id: "pn22", ingredientName: "salsa de soja", quantity: 250, unit: "ml", dateAdded: today },
-            { id: "pn23", ingredientName: "brócoli", quantity: 300, unit: "g", dateAdded: today },
-            { id: "pn24", ingredientName: "espaguetis", quantity: 400, unit: "g", dateAdded: today },
-            { id: "pn25", ingredientName: "arroz", quantity: 300, unit: "g", dateAdded: today },
-            { id: "pn26", ingredientName: "sal", quantity: 1000, unit: "g", dateAdded: today },
-            { id: "pn27", ingredientName: "pimienta negra", quantity: 100, unit: "g", dateAdded: today },
-            { id: "pn28", ingredientName: "comino", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn29", ingredientName: "curry en polvo", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn30", ingredientName: "cúrcuma", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn31", ingredientName: "orégano", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn32", ingredientName: "pimentón dulce", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn33", ingredientName: "tomillo seco", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn34", ingredientName: "romero seco", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn35", ingredientName: "maicena", quantity: 200, unit: "g", dateAdded: today },
-            { id: "pn36", ingredientName: "aceite de sésamo", quantity: 250, unit: "ml", dateAdded: today },
-            { id: "pn37", ingredientName: "caldo de pollo", quantity: 1000, unit: "ml", dateAdded: today },
-            { id: "pn38", ingredientName: "tomate triturado", quantity: 800, unit: "g", dateAdded: today },
-            { id: "pn39", ingredientName: "tortillas de maíz", quantity: 12, unit: "unidades", dateAdded: today },
-            {
-                id: "pn40",
-                ingredientName: "tortillas de harina grandes",
-                quantity: 4,
-                unit: "unidades",
-                dateAdded: today,
-            },
-            { id: "pn41", ingredientName: "granola", quantity: 300, unit: "g", dateAdded: today },
-            { id: "pn42", ingredientName: "leche de almendras", quantity: 500, unit: "ml", dateAdded: today },
-            { id: "pn43", ingredientName: "pepino", quantity: 2, unit: "unidades", dateAdded: today },
-            { id: "pn44", ingredientName: "cebolla morada", quantity: 2, unit: "unidades", dateAdded: today },
-            { id: "pn45", ingredientName: "perejil fresco", quantity: 1, unit: "puñados", dateAdded: today },
-            { id: "pn46", ingredientName: "mango congelado", quantity: 300, unit: "g", dateAdded: today },
-            { id: "pn47", ingredientName: "plátano", quantity: 4, unit: "unidades", dateAdded: today },
-            { id: "pn48", ingredientName: "coco rallado", quantity: 100, unit: "g", dateAdded: today },
-            { id: "pn49", ingredientName: "semillas de chía", quantity: 50, unit: "g", dateAdded: today },
-            { id: "pn50", ingredientName: "papa", quantity: 1000, unit: "g", dateAdded: today },
-            { id: "pn51", ingredientName: "cilantro fresco", quantity: 1, unit: "puñados", dateAdded: today },
-        ],
-        weeklyPlan: {
-            id: "w1",
-            weekStart,
-            slots: [
-                { id: "s1", day: "lunes", meal: "almuerzo", recipeId: "r1", servings: 2 },
-                { id: "s2", day: "lunes", meal: "cena", recipeId: "r2", servings: 2 },
-                { id: "s3", day: "martes", meal: "desayuno", recipeId: "r6", servings: 1 },
-                { id: "s4", day: "martes", meal: "cena", recipeId: "r4", servings: 2 },
-                { id: "s5", day: "miercoles", meal: "almuerzo", recipeId: "r3", servings: 2 },
-                { id: "s6", day: "jueves", meal: "cena", recipeId: "r13", servings: 2 },
-                { id: "s7", day: "viernes", meal: "almuerzo", recipeId: "r9", servings: 2 },
-                { id: "s8", day: "sabado", meal: "cena", recipeId: "r12", servings: 2 },
-            ],
-        },
-        history: [
-            {
-                id: "h1",
-                profileId: "p1",
-                recipeId: "r2",
-                date: daysAgo(2),
-                meal: "cena",
-                servings: 2,
-                rating: 4,
-                source: "plan",
-            },
-            {
-                id: "h2",
-                profileId: "p1",
-                recipeId: "r5",
-                date: daysAgo(5),
-                meal: "almuerzo",
-                servings: 2,
-                rating: 5,
-                source: "manual",
-            },
-            {
-                id: "h3",
-                profileId: "p1",
-                recipeId: "r3",
-                date: daysAgo(9),
-                meal: "cena",
-                servings: 2,
-                source: "manual",
-            },
-            {
-                id: "h4",
-                profileId: "p1",
-                recipeId: "r6",
-                date: daysAgo(3),
-                meal: "desayuno",
-                servings: 1,
-                rating: 4,
-                source: "plan",
-            },
-        ],
-        shoppingList: null,
-        location: { country: "Perú", city: "Ica" },
     };
 }
 

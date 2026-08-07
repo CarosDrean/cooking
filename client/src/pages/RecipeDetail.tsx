@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     useActiveProfile,
     useAddHistory,
@@ -36,6 +36,10 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
     const [showPlanPicker, setShowPlanPicker] = useState(false);
     const [selectedDay, setSelectedDay] = useState<Day>("lunes");
     const [selectedMeal, setSelectedMeal] = useState<MealType>("almuerzo");
+
+    useEffect(() => {
+        if (profile) setServings(profile.householdSize);
+    }, [recipeId, profile?.id]);
 
     if (!recipe.data || !profile) return <div className="page">Cargando receta…</div>;
 

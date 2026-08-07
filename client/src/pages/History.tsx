@@ -1,5 +1,6 @@
 import { useActiveProfile, useAppState, useDeleteHistoryEntry, useHistory } from "../api/hooks";
 import Stars from "../components/Stars";
+import { useConfirm } from "../lib/confirm";
 import { dateLabel } from "../lib/format";
 import { navigate } from "../lib/router";
 import { MEAL_LABELS } from "../types";
@@ -8,6 +9,7 @@ export default function HistoryPage() {
     const profile = useActiveProfile();
     const history = useHistory(profile?.id);
     const remove = useDeleteHistoryEntry();
+    const confirm = useConfirm();
     const { data: state } = useAppState();
     const names = new Map((state?.recipes ?? []).map((r) => [r.id, r.title]));
 
@@ -67,8 +69,17 @@ export default function HistoryPage() {
                             <button
                                 className="icon-btn danger"
                                 title="Eliminar"
-                                onClick={() => {
-                                    if (window.confirm("¿Eliminar este registro?")) remove.mutate(e.id);
+                                onClick={async () => {
+                                    if (
+                                        await confirm({
+                                            title: "Eliminar registro",
+                                            message: "¿Eliminar este registro del historial?",
+                                            confirmLabel: "Eliminar",
+                                            danger: true,
+                                        })
+                                    ) {
+                                        remove.mutate(e.id);
+                                    }
                                 }}
                             >
                                 ✕

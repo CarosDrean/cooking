@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useRecipe } from "../api/hooks";
+import { useActiveProfile, useRecipe } from "../api/hooks";
 import { fmtQty } from "../lib/format";
 import { navigate } from "../lib/router";
 
@@ -11,6 +11,7 @@ function formatTime(totalSeconds: number): string {
 
 export default function CookingMode({ recipeId }: { recipeId?: string }) {
     const recipe = useRecipe(recipeId);
+    const profile = useActiveProfile();
     const [activeStep, setActiveStep] = useState(0);
     const [servings, setServings] = useState(1);
     const [timerSeconds, setTimerSeconds] = useState<number | null>(null);
@@ -44,8 +45,8 @@ export default function CookingMode({ recipeId }: { recipeId?: string }) {
     useEffect(() => {
         setActiveStep(0);
         setCheckedSteps(new Set());
-        setServings(1);
-    }, [recipeId]);
+        setServings(profile?.householdSize ?? 1);
+    }, [recipeId, profile?.id]);
 
     if (!recipe.data) {
         return (

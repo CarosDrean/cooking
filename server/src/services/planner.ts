@@ -13,6 +13,39 @@ export interface PickContext {
     profileId: string;
 }
 
+const MEAL_DEADLINES: Record<MealType, number> = {
+    desayuno: 11,
+    almuerzo: 15,
+    cena: 21,
+};
+
+function toISODate(d: Date): string {
+    return d.toISOString().slice(0, 10);
+}
+
+export function currentWeekStart(): string {
+    const d = new Date();
+    const day = d.getDay();
+    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+    d.setDate(diff);
+    return toISODate(d);
+}
+
+function dateForDay(weekStart: string, day: Day): string {
+    const d = new Date(`${weekStart}T12:00:00`);
+    d.setDate(d.getDate() + DAYS.indexOf(day));
+    return toISODate(d);
+}
+
+function isPastSlot(weekStart: string, day: Day, meal: MealType): boolean {
+    if (weekStart !== currentWeekStart()) return false;
+    const today = toISODate(new Date());
+    const date = dateForDay(weekStart, day);
+    if (date < today) return true;
+    if (date > today) return false;
+    return new Date().getHours() >= MEAL_DEADLINES[meal];
+}
+
 function scoreRecipe(state: AppState, recipe: Recipe, ctx: PickContext): number {
     let score = 0;
 
@@ -101,6 +134,7 @@ export function generateWeekPlan(state: AppState, weekStart: string): WeeklyPlan
 
     for (const day of DAYS) {
         for (const meal of meals) {
+            if (isPastSlot(weekStart, day, meal)) continue;
             const chosen = pickRecipe(state, { weekStart, meal, usedIds, profileId: state.activeProfileId });
             if (!chosen) continue;
             usedIds.add(chosen.id);

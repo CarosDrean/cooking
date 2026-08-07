@@ -214,6 +214,7 @@ export function useAddPantry() {
         mutationFn: (body: Partial<PantryItem>) => api.post<PantryItem>("/pantry", body),
         onSuccess: () => {
             invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["pantry"] });
             qc.invalidateQueries({ queryKey: ["expiring"] });
         },
     });
@@ -226,6 +227,7 @@ export function useUpdatePantry() {
             api.put<PantryItem>(`/pantry/${id}`, body),
         onSuccess: () => {
             invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["pantry"] });
             qc.invalidateQueries({ queryKey: ["expiring"] });
         },
     });
@@ -235,9 +237,24 @@ export function useDeletePantry() {
     const qc = useQueryClient();
     return useMutation({
         mutationFn: (id: string) => api.del<{ ok: boolean }>(`/pantry/${id}`),
+        onMutate: async (id: string) => {
+            await qc.cancelQueries({ queryKey: ["pantry"] });
+            const prev = qc.getQueryData<PantryItem[]>(["pantry"]);
+            if (prev) {
+                qc.setQueryData<PantryItem[]>(
+                    ["pantry"],
+                    prev.filter((i) => i.id !== id),
+                );
+            }
+            return { prev };
+        },
         onSuccess: () => {
             invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["pantry"] });
             qc.invalidateQueries({ queryKey: ["expiring"] });
+        },
+        onError: (_err, _id, ctx) => {
+            if (ctx?.prev) qc.setQueryData<PantryItem[]>(["pantry"], ctx.prev);
         },
     });
 }

@@ -1,18 +1,10 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
-import { generateWeekPlan, regenerateSlot } from "../services/planner.js";
+import { currentWeekStart, generateWeekPlan, regenerateSlot } from "../services/planner.js";
 import type { Day, MealSlot, MealType, WeeklyPlan } from "../types.js";
 import { DAYS, MEALS } from "../types.js";
 
 export const planRouter = Router();
-
-function currentWeekStart(): string {
-    const d = new Date();
-    const day = d.getDay();
-    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
-    d.setDate(diff);
-    return d.toISOString().slice(0, 10);
-}
 
 planRouter.get("/", (req, res) => {
     const state = getState();

@@ -1,4 +1,5 @@
 import { useClearShopping, useGenerateShopping, useShopping, useToggleShoppingItem } from "../api/hooks";
+import { useConfirm } from "../lib/confirm";
 import { fmtQty } from "../lib/format";
 import { useToast } from "../lib/toast";
 
@@ -30,6 +31,7 @@ export default function ShoppingPage() {
     const toggle = useToggleShoppingItem();
     const clear = useClearShopping();
     const toast = useToast();
+    const confirm = useConfirm();
 
     const list = shopping.data;
     const items = list?.items ?? [];
@@ -53,7 +55,7 @@ export default function ShoppingPage() {
     const onGenerate = () => {
         generate.mutate(undefined, {
             onSuccess: () => toast("Lista generada a partir del plan y la despensa ✓"),
-            onError: (err) => toast(`Error: ${(err as Error).message}`),
+            onError: (err) => toast(`Error: ${(err as Error).message}`, "error"),
         });
     };
 
@@ -91,8 +93,15 @@ export default function ShoppingPage() {
                     </button>
                     <button
                         className="btn ghost"
-                        onClick={() => {
-                            if (window.confirm("¿Borrar la lista?")) {
+                        onClick={async () => {
+                            if (
+                                await confirm({
+                                    title: "Borrar lista",
+                                    message: "¿Borrar la lista de la compra?",
+                                    confirmLabel: "Borrar",
+                                    danger: true,
+                                })
+                            ) {
                                 clear.mutate(undefined, { onSuccess: () => toast("Lista borrada") });
                             }
                         }}

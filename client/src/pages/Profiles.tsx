@@ -7,6 +7,7 @@ import {
     useDeleteProfile,
     useUpdateProfile,
 } from "../api/hooks";
+import { useConfirm } from "../lib/confirm";
 import { useToast } from "../lib/toast";
 import { DIETS, type IngredientRestriction, MEAL_LABELS, MEALS, type MealType } from "../types";
 
@@ -94,6 +95,7 @@ export default function ProfilesPage() {
     const remove = useDeleteProfile();
     const activate = useActivateProfile();
     const toast = useToast();
+    const confirm = useConfirm();
 
     const [name, setName] = useState("");
     const [diets, setDiets] = useState<string[]>([]);
@@ -267,8 +269,17 @@ export default function ProfilesPage() {
                                         <button
                                             className="btn ghost sm danger-text"
                                             disabled={profiles.length <= 1}
-                                            onClick={() => {
-                                                if (window.confirm(`¿Eliminar a ${p.name}?`)) remove.mutate(p.id);
+                                            onClick={async () => {
+                                                if (
+                                                    await confirm({
+                                                        title: "Eliminar perfil",
+                                                        message: `¿Eliminar a ${p.name}? Se perderán sus datos.`,
+                                                        confirmLabel: "Eliminar",
+                                                        danger: true,
+                                                    })
+                                                ) {
+                                                    remove.mutate(p.id);
+                                                }
                                             }}
                                         >
                                             ✕

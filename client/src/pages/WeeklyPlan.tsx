@@ -11,6 +11,7 @@ import {
     useUpdateSlot,
 } from "../api/hooks";
 import RecipePicker from "../components/RecipePicker";
+import { useConfirm } from "../lib/confirm";
 import { addDays, shortDateLabel, startOfWeek } from "../lib/format";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
@@ -28,6 +29,7 @@ export default function WeeklyPlan() {
     const profile = useActiveProfile();
     const { data: state } = useAppState();
     const toast = useToast();
+    const confirm = useConfirm();
 
     const [picker, setPicker] = useState<{ day: Day; meal: MealType } | null>(null);
 
@@ -41,8 +43,8 @@ export default function WeeklyPlan() {
         return addDays(weekStart, offset);
     };
 
-    const onGenerate = () => {
-        if (window.confirm("¿Generar un plan completo para esta semana?")) {
+    const onGenerate = async () => {
+        if (await confirm({ message: "¿Generar un plan completo para esta semana?" })) {
             generate.mutate(weekStart, {
                 onSuccess: () => toast("Plan generado ✓"),
             });
@@ -154,8 +156,15 @@ export default function WeeklyPlan() {
                                                 <button
                                                     className="icon-btn danger"
                                                     title="Quitar"
-                                                    onClick={() => {
-                                                        if (window.confirm("¿Quitar esta receta del plan?")) {
+                                                    onClick={async () => {
+                                                        if (
+                                                            await confirm({
+                                                                title: "Quitar receta",
+                                                                message: "¿Quitar esta receta del plan?",
+                                                                confirmLabel: "Quitar",
+                                                                danger: true,
+                                                            })
+                                                        ) {
                                                             deleteSlot.mutate(slot.id);
                                                         }
                                                     }}

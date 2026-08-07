@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAddPantry, useDeletePantry, usePantry } from "../api/hooks";
+import { useConfirm } from "../lib/confirm";
 import { fmtQty, toISODate } from "../lib/format";
 import { useToast } from "../lib/toast";
 
@@ -10,6 +11,7 @@ export default function PantryPage() {
     const addItem = useAddPantry();
     const remove = useDeletePantry();
     const toast = useToast();
+    const confirm = useConfirm();
 
     const [name, setName] = useState("");
     const [qty, setQty] = useState("");
@@ -34,7 +36,7 @@ export default function PantryPage() {
                     setQty("");
                     setExpiry("");
                 },
-                onError: (err) => toast(`Error: ${(err as Error).message}`),
+                onError: (err) => toast(`Error: ${(err as Error).message}`, "error"),
             },
         );
     };
@@ -116,8 +118,20 @@ export default function PantryPage() {
                                 <button
                                     className="icon-btn danger"
                                     title="Eliminar"
-                                    onClick={() => {
-                                        if (window.confirm(`¿Quitar ${p.ingredientName}?`)) remove.mutate(p.id);
+                                    onClick={async () => {
+                                        if (
+                                            await confirm({
+                                                title: "Quitar ingrediente",
+                                                message: `¿Quitar ${p.ingredientName} de la despensa?`,
+                                                confirmLabel: "Quitar",
+                                                danger: true,
+                                            })
+                                        ) {
+                                            remove.mutate(p.id, {
+                                                onSuccess: () => toast(`Eliminado: ${p.ingredientName}`),
+                                                onError: (err) => toast(`Error: ${(err as Error).message}`, "error"),
+                                            });
+                                        }
                                     }}
                                 >
                                     ✕

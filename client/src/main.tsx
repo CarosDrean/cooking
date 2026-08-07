@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { ConfirmProvider } from "./lib/confirm";
 import { ToastProvider } from "./lib/toast";
 import "./index.css";
 
@@ -24,7 +25,9 @@ createRoot(rootEl).render(
     <StrictMode>
         <QueryClientProvider client={queryClient}>
             <ToastProvider>
-                <App />
+                <ConfirmProvider>
+                    <App />
+                </ConfirmProvider>
             </ToastProvider>
         </QueryClientProvider>
     </StrictMode>,
