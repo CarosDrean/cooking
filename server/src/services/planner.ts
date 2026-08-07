@@ -3,6 +3,7 @@ import { DAYS, DRINKS, MEALS } from "../types.js";
 import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays } from "./history.js";
 import { availability, currentSeason } from "./location.js";
+import { recipeForProfile, recipesForProfile } from "./recipeVariants.js";
 import { isMakeable, missingIngredients } from "./shoppingList.js";
 
 export interface PickContext {
@@ -75,7 +76,7 @@ function scoreRecipe(state: AppState, recipe: Recipe, ctx: PickContext): number 
     if (profile?.favoriteRecipeIds.includes(recipe.id)) score += 2.5;
 
     const cuisineUsed = [...ctx.usedIds]
-        .map((id) => state.recipes.find((r) => r.id === id))
+        .map((id) => recipeForProfile(state, ctx.profileId, id))
         .filter((r): r is Recipe => Boolean(r));
     const sameCuisine = cuisineUsed.filter((r) => r.cuisine === recipe.cuisine).length;
     score -= sameCuisine;
@@ -123,7 +124,7 @@ function pickRecipe(state: AppState, ctx: PickContext): Recipe | null {
     const profile = state.profiles.find((p) => p.id === ctx.profileId);
     if (!profile) return null;
 
-    const candidates = state.recipes.filter((r) => {
+    const candidates = recipesForProfile(state, ctx.profileId).filter((r) => {
         if (!r.suitableFor.includes(ctx.meal)) return false;
         if (!isDietCompatible(r, profile)) return false;
         if (isForbidden(r, profile)) return false;

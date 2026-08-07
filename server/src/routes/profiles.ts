@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
-import type { IngredientRestriction, Profile } from "../types.js";
+import { recipeForProfile } from "../services/recipeVariants.js";
+import type { IngredientRestriction, MealType, Profile, Recipe } from "../types.js";
+import { isProfileComplete } from "../types.js";
 
 export const profilesRouter = Router();
 
@@ -16,6 +18,24 @@ function cleanRestrictions(value: unknown): IngredientRestriction[] {
             name: trimmed,
             level: level === "poco" ? "poco" : level === "no-principal" ? "no-principal" : "no",
         });
+    }
+    return result;
+}
+
+const MEAL_KEYS: MealType[] = ["desayuno", "almuerzo", "cena"];
+
+function cleanUsualDishes(value: unknown): Record<MealType, string[]> {
+    const result: Record<MealType, string[]> = { desayuno: [], almuerzo: [], cena: [] };
+    if (typeof value !== "object" || value === null) return result;
+    for (const meal of MEAL_KEYS) {
+        const list = (value as Record<string, unknown>)[meal];
+        if (!Array.isArray(list)) continue;
+        const dishes = [
+            ...new Set(
+                list.filter((d): d is string => typeof d === "string" && d.trim().length > 0).map((d) => d.trim()),
+            ),
+        ];
+        result[meal] = dishes;
     }
     return result;
 }
@@ -38,18 +58,23 @@ profilesRouter.post("/", (req, res) => {
         return;
     }
     const state = getState();
+    const householdSize = body.householdSize == null ? 0 : Math.max(1, body.householdSize);
     const profile: Profile = {
         id: crypto.randomUUID(),
         name: body.name.trim(),
         emoji: body.emoji ?? "🙂",
         dietPreferences: body.dietPreferences ?? [],
         restrictions: cleanRestrictions(body.restrictions),
-        householdSize: Math.max(1, body.householdSize ?? 2),
+        householdSize,
         mealsPerDay: body.mealsPerDay?.length ? body.mealsPerDay : ["desayuno", "almuerzo", "cena"],
         favoriteRecipeIds: [],
         ratingByRecipe: {},
+        isComplete: isProfileComplete({ name: body.name.trim(), householdSize }),
+        recipeOverrides: {},
+        usualDishes: cleanUsualDishes(body.usualDishes),
     };
     state.profiles.push(profile);
+    if (profile.isComplete) state.activeProfileId = profile.id;
     saveState();
     res.status(201).json(profile);
 });
@@ -63,14 +88,18 @@ profilesRouter.put("/:id", (req, res) => {
     }
     const current = state.profiles[index];
     const body = req.body as Partial<Profile>;
+    const name = body.name?.trim() || current.name;
+    const householdSize = body.householdSize == null ? current.householdSize : Math.max(1, body.householdSize);
     state.profiles[index] = {
         ...current,
-        name: body.name?.trim() || current.name,
+        name,
         emoji: body.emoji ?? current.emoji,
         dietPreferences: body.dietPreferences ?? current.dietPreferences,
         restrictions: body.restrictions !== undefined ? cleanRestrictions(body.restrictions) : current.restrictions,
-        householdSize: Math.max(1, body.householdSize ?? current.householdSize),
+        householdSize,
         mealsPerDay: body.mealsPerDay?.length ? body.mealsPerDay : current.mealsPerDay,
+        isComplete: isProfileComplete({ name, householdSize }),
+        usualDishes: body.usualDishes !== undefined ? cleanUsualDishes(body.usualDishes) : current.usualDishes,
     };
     saveState();
     res.json(state.profiles[index]);
@@ -134,4 +163,53 @@ profilesRouter.post("/:id/rating", (req, res) => {
     }
     saveState();
     res.json(profile);
+});
+
+profilesRouter.put("/:id/recipe-overrides/:recipeId", (req, res) => {
+    const state = getState();
+    const profile = state.profiles.find((p) => p.id === req.params.id);
+    if (!profile) {
+        res.status(404).json({ error: "Perfil no encontrado" });
+        return;
+    }
+    const recipeId = req.params.recipeId;
+    const base = state.recipes.find((r) => r.id === recipeId);
+    if (!base) {
+        res.status(404).json({ error: "Receta no encontrada" });
+        return;
+    }
+    const body = req.body as Partial<Recipe>;
+    if (!body.title?.trim() || !Array.isArray(body.ingredients) || !Array.isArray(body.steps)) {
+        res.status(400).json({ error: "Faltan campos obligatorios (title, ingredients, steps)" });
+        return;
+    }
+    profile.recipeOverrides[recipeId] = {
+        ...base,
+        ...body,
+        id: base.id,
+        source: base.source,
+        title: body.title.trim(),
+        emoji: body.emoji || base.emoji,
+        diets: body.diets ?? base.diets,
+        suitableFor: body.suitableFor?.length ? body.suitableFor : base.suitableFor,
+        servings: Math.max(1, body.servings ?? base.servings),
+        prepMinutes: body.prepMinutes ?? base.prepMinutes,
+        cookMinutes: body.cookMinutes ?? base.cookMinutes,
+        nutrition: body.nutrition ?? base.nutrition,
+        tips: body.tips ?? base.tips,
+    };
+    saveState();
+    res.json(recipeForProfile(state, profile.id, recipeId));
+});
+
+profilesRouter.delete("/:id/recipe-overrides/:recipeId", (req, res) => {
+    const state = getState();
+    const profile = state.profiles.find((p) => p.id === req.params.id);
+    if (!profile) {
+        res.status(404).json({ error: "Perfil no encontrado" });
+        return;
+    }
+    delete profile.recipeOverrides[req.params.recipeId];
+    saveState();
+    res.json(recipeForProfile(state, profile.id, req.params.recipeId));
 });

@@ -1,4 +1,6 @@
 import { useCallback, useRef, useState } from "react";
+import type { MealType, Recipe } from "../types";
+import { MEALS } from "../types";
 
 interface SpeechRecognitionResultLike {
     0: { transcript: string };
@@ -284,6 +286,166 @@ export function parseSpokenIngredient(raw: string): ParsedSpokenIngredient {
 
 export function isSpeechSupported(): boolean {
     return typeof window !== "undefined" && Boolean(window.SpeechRecognition ?? window.webkitSpeechRecognition);
+}
+
+export interface SpokenMealHabit {
+    meal: MealType;
+    dishes: string[];
+}
+
+/** Detecta la comida a la que corresponde cada palabra (ancla del dictado). */
+function mealOfWord(word: string): MealType | null {
+    if (word.startsWith("desayun")) return "desayuno";
+    if (word.startsWith("almuerz") || word.startsWith("almorz")) return "almuerzo";
+    if (["comer", "comemos", "comen", "come", "comida", "comidas", "comio", "comieron"].includes(word))
+        return "almuerzo";
+    if (/^cen(?:a|ar|amos|aba|e|aste|o)?$/.test(word)) return "cena";
+    return null;
+}
+
+/** Palabras de relleno que se descartan al leer un plato habitual. */
+const DISH_STOP_WORDS = new Set([
+    "el",
+    "la",
+    "los",
+    "las",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "de",
+    "del",
+    "para",
+    "en",
+    "con",
+    "al",
+    "tomo",
+    "toma",
+    "bebo",
+    "bebemos",
+    "como",
+    "comemos",
+    "comer",
+    "usualmente",
+    "normalmente",
+    "siempre",
+    "tambien",
+    "solo",
+    "solamente",
+    "me",
+    "gusta",
+    "hacer",
+    "preparar",
+    "tomar",
+]);
+
+function cleanDishText(words: string[]): string[] {
+    const joined = words.join(" ");
+    const parts = joined.split(/\s+(?:y|o)\s+/);
+    const dishes: string[] = [];
+    for (let part of parts) {
+        part = part.trim();
+        let changed = true;
+        while (changed) {
+            changed = false;
+            for (const stop of DISH_STOP_WORDS) {
+                if (part === stop) {
+                    part = "";
+                    changed = true;
+                } else if (part.startsWith(`${stop} `)) {
+                    part = part.slice(stop.length + 1).trim();
+                    changed = true;
+                }
+            }
+        }
+        if (part.length >= 2) dishes.push(part);
+    }
+    return [...new Set(dishes)];
+}
+
+/**
+ * Parsea un dictado de hábitos como "desayuno jugo surtido, o avena,
+ * almuerzo estofado de lentejas" en pares comida → platos habituales.
+ * Conserva también las comidas sin platos ("solo desayuno y cena").
+ */
+export function parseSpokenMealHabits(text: string): SpokenMealHabit[] {
+    const words = normalize(text).split(/\s+/).filter(Boolean);
+    const segments: Array<{ meal: MealType; words: string[] }> = [];
+    let current: { meal: MealType; words: string[] } | null = null;
+    for (const word of words) {
+        const meal = mealOfWord(word);
+        if (meal) {
+            current = { meal, words: [] };
+            segments.push(current);
+        } else if (current) {
+            current.words.push(word);
+        }
+    }
+    const seen = new Set<MealType>();
+    const habits: SpokenMealHabit[] = [];
+    for (const segment of segments) {
+        if (seen.has(segment.meal)) continue;
+        seen.add(segment.meal);
+        habits.push({ meal: segment.meal, dishes: cleanDishText(segment.words) });
+    }
+    return habits;
+}
+
+export interface DishMatch {
+    recipe: Recipe;
+    score: number;
+    matchedMeals: MealType[];
+    matchedWords: string[];
+}
+
+/** Palabras demasiado genéricas para buscar coincidencias en recetas. */
+const DISH_SKIP_WORDS = new Set(["pollo", "carne", "pescado", "comida", "plato", "comer", "tener", "hacer"]);
+
+/**
+ * Puntúa el catálogo de recetas contra los platos habituales del perfil:
+ * pesa más el título, luego los ingredientes, luego la descripción; suma
+ * bonus si la receta es apta para la comida (desayuno/almuerzo/cena).
+ */
+export function suggestRecipesForUsualDishes(recipes: Recipe[], usualDishes: Record<MealType, string[]>): DishMatch[] {
+    const byMeal: Record<MealType, string[]> = { desayuno: [], almuerzo: [], cena: [] };
+    for (const meal of MEALS) {
+        for (const dish of usualDishes[meal] ?? []) {
+            const tokens = [
+                ...new Set(
+                    normalize(dish)
+                        .split(/\s+/)
+                        .filter((w) => w.length >= 3 && !DISH_SKIP_WORDS.has(w)),
+                ),
+            ];
+            byMeal[meal].push(...tokens);
+        }
+    }
+    const results: DishMatch[] = [];
+    for (const recipe of recipes) {
+        const title = normalize(recipe.title);
+        const body = normalize([recipe.description, ...recipe.ingredients.map((i) => i.name)].join(" "));
+        let score = 0;
+        const matchedWords = new Set<string>();
+        const matchedMeals = new Set<MealType>();
+        for (const meal of MEALS) {
+            for (const token of byMeal[meal]) {
+                if (title.includes(token)) {
+                    score += 4;
+                    matchedWords.add(token);
+                    matchedMeals.add(meal);
+                } else if (body.includes(token)) {
+                    score += 2;
+                    matchedWords.add(token);
+                    matchedMeals.add(meal);
+                }
+            }
+        }
+        if (score === 0) continue;
+        if (recipe.suitableFor.some((m) => matchedMeals.has(m))) score += 3;
+        results.push({ recipe, score, matchedMeals: [...matchedMeals], matchedWords: [...matchedWords] });
+    }
+    results.sort((a, b) => b.score - a.score);
+    return results.slice(0, 8);
 }
 
 export function useVoiceInput() {

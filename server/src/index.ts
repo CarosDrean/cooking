@@ -12,6 +12,7 @@ import { shoppingRouter } from "./routes/shopping.js";
 import { spendingRouter } from "./routes/spending.js";
 import { themealdbRouter } from "./routes/themealdb.js";
 import { tipsRouter } from "./routes/tips.js";
+import { recipesForProfile } from "./services/recipeVariants.js";
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT ?? "3001", 10);
@@ -28,7 +29,8 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.get("/api/state", (_req, res) => {
-    res.json(getState());
+    const state = getState();
+    res.json({ ...state, recipes: recipesForProfile(state, state.activeProfileId) });
 });
 
 app.use("/api/profiles", profilesRouter);

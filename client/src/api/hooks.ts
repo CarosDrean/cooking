@@ -92,6 +92,41 @@ export function useSetRating() {
     });
 }
 
+export function useSaveRecipeOverride() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: ({
+            profileId,
+            recipeId,
+            recipe,
+        }: {
+            profileId: string;
+            recipeId: string;
+            recipe: Partial<Recipe>;
+        }) => api.put<Recipe>(`/profiles/${profileId}/recipe-overrides/${recipeId}`, recipe),
+        onSuccess: (_data, vars) => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["recipes"] });
+            qc.invalidateQueries({ queryKey: ["recipe", vars.recipeId] });
+            qc.invalidateQueries({ queryKey: ["makeable"] });
+        },
+    });
+}
+
+export function useClearRecipeOverride() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: ({ profileId, recipeId }: { profileId: string; recipeId: string }) =>
+            api.del<Recipe>(`/profiles/${profileId}/recipe-overrides/${recipeId}`),
+        onSuccess: (_data, vars) => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["recipes"] });
+            qc.invalidateQueries({ queryKey: ["recipe", vars.recipeId] });
+            qc.invalidateQueries({ queryKey: ["makeable"] });
+        },
+    });
+}
+
 /* ---------- Recipes ---------- */
 export interface RecipeFilters {
     q?: string;
@@ -101,6 +136,8 @@ export interface RecipeFilters {
     makeable?: boolean;
     meal?: MealType;
     season?: Season;
+    /** Perfil a aplicar (por defecto el activo). `"all"` desactiva el filtro por perfil. */
+    profile?: string;
 }
 
 export function useRecipes(filters: RecipeFilters = {}) {
@@ -112,6 +149,7 @@ export function useRecipes(filters: RecipeFilters = {}) {
     if (filters.makeable) params.set("makeable", "true");
     if (filters.meal) params.set("meal", filters.meal);
     if (filters.season) params.set("season", filters.season);
+    if (filters.profile) params.set("profile", filters.profile);
     const qs = params.toString();
     return useQuery({
         queryKey: ["recipes", qs],
@@ -185,6 +223,18 @@ export function useThemealdbImport() {
     return useMutation({
         mutationFn: (mealId: string) =>
             api.post<{ recipe: Recipe; alreadyExists: boolean }>("/themealdb/import", { mealId }),
+        onSuccess: () => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["recipes"] });
+            qc.invalidateQueries({ queryKey: ["makeable"] });
+        },
+    });
+}
+
+export function useThemealdbAutoImport() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: () => api.post<{ imported: Recipe[]; count: number }>("/themealdb/auto-import"),
         onSuccess: () => {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["recipes"] });

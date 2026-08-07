@@ -3,6 +3,7 @@ import { SEASON_LABELS } from "../types.js";
 import { isDietCompatible, isForbidden, isProtagonist, normalize, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays, timesEaten } from "./history.js";
 import { availability, currentSeason, seasonFit } from "./location.js";
+import { recipesForProfile } from "./recipeVariants.js";
 import { isMakeable, missingIngredients } from "./shoppingList.js";
 
 export function recommendRecipes(state: AppState, limit = 10): Recommendation[] {
@@ -12,7 +13,7 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
 
     const results: Recommendation[] = [];
 
-    for (const recipe of state.recipes) {
+    for (const recipe of recipesForProfile(state, state.activeProfileId)) {
         if (!isDietCompatible(recipe, profile)) continue;
         if (isForbidden(recipe, profile)) continue;
 

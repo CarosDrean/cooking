@@ -1,5 +1,6 @@
 import type { AppState, IngredientCategory, Recipe, ShoppingItem, ShoppingList } from "../types.js";
 import { normalize } from "./diet.js";
+import { recipesForProfile } from "./recipeVariants.js";
 import { round, scaleRecipe } from "./scaling.js";
 
 interface UnitInfo {
@@ -101,7 +102,7 @@ interface Aggregated {
 /** Aggregate every slot of a weekly plan into ingredient needs (per name+unit group). */
 export function aggregatePlanNeeds(state: AppState, weekStart: string): Map<string, Aggregated> {
     const plan = state.weeklyPlan;
-    const byRecipe = new Map(state.recipes.map((r) => [r.id, r]));
+    const byRecipe = new Map(recipesForProfile(state, state.activeProfileId).map((r) => [r.id, r]));
     const agg = new Map<string, Aggregated>();
 
     if (!plan || plan.weekStart !== weekStart) return agg;

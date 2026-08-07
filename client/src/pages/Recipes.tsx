@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useMakeable, useRecipes } from "../api/hooks";
+import { useMakeable, useRecipes, useThemealdbAutoImport } from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
+import { useToast } from "../lib/toast";
 import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "../types";
 
 export default function Recipes() {
@@ -9,6 +10,9 @@ export default function Recipes() {
     const [makeableOnly, setMakeableOnly] = useState(false);
     const [meal, setMeal] = useState("");
     const [season, setSeason] = useState("");
+    const [allRecipes, setAllRecipes] = useState(false);
+    const autoImport = useThemealdbAutoImport();
+    const toast = useToast();
 
     const toggleDiet = (d: string) => setDiets((cur) => (cur.includes(d) ? cur.filter((x) => x !== d) : [...cur, d]));
 
@@ -18,6 +22,7 @@ export default function Recipes() {
         makeable: makeableOnly || undefined,
         meal: meal ? (meal as MealType) : undefined,
         season: season ? (season as Season) : undefined,
+        profile: allRecipes ? "all" : undefined,
     });
     const makeable = useMakeable();
     const makeableIds = new Set((makeable.data ?? []).map((m) => m.recipe.id));
@@ -67,7 +72,40 @@ export default function Recipes() {
                     >
                         ✅ Con mi despensa
                     </button>
+                    <button
+                        className={`btn ${allRecipes ? "ghost" : "primary"}`}
+                        onClick={() => setAllRecipes((v) => !v)}
+                        title="Ver todas o solo las compatibles con tu perfil"
+                    >
+                        {allRecipes ? "👥 Todas" : "👤 Según mi perfil"}
+                    </button>
+                    <button
+                        className="btn ghost"
+                        onClick={() =>
+                            autoImport.mutate(undefined, {
+                                onSuccess: (res) =>
+                                    toast(
+                                        res.count > 0
+                                            ? `Se importaron ${res.count} recetas según tu perfil ✓`
+                                            : "No se encontraron recetas nuevas compatibles con tu perfil.",
+                                    ),
+                                onError: () => toast("No se pudo importar del catálogo.", "error"),
+                            })
+                        }
+                        disabled={autoImport.isPending}
+                        title="Importar recetas compatibles con tu perfil desde TheMealDB"
+                    >
+                        {autoImport.isPending ? "Importando…" : "⬇ Importar según mi perfil"}
+                    </button>
                 </div>
+            </div>
+
+            <div className="filter-chips">
+                <span className="muted small">
+                    {allRecipes
+                        ? "Mostrando el catálogo completo (sin filtro de perfil)."
+                        : "Catálogo filtrado por tu perfil: dieta, restricciones y comidas."}
+                </span>
             </div>
 
             <div className="filter-chips">
@@ -109,6 +147,7 @@ export default function Recipes() {
                                 setMakeableOnly(false);
                                 setMeal("");
                                 setSeason("");
+                                setAllRecipes(false);
                             }}
                         >
                             Limpiar filtros

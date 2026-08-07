@@ -25,6 +25,13 @@
         "r9": 4,
         "r10": 4,
         "r13": 5
+      },
+      "isComplete": true,
+      "recipeOverrides": {},
+      "usualDishes": {
+        "desayuno": [],
+        "almuerzo": [],
+        "cena": []
       }
     }
   ],
@@ -5926,6 +5933,15 @@
       "dateAdded": "2026-08-07T03:21:43.281Z",
       "category": "proteinas",
       "unitPrice": 10
+    },
+    {
+      "id": "b13d70f5-13e7-4379-9778-8a3e4f09a042",
+      "ingredientName": "avena",
+      "quantity": 5,
+      "unit": "kg",
+      "dateAdded": "2026-08-07T03:24:20.642Z",
+      "category": "granos",
+      "unitPrice": 5
     }
   ],
   "weeklyPlan": {
@@ -6104,6 +6120,18 @@
       "category": "proteinas",
       "kind": "compra",
       "id": "3ca8843e-65e7-4db1-9bc7-5eab15d99ea4",
+      "date": "2026-08-07"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "avena",
+      "quantity": 5,
+      "unit": "kg",
+      "unitPrice": 10,
+      "total": 50,
+      "category": "granos",
+      "kind": "compra",
+      "id": "90e5c3ca-ba08-4a3b-a66e-a87bdb2bfecd",
       "date": "2026-08-07"
     }
   ]

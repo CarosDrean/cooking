@@ -1,4 +1,7 @@
-import { useActivateProfile, useActiveProfile, useAppState } from "./api/hooks";
+import { useState } from "react";
+import { useActiveProfile, useAppState } from "./api/hooks";
+import ProfileMenu from "./components/ProfileMenu";
+import ProfileWizard from "./components/ProfileWizard";
 import { dayKeyOf, toISODate } from "./lib/format";
 import { useRoute } from "./lib/router";
 import CookingMode from "./pages/CookingMode";
@@ -25,7 +28,7 @@ export default function App() {
     const route = useRoute();
     const { data: state } = useAppState();
     const activeProfile = useActiveProfile();
-    const activate = useActivateProfile();
+    const [showWizard, setShowWizard] = useState(false);
 
     const setPage = (page: string) => {
         window.location.hash = `/${page}`;
@@ -33,6 +36,7 @@ export default function App() {
 
     const loading = !state;
     const error = state === undefined;
+    const firstRun = !loading && !error && state.profiles.length === 0;
 
     let content: React.ReactNode;
     if (loading) {
@@ -139,26 +143,20 @@ export default function App() {
                         )}
                     </div>
                     <div className="topbar-actions">
-                        <button className="btn ghost" onClick={() => setPage("profiles")}>
-                            Cambiar perfil
-                        </button>
-                        {state?.profiles.length ? (
-                            <select
-                                className="profile-switch"
-                                value={state.activeProfileId ?? ""}
-                                onChange={(e) => activate.mutate(e.target.value)}
-                            >
-                                {state.profiles.map((p) => (
-                                    <option key={p.id} value={p.id}>
-                                        {p.name}
-                                    </option>
-                                ))}
-                            </select>
-                        ) : null}
+                        <ProfileMenu />
                     </div>
                 </header>
                 <div className="content">{content}</div>
             </main>
+            {firstRun || showWizard ? (
+                <ProfileWizard
+                    onDone={() => {
+                        setShowWizard(false);
+                        setPage("dashboard");
+                    }}
+                    onClose={firstRun ? undefined : () => setShowWizard(false)}
+                />
+            ) : null}
         </div>
     );
 }

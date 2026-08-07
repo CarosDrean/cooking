@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { seedState } from "./data/seed.js";
 import type { AppState } from "./types.js";
+import { isProfileComplete } from "./types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SERVER_ROOT = path.resolve(__dirname, "..");
@@ -19,6 +20,11 @@ function load(): AppState {
             const parsed = JSON.parse(raw) as AppState;
             if (parsed && Array.isArray(parsed.recipes)) {
                 parsed.purchaseLog ??= [];
+                for (const p of parsed.profiles ?? []) {
+                    p.isComplete ??= isProfileComplete(p);
+                    p.recipeOverrides ??= {};
+                    p.usualDishes ??= { desayuno: [], almuerzo: [], cena: [] };
+                }
                 return parsed;
             }
         } catch {

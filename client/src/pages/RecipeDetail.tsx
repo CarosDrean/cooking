@@ -12,6 +12,7 @@ import {
 } from "../api/hooks";
 import { dietLabel } from "../components/DietBadge";
 import { RecipeContextBadges } from "../components/RecipeContextBadges";
+import RecipeEditModal from "../components/RecipeEditModal";
 import Stars from "../components/Stars";
 import { fmtQty, startOfWeek, toISODate } from "../lib/format";
 import { navigate } from "../lib/router";
@@ -34,6 +35,7 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
 
     const [servings, setServings] = useState(1);
     const [showPlanPicker, setShowPlanPicker] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [selectedDay, setSelectedDay] = useState<Day>("lunes");
     const [selectedMeal, setSelectedMeal] = useState<MealType>("almuerzo");
 
@@ -48,6 +50,7 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
 
     const rating = profile.ratingByRecipe[r.id] ?? null;
     const isFav = profile.favoriteRecipeIds?.includes(r.id) ?? false;
+    const hasOverride = Boolean(profile.recipeOverrides?.[r.id]);
 
     const addToPlan = () => {
         const current = plan.data?.plan;
@@ -123,6 +126,9 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                     </button>
                     <button className="btn primary" onClick={() => navigate(`cook/${r.id}`)}>
                         ▶ Modo cocina
+                    </button>
+                    <button className="btn ghost" onClick={() => setShowEditModal(true)}>
+                        {hasOverride ? "✎ Adaptada" : "✎ Adaptar a mi familia"}
                     </button>
                 </div>
             </div>
@@ -235,6 +241,15 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                     📅 Añadir al plan semanal
                 </button>
             </div>
+
+            {showEditModal ? (
+                <RecipeEditModal
+                    recipe={r}
+                    profileId={profile.id}
+                    hasOverride={hasOverride}
+                    onClose={() => setShowEditModal(false)}
+                />
+            ) : null}
 
             {showPlanPicker ? (
                 <div className="modal-backdrop" onClick={() => setShowPlanPicker(false)}>

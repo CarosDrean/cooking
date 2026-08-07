@@ -70,6 +70,12 @@ export interface Profile {
     mealsPerDay: MealType[];
     favoriteRecipeIds: string[];
     ratingByRecipe: Record<string, number>;
+    /** Perfil completo = nombre y personas en el hogar definidos (onboarding). */
+    isComplete: boolean;
+    /** Variantes de recetas adaptadas por esta familia: recipeId → receta modificada. */
+    recipeOverrides: Record<string, Recipe>;
+    /** Platos habituales por comida (capturados por voz): meal → lista de platos. */
+    usualDishes: Record<MealType, string[]>;
 }
 
 export interface Location {

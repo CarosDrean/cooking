@@ -81,38 +81,38 @@ Fases ordenadas por impacto/esfuerzo. Cada ítem incluye el estado actual, qué 
 ## Fase 4 — Perfiles
 
 ### 4.1 Menú de perfil desplegable
-- **Estado actual**: en `App.tsx:135` hay un botón "Cambiar perfil" + un `<select>` con todos los perfiles en la topbar.
+- **Estado actual**: ✅ Implementado. `App.tsx:135` ya no tiene el botón "Cambiar perfil" ni el `<select>`; hay un nuevo componente `ProfileMenu.tsx` en la topbar: avatar + caret que abre un dropdown con el perfil activo, cambio de perfil a 1 click y acceso a "Gestionar perfiles". Los perfiles incompletos se marcan con una badge "Incompleto".
 - **Cambio**: ocultar el botón; al hacer click en el avatar/topbar se abre un menú dropdown con: perfil activo, cambiar a otro perfil, y acceso a la página de Perfiles/Ajustes.
-- **Aceptación**: la topbar queda limpia y el cambio de perfil está a 1 click desde el avatar.
+- **Aceptación**: ✅ la topbar queda limpia y el cambio de perfil está a 1 click desde el avatar.
 
 ### 4.2 Onboarding con campos obligatorios y opcionales
-- **Estado actual**: crear perfil pide nombre, dietas, restricciones, personas en el hogar y comidas al día (`Profiles.tsx`), pero no hay flujo de primer ingreso ni distinción obligatorio/opcional; editar solo permite nombre y restricciones.
+- **Estado actual**: ✅ Implementado. Nuevo `ProfileWizard.tsx` (modal de 2 pasos) que se abre al primer ingreso si no hay perfiles y desde "Nuevo perfil" en Perfiles: paso 1 obligatorio (nombre, personas en el hogar), paso 2 opcional (dietas, restricciones, comidas). `ProfileFields.tsx` es el form compartido que además permite editar todos los campos en la página de Perfiles. El server calcula `isComplete` (nombre + hogar ≥ 1) en `server/src/types.ts` y solo activa un perfil nuevo cuando está completo (`profiles.ts:58`).
 - **Cambio**:
   - Flujo guiado (wizard/modal) al primer ingreso y al crear un perfil: paso 1 obligatorio (nombre, personas en el hogar), paso 2 opcional (dietas, restricciones, comidas al día, unidad/preferencias).
   - Permitir editar todos estos campos en la página de Perfiles (hoy `saveEdit` solo guarda nombre + restricciones en `Profiles.tsx:146`).
   - Marcar el perfil como "incompleto" hasta llenar lo obligatorio.
-- **Aceptación**: un perfil nuevo no queda activo hasta completar lo obligatorio; todo lo opcional se puede editar luego en Perfiles.
+- **Aceptación**: ✅ un perfil nuevo no queda activo hasta completar lo obligatorio; todo lo opcional se puede editar luego en Perfiles.
 
 ### 4.3 Catálogo de recetas según la configuración del usuario
-- **Estado actual**: el catálogo es fijo (`server/data/recipes.json`) y las recetas de TheMealDB se importan una por una y manualmente (`POST /api/themealdb/import`, `server/src/routes/themealdb.ts:21`). `GET /api/recipes` filtra solo con query params manuales y no aplica la config del perfil activo; el perfil solo se usa en las recomendaciones (`server/src/services/recommender.ts:16`).
+- **Estado actual**: ✅ Implementado. `GET /api/recipes` aplica por defecto los filtros del perfil activo (dietas/restricciones) y resuelve overrides vía `recipeVariants.ts`; `?profile=all` muestra el catálogo completo y `?profile=none|<id>` permite elegir. En la página Recetas hay un toggle "👤 Según mi perfil / 👥 Todas" y el botón "⬇ Importar según mi perfil" que llama `POST /api/themealdb/auto-import` (busca por comidas y dietas del perfil, importa hasta 8 recetas compatibles). Dashboard y catálogo usan las variantes resueltas.
 - **Cambio** (depende de 4.2): una vez definida la config del usuario (dietas, restricciones, comidas al día):
   - `GET /api/recipes` aplica por defecto los filtros del perfil activo (dietas/restricciones) salvo override explícito.
   - Importación automática desde TheMealDB según el perfil (por categoría/cocina/ingredientes compatibles y comidas que usa) en vez de buscar e importar a mano.
   - Dashboard y catálogo muestran solo recetas relevantes ("lo que realmente va a usar").
-- **Aceptación**: al cambiar la config de un perfil, el catálogo y las importaciones se ajustan automáticamente a lo que ese usuario consume.
+- **Aceptación**: ✅ al cambiar la config de un perfil, el catálogo y las importaciones se ajustan automáticamente a lo que ese usuario consume.
 
 ### 4.4 Personalizar y editar recetas por familia
-- **Estado actual**: la API ya soporta `POST`/`PUT /api/recipes` (`server/src/routes/recipes.ts:90-132`), pero no hay UI de edición: `RecipeDetail.tsx` solo permite favoritos, rating, añadir al plan y modo cocina. Las recetas de `recipes.json` son read-only y no hay adaptación por familia (la misma receta para todos los perfiles).
+- **Estado actual**: ✅ Implementado. `RecipeDetail` tiene el botón "✎ Adaptar a mi familia" que abre `RecipeEditModal.tsx` (título, emoji, raciones, descripción, dietas, ingredientes y cantidades, pasos). Cada perfil puede guardar una variante (`profile.recipeOverrides` en `server/src/routes/profiles.ts`, endpoints `PUT/DELETE /:id/recipe-overrides/:recipeId`) resuelta por `recipeVariants.ts`; el catálogo base queda intacto. Plan semanal, historial, compras y recomendaciones consumen las variantes resueltas.
 - **Cambio**:
   - UI de edición de receta accesible desde `RecipeDetail` (título, emoji, ingredientes y cantidades, pasos, raciones, dietas).
   - Personalización por familia/perfil: cada perfil puede tener una variante de una receta base (ajustar raciones al hogar, sustituir ingredientes prohibidos, adaptar pasos a las costumbres) guardada como override; el catálogo base queda intacto.
   - Los cambios deben propagarse a plan semanal, historial y compras (referencian por `recipeId`).
-- **Aceptación**: una familia puede adaptar cualquier receta a sus costumbres sin afectar el catálogo, y esos cambios se reflejan en plan y compras.
+- **Aceptación**: ✅ una familia puede adaptar cualquier receta a sus costumbres sin afectar el catálogo, y esos cambios se reflejan en plan y compras.
 
-### 4.5 Configuración de comidas por voz al crear perfil
-- **Estado actual**: la creación/edición de perfil ya captura las comidas como chips (`Profiles.tsx:102`, `MealType[]` con `desayuno/almuerzo/cena`), pero solo se marca a mano. No hay forma de "decirle" las comidas que se comen habitualmente y que se usen como base de la config inicial (la config de un perfil nuevo parte de defaults hardcodeados en `Profiles.tsx:102`).
-- **Cambio** (depende de 3.1): en el paso de comidas al día del flujo de perfil (nuevo y edición), añadir dictado por voz (Web Speech API en español) que transcriba frases tipo "desayuno, almuerzo y cena" o "como desayuno y cena" y las parsee a `MealType[]`, marcando los chips correspondientes. Sinónimos: "desayunar" → desayuno, "comer/almuerzo" → almuerzo, "cenar" → cena. El parseo debe ser tolerante a comas, "y", "o", artículos y pausas de dictado. Lo seleccionado queda como base persistida en el perfil (ya lo usa `planner.ts:98` para generar el plan).
-- **Aceptación**: al crear un perfil, decir "desayuno, almuerzo y cena" (o "solo desayuno y cena") rellena la selección de comidas correctamente y el plan semanal de ese perfil se genera solo con esas comidas.
+### 4.5 Configuración de comidas y platos habituales por voz
+- **Estado actual**: ✅ Implementado. El dictado captura pares "comida + plato habitual" (p. ej. "desayuno jugo surtido o avena, almuerzo estofado de lentejas") y se persisten como `usualDishes: Record<MealType, string[]>` en el perfil (server `types.ts`, ruta `profiles.ts`, backfill en `db.ts`). `client/src/lib/speech.ts` expone `parseSpokenMealHabits()` (detecta las comidas con "desayuno/desayunar", "almuerzo/almorzar/comer", "cena/cenar", separa los platos por "y"/"o") y `suggestRecipesForUsualDishes()`, que puntúa el catálogo (título > ingredientes > descripción, con bonus si la receta es apta para esa comida). En `ProfileFields.tsx` la sección "Platos habituales" tiene el botón 🎤, chips editables por comida y el panel "Según tus hábitos, podrías preparar". Los chips de comidas al día se seleccionan solo con clics.
+- **Cambio** (depende de 3.1): en el flujo de perfil (nuevo y edición), dictado por voz (Web Speech API en español) que transcriba frases tipo "desayuno jugo surtido o avena, almuerzo estofado de lentejas" → pares `MealType → string[]` de platos habituales. Con esos platos se sugiere recetas parecidas del catálogo (match por título/ingredientes y aptitud para la comida). Seleccionar desayuno/almuerzo/cena se hace con clics; el dictado no reemplaza los chips.
+- **Aceptación**: ✅ al dictar "desayuno jugo surtido o avena, almuerzo estofado de lentejas", el perfil guarda esos platos por comida, las sugerencias muestran recetas de lentejas/avena, y los chips de comidas al día se marcan solo con clic.
 
 ## Fase 5 — Presentación de recetas
 

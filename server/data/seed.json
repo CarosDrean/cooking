@@ -9,7 +9,10 @@
             "householdSize": 4,
             "mealsPerDay": ["desayuno", "almuerzo", "cena"],
             "favoriteRecipeIds": ["r4", "r1", "r9"],
-            "ratingByRecipe": { "r2": 4, "r3": 5, "r4": 5, "r6": 4, "r9": 4, "r10": 4, "r13": 5 }
+            "ratingByRecipe": { "r2": 4, "r3": 5, "r4": 5, "r6": 4, "r9": 4, "r10": 4, "r13": 5 },
+            "isComplete": true,
+            "recipeOverrides": {},
+            "usualDishes": { "desayuno": [], "almuerzo": [], "cena": [] }
         }
     ],
     "activeProfileId": "p1",
