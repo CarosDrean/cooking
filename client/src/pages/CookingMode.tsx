@@ -102,16 +102,6 @@ export default function CookingMode({ recipeId }: { recipeId?: string }) {
                 <button className="link-btn" onClick={() => navigate(`recipes/${r.id}`)}>
                     ← Salir del modo cocina
                 </button>
-                <h1>
-                    {r.image ? (
-                        <span className="cooking-thumb">
-                            <img src={r.image} alt="" />
-                        </span>
-                    ) : (
-                        <span aria-hidden>{r.emoji ?? "🍲"} </span>
-                    )}
-                    {r.title}
-                </h1>
                 <div className="serving-stepper">
                     <button className="btn ghost sm" onClick={() => setServings((s) => Math.max(1, s - 1))}>
                         −
@@ -122,6 +112,20 @@ export default function CookingMode({ recipeId }: { recipeId?: string }) {
                     </button>
                     <span className="muted">rac.</span>
                 </div>
+            </div>
+
+            <div className="cooking-hero" aria-hidden>
+                {r.image ? (
+                    <>
+                        <img src={r.image} alt="" />
+                        <div className="detail-hero-overlay" />
+                        <div className="detail-hero-content">
+                            <h1>{r.title}</h1>
+                        </div>
+                    </>
+                ) : (
+                    <span className="detail-hero-emoji">{r.emoji ?? "🍲"}</span>
+                )}
             </div>
 
             <div className="cooking-timer">

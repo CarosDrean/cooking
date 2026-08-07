@@ -6,6 +6,7 @@ import type {
     Location,
     MealLogEntry,
     MealType,
+    OpenverseImage,
     PantryItem,
     Profile,
     PurchaseLogEntry,
@@ -573,5 +574,25 @@ export function useUpdateSettings() {
             qc.invalidateQueries({ queryKey: ["settings"] });
             qc.invalidateQueries({ queryKey: ["recommendations"] });
         },
+    });
+}
+
+/* ---------- Openverse ---------- */
+
+export function useOpenverseSearch(q: string) {
+    return useQuery({
+        queryKey: ["openverse", q],
+        queryFn: () => api.get<OpenverseImage[]>(`/openverse/search?q=${encodeURIComponent(q)}`),
+        enabled: q.length >= 3,
+        staleTime: 30_000,
+    });
+}
+
+export function useUpdateRecipeImage() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: ({ recipeId, image }: { recipeId: string; image: string }) =>
+            api.patch<Recipe>(`/recipes/${recipeId}/image`, { image }),
+        onSuccess: () => invalidateState(qc),
     });
 }

@@ -67,17 +67,21 @@ Completada el 2026-08-07. Todos los criterios de aceptación verificados en nave
 - **Aceptación**: al votar una sugerencia, se quita de inmediato; "No sugerir más" la excluye permanentemente del panel; "Menos/Más similares" baja o sube su recurrencia en futuras visitas, todo persistido por perfil.
 - **✅ Completado**: `Profile.suggestionFeedback` en tipos duplicados + seed + db.json. 4 botones por sugerencia: ✕ (quitar temporal, estado local), 🙅"No sugerir más" (persiste `hide: true`), ↓"Menos similares" (`weight: 0.5`) y ↑"Más similares" (`weight: 2`). Los pesos multiplican el score en `suggestRecipesForUsualDishes`. Feedback se persiste vía `PUT /profiles/:id` con `suggestionFeedback`.
 
-## Fase 3 — Presentación de recetas
+## ✅ Fase 3 — Presentación de recetas — COMPLETADA
 
-### 3.1 Vista de recetas: grid con fotos protagonistas (no lista)
-- **Estado actual**: `client/src/pages/Recipes.tsx:134-137` pinta `RecipeCard` dentro de `.card-list` (`client/src/index.css:427`, columna vertical). `RecipeCard` (`RecipeCard.tsx`) muestra la foto en una miniatura de 64×64 (`.recipe-thumb`, `index.css:482`): la imagen queda relegada frente al texto.
-- **Cambio**: rediseñar la grilla del catálogo (`.recipe-grid`, tipo `.grid-3`) con tarjetas tipo tarjeta/portada: imagen de fondo o cabecera grande (aspect ratio ~16:10), título y meta encima/abajo, emoji como fallback si no hay `image`. Mantener los filtros actuales y el toggle "Según mi perfil".
-- **Aceptación**: en la vista Recetas las fotos dominan visualmente la tarjeta; sin imagen se mantiene el fallback emoji y no rompe; en móvil la grilla se apila a 1 columna.
+Completada el 2026-08-07. Todos los criterios de aceptación verificados en navegador y `pnpm check` en verde.
 
-### 3.2 Detalle de receta: foto grande con protagonismo
-- **Estado actual**: `client/src/pages/RecipeDetail.tsx:98-105` muestra la foto en `.detail-photo` de 120×120 (`index.css:825`), a la izquierda del título; es una miniatura más, no la protagonista.
-- **Cambio**: hacer la foto un hero del detalle: imagen grande a lo ancho del contenido (o dos tercios) arriba, con el título superpuesto o justo debajo; mantener el emoji como fallback. El modo cocina (`CookingMode.tsx:105`) puede heredar el mismo tratamiento.
-- **Aceptación**: al abrir una receta, la foto del plato es el elemento central y visible de inmediato; sin imagen se mantiene el fallback emoji.
+### ✅ 3.1 Vista de recetas: grid con fotos protagonistas (no lista)
+- **Estado anterior**: `client/src/pages/Recipes.tsx:134-137` pintaba `RecipeCard` dentro de `.card-list` (columna vertical). `RecipeCard` mostraba la foto en una miniatura de 64×64 (`.recipe-thumb`): la imagen quedaba relegada frente al texto.
+- **Cambio**: rediseñada la grilla del catálogo con `.recipe-grid` (`.grid-3`, `auto-fill minmax(280px,1fr)`) con tarjetas tipo portada: imagen de fondo de aspecto 16:10 arriba, título y meta abajo, emoji como fallback si no hay `image`. Se mantienen los filtros actuales y el toggle "Según mi perfil".
+- **Aceptación**: las fotos dominan visualmente la tarjeta; sin imagen se mantiene el fallback emoji sin romper; en móvil la grilla se apila a 1 columna.
+- **✅ Completado**: `.card-list` → `.recipe-grid`; `RecipeCard` reestructurado con `.recipe-card-hero` + `.recipe-card-body`; CSS responsive en `@media (max-width: 900px)`.
+
+### ✅ 3.2 Detalle de receta: foto grande con protagonismo
+- **Estado anterior**: `client/src/pages/RecipeDetail.tsx:98-105` mostraba la foto en `.detail-photo` de 120×120, a la izquierda del título; era una miniatura.
+- **Cambio**: la foto ahora es un hero del detalle: imagen a lo ancho del contenido con aspecto 16:9 (max 380px) arriba, con el título, meta, dietas y acciones justo debajo en `.detail-body`. Emoji como fallback. El modo cocina heredó el mismo tratamiento con `.cooking-hero`.
+- **Aceptación**: al abrir una receta, la foto del plato es el elemento central y visible de inmediato; sin imagen se mantiene el fallback emoji sin romper.
+- **✅ Completado**: `.detail-head` rediseñado con foto hero + `.detail-body`; `.cooking-hero` añadido en `CookingMode.tsx`; `.detail-body` y `.recipe-grid` colapsan en móvil.
 
 ## Fase 4 — Ajustes y localización
 

@@ -410,3 +410,15 @@ export interface MakeableInfo {
 export interface DailyTip {
     tip: string;
 }
+
+export interface OpenverseImage {
+    id: string;
+    title: string;
+    url: string;
+    thumbnail: string;
+    creator: string;
+    license: string;
+    width: number;
+    height: number;
+    foreign_landing_url: string;
+}

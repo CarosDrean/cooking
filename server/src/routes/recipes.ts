@@ -145,6 +145,23 @@ recipesRouter.put("/:id", (req, res) => {
     res.json(state.recipes[index]);
 });
 
+recipesRouter.patch("/:id/image", (req, res) => {
+    const state = getState();
+    const recipe = findRecipe(state, req.params.id);
+    if (!recipe) {
+        res.status(404).json({ error: "Receta no encontrada" });
+        return;
+    }
+    const { image } = req.body as { image?: string };
+    if (!image?.trim()) {
+        res.status(400).json({ error: "image es obligatorio" });
+        return;
+    }
+    recipe.image = image.trim();
+    saveState();
+    res.json(recipe);
+});
+
 recipesRouter.delete("/:id", (req, res) => {
     const state = getState();
     const id = req.params.id;

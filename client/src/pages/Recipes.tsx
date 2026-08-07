@@ -167,7 +167,7 @@ export default function Recipes() {
                 ))}
             </div>
 
-            <div className="card-list">
+            <div className="recipe-grid">
                 {shown.map((r) => (
                     <RecipeCard
                         key={r.id}

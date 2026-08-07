@@ -11,6 +11,7 @@ import {
     useSetRating,
 } from "../api/hooks";
 import { dietLabel } from "../components/DietBadge";
+import ImagePicker from "../components/ImagePicker";
 import { RecipeContextBadges } from "../components/RecipeContextBadges";
 import RecipeEditModal from "../components/RecipeEditModal";
 import Stars from "../components/Stars";
@@ -36,6 +37,7 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
     const [servings, setServings] = useState(1);
     const [showPlanPicker, setShowPlanPicker] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showImagePicker, setShowImagePicker] = useState(false);
     const [selectedDay, setSelectedDay] = useState<Day>("lunes");
     const [selectedMeal, setSelectedMeal] = useState<MealType>("almuerzo");
 
@@ -96,30 +98,33 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                 ← Volver a recetas
             </button>
             <div className="detail-head">
-                <div className="detail-photo">
+                <div className="detail-hero">
                     {r.image ? (
-                        <img src={r.image} alt={r.title} />
+                        <>
+                            <img src={r.image} alt={r.title} />
+                            <div className="detail-hero-overlay" />
+                            <div className="detail-hero-content">
+                                <h1>{r.title}</h1>
+                                <div className="detail-meta">
+                                    <span>⏱ {r.prepMinutes + r.cookMinutes} min</span>
+                                    <span>·</span>
+                                    <span>{r.servings} raciones</span>
+                                </div>
+                                <div className="diet-chips">
+                                    {r.diets.map((d) => (
+                                        <span key={d} className="diet-badge">
+                                            {dietLabel(d)}
+                                        </span>
+                                    ))}
+                                </div>
+                                <RecipeContextBadges recipe={r} />
+                            </div>
+                        </>
                     ) : (
-                        <span className="detail-emoji">{r.emoji ?? "🍲"}</span>
+                        <span className="detail-hero-emoji">{r.emoji ?? "🍲"}</span>
                     )}
                 </div>
-                <div className="detail-title">
-                    <h1>{r.title}</h1>
-                    <div className="detail-meta">
-                        <span>⏱ {r.prepMinutes + r.cookMinutes} min</span>
-                        <span>·</span>
-                        <span>{r.servings} raciones</span>
-                    </div>
-                    <div className="diet-chips">
-                        {r.diets.map((d) => (
-                            <span key={d} className="diet-badge">
-                                {dietLabel(d)}
-                            </span>
-                        ))}
-                    </div>
-                    <RecipeContextBadges recipe={r} />
-                </div>
-                <div className="detail-actions">
+                <div className="detail-actions-bar">
                     <Stars
                         value={rating}
                         onChange={(n) => setRating.mutate({ profileId: profile.id, recipeId: r.id, rating: n })}
@@ -135,6 +140,9 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                     </button>
                     <button className="btn ghost" onClick={() => setShowEditModal(true)}>
                         {hasOverride ? "✎ Adaptada" : "✎ Adaptar a mi familia"}
+                    </button>
+                    <button className="btn ghost" onClick={() => setShowImagePicker(true)}>
+                        🖼 Buscar imagen
                     </button>
                 </div>
             </div>
@@ -256,6 +264,8 @@ export default function RecipeDetail({ recipeId }: { recipeId?: string }) {
                     onClose={() => setShowEditModal(false)}
                 />
             ) : null}
+
+            {showImagePicker ? <ImagePicker recipe={r} onClose={() => setShowImagePicker(false)} /> : null}
 
             {showPlanPicker ? (
                 <div className="modal-backdrop" onClick={() => setShowPlanPicker(false)}>
