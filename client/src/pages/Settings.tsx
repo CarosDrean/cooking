@@ -1,7 +1,7 @@
-import { SEASON_LABELS, type Season } from "@cooking/shared";
 import { useState } from "react";
 import { useSettings, useUpdateSettings } from "../api/hooks";
 import { useToast } from "../lib/toast";
+import { SEASON_LABELS, type Season } from "../types";
 
 const SEASON_HINTS: Record<Season, string> = {
     primavera: "Ideal para ensaladas frescas y platos con hierbas nuevas.",

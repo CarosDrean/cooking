@@ -1,4 +1,4 @@
-import type { IngredientCategory, Recipe, RecipeStep } from "@cooking/shared";
+import type { IngredientCategory, Recipe, RecipeStep } from "../types.js";
 
 const BASE = "https://www.themealdb.com/api/json/v1/1";
 

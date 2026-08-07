@@ -1,6 +1,6 @@
-import type { MealLogEntry, MealType } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
+import type { MealLogEntry, MealType } from "../types.js";
 
 export const historyRouter = Router();
 

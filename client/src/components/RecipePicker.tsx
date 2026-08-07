@@ -1,6 +1,6 @@
-import type { Recipe } from "@cooking/shared";
 import { useState } from "react";
 import { useMakeable } from "../api/hooks";
+import type { Recipe } from "../types";
 import RecipeCard from "./RecipeCard";
 
 export default function RecipePicker({

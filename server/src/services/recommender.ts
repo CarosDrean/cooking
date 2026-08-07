@@ -1,5 +1,5 @@
-import type { AppState, Recommendation } from "@cooking/shared";
-import { SEASON_LABELS } from "@cooking/shared";
+import type { AppState, Recommendation } from "../types.js";
+import { SEASON_LABELS } from "../types.js";
 import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays, timesEaten } from "./history.js";
 import { availability, currentSeason, seasonFit } from "./location.js";

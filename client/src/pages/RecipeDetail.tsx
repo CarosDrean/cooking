@@ -1,4 +1,3 @@
-import type { Day, MealType } from "@cooking/shared";
 import { useState } from "react";
 import {
     useActiveProfile,
@@ -17,6 +16,7 @@ import Stars from "../components/Stars";
 import { fmtQty, startOfWeek, toISODate } from "../lib/format";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
+import type { Day, MealType } from "../types";
 
 const DAY_KEYS: Day[] = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
 

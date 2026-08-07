@@ -1,8 +1,8 @@
-import { MEAL_LABELS } from "@cooking/shared";
 import { useActiveProfile, useAppState, useDeleteHistoryEntry, useHistory } from "../api/hooks";
 import Stars from "../components/Stars";
 import { dateLabel } from "../lib/format";
 import { navigate } from "../lib/router";
+import { MEAL_LABELS } from "../types";
 
 export default function HistoryPage() {
     const profile = useActiveProfile();

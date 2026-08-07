@@ -1,8 +1,8 @@
-import type { Day, MealSlot, MealType, WeeklyPlan } from "@cooking/shared";
-import { DAYS, MEALS } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 import { generateWeekPlan, regenerateSlot } from "../services/planner.js";
+import type { Day, MealSlot, MealType, WeeklyPlan } from "../types.js";
+import { DAYS, MEALS } from "../types.js";
 
 export const planRouter = Router();
 

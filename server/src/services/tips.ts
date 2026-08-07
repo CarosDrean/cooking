@@ -1,4 +1,4 @@
-import type { Recipe } from "@cooking/shared";
+import type { Recipe } from "../types.js";
 import { normalize } from "./diet.js";
 
 interface TipRule {
@@ -54,10 +54,6 @@ const TIP_LIBRARY: TipRule[] = [
     {
         keywords: ["quinoa"],
         tip: "Enjuaga la quinoa siempre: la saponina que la recubre tiene sabor amargo.",
-    },
-    {
-        keywords: ["tofu"],
-        tip: "Para un tofu crujiente, presiónalo 10-15 minutos, sécalo bien y rebózalo en maicena antes de dorar.",
     },
     {
         keywords: ["espinaca", "verdura de hoja", "acelga", "repollo"],
@@ -125,7 +121,12 @@ export function tipsForRecipe(recipe: Recipe): string[] {
     return tips.slice(0, 8);
 }
 
+let lastTipIndex = -1;
+
 export function tipOfTheDay(): string {
-    const dayIndex = Math.floor(Date.now() / 86400000);
-    return TIP_LIBRARY[dayIndex % TIP_LIBRARY.length].tip;
+    if (TIP_LIBRARY.length <= 1) return TIP_LIBRARY[0]?.tip ?? "";
+    let index = Math.floor(Math.random() * TIP_LIBRARY.length);
+    if (index === lastTipIndex) index = (index + 1) % TIP_LIBRARY.length;
+    lastTipIndex = index;
+    return TIP_LIBRARY[index].tip;
 }

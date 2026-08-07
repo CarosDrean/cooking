@@ -1,6 +1,6 @@
-import type { Recipe } from "@cooking/shared";
 import { totalMinutes } from "../lib/format";
 import { navigate } from "../lib/router";
+import type { Recipe } from "../types";
 import { DietChips } from "./DietBadge";
 import { RecipeContextBadges } from "./RecipeContextBadges";
 

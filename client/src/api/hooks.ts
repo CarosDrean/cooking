@@ -1,3 +1,4 @@
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type {
     AppState,
     Day,
@@ -11,8 +12,7 @@ import type {
     Season,
     ShoppingList,
     WeeklyPlan,
-} from "@cooking/shared";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+} from "../types";
 import { api } from "./client";
 
 export const STATE_KEY = ["state"] as const;
@@ -417,6 +417,7 @@ export function useDailyTip() {
     return useQuery({
         queryKey: ["tips", "daily"],
         queryFn: () => api.get<{ tip: string }>("/tips/daily"),
+        staleTime: 0,
     });
 }
 

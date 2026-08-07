@@ -1,4 +1,3 @@
-import { MEAL_LABELS } from "@cooking/shared";
 import {
     useActiveProfile,
     useAppState,
@@ -11,6 +10,7 @@ import {
 import RecipeCard from "../components/RecipeCard";
 import { dayKeyOf, toISODate, weekdayOf } from "../lib/format";
 import { navigate } from "../lib/router";
+import { MEAL_LABELS } from "../types";
 
 export default function Dashboard() {
     const profile = useActiveProfile();

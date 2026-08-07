@@ -1,4 +1,4 @@
-import type { Recipe, RecipeIngredient } from "@cooking/shared";
+import type { Recipe, RecipeIngredient } from "../types.js";
 
 export function round(n: number): number {
     return Math.round(n * 100) / 100;

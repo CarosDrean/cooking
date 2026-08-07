@@ -1,5 +1,3 @@
-import type { Day, MealType } from "@cooking/shared";
-import { DAY_LABELS, DAYS, MEAL_LABELS, MEALS } from "@cooking/shared";
 import { useState } from "react";
 import {
     useActiveProfile,
@@ -16,6 +14,8 @@ import RecipePicker from "../components/RecipePicker";
 import { addDays, shortDateLabel, startOfWeek } from "../lib/format";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
+import type { Day, MealType } from "../types";
+import { DAY_LABELS, DAYS, MEAL_LABELS, MEALS } from "../types";
 
 export default function WeeklyPlan() {
     const plan = usePlan();

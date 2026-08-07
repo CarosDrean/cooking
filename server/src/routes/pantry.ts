@@ -1,6 +1,6 @@
-import type { PantryItem } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
+import type { PantryItem } from "../types.js";
 
 export const pantryRouter = Router();
 

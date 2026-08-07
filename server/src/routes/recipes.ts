@@ -1,9 +1,9 @@
-import type { MakeableInfo, MealType, Recipe, Season } from "@cooking/shared";
-import { SEASONS } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 import { normalize } from "../services/diet.js";
 import { isMakeable, missingIngredients } from "../services/shoppingList.js";
+import type { MakeableInfo, MealType, Recipe, Season } from "../types.js";
+import { SEASONS } from "../types.js";
 
 export const recipesRouter = Router();
 

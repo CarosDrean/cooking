@@ -1,6 +1,6 @@
-import type { IngredientRestriction, Profile } from "@cooking/shared";
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
+import type { IngredientRestriction, Profile } from "../types.js";
 
 export const profilesRouter = Router();
 

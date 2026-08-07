@@ -1,4 +1,4 @@
-import type { AppState, MealLogEntry } from "@cooking/shared";
+import type { AppState, MealLogEntry } from "../types.js";
 
 export function entriesForProfile(state: AppState, profileId: string): MealLogEntry[] {
     return state.history.filter((h) => h.profileId === profileId);

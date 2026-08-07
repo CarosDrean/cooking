@@ -1,5 +1,5 @@
-import { isLocalRecipe, type Recipe, SEASON_LABELS, seasonFit } from "@cooking/shared";
 import { useAppState, useSettings } from "../api/hooks";
+import { isLocalRecipe, type Recipe, SEASON_LABELS, seasonFit } from "../types";
 
 export function RecipeContextBadges({ recipe }: { recipe: Recipe }) {
     const { data: state } = useAppState();

@@ -1,7 +1,7 @@
-import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "@cooking/shared";
 import { useState } from "react";
 import { useMakeable, useRecipes } from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
+import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "../types";
 
 export default function Recipes() {
     const [q, setQ] = useState("");

@@ -1,4 +1,4 @@
-import type { IngredientRestriction, Profile, Recipe } from "@cooking/shared";
+import type { IngredientRestriction, Profile, Recipe } from "../types.js";
 
 const VEGAN = "vegano";
 const VEGETARIANO = "vegetariano";

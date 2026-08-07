@@ -1,5 +1,5 @@
-import type { Season } from "@cooking/shared";
-import { availability, isLocalRecipe, normalizeText, type SeasonFit, seasonFit } from "@cooking/shared";
+import type { Season } from "../types.js";
+import { availability, isLocalRecipe, normalizeText, type SeasonFit, seasonFit } from "../types.js";
 
 export type { SeasonFit };
 export { availability, isLocalRecipe, seasonFit };

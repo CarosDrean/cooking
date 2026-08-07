@@ -1,5 +1,5 @@
-import type { AppState, Day, MealSlot, MealType, Recipe, WeeklyPlan } from "@cooking/shared";
-import { DAYS, MEALS } from "@cooking/shared";
+import type { AppState, Day, MealSlot, MealType, Recipe, WeeklyPlan } from "../types.js";
+import { DAYS, MEALS } from "../types.js";
 import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays } from "./history.js";
 import { availability, currentSeason } from "./location.js";

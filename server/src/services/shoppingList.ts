@@ -1,4 +1,4 @@
-import type { AppState, IngredientCategory, Recipe, ShoppingItem, ShoppingList } from "@cooking/shared";
+import type { AppState, IngredientCategory, Recipe, ShoppingItem, ShoppingList } from "../types.js";
 import { normalize } from "./diet.js";
 import { round, scaleRecipe } from "./scaling.js";
 

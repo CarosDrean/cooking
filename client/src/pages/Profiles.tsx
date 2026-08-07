@@ -1,4 +1,3 @@
-import { DIETS, type IngredientRestriction, MEAL_LABELS, MEALS, type MealType } from "@cooking/shared";
 import { useState } from "react";
 import {
     useActivateProfile,
@@ -9,6 +8,7 @@ import {
     useUpdateProfile,
 } from "../api/hooks";
 import { useToast } from "../lib/toast";
+import { DIETS, type IngredientRestriction, MEAL_LABELS, MEALS, type MealType } from "../types";
 
 const LEVEL_LABELS: Record<IngredientRestriction["level"], string> = {
     no: "No come",
