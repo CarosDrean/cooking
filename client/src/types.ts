@@ -248,27 +248,29 @@ export interface PurchaseLogEntry {
 
 export type DrinkKind = "refresco" | "mate" | "jugo" | "bebida";
 
-/** Bebida del catálogo (refresco, mate, jugo…) que acompaña almuerzo y cena. */
+/** Bebida del catálogo que acompaña las comidas. */
 export interface Drink {
     id: string;
     name: string;
     emoji: string;
     kind: DrinkKind;
+    /** Comidas para las que esta bebida es apta. */
+    suitableFor: MealType[];
 }
 
 export const DRINKS: Drink[] = [
-    { id: "d1", name: "Chicha morada", emoji: "🍇", kind: "refresco" },
-    { id: "d2", name: "Limonada", emoji: "🍋", kind: "refresco" },
-    { id: "d3", name: "Refresco de maracuyá", emoji: "🍹", kind: "refresco" },
-    { id: "d4", name: "Refresco de naranja", emoji: "🍊", kind: "refresco" },
-    { id: "d5", name: "Mate de hierbas", emoji: "🍵", kind: "mate" },
-    { id: "d6", name: "Mate de anís", emoji: "🌿", kind: "mate" },
-    { id: "d7", name: "Agua de manzanilla", emoji: "🌼", kind: "mate" },
-    { id: "d8", name: "Emoliente", emoji: "🥣", kind: "mate" },
-    { id: "d9", name: "Café pasado", emoji: "☕", kind: "bebida" },
-    { id: "d10", name: "Café con leche", emoji: "🥛", kind: "bebida" },
-    { id: "d11", name: "Chocolate caliente", emoji: "🍫", kind: "bebida" },
-    { id: "d12", name: "Jugo de papaya", emoji: "🥭", kind: "jugo" },
+    { id: "d1", name: "Chicha morada", emoji: "🍇", kind: "refresco", suitableFor: ["almuerzo", "cena"] },
+    { id: "d2", name: "Limonada", emoji: "🍋", kind: "refresco", suitableFor: ["almuerzo", "cena"] },
+    { id: "d3", name: "Refresco de maracuyá", emoji: "🍹", kind: "refresco", suitableFor: ["almuerzo", "cena"] },
+    { id: "d4", name: "Refresco de naranja", emoji: "🍊", kind: "refresco", suitableFor: ["almuerzo", "cena"] },
+    { id: "d5", name: "Mate de hierbas", emoji: "🍵", kind: "mate", suitableFor: ["almuerzo", "cena"] },
+    { id: "d6", name: "Mate de anís", emoji: "🌿", kind: "mate", suitableFor: ["almuerzo", "cena"] },
+    { id: "d7", name: "Agua de manzanilla", emoji: "🌼", kind: "mate", suitableFor: ["almuerzo", "cena"] },
+    { id: "d8", name: "Emoliente", emoji: "🥣", kind: "mate", suitableFor: ["almuerzo", "cena"] },
+    { id: "d9", name: "Café pasado", emoji: "☕", kind: "bebida", suitableFor: ["desayuno", "almuerzo"] },
+    { id: "d10", name: "Café con leche", emoji: "🥛", kind: "bebida", suitableFor: ["desayuno"] },
+    { id: "d11", name: "Chocolate caliente", emoji: "🍫", kind: "bebida", suitableFor: ["desayuno"] },
+    { id: "d12", name: "Jugo de papaya", emoji: "🥭", kind: "jugo", suitableFor: ["desayuno", "almuerzo", "cena"] },
 ];
 
 export interface MealSlot {
@@ -326,6 +328,7 @@ export interface AppState {
     purchaseLog: PurchaseLogEntry[];
     shoppingList: ShoppingList | null;
     location: Location;
+    drinks: Drink[];
 }
 
 export interface SeasonFit {

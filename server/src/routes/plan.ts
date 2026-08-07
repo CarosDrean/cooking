@@ -35,7 +35,7 @@ planRouter.put("/", (req, res) => {
             meal: s.meal,
             recipeId: s.recipeId,
             servings: Math.max(1, s.servings ?? 2),
-            drink: needsDrink(s.meal) ? s.drink?.trim() || randomDrink() : undefined,
+            drink: needsDrink(s.meal) ? s.drink?.trim() || randomDrink(state.drinks, s.meal) : undefined,
         })),
     };
     state.weeklyPlan = plan;
@@ -90,7 +90,7 @@ planRouter.put("/slots/:slotId", (req, res) => {
             body.drink !== undefined
                 ? body.drink.trim() || undefined
                 : needsDrink(meal)
-                  ? (plan.slots[index].drink ?? randomDrink())
+                  ? (plan.slots[index].drink ?? randomDrink(state.drinks, meal))
                   : undefined,
     };
     saveState();

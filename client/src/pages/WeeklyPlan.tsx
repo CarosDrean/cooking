@@ -15,13 +15,19 @@ import { useConfirm } from "../lib/confirm";
 import { addDays, shortDateLabel, startOfWeek } from "../lib/format";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
-import type { Day, MealSlot, MealType } from "../types";
-import { DAY_LABELS, DAYS, DRINKS, MEAL_LABELS, MEALS } from "../types";
+import type { Day, Drink, MealSlot, MealType } from "../types";
+import { DAY_LABELS, DAYS, MEAL_LABELS, MEALS } from "../types";
 
 const needsDrink = (meal: MealType) => meal === "almuerzo" || meal === "cena";
 
-function randomDrinkName(): string {
-    return DRINKS[Math.floor(Math.random() * DRINKS.length)].name;
+function drinksForMeal(drinks: Drink[], meal: MealType): Drink[] {
+    const suitable = drinks.filter((d) => d.suitableFor.includes(meal));
+    return suitable.length > 0 ? suitable : drinks;
+}
+
+function randomDrinkName(drinks: Drink[], meal: MealType): string {
+    const pool = drinksForMeal(drinks, meal);
+    return pool[Math.floor(Math.random() * pool.length)].name;
 }
 
 export default function WeeklyPlan() {
@@ -74,7 +80,7 @@ export default function WeeklyPlan() {
                         meal: picker.meal,
                         recipeId,
                         servings: 2,
-                        drink: needsDrink(picker.meal) ? randomDrinkName() : undefined,
+                        drink: needsDrink(picker.meal) ? randomDrinkName(state?.drinks ?? [], picker.meal) : undefined,
                     },
                 ],
             });
@@ -84,8 +90,9 @@ export default function WeeklyPlan() {
     };
 
     const cycleDrink = (slot: MealSlot) => {
-        const idx = DRINKS.findIndex((d) => d.name === slot.drink);
-        const next = DRINKS[(idx + 1 + DRINKS.length) % DRINKS.length];
+        const pool = drinksForMeal(state?.drinks ?? [], slot.meal);
+        const idx = pool.findIndex((d) => d.name === slot.drink);
+        const next = pool[(idx + 1 + pool.length) % pool.length];
         updateSlot.mutate(
             { slotId: slot.id, body: { drink: next.name } },
             { onSuccess: () => toast(`Bebida: ${next.name}`) },
@@ -164,7 +171,8 @@ export default function WeeklyPlan() {
                                             {slot.drink || needsDrink(slot.meal) ? (
                                                 <div className="plan-drink">
                                                     <span className="plan-drink-name">
-                                                        {DRINKS.find((d) => d.name === slot.drink)?.emoji ?? "🍵"}{" "}
+                                                        {state?.drinks.find((d) => d.name === slot.drink)?.emoji ??
+                                                            "🍵"}{" "}
                                                         {slot.drink ?? "Elegir bebida"}
                                                     </span>
                                                     <button

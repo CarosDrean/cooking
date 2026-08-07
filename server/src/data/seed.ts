@@ -16,6 +16,7 @@ interface SeedData {
     purchaseLog: AppState["purchaseLog"];
     shoppingList: AppState["shoppingList"];
     location: AppState["location"];
+    drinks: AppState["drinks"];
 }
 
 /** Resolves `{{token}}` placeholders for relative dates so seed.json stays static. */
@@ -56,6 +57,7 @@ export function seedState(): AppState {
         ...resolved,
         purchaseLog: resolved.purchaseLog ?? [],
         recipes: seedRecipes,
+        drinks: resolved.drinks ?? [],
     };
 }
 

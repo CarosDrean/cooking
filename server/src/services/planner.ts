@@ -1,5 +1,5 @@
-import type { AppState, Day, MealSlot, MealType, Recipe, WeeklyPlan } from "../types.js";
-import { DAYS, DRINKS, MEALS } from "../types.js";
+import type { AppState, Day, Drink, MealSlot, MealType, Recipe, WeeklyPlan } from "../types.js";
+import { DAYS, MEALS } from "../types.js";
 import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays } from "./history.js";
 import { availability, currentSeason } from "./location.js";
@@ -37,8 +37,10 @@ export function needsDrink(meal: MealType): boolean {
     return meal === "almuerzo" || meal === "cena";
 }
 
-export function randomDrink(): string {
-    return DRINKS[Math.floor(Math.random() * DRINKS.length)].name;
+export function randomDrink(drinks: Drink[], meal: MealType): string {
+    const suitable = drinks.filter((d) => d.suitableFor.includes(meal));
+    const pool = suitable.length > 0 ? suitable : drinks;
+    return pool[Math.floor(Math.random() * pool.length)].name;
 }
 
 function dateForDay(weekStart: string, day: Day): string {
@@ -154,7 +156,7 @@ export function generateWeekPlan(state: AppState, weekStart: string): WeeklyPlan
                 meal,
                 recipeId: chosen.id,
                 servings: Math.max(1, profile.householdSize),
-                drink: needsDrink(meal) ? randomDrink() : undefined,
+                drink: needsDrink(meal) ? randomDrink(state.drinks, meal) : undefined,
             });
         }
     }
@@ -192,7 +194,7 @@ export function regenerateSlot(
             meal,
             recipeId: chosen.id,
             servings: previousServings,
-            drink: needsDrink(meal) ? (existing?.drink ?? randomDrink()) : undefined,
+            drink: needsDrink(meal) ? (existing?.drink ?? randomDrink(state.drinks, meal)) : undefined,
         },
     ];
 

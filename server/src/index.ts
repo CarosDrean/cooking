@@ -1,5 +1,6 @@
 import express from "express";
 import { getState } from "./db.js";
+import { drinksRouter } from "./routes/drinks.js";
 import { historyRouter } from "./routes/history.js";
 import { ingredientsRouter } from "./routes/ingredients.js";
 import { openverseRouter } from "./routes/openverse.js";
@@ -45,6 +46,7 @@ app.use("/api/spending", spendingRouter);
 app.use("/api/recommendations", recommendationsRouter);
 app.use("/api/settings", settingsRouter);
 app.use("/api/tips", tipsRouter);
+app.use("/api/drinks", drinksRouter);
 app.use("/api/themealdb", themealdbRouter);
 app.use("/api/openverse", openverseRouter);
 

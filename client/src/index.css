@@ -2442,3 +2442,130 @@ code {
 .image-picker-info a {
     color: var(--accent);
 }
+
+/* ---------- Drinks ---------- */
+.drink-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+}
+
+.drink-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: box-shadow 0.15s ease;
+}
+
+.drink-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.drink-card-hero {
+    background: var(--bg-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px 18px;
+}
+
+.drink-card-emoji {
+    font-size: 42px;
+    line-height: 1;
+}
+
+.drink-card-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.drink-card-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.drink-card-kind {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.drink-card-meals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.drink-card-actions {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    gap: 4px;
+}
+
+@media (max-width: 900px) {
+    .drink-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+
+    .drink-card-emoji {
+        font-size: 34px;
+    }
+}
+
+/* ---------- Form layout helpers ---------- */
+.field-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.field.sm {
+    flex: 1;
+    min-width: 120px;
+}
+
+.field.sm > span {
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
+.chip-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.chip-row .chip {
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    background: transparent;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--tx-muted);
+}
+
+.chip-row .chip.active {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    border-color: var(--accent);
+}
+
+.btn-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}

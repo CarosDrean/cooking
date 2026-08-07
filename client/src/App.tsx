@@ -6,6 +6,7 @@ import { dayKeyOf, toISODate } from "./lib/format";
 import { useRoute } from "./lib/router";
 import CookingMode from "./pages/CookingMode";
 import Dashboard from "./pages/Dashboard";
+import DrinksPage from "./pages/DrinksPage";
 import HistoryPage from "./pages/History";
 import PantryPage from "./pages/Pantry";
 import ProfilesPage from "./pages/Profiles";
@@ -87,6 +88,9 @@ export default function App() {
             case "profiles":
                 content = <ProfilesPage />;
                 break;
+            case "drinks":
+                content = <DrinksPage />;
+                break;
             case "settings":
                 content = <Settings />;
                 break;
@@ -126,6 +130,9 @@ export default function App() {
                     </NavItem>
                     <NavItem active={route.page === "profiles"} onClick={() => setPage("profiles")}>
                         Perfiles
+                    </NavItem>
+                    <NavItem active={route.page === "drinks"} onClick={() => setPage("drinks")}>
+                        Bebidas
                     </NavItem>
                     <NavItem active={route.page === "settings"} onClick={() => setPage("settings")}>
                         Ajustes

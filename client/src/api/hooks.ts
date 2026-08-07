@@ -3,6 +3,7 @@ import type {
     AppState,
     CatalogIngredient,
     Day,
+    Drink,
     Location,
     MealLogEntry,
     MealType,
@@ -594,5 +595,48 @@ export function useUpdateRecipeImage() {
         mutationFn: ({ recipeId, image }: { recipeId: string; image: string }) =>
             api.patch<Recipe>(`/recipes/${recipeId}/image`, { image }),
         onSuccess: () => invalidateState(qc),
+    });
+}
+
+/* ---------- Drinks ---------- */
+export function useDrinks() {
+    const { data } = useAppState();
+    return useQuery({
+        queryKey: ["drinks"],
+        queryFn: () => api.get<Drink[]>("/drinks"),
+        initialData: data?.drinks,
+    });
+}
+
+export function useCreateDrink() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: (body: Partial<Drink>) => api.post<Drink>("/drinks", body),
+        onSuccess: () => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["drinks"] });
+        },
+    });
+}
+
+export function useUpdateDrink() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: ({ id, body }: { id: string; body: Partial<Drink> }) => api.put<Drink>(`/drinks/${id}`, body),
+        onSuccess: () => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["drinks"] });
+        },
+    });
+}
+
+export function useDeleteDrink() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: (id: string) => api.del<{ ok: boolean }>(`/drinks/${id}`),
+        onSuccess: () => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["drinks"] });
+        },
     });
 }
