@@ -30,35 +30,42 @@ Completada el 2026-08-07. Todos los criterios de aceptación verificados en nave
 - **Aceptación**: dictar "2 bolsas de sal", "dos bolsas de sal", "compré 2 bolsas de sal por favor" rellena cantidad=2, unidad=bolsas, nombre=sal; "2 bolsas de sal y media" rellena cantidad=2.5; el guardado suma correctamente.
 - **✅ Completado**: `parseSpokenIngredient` robustecido en `speech.ts` (`stripFillerEdges`, `parseQuantityUnitAnywhere`, unidades contables nuevas, fracciones, rellenos). Extras: compra por moneda ("50 céntimos de culantro", "2 soles de canela" → precio, céntimos ÷100) y fix de unidad al dictar solo precio (ya no rellena "g" por defecto). El toast muestra la transcripción cruda para diagnóstico.
 
-## Fase 2 — Restricciones y sugerencias de platos habituales
+## ✅ Fase 2 — Restricciones y sugerencias de platos habituales — COMPLETADA
 
-### 2.1 Autocompletado al escribir una restricción por ingrediente
+Completada el 2026-08-07. Todos los criterios de aceptación verificados en navegador y `pnpm check` en verde.
+
+### ✅ 2.1 Autocompletado al escribir una restricción por ingrediente
 - **Estado actual**: `RestrictionsEditor` en `client/src/components/ProfileFields.tsx:56-68` es un input de texto libre sin sugerencias; solo valida que no esté vacío. El catálogo de ingredientes ya existe (`GET /api/ingredients`, `server/data/ingredients.json`) y `Pantry.tsx:74-93` ya construye sugerencias (catálogo + despensa + recetas).
 - **Cambio**: reutilizar la misma fuente de sugerencias (datalist/combobox) en el input de restricciones: catálogo + ingredientes de recetas + despensa. Al elegir/teclear un ingrediente del catálogo, mostrar su categoría.
 - **Aceptación**: al escribir 2-3 letras en "Restricciones de ingredientes" aparecen sugerencias del catálogo y de las recetas, y se puede añadir con Enter o clic.
+- **✅ Completado**: `RestrictionsEditor` extraído como componente propio con hooks; usa `<datalist>` con sugerencias del catálogo + despensa + recetas (igual que `Pantry.tsx`). Al coincidir un ingrediente del catálogo se muestra su categoría como hint.
 
-### 2.2 Restricción directa vs derivada (y matching que no falle)
+### ✅ 2.2 Restricción directa vs derivada (y matching que no falle)
 - **Estado actual**: reportado por el usuario: con "leche" como restricción, se sugirió "Quinoa con leche". El matching en `server/src/services/diet.ts:36-41` (`matchingRestrictions`) compara **igualdad exacta** del nombre normalizado: "leche" no coincide con "leche evaporada", "queso", "yogurt" ni "mantequilla". Además `restrictedCount`/`isForbidden` sufren del mismo problema. No existe concepto de restricción directa vs derivada.
 - **Cambio**:
   - Añadir a `IngredientRestriction` el modo de aplicación: **directa** (el ingrediente tal cual: "pescado") vs **derivada** (productos derivados: "leche" → leche evaporada, leche de coco, yogurt, queso, mantequilla, crema), con un set de derivados/alias editable o resuelto desde el catálogo (`ingredients.json`).
   - Cambiar `matchingRestrictions` a matching por subcadena/stem sobre los nombres de ingredientes + derivados, en vez de igualdad exacta (p. ej. "leche" bloquea "leche evaporada").
   - Marcar visualmente en `ProfileFields.tsx` si cada restricción es directa o derivada.
 - **Aceptación**: con "leche" como restricción (derivada), "Quinoa con leche" y toda receta con leche evaporada/queso/yogurt se marca como no permitida (o "consume con moderación" según nivel); el catálogo no muestra esas recetas según el perfil.
+- **✅ Completado**: `IngredientRestriction.mode` añadido a tipos (server + client). `DERIVED_GROUPS` con 13 grupos (leche, pescado, pollo, carne, sillao, gluten, trigo, aji, cerdo, mariscos, huevo, lactosa). `matchingRestrictions` en `diet.ts` hace subcadena/stem + grupos para derivada. Badges visuales (azul "Directa", verde "Derivada") en la lista de restricciones.
 
-### 2.3 Las sugerencias de platos habituales respetan restricciones y comidas
+### ✅ 2.3 Las sugerencias de platos habituales respetan restricciones y comidas
 - **Estado actual**: `suggestRecipesForUsualDishes` (`client/src/lib/speech.ts:409-449`) puntúa el catálogo por título/ingredientes/descripción **sin filtrar por las restricciones ni las dietas del perfil**; por eso "pan con avena" pudo sugerir "Quinoa con leche" pese a la restricción de leche. Tampoco limita por `suitableFor` más allá de un bonus de +3.
 - **Cambio**: pasar las restricciones/dietas del perfil a `suggestRecipesForUsualDishes` y descartar (o penalizar fuerte) las recetas que violan restricciones de nivel "no"/"no-principal", con la misma lógica que `isForbidden`/`restrictedCount` del server (`diet.ts`). Mantener el bonus de aptitud por comida (`suitableFor`).
 - **Aceptación**: si el perfil restringe leche, las sugerencias de platos habituales no incluyen ninguna receta con leche o derivados, y siguen siendo aptas para la comida correspondiente.
+- **✅ Completado**: `suggestRecipesForUsualDishes` acepta parámetros `restrictions` y `feedback`. Duplica la lógica `isForbidden`/`restrictedCount` del server en el cliente (`isRecipeForbidden`, `recipeRestrictedCount`, `isProtagonistOfRecipe`). Penaliza ingredientes restringidos (-2 por cada uno) y descarta recetas prohibidas.
 
-### 2.4 Sugerencias de platos habituales separadas por comida
+### ✅ 2.4 Sugerencias de platos habituales separadas por comida
 - **Estado actual**: `client/src/components/ProfileFields.tsx:279-297` muestra "Según tus hábitos, podrías preparar" como una lista plana de `RecipeCard`, con las comidas como etiqueta pequeña en cada tarjeta. Cuando hay hábitos de desayuno, almuerzo y cena a la vez, todo se mezcla.
 - **Cambio**: agrupar las sugerencias en secciones/columnas por comida (Desayuno / Almuerzo / Cena), mostrando en cada una las recetas cuyo `matchedMeals` incluye esa comida (o la mejor correspondencia). Si no hay sugerencias para una comida, omitir la sección.
 - **Aceptación**: con hábitos de las 3 comidas, las sugerencias aparecen organizadas en 3 secciones o columnas claras, cada una con sus recetas.
+- **✅ Completado**: `suggestionsByMeal` agrupa por `matchedMeals` con afinidad a `suitableFor`. Cada sección muestra título (Desayuno / Almuerzo / Cena) y sus recetas; secciones sin sugerencias se omiten.
 
-### 2.5 Voto en las sugerencias (quitar, no sugerir, menos/más similares)
+### ✅ 2.5 Voto en las sugerencias (quitar, no sugerir, menos/más similares)
 - **Estado actual**: `suggestRecipesForUsualDishes` devuelve un ranking estático sin memoria; el panel "Según tus hábitos, podrías preparar" no permite influir en lo que se sugiere. El usuario quiere, por ejemplo, que "pan con chicharrón" se sugiera solo en pocas ocasiones.
 - **Cambio**: añadir controles por sugerencia: ✕ (quitar de la lista), "🙅 No sugerir más", "Menos similar" y "Más similares". Persistir ese feedback por perfil (nuevo campo, p. ej. `Profile.suggestionFeedback: Record<recipeId, {hide: boolean; weight: number}>` o `usualDishFeedback`) en tipos duplicados + seed + `db.json`, y aplicar pesos/ocultos en `suggestRecipesForUsualDishes` (score, orden y exclusión).
 - **Aceptación**: al votar una sugerencia, se quita de inmediato; "No sugerir más" la excluye permanentemente del panel; "Menos/Más similares" baja o sube su recurrencia en futuras visitas, todo persistido por perfil.
+- **✅ Completado**: `Profile.suggestionFeedback` en tipos duplicados + seed + db.json. 4 botones por sugerencia: ✕ (quitar temporal, estado local), 🙅"No sugerir más" (persiste `hide: true`), ↓"Menos similares" (`weight: 0.5`) y ↑"Más similares" (`weight: 2`). Los pesos multiplican el score en `suggestRecipesForUsualDishes`. Feedback se persiste vía `PUT /profiles/:id` con `suggestionFeedback`.
 
 ## Fase 3 — Presentación de recetas
 

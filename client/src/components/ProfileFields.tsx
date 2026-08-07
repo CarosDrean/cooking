@@ -1,8 +1,16 @@
 import { useMemo, useState } from "react";
-import { useRecipes } from "../api/hooks";
+import { useAppState, useIngredientCatalog, useUpdateProfile } from "../api/hooks";
 import { parseSpokenMealHabits, suggestRecipesForUsualDishes } from "../lib/speech";
 import { useToast } from "../lib/toast";
-import { DIETS, type IngredientRestriction, MEAL_LABELS, MEALS, type MealType } from "../types";
+import {
+    DIETS,
+    type IngredientRestriction,
+    MEAL_LABELS,
+    MEALS,
+    type MealType,
+    normalizeText,
+    type Profile,
+} from "../types";
 import RecipeCard from "./RecipeCard";
 import VoiceButton from "./VoiceButton";
 
@@ -32,7 +40,7 @@ export const LEVEL_LABELS: Record<IngredientRestriction["level"], string> = {
     "no-principal": "No como protagonista",
 };
 
-export function RestrictionsEditor({
+function RestrictionsEditor({
     value,
     onChange,
 }: {
@@ -41,6 +49,33 @@ export function RestrictionsEditor({
 }) {
     const [name, setName] = useState("");
     const [level, setLevel] = useState<IngredientRestriction["level"]>("no");
+    const catalog = useIngredientCatalog();
+    const { data: app } = useAppState();
+
+    const suggestions = useMemo(() => {
+        const needle = normalizeText(name);
+        if (needle.length < 2) return [];
+        const seen = new Set<string>();
+        const list: string[] = [];
+        const push = (n: string) => {
+            const key = normalizeText(n);
+            if (key.includes(needle) && !seen.has(key)) {
+                seen.add(key);
+                list.push(n);
+            }
+        };
+        for (const i of catalog.data ?? []) push(i.name);
+        for (const p of app?.pantry ?? []) push(p.ingredientName);
+        for (const r of app?.recipes ?? []) {
+            for (const ing of r.ingredients) push(ing.name);
+        }
+        return list.slice(0, 12);
+    }, [catalog.data, app?.pantry, app?.recipes, name]);
+
+    const matchedCatalog = useMemo(() => {
+        const needle = normalizeText(name);
+        return catalog.data?.find((i) => normalizeText(i.name) === needle);
+    }, [catalog.data, name]);
 
     const add = () => {
         const trimmed = name.trim().toLowerCase();
@@ -48,6 +83,13 @@ export function RestrictionsEditor({
         const next = [...value.filter((r) => r.name !== trimmed), { name: trimmed, level }];
         onChange(next);
         setName("");
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            add();
+        }
     };
 
     return (
@@ -58,14 +100,17 @@ export function RestrictionsEditor({
                     className="input"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            add();
-                        }
-                    }}
+                    onKeyDown={handleKeyDown}
                     placeholder="Ej. pescado, ají, lactosa…"
+                    list={suggestions.length ? "restriction-suggestions" : undefined}
                 />
+                {suggestions.length ? (
+                    <datalist id="restriction-suggestions">
+                        {suggestions.map((s) => (
+                            <option key={s} value={s} />
+                        ))}
+                    </datalist>
+                ) : null}
                 <select
                     className="input"
                     value={level}
@@ -79,6 +124,11 @@ export function RestrictionsEditor({
                     Añadir
                 </button>
             </div>
+            {matchedCatalog ? (
+                <p className="muted small restriction-hint">
+                    {matchedCatalog.name} · {matchedCatalog.category} · en catálogo
+                </p>
+            ) : null}
             {value.length > 0 ? (
                 <ul className="restriction-list">
                     {value.map((r) => (
@@ -110,12 +160,16 @@ export function ProfileFields({
     value,
     onChange,
     showBasics = true,
+    profile,
 }: {
     value: ProfileFormState;
     onChange: (patch: Partial<ProfileFormState>) => void;
     showBasics?: boolean;
+    profile?: Profile;
 }) {
     const toast = useToast();
+    const updateProfile = useUpdateProfile();
+    const [hiddenSuggestionIds, setHiddenSuggestionIds] = useState<Set<string>>(new Set());
 
     const toggleDiet = (d: string) =>
         onChange({ diets: value.diets.includes(d) ? value.diets.filter((x) => x !== d) : [...value.diets, d] });
@@ -144,12 +198,51 @@ export function ProfileFields({
             },
         });
 
-    const { data: catalog } = useRecipes({ profile: "all" });
+    const { data: state } = useAppState();
+    const catalog = useMemo(() => {
+        if (!state) return [];
+        const recipes = state.recipes ?? [];
+        const restrictions = profile?.restrictions?.length ? profile.restrictions : value.restrictions;
+        if (!restrictions.length) return recipes;
+        return recipes;
+    }, [state, value.restrictions, profile?.restrictions]);
+
+    const effectiveFeedback = useMemo(() => {
+        const base = profile?.suggestionFeedback ?? {};
+        const withHidden: Record<string, { hide: boolean; weight: number }> = { ...base };
+        for (const id of hiddenSuggestionIds) {
+            withHidden[id] = { ...withHidden[id], hide: true };
+        }
+        return withHidden;
+    }, [profile?.suggestionFeedback, hiddenSuggestionIds]);
+
     const suggestions = useMemo(() => {
-        if (!catalog) return [];
-        if (!MEALS.some((m) => (value.usualDishes[m] ?? []).length > 0)) return [];
-        return suggestRecipesForUsualDishes(catalog, value.usualDishes);
-    }, [catalog, value.usualDishes]);
+        if (!catalog.length) return [];
+        const hasDishes = MEALS.some((m) => (value.usualDishes[m] ?? []).length > 0);
+        if (!hasDishes) return [];
+        const restrictions = value.restrictions.length > 0 ? value.restrictions : (profile?.restrictions ?? []);
+        return suggestRecipesForUsualDishes(catalog, value.usualDishes, restrictions, effectiveFeedback);
+    }, [catalog, value.usualDishes, value.restrictions, profile?.restrictions, effectiveFeedback]);
+
+    const suggestionsByMeal = useMemo(() => {
+        const groups: Record<MealType, typeof suggestions> = {
+            desayuno: [],
+            almuerzo: [],
+            cena: [],
+        };
+        for (const s of suggestions) {
+            const meal = s.matchedMeals[0];
+            if (meal && s.recipe.suitableFor.includes(meal)) {
+                groups[meal].push(s);
+            } else {
+                const bestMeal = s.matchedMeals.find((m) => s.recipe.suitableFor.includes(m)) ?? s.matchedMeals[0];
+                if (bestMeal) {
+                    groups[bestMeal].push(s);
+                }
+            }
+        }
+        return groups;
+    }, [suggestions]);
 
     const onHabitVoice = (text: string) => {
         const habits = parseSpokenMealHabits(text);
@@ -170,6 +263,106 @@ export function ProfileFields({
         onChange({ usualDishes: nextDishes, meals: [...nextMeals] });
         toast(addedDishes > 0 ? "Guardé tus platos habituales" : "Guardé tus comidas");
     };
+
+    const saveFeedback = (recipeId: string, patch: { hide?: boolean; weight?: number }) => {
+        if (!profile?.id) return;
+        const current = profile.suggestionFeedback ?? {};
+        const next: Record<string, { hide: boolean; weight: number }> = {};
+        for (const [key, val] of Object.entries(current)) {
+            next[key] = { ...val };
+        }
+        next[recipeId] = {
+            hide: patch.hide ?? current[recipeId]?.hide ?? false,
+            weight: patch.weight ?? current[recipeId]?.weight ?? 1,
+        };
+        updateProfile.mutate({
+            id: profile.id,
+            body: { suggestionFeedback: next },
+        });
+    };
+
+    const onHideSuggestion = (recipeId: string) => {
+        setHiddenSuggestionIds((prev) => new Set(prev).add(recipeId));
+    };
+
+    const onDismissSuggestion = (recipeId: string) => {
+        saveFeedback(recipeId, { hide: true });
+        setHiddenSuggestionIds((prev) => new Set(prev).add(recipeId));
+    };
+
+    const onWeightSuggestion = (recipeId: string, weight: number) => {
+        saveFeedback(recipeId, { weight });
+    };
+
+    const renderSuggestionCards = (items: typeof suggestions) => (
+        <div className="suggestion-list">
+            {items.map(({ recipe, matchedMeals, matchedWords, restrictedIngredients }) => (
+                <RecipeCard
+                    key={recipe.id}
+                    recipe={recipe}
+                    restrictedIngredients={restrictedIngredients}
+                    right={
+                        <div className="suggestion-right">
+                            <span className="muted small suggestion-tags">
+                                {matchedMeals.map((m) => MEAL_LABELS[m]).join(", ")}
+                                {matchedWords.length > 0 ? ` · ${matchedWords.join(", ")}` : ""}
+                            </span>
+                            <span className="suggestion-votes">
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="No sugerir más"
+                                    aria-label="No sugerir más"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onDismissSuggestion(recipe.id);
+                                    }}
+                                >
+                                    🙅
+                                </button>
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="Menos similares"
+                                    aria-label="Menos similares"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onWeightSuggestion(recipe.id, 0.5);
+                                    }}
+                                >
+                                    ↓
+                                </button>
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="Más similares"
+                                    aria-label="Más similares"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onWeightSuggestion(recipe.id, 2);
+                                    }}
+                                >
+                                    ↑
+                                </button>
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="Quitar"
+                                    aria-label="Quitar"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onHideSuggestion(recipe.id);
+                                    }}
+                                >
+                                    ✕
+                                </button>
+                            </span>
+                        </div>
+                    }
+                />
+            ))}
+        </div>
+    );
 
     return (
         <>
@@ -279,20 +472,16 @@ export function ProfileFields({
             {suggestions.length > 0 ? (
                 <div className="field">
                     <span>Según tus hábitos, podrías preparar:</span>
-                    <div className="suggestion-list">
-                        {suggestions.map(({ recipe, matchedMeals, matchedWords }) => (
-                            <RecipeCard
-                                key={recipe.id}
-                                recipe={recipe}
-                                right={
-                                    <span className="muted small suggestion-tags">
-                                        {matchedMeals.map((m) => MEAL_LABELS[m]).join(", ")}
-                                        {matchedWords.length > 0 ? ` · ${matchedWords.join(", ")}` : ""}
-                                    </span>
-                                }
-                            />
-                        ))}
-                    </div>
+                    {MEALS.map((meal) => {
+                        const items = suggestionsByMeal[meal];
+                        if (!items.length) return null;
+                        return (
+                            <div className="suggestion-group" key={meal}>
+                                <h4 className="suggestion-group-title">{MEAL_LABELS[meal]}</h4>
+                                {renderSuggestionCards(items)}
+                            </div>
+                        );
+                    })}
                 </div>
             ) : null}
         </>

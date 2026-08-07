@@ -134,6 +134,7 @@ export default function ProfilesPage() {
                         <ProfileFields
                             value={editForm}
                             onChange={(patch) => setEditForm((f) => ({ ...f, ...patch }))}
+                            profile={profiles.find((p) => p.id === editingId)}
                         />
                         <div className="page-actions">
                             <button className="btn primary" onClick={saveEdit}>

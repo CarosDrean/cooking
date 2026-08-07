@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { useMakeable, useRecipes, useThemealdbAutoImport } from "../api/hooks";
+import {
+    useActiveProfile,
+    useMakeable,
+    useRecipes,
+    useSetRating,
+    useThemealdbAutoImport,
+    useUpdateProfile,
+} from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
 import { useToast } from "../lib/toast";
 import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "../types";
@@ -12,7 +19,28 @@ export default function Recipes() {
     const [season, setSeason] = useState("");
     const [allRecipes, setAllRecipes] = useState(false);
     const autoImport = useThemealdbAutoImport();
+    const activeProfile = useActiveProfile();
+    const setRating = useSetRating();
+    const updateProfile = useUpdateProfile();
     const toast = useToast();
+    const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
+    const [showHidden, setShowHidden] = useState(false);
+
+    const feedback = activeProfile?.suggestionFeedback ?? {};
+
+    const saveFeedback = (recipeId: string, patch: { hide?: boolean; weight?: number }) => {
+        if (!activeProfile) return;
+        const current = feedback;
+        const next: Record<string, { hide: boolean; weight: number }> = {};
+        for (const [key, val] of Object.entries(current)) {
+            next[key] = { ...val };
+        }
+        next[recipeId] = {
+            hide: patch.hide ?? current[recipeId]?.hide ?? false,
+            weight: patch.weight ?? current[recipeId]?.weight ?? 1,
+        };
+        updateProfile.mutate({ id: activeProfile.id, body: { suggestionFeedback: next } });
+    };
 
     const toggleDiet = (d: string) => setDiets((cur) => (cur.includes(d) ? cur.filter((x) => x !== d) : [...cur, d]));
 
@@ -32,7 +60,7 @@ export default function Recipes() {
         if (makeableOnly && !recipes.isFetching) {
             list = list.filter((r) => makeableIds.has(r.id));
         }
-        return list;
+        return list.filter((r) => showHidden || (!feedback[r.id]?.hide && !hiddenIds.has(r.id)));
     })();
 
     return (
@@ -41,6 +69,14 @@ export default function Recipes() {
                 <div>
                     <h1>Recetas</h1>
                     <p className="muted">{shown.length} recetas</p>
+                    {hiddenIds.size > 0 || Object.values(feedback).some((f) => f.hide) ? (
+                        <button
+                            className={`btn ${showHidden ? "primary" : "ghost"} sm`}
+                            onClick={() => setShowHidden((v) => !v)}
+                        >
+                            {showHidden ? "👁 Ocultas" : "🙈 Mostrar ocultas"}
+                        </button>
+                    ) : null}
                 </div>
                 <div className="filters">
                     <input
@@ -133,8 +169,69 @@ export default function Recipes() {
 
             <div className="card-list">
                 {shown.map((r) => (
-                    <RecipeCard key={r.id} recipe={r} />
-                ))}
+                    <RecipeCard
+                        key={r.id}
+                        recipe={r}
+                        rating={activeProfile?.ratingByRecipe?.[r.id]}
+                        onRate={(rating) => {
+                            if (activeProfile)
+                                setRating.mutate({ profileId: activeProfile.id, recipeId: r.id, rating });
+                        }}
+                        right={
+                            <span className="suggestion-votes">
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="No sugerir más"
+                                    aria-label="No sugerir más"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        saveFeedback(r.id, { hide: true });
+                                        setHiddenIds((prev) => new Set(prev).add(r.id));
+                                    }}
+                                >
+                                    🙅
+                                </button>
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="Menos similares"
+                                    aria-label="Menos similares"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        saveFeedback(r.id, { weight: 0.5 });
+                                    }}
+                                >
+                                    ↓
+                                </button>
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="Más similares"
+                                    aria-label="Más similares"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        saveFeedback(r.id, { weight: 2 });
+                                    }}
+                                >
+                                    ↑
+                                </button>
+                                <button
+                                    className="icon-btn vote-btn"
+                                    type="button"
+                                    title="Quitar"
+                                    aria-label="Quitar"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setHiddenIds((prev) => new Set(prev).add(r.id));
+                                    }}
+                                >
+                                    ✕
+                                </button>
+                            </span>
+                        }
+                    />
+                ))}{" "}
                 {recipes.isLoading ? <p className="muted">Cargando recetas…</p> : null}
                 {!recipes.isLoading && shown.length === 0 ? (
                     <div className="empty-state">

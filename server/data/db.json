@@ -57,7 +57,8 @@
           "pallares secos con arroz"
         ],
         "cena": []
-      }
+      },
+      "suggestionFeedback": {}
     }
   ],
   "activeProfileId": "p1",
@@ -6017,77 +6018,70 @@
     }
   ],
   "weeklyPlan": {
-    "id": "1d46e89d-82a8-4054-ad3b-7dc80607af0b",
+    "id": "452e8775-d787-4947-bae7-64643b70ed81",
     "weekStart": "2026-08-03",
     "slots": [
       {
-        "id": "63ee62da-a9c5-4462-addf-1fa3184ac937",
-        "day": "viernes",
-        "meal": "desayuno",
-        "recipeId": "r3",
-        "servings": 4
-      },
-      {
-        "id": "ded6cde7-3a47-41de-aa1d-d8f962a693e0",
+        "id": "d0c48d17-6689-40e3-b307-57c2ddb93173",
         "day": "viernes",
         "meal": "almuerzo",
-        "recipeId": "r4",
-        "servings": 4,
-        "drink": "Refresco de naranja"
+        "recipeId": "r13",
+        "servings": 2,
+        "drink": "Chicha morada"
       },
       {
-        "id": "1a5067a5-8fe0-415c-bf58-675296817d20",
+        "id": "4eacf78b-77f3-4987-ba31-c6c4fa405ac8",
         "day": "viernes",
         "meal": "cena",
-        "recipeId": "r9",
-        "servings": 4,
+        "recipeId": "r2",
+        "servings": 2,
         "drink": "Emoliente"
       },
       {
-        "id": "dba8da3e-e414-4fb6-95e3-0675fdb44767",
-        "day": "sabado",
-        "meal": "desayuno",
-        "recipeId": "r6",
-        "servings": 4
-      },
-      {
-        "id": "50e4519e-e11a-4d5b-9d65-f28cfcb15bcb",
+        "id": "36259b05-8217-4d47-a6a4-45e206d9b53f",
         "day": "sabado",
         "meal": "almuerzo",
-        "recipeId": "r13",
-        "servings": 4,
-        "drink": "Chocolate caliente"
+        "recipeId": "r37",
+        "servings": 2,
+        "drink": "Limonada"
       },
       {
-        "id": "ce8e5719-b632-4aba-8a3c-3b3d201d50ff",
+        "id": "54f3c9ab-2136-4841-8465-1c9878d21817",
         "day": "sabado",
         "meal": "cena",
-        "recipeId": "r2",
-        "servings": 4,
-        "drink": "Refresco de maracuyá"
+        "recipeId": "r8",
+        "servings": 2,
+        "drink": "Café pasado"
       },
       {
-        "id": "c3a1f6c1-8b4c-47b9-b714-e3d2dcafd406",
-        "day": "domingo",
+        "id": "2a320e1a-9748-42e4-b517-5af2938d2a86",
+        "day": "sabado",
         "meal": "desayuno",
-        "recipeId": "r15",
-        "servings": 4
+        "recipeId": "r11",
+        "servings": 2
       },
       {
-        "id": "65fd9fb8-89c5-4f65-8dfc-4e86417964c0",
+        "id": "479959fa-44e9-44e3-a8c4-1e3c3c0a5424",
         "day": "domingo",
         "meal": "almuerzo",
-        "recipeId": "r10",
-        "servings": 4,
-        "drink": "Mate de anís"
+        "recipeId": "r49",
+        "servings": 2,
+        "drink": "Emoliente"
       },
       {
-        "id": "d6cd2de7-5143-4b61-82a7-db540a347cc7",
+        "id": "2751f77d-c58e-4844-b643-66b6adc2e8e6",
         "day": "domingo",
         "meal": "cena",
-        "recipeId": "r1",
-        "servings": 4,
-        "drink": "Mate de hierbas"
+        "recipeId": "r12",
+        "servings": 2,
+        "drink": "Emoliente"
+      },
+      {
+        "id": "0e14732f-8c64-4d99-8914-3e36a0c12a5b",
+        "day": "domingo",
+        "meal": "desayuno",
+        "recipeId": "r16",
+        "servings": 2
       }
     ]
   },

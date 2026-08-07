@@ -23,6 +23,80 @@ export interface IngredientRestriction {
     level: RestrictionLevel;
 }
 
+/** Grupos de ingredientes derivados (p. ej. "leche" → leche evaporada, queso, mantequilla…). */
+export const DERIVED_GROUPS: Record<string, string[]> = {
+    leche: [
+        "leche evaporada",
+        "leche condensada",
+        "leche de almendras",
+        "leche de coco",
+        "leche de soja",
+        "queso",
+        "queso feta",
+        "queso fresco",
+        "parmesano",
+        "mantequilla",
+    ],
+    pescado: [
+        "pescado blanco",
+        "filete de pescado blanco",
+        "salmón",
+        "atún en lata",
+        "camarón",
+        "calamar",
+        "mariscos mixtos",
+        "conchas",
+    ],
+    pollo: ["pechuga de pollo", "pollo entero o presas", "caldo de pollo", "carne de pollo"],
+    carne: ["carne de res", "carne de cerdo", "carne molida", "lomo de res", "chicharrón de cerdo", "charqui"],
+    sillao: ["salsa de soja"],
+    gluten: [
+        "harina de trigo",
+        "harina",
+        "pan",
+        "pan de molde",
+        "pan francés",
+        "pan de hamburguesa",
+        "espaguetis",
+        "fideos",
+        "pasta",
+        "galletas de soda",
+        "avena",
+        "harina de maíz",
+    ],
+    trigo: [
+        "harina de trigo",
+        "pan",
+        "pan de molde",
+        "pan francés",
+        "pan de hamburguesa",
+        "espaguetis",
+        "fideos",
+        "pasta",
+        "galletas de soda",
+    ],
+    aji: ["ají amarillo", "ají limo", "ají panca"],
+    cerdo: ["carne de cerdo", "chicharrón de cerdo"],
+    mariscos: ["camarón", "calamar", "mariscos mixtos", "conchas"],
+    huevo: ["huevo", "clara de huevo", "yema de huevo"],
+    lactosa: [
+        "leche",
+        "leche evaporada",
+        "leche condensada",
+        "leche de almendras",
+        "leche de coco",
+        "leche de soja",
+        "queso",
+        "queso feta",
+        "queso fresco",
+        "parmesano",
+        "mantequilla",
+        "yogurt",
+        "nata",
+        "crema",
+    ],
+};
+
 export const DIETS = ["vegetariano", "vegano", "sin-gluten", "keto", "alta-proteina", "sin-lactosa"] as const;
 
 export const SEASONS: Season[] = ["primavera", "verano", "otonio", "invierno"];
@@ -76,6 +150,8 @@ export interface Profile {
     recipeOverrides: Record<string, Recipe>;
     /** Platos habituales por comida (capturados por voz): meal → lista de platos. */
     usualDishes: Record<MealType, string[]>;
+    /** Feedback del usuario sobre sugerencias: recipeId → {hide, weight}. */
+    suggestionFeedback: Record<string, { hide: boolean; weight: number }>;
 }
 
 export interface Location {

@@ -72,6 +72,7 @@ profilesRouter.post("/", (req, res) => {
         isComplete: isProfileComplete({ name: body.name.trim(), householdSize }),
         recipeOverrides: {},
         usualDishes: cleanUsualDishes(body.usualDishes),
+        suggestionFeedback: body.suggestionFeedback ?? {},
     };
     state.profiles.push(profile);
     if (profile.isComplete) state.activeProfileId = profile.id;
@@ -100,6 +101,7 @@ profilesRouter.put("/:id", (req, res) => {
         mealsPerDay: body.mealsPerDay?.length ? body.mealsPerDay : current.mealsPerDay,
         isComplete: isProfileComplete({ name, householdSize }),
         usualDishes: body.usualDishes !== undefined ? cleanUsualDishes(body.usualDishes) : current.usualDishes,
+        suggestionFeedback: body.suggestionFeedback ?? current.suggestionFeedback ?? {},
     };
     saveState();
     res.json(state.profiles[index]);

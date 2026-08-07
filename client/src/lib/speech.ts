@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
-import type { MealType, Recipe } from "../types";
-import { MEALS } from "../types";
+import type { IngredientRestriction, MealType, Recipe } from "../types";
+import { DERIVED_GROUPS, MEALS } from "../types";
 
 interface SpeechRecognitionResultLike {
     0: { transcript: string };
@@ -485,17 +485,128 @@ export interface DishMatch {
     score: number;
     matchedMeals: MealType[];
     matchedWords: string[];
+    /** Ingredientes restringidos encontrados en la receta. */
+    restrictedIngredients: string[];
+}
+
+/** Whether a recipe ingredient matches a restriction (subcadena + grupo de derivados). */
+function ingredientMatchesRestriction(ingredientName: string, restriction: IngredientRestriction): boolean {
+    const ing = normalize(ingredientName);
+    const rName = normalize(restriction.name);
+
+    const targets = [rName, ...(DERIVED_GROUPS[rName] ?? []).map(normalize)];
+    for (const t of targets) {
+        if (ing === t || ing.includes(t) || t.includes(ing)) return true;
+    }
+    return false;
+}
+
+/** Si la receta debe ocultarse: nivel "no" siempre, "no-principal" si el ingrediente matched es protagonista. */
+function isRecipeForbidden(recipe: Recipe, restrictions: IngredientRestriction[]): boolean {
+    if (restrictions.length === 0) return false;
+
+    return restrictions.some((r) => {
+        const rName = normalize(r.name);
+        const targets = [rName, ...(DERIVED_GROUPS[rName] ?? []).map(normalize)];
+
+        const matchedIngredients = recipe.ingredients.filter((i) => {
+            const iname = normalize(i.name);
+            return targets.some((t) => iname === t || iname.includes(t) || t.includes(iname));
+        });
+
+        if (matchedIngredients.length === 0) return false;
+
+        if (r.level === "no") return true;
+
+        if (r.level === "no-principal") {
+            return matchedIngredients.some((mi) => isProtagonistOfRecipe(recipe, mi.name));
+        }
+
+        return false;
+    });
+}
+
+function isProtagonistOfRecipe(recipe: Recipe, name: string): boolean {
+    const n = normalize(name);
+    if (recipe.protagonist?.some((p) => normalize(p) === n)) return true;
+    const ingredient = recipe.ingredients.find((i) => normalize(i.name) === n);
+    if (ingredient?.category === "proteinas") return true;
+    const mainWord = n.split(/\s+/)[0];
+    if (!mainWord) return false;
+    const titleWords = new Set(normalize(recipe.title).split(/\s+/).filter(Boolean));
+    if (titleWords.has(mainWord)) return true;
+    return false;
 }
 
 /** Palabras demasiado genéricas para buscar coincidencias en recetas. */
 const DISH_SKIP_WORDS = new Set(["pollo", "carne", "pescado", "comida", "plato", "comer", "tener", "hacer"]);
 
+/** Reemplazos comunes para ingredientes restringidos. */
+export const REPLACEMENTS: Record<string, string[]> = {
+    leche: ["leche de almendras", "leche de coco", "leche de soja", "agua"],
+    "leche evaporada": ["leche de coco", "leche de almendras", "crema de coco"],
+    queso: ["tofu firme desmenuzado", "levadura nutricional", "queso vegano"],
+    "queso feta": ["tofu firme marinado", "queso vegano"],
+    "queso fresco": ["tofu firme desmenuzado"],
+    parmesano: ["levadura nutricional", "almendras molidas"],
+    mantequilla: ["aceite de oliva", "margarina vegetal", "aceite de coco"],
+    huevo: ["tofu firme", "plátano machacado", "semillas de chía (1 cda + 3 agua)"],
+    pescado: ["tofu firme", "setas", "berenjena"],
+    "pechuga de pollo": ["tofu firme", "setas", "garbanzos"],
+    pollo: ["tofu firme", "setas", "garbanzos"],
+    carne: ["lentejas", "garbanzos", "tofu firme", "proteína de soja texturizada"],
+    "carne de res": ["lentejas", "proteína de soja texturizada", "setas portobello"],
+    "carne de cerdo": ["setas", "tofu firme", "jackfruit"],
+    crema: ["leche de coco", "yogurt vegetal", "puré de papa"],
+    yogurt: ["yogurt de coco", "yogurt de soja", "puré de fruta"],
+    "salsa de soja": ["aminos de coco", "tamari sin gluten", "sal y limón"],
+    camarón: ["tofu firme en cubos", "setas ostra", "corazones de palmito"],
+    gluten: [],
+    trigo: [],
+};
+
+/** Lista los ingredientes de una receta que coinciden con restricciones del perfil. */
+export function findRestrictedIngredients(recipe: Recipe, restrictions: IngredientRestriction[]): string[] {
+    if (!restrictions.length) return [];
+    const restricted: string[] = [];
+    for (const ingredient of recipe.ingredients) {
+        if (restrictions.some((r) => ingredientMatchesRestriction(ingredient.name, r))) {
+            restricted.push(ingredient.name);
+        }
+    }
+    return [...new Set(restricted)];
+}
+
+/** Encuentra reemplazos sugeridos para un ingrediente restringido. */
+export function findReplacements(ingredientName: string): string[] {
+    const key = normalize(ingredientName);
+    // Buscar en claves exactas
+    if (REPLACEMENTS[key]) return REPLACEMENTS[key];
+    // Buscar en subcadenas
+    for (const [k, v] of Object.entries(REPLACEMENTS)) {
+        if (key.includes(k) || k.includes(key)) return v;
+    }
+    return [];
+}
+
+export interface SuggestionVote {
+    recipeId: string;
+    hide?: boolean;
+    weight?: number;
+}
+
 /**
  * Puntúa el catálogo de recetas contra los platos habituales del perfil:
  * pesa más el título, luego los ingredientes, luego la descripción; suma
  * bonus si la receta es apta para la comida (desayuno/almuerzo/cena).
+ * Opcionalmente filtra por restricciones y aplica feedback de sugerencias.
  */
-export function suggestRecipesForUsualDishes(recipes: Recipe[], usualDishes: Record<MealType, string[]>): DishMatch[] {
+export function suggestRecipesForUsualDishes(
+    recipes: Recipe[],
+    usualDishes: Record<MealType, string[]>,
+    restrictions?: IngredientRestriction[],
+    feedback?: Record<string, { hide: boolean; weight: number }>,
+): DishMatch[] {
     const byMeal: Record<MealType, string[]> = { desayuno: [], almuerzo: [], cena: [] };
     for (const meal of MEALS) {
         for (const dish of usualDishes[meal] ?? []) {
@@ -509,13 +620,22 @@ export function suggestRecipesForUsualDishes(recipes: Recipe[], usualDishes: Rec
             byMeal[meal].push(...tokens);
         }
     }
+
     const results: DishMatch[] = [];
     for (const recipe of recipes) {
+        const fb = feedback?.[recipe.id];
+        if (fb?.hide) continue;
+
+        const restrictedList = findRestrictedIngredients(recipe, restrictions ?? []);
+
+        if (isRecipeForbidden(recipe, restrictions ?? [])) continue;
+
         const title = normalize(recipe.title);
         const body = normalize([recipe.description, ...recipe.ingredients.map((i) => i.name)].join(" "));
         let score = 0;
         const matchedWords = new Set<string>();
         const matchedMeals = new Set<MealType>();
+
         for (const meal of MEALS) {
             for (const token of byMeal[meal]) {
                 if (title.includes(token)) {
@@ -530,9 +650,24 @@ export function suggestRecipesForUsualDishes(recipes: Recipe[], usualDishes: Rec
             }
         }
         if (score === 0) continue;
+
         if (recipe.suitableFor.some((m) => matchedMeals.has(m))) score += 3;
-        results.push({ recipe, score, matchedMeals: [...matchedMeals], matchedWords: [...matchedWords] });
+
+        score -= restrictedList.length * 2;
+
+        if (fb?.weight != null && fb.weight !== 1) {
+            score = Math.round(score * fb.weight);
+        }
+
+        results.push({
+            recipe,
+            score,
+            matchedMeals: [...matchedMeals],
+            matchedWords: [...matchedWords],
+            restrictedIngredients: restrictedList,
+        });
     }
+
     results.sort((a, b) => b.score - a.score);
     return results.slice(0, 8);
 }
