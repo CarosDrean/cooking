@@ -138,7 +138,54 @@ export interface PantryItem {
     dateAdded: string;
     /** Category from the ingredient catalog (optional: legacy/custom items). */
     category?: IngredientCategory;
+    /** Precio por unidad en moneda local (opcional, p. ej. soles). */
+    unitPrice?: number;
+    /** Gramos normalizados tras convertir unidades ambiguas ("1 taza de harina" → 125 g). */
+    grams?: number;
 }
+
+export type PurchaseKind = "compra" | "consumo";
+
+/** Registro de compra/consumo de un ingrediente, base del reporte de gastos. */
+export interface PurchaseLogEntry {
+    id: string;
+    profileId: string;
+    ingredientName: string;
+    quantity: number;
+    unit: string;
+    unitPrice: number;
+    /** Precio total = quantity * unitPrice. */
+    total: number;
+    category?: IngredientCategory;
+    /** Fecha ISO (yyyy-mm-dd). */
+    date: string;
+    kind: PurchaseKind;
+}
+
+export type DrinkKind = "refresco" | "mate" | "jugo" | "bebida";
+
+/** Bebida del catálogo (refresco, mate, jugo…) que acompaña almuerzo y cena. */
+export interface Drink {
+    id: string;
+    name: string;
+    emoji: string;
+    kind: DrinkKind;
+}
+
+export const DRINKS: Drink[] = [
+    { id: "d1", name: "Chicha morada", emoji: "🍇", kind: "refresco" },
+    { id: "d2", name: "Limonada", emoji: "🍋", kind: "refresco" },
+    { id: "d3", name: "Refresco de maracuyá", emoji: "🍹", kind: "refresco" },
+    { id: "d4", name: "Refresco de naranja", emoji: "🍊", kind: "refresco" },
+    { id: "d5", name: "Mate de hierbas", emoji: "🍵", kind: "mate" },
+    { id: "d6", name: "Mate de anís", emoji: "🌿", kind: "mate" },
+    { id: "d7", name: "Agua de manzanilla", emoji: "🌼", kind: "mate" },
+    { id: "d8", name: "Emoliente", emoji: "🥣", kind: "mate" },
+    { id: "d9", name: "Café pasado", emoji: "☕", kind: "bebida" },
+    { id: "d10", name: "Café con leche", emoji: "🥛", kind: "bebida" },
+    { id: "d11", name: "Chocolate caliente", emoji: "🍫", kind: "bebida" },
+    { id: "d12", name: "Jugo de papaya", emoji: "🥭", kind: "jugo" },
+];
 
 export interface MealSlot {
     id: string;
@@ -146,6 +193,8 @@ export interface MealSlot {
     meal: MealType;
     recipeId: string;
     servings: number;
+    /** Bebida que acompaña la comida (obligatoria para almuerzo y cena). */
+    drink?: string;
 }
 
 export interface WeeklyPlan {
@@ -190,6 +239,7 @@ export interface AppState {
     pantry: PantryItem[];
     weeklyPlan: WeeklyPlan | null;
     history: MealLogEntry[];
+    purchaseLog: PurchaseLogEntry[];
     shoppingList: ShoppingList | null;
     location: Location;
 }

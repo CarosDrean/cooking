@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
+import { convertToGrams } from "../services/equivalentias.js";
 import { findCatalogIngredient, inferCategory } from "../services/ingredients.js";
+import { logMovement } from "../services/spending.js";
 import type { IngredientCategory, PantryItem } from "../types.js";
 
 export const pantryRouter = Router();
@@ -57,6 +59,11 @@ function categoryFor(name: string, catalogCategory?: IngredientCategory): Ingred
     return catalogCategory ?? inferCategory(name);
 }
 
+function toUnitPrice(value: unknown): number | undefined {
+    const n = typeof value === "number" ? value : Number.parseFloat(String(value ?? ""));
+    return Number.isFinite(n) && n > 0 ? Math.round(n * 100) / 100 : undefined;
+}
+
 pantryRouter.get("/", (_req, res) => {
     const state = getState();
     res.json(state.pantry);
@@ -83,6 +90,8 @@ pantryRouter.post("/", (req, res) => {
     const catalog = findCatalogIngredient(name);
     const unit = (body.unit?.trim() || catalog?.defaultUnit || "unidades").toLowerCase();
     const quantity = Math.max(0, body.quantity ?? 1);
+    const unitPrice = toUnitPrice(body.unitPrice);
+    const grams = convertToGrams(name, quantity, unit).equivalentValue;
     const state = getState();
 
     const existing = state.pantry.find((i) => sameItem(i.ingredientName, i.unit, name, unit));
@@ -90,6 +99,20 @@ pantryRouter.post("/", (req, res) => {
         existing.quantity = round(existing.quantity + quantity);
         existing.expiryDate = body.expiryDate || existing.expiryDate;
         existing.category = existing.category ?? categoryFor(name, catalog?.category);
+        if (unitPrice != null) {
+            existing.unitPrice = unitPrice;
+            logMovement(state, {
+                profileId: state.activeProfileId,
+                ingredientName: name,
+                quantity,
+                unit,
+                unitPrice,
+                total: round(quantity * unitPrice),
+                category: existing.category,
+                kind: "compra",
+            });
+        }
+        if (grams != null) existing.grams = grams;
         saveState();
         res.status(200).json(existing);
         return;
@@ -103,8 +126,22 @@ pantryRouter.post("/", (req, res) => {
         expiryDate: body.expiryDate || undefined,
         dateAdded: new Date().toISOString(),
         category: categoryFor(name, catalog?.category),
+        unitPrice,
+        grams,
     };
     state.pantry.push(item);
+    if (unitPrice != null) {
+        logMovement(state, {
+            profileId: state.activeProfileId,
+            ingredientName: name,
+            quantity,
+            unit,
+            unitPrice,
+            total: round(quantity * unitPrice),
+            category: item.category,
+            kind: "compra",
+        });
+    }
     saveState();
     res.status(201).json(item);
 });
@@ -141,6 +178,8 @@ pantryRouter.put("/:id", (req, res) => {
         unit,
         expiryDate: body.expiryDate !== undefined ? body.expiryDate || undefined : current.expiryDate,
         category: body.category ?? categoryFor(name, catalog?.category) ?? current.category,
+        unitPrice: body.unitPrice !== undefined ? toUnitPrice(body.unitPrice) : current.unitPrice,
+        grams: convertToGrams(name, quantity, unit).equivalentValue ?? current.grams,
     };
     saveState();
     res.json(state.pantry[index]);
@@ -148,11 +187,24 @@ pantryRouter.put("/:id", (req, res) => {
 
 pantryRouter.delete("/:id", (req, res) => {
     const state = getState();
-    const before = state.pantry.length;
-    state.pantry = state.pantry.filter((i) => i.id !== req.params.id);
-    if (state.pantry.length === before) {
+    const index = state.pantry.findIndex((i) => i.id === req.params.id);
+    if (index === -1) {
         res.status(404).json({ error: "Ítem no encontrado" });
         return;
+    }
+    const removed = state.pantry[index];
+    state.pantry.splice(index, 1);
+    if (removed.unitPrice != null) {
+        logMovement(state, {
+            profileId: state.activeProfileId,
+            ingredientName: removed.ingredientName,
+            quantity: removed.quantity,
+            unit: removed.unit,
+            unitPrice: removed.unitPrice,
+            total: round(removed.quantity * removed.unitPrice),
+            category: removed.category,
+            kind: "consumo",
+        });
     }
     saveState();
     res.json({ ok: true });

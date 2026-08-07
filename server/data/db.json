@@ -5888,7 +5888,8 @@
       "quantity": 3,
       "unit": "l",
       "dateAdded": "2026-08-07T02:31:21.001Z",
-      "category": "despensa"
+      "category": "despensa",
+      "unitPrice": 9
     },
     {
       "id": "4aea2f57-4c4a-45dd-a166-e7e2e2bf8dc4",
@@ -5896,7 +5897,8 @@
       "quantity": 2,
       "unit": "unidades",
       "dateAdded": "2026-08-07T02:33:26.114Z",
-      "category": "despensa"
+      "category": "despensa",
+      "unitPrice": 15
     },
     {
       "id": "0ef1aebf-5823-4d25-a34f-caa636c7b6af",
@@ -5904,7 +5906,8 @@
       "quantity": 5,
       "unit": "unidades",
       "dateAdded": "2026-08-07T02:33:48.682Z",
-      "category": "proteinas"
+      "category": "proteinas",
+      "unitPrice": 0.35
     },
     {
       "id": "a4caad0e-2dfc-43b1-b8f7-3f1438e1007e",
@@ -5912,75 +5915,91 @@
       "quantity": 5,
       "unit": "kg",
       "dateAdded": "2026-08-07T02:34:07.207Z",
-      "category": "granos"
+      "category": "granos",
+      "unitPrice": 4.5
+    },
+    {
+      "id": "53d6ae7b-35c1-4280-a0e6-b3125521656a",
+      "ingredientName": "pollo",
+      "quantity": 1.5,
+      "unit": "kg",
+      "dateAdded": "2026-08-07T03:21:43.281Z",
+      "category": "proteinas",
+      "unitPrice": 10
     }
   ],
   "weeklyPlan": {
-    "id": "3c694461-7e4d-4bb8-8548-4f06c70259fd",
+    "id": "bb4d8ae3-83cb-49b9-9a8d-7b92b8b069de",
     "weekStart": "2026-08-04",
     "slots": [
       {
-        "id": "fac2c531-5fcd-4919-b61b-19ac8625f3f1",
+        "id": "8d3a9080-0500-4b44-9814-052fdf811887",
         "day": "viernes",
         "meal": "desayuno",
         "recipeId": "r3",
         "servings": 4
       },
       {
-        "id": "9f2db128-64a7-41d3-90a2-14d2184dc0d5",
+        "id": "664a5ce2-a6db-4ec4-8cb4-20ae4cf49d8b",
         "day": "viernes",
         "meal": "almuerzo",
         "recipeId": "r4",
-        "servings": 4
+        "servings": 4,
+        "drink": "Limonada"
       },
       {
-        "id": "8f8a7fd0-09cf-45bf-bbb9-953e38b48228",
+        "id": "4f18fc8a-c621-4239-ad6f-1efc7e56a922",
         "day": "viernes",
         "meal": "cena",
         "recipeId": "r9",
-        "servings": 4
+        "servings": 4,
+        "drink": "Mate de hierbas"
       },
       {
-        "id": "34167e47-97f4-4263-a0b6-befc8c2a168a",
+        "id": "286f8b43-7b9d-4af8-8d98-c74a1b74ac07",
         "day": "sabado",
         "meal": "desayuno",
         "recipeId": "r6",
         "servings": 4
       },
       {
-        "id": "1421b88b-7f5d-4159-8a16-d267a0e4fbda",
+        "id": "f1f6ec6a-2cfa-4ffd-9c5b-763d61e4c841",
         "day": "sabado",
         "meal": "almuerzo",
-        "recipeId": "r13",
-        "servings": 4
+        "recipeId": "r1",
+        "servings": 4,
+        "drink": "Refresco de maracuyá"
       },
       {
-        "id": "18f82b4d-3b74-402c-9f0c-866d550cae9d",
+        "id": "54d63d75-d320-453a-97c0-047e9897827c",
         "day": "sabado",
         "meal": "cena",
-        "recipeId": "r10",
-        "servings": 4
+        "recipeId": "r2",
+        "servings": 4,
+        "drink": "Limonada"
       },
       {
-        "id": "d5e8e71e-0eca-41e4-8901-bbabbd5b4b55",
+        "id": "57efc921-11b8-4dc9-8a87-586aeb065534",
         "day": "domingo",
         "meal": "desayuno",
         "recipeId": "r20",
         "servings": 4
       },
       {
-        "id": "c96436c6-29c6-4a99-bc62-ace51b11cf76",
+        "id": "0266b19c-b59c-4a4f-bd66-4b1a208353db",
         "day": "domingo",
         "meal": "almuerzo",
-        "recipeId": "r2",
-        "servings": 4
+        "recipeId": "r10",
+        "servings": 4,
+        "drink": "Café pasado"
       },
       {
-        "id": "b32d39a9-2f62-4b70-b3e8-2dbfa9bf7d49",
+        "id": "4bef471c-66cb-4928-a1e1-29935fa41d52",
         "day": "domingo",
         "meal": "cena",
-        "recipeId": "r1",
-        "servings": 4
+        "recipeId": "r13",
+        "servings": 4,
+        "drink": "Chocolate caliente"
       }
     ]
   },
@@ -5989,5 +6008,103 @@
   "location": {
     "country": "Perú",
     "city": "Ica"
-  }
+  },
+  "purchaseLog": [
+    {
+      "id": "pl1",
+      "profileId": "p1",
+      "ingredientName": "huevo",
+      "quantity": 5,
+      "unit": "unidades",
+      "unitPrice": 0.35,
+      "total": 1.75,
+      "category": "proteinas",
+      "date": "2026-08-06",
+      "kind": "compra"
+    },
+    {
+      "id": "pl2",
+      "profileId": "p1",
+      "ingredientName": "aceite",
+      "quantity": 2,
+      "unit": "unidades",
+      "unitPrice": 15,
+      "total": 30,
+      "category": "despensa",
+      "date": "2026-08-05",
+      "kind": "compra"
+    },
+    {
+      "id": "pl3",
+      "profileId": "p1",
+      "ingredientName": "aceite vegetal",
+      "quantity": 3,
+      "unit": "l",
+      "unitPrice": 9,
+      "total": 27,
+      "category": "despensa",
+      "date": "2026-08-04",
+      "kind": "compra"
+    },
+    {
+      "id": "pl4",
+      "profileId": "p1",
+      "ingredientName": "arroz",
+      "quantity": 5,
+      "unit": "kg",
+      "unitPrice": 4.5,
+      "total": 22.5,
+      "category": "granos",
+      "date": "2026-08-01",
+      "kind": "compra"
+    },
+    {
+      "id": "pl5",
+      "profileId": "p1",
+      "ingredientName": "pollo entero",
+      "quantity": 1,
+      "unit": "unidades",
+      "unitPrice": 25,
+      "total": 25,
+      "category": "proteinas",
+      "date": "2026-07-26",
+      "kind": "compra"
+    },
+    {
+      "id": "pl6",
+      "profileId": "p1",
+      "ingredientName": "café",
+      "quantity": 1,
+      "unit": "kg",
+      "unitPrice": 40,
+      "total": 40,
+      "category": "despensa",
+      "date": "2026-07-03",
+      "kind": "compra"
+    },
+    {
+      "id": "pl7",
+      "profileId": "p1",
+      "ingredientName": "huevo",
+      "quantity": 2,
+      "unit": "unidades",
+      "unitPrice": 0.35,
+      "total": 0.7,
+      "category": "proteinas",
+      "date": "2026-08-06",
+      "kind": "consumo"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "pollo",
+      "quantity": 1.5,
+      "unit": "kg",
+      "unitPrice": 10,
+      "total": 15,
+      "category": "proteinas",
+      "kind": "compra",
+      "id": "3ca8843e-65e7-4db1-9bc7-5eab15d99ea4",
+      "date": "2026-08-07"
+    }
+  ]
 }

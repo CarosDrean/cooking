@@ -15,8 +15,14 @@ import { useConfirm } from "../lib/confirm";
 import { addDays, shortDateLabel, startOfWeek } from "../lib/format";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
-import type { Day, MealType } from "../types";
-import { DAY_LABELS, DAYS, MEAL_LABELS, MEALS } from "../types";
+import type { Day, MealSlot, MealType } from "../types";
+import { DAY_LABELS, DAYS, DRINKS, MEAL_LABELS, MEALS } from "../types";
+
+const needsDrink = (meal: MealType) => meal === "almuerzo" || meal === "cena";
+
+function randomDrinkName(): string {
+    return DRINKS[Math.floor(Math.random() * DRINKS.length)].name;
+}
 
 export default function WeeklyPlan() {
     const plan = usePlan();
@@ -61,12 +67,28 @@ export default function WeeklyPlan() {
                 weekStart,
                 slots: [
                     ...slots,
-                    { id: crypto.randomUUID(), day: picker.day, meal: picker.meal, recipeId, servings: 2 },
+                    {
+                        id: crypto.randomUUID(),
+                        day: picker.day,
+                        meal: picker.meal,
+                        recipeId,
+                        servings: 2,
+                        drink: needsDrink(picker.meal) ? randomDrinkName() : undefined,
+                    },
                 ],
             });
         }
         setPicker(null);
         toast("Receta asignada ✓");
+    };
+
+    const cycleDrink = (slot: MealSlot) => {
+        const idx = DRINKS.findIndex((d) => d.name === slot.drink);
+        const next = DRINKS[(idx + 1 + DRINKS.length) % DRINKS.length];
+        updateSlot.mutate(
+            { slotId: slot.id, body: { drink: next.name } },
+            { onSuccess: () => toast(`Bebida: ${next.name}`) },
+        );
     };
 
     const onEaten = (day: Day, meal: MealType) => {
@@ -129,6 +151,21 @@ export default function WeeklyPlan() {
                                                 </button>
                                                 <span className="muted">×{slot.servings}</span>
                                             </div>
+                                            {slot.drink || needsDrink(slot.meal) ? (
+                                                <div className="plan-drink">
+                                                    <span className="plan-drink-name">
+                                                        {DRINKS.find((d) => d.name === slot.drink)?.emoji ?? "🍵"}{" "}
+                                                        {slot.drink ?? "Elegir bebida"}
+                                                    </span>
+                                                    <button
+                                                        className="icon-btn drink-btn"
+                                                        title="Cambiar bebida"
+                                                        onClick={() => cycleDrink(slot)}
+                                                    >
+                                                        ↻
+                                                    </button>
+                                                </div>
+                                            ) : null}
                                             <div className="plan-slot-actions">
                                                 <button
                                                     className="icon-btn"

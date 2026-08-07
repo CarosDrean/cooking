@@ -10,7 +10,7 @@ import {
 import RecipeCard from "../components/RecipeCard";
 import { dayKeyOf, toISODate, weekdayOf } from "../lib/format";
 import { navigate } from "../lib/router";
-import { MEAL_LABELS } from "../types";
+import { DRINKS, MEAL_LABELS } from "../types";
 
 export default function Dashboard() {
     const profile = useActiveProfile();
@@ -75,6 +75,11 @@ export default function Dashboard() {
                                     <button className="link-btn" onClick={() => navigate(`recipes/${s.recipeId}`)}>
                                         {recipeNames.get(s.recipeId) ?? "Receta"}
                                     </button>
+                                    {s.drink ? (
+                                        <span className="muted" title="Bebida">
+                                            {DRINKS.find((d) => d.name === s.drink)?.emoji ?? "🍵"} {s.drink}
+                                        </span>
+                                    ) : null}
                                     <span className="muted">×{s.servings}</span>
                                 </li>
                             ))}

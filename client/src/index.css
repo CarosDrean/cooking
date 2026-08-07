@@ -1118,6 +1118,33 @@ code {
     font-size: 12px;
 }
 
+.plan-drink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border-radius: 6px;
+    padding: 3px 6px 3px 8px;
+}
+
+.plan-drink-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.plan-drink .drink-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    background: transparent;
+    color: var(--accent-strong);
+}
+
 .plan-add {
     border: 1.5px dashed var(--line);
     border-radius: var(--radius-sm);
@@ -1181,6 +1208,95 @@ code {
     width: 140px;
 }
 
+.pantry-form .input-price {
+    width: 120px;
+}
+
+.price-mode {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.price-mode .chip {
+    padding: 6px 10px;
+    font-size: 12.5px;
+}
+
+.pantry-tools {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.pantry-search {
+    max-width: 320px;
+}
+
+.pantry-item-actions {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.pantry-hints {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 2px 2px 12px;
+}
+
+.pantry-hints p {
+    margin: 0;
+}
+
+.pantry-eq {
+    color: var(--accent-strong);
+    font-weight: 600;
+}
+
+.pantry-grams {
+    color: var(--accent-strong);
+    font-size: 12px;
+}
+
+.pantry-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.pantry-price strong {
+    color: var(--ink);
+    font-size: 14px;
+}
+
+.mic-btn.listening {
+    background: var(--warm);
+    color: #fff;
+    animation: pulse 1.1s ease-in-out infinite;
+}
+
+.mic-error {
+    flex-basis: 100%;
+    color: var(--danger);
+    font-size: 13px;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+}
+
 .pantry-hint {
     margin: 6px 2px 14px;
     font-size: 0.85rem;
@@ -1221,9 +1337,220 @@ code {
     margin-top: 4px;
 }
 
-/* ================= Shopping ================= */
+/* ================= Gastos ================= */
 
-.shopping-list {
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-label {
+    font-size: 12.5px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stat-value {
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--accent-strong);
+}
+
+.bars {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bar-label {
+    flex: 0 0 140px;
+    font-size: 13px;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bar-track {
+    flex: 1;
+    background: var(--bg);
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+    min-width: 0;
+    transition: width 0.25s ease;
+}
+
+.bar-fill.cat {
+    background: var(--warm);
+}
+
+.donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.donut {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+}
+
+.donut::after {
+    content: "";
+    position: absolute;
+    inset: 24%;
+    background: var(--surface);
+    border-radius: 50%;
+}
+
+.donut-center {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    text-align: center;
+}
+
+.donut-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-strong);
+}
+
+.donut-legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.donut-legend li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.donut-legend li > span:nth-child(2) {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.donut-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.donut-value {
+    color: var(--muted);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.donut-amount {
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.bar-value {
+    flex: 0 0 86px;
+    font-size: 12.5px;
+    color: var(--muted);
+    text-align: right;
+}
+
+.trend {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    height: 150px;
+}
+
+.trend-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.trend-value {
+    font-size: 10px;
+    color: var(--muted);
+    height: 12px;
+    white-space: nowrap;
+}
+
+.trend-track {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    background: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.trend-bar {
+    width: 100%;
+    background: var(--accent);
+    border-radius: 8px 8px 0 0;
+    min-height: 2px;
+    transition: height 0.25s ease;
+}
+
+.trend-label {
+    font-size: 10.5px;
+    color: var(--muted);
+}
+
+.muted-chip {
+    background: var(--line);
+    color: var(--muted);
+}
+
+/* ================= Shopping ================= */ .shopping-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -1376,6 +1703,34 @@ code {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.edit-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: end;
+}
+
+.check-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    cursor: pointer;
+}
+
+.check-label input {
+    accent-color: var(--accent);
+    width: 16px;
+    height: 16px;
 }
 
 .modal-tabs {

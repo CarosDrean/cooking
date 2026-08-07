@@ -10,6 +10,7 @@ import RecipeDetail from "./pages/RecipeDetail";
 import Recipes from "./pages/Recipes";
 import Settings from "./pages/Settings";
 import ShoppingPage from "./pages/Shopping";
+import SpendingPage from "./pages/Spending";
 import WeeklyPlan from "./pages/WeeklyPlan";
 
 function NavItem({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
@@ -70,6 +71,9 @@ export default function App() {
             case "shopping":
                 content = <ShoppingPage />;
                 break;
+            case "spending":
+                content = <SpendingPage />;
+                break;
             case "profiles":
                 content = <ProfilesPage />;
                 break;
@@ -106,6 +110,9 @@ export default function App() {
                     </NavItem>
                     <NavItem active={route.page === "shopping"} onClick={() => setPage("shopping")}>
                         Compras
+                    </NavItem>
+                    <NavItem active={route.page === "spending"} onClick={() => setPage("spending")}>
+                        Gastos
                     </NavItem>
                     <NavItem active={route.page === "profiles"} onClick={() => setPage("profiles")}>
                         Perfiles

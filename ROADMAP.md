@@ -59,25 +59,24 @@ Fases ordenadas por impacto/esfuerzo. Cada ítem incluye el estado actual, qué 
 ## Fase 3 — Ingreso rápido de ingredientes
 
 ### 3.1 Dictado por voz
-- **Cambio**: botón de micrófono en el form de despensa usando Web Speech API (`webkitSpeechRecognition`) en español. El texto transcrito se parsea en `cantidad`, `unidad` e `ingrediente` y se rellena el formulario.
-- **Aceptación**: decir "compré un kilo de arroz" rellena los campos y deja el ítem listo para guardar.
+- **Estado actual**: ✅ Implementado. `client/src/lib/speech.ts` expone `parseSpokenIngredient()` (frases → cantidad, unidad, precio e ingrediente) y el hook `useVoiceInput()` sobre la Web Speech API (`webkitSpeechRecognition`) en `es-PE`. `VoiceButton.tsx` (🎤) en el form de despensa rellena los campos y muestra un toast con lo reconocido.
+- **Cambio**: botón de micrófono en el form de despensa usando Web Speech API en español. El texto transcrito se parsea en `cantidad`, `unidad` e `ingrediente` y se rellena el formulario.
+- **Aceptación**: ✅ "compré un kilo de arroz" rellena los campos (cant. 1, kg, arroz) y deja el ítem listo para guardar; "1 sol de huevo" además rellena el precio.
 
 ### 3.2 Precio por ingrediente
-- **Estado actual**: `PantryItem` no tiene precio.
-- **Cambio**: añadir campo `unitPrice` (moneda local, p. ej. soles) a `PantryItem` + `types.ts` duplicado + seed. Permitir el formato "1 sol de huevo" = cantidad 1, precio unitario 1. Mostrar subtotal y, más adelante, costo estimado por receta.
-- **Aceptación**: cada ítem puede tener precio opcional, se muestra en despensa y suma correctamente.
+- **Estado actual**: ✅ Implementado. `PantryItem.unitPrice` (moneda local, soles) en `types.ts` (server y espejo cliente), seed y `db.json`. `POST/PUT /api/pantry` aceptan `unitPrice` y calculan `grams`; el form tiene un campo "S/ por und.", la tarjeta de despensa muestra precio unitario y subtotal, y el dictado soporta el formato "1 sol de huevo".
+- **Cambio**: añadir campo `unitPrice` (moneda local, p. ej. soles) a `PantryItem` + `types.ts` duplicado + seed. Permitir el formato "1 sol de huevo" = cantidad 1, precio unitario 1. Mostrar subtotal.
+- **Aceptación**: ✅ cada ítem puede tener precio opcional, se muestra en despensa y suma correctamente.
 
 ### 3.3 Historial de gastos de ingredientes (semana/mes/año)
-- **Estado actual**: `state.history` es `MealLogEntry[]` (registra qué recetas se comieron, con `profileId`, `date`, `servings`, `rating`), pero no existe un log de compras ni de consumo de ingredientes. Sin datos de precio no hay forma de calcular cuánto se gasta.
-- **Cambio** (depende de 3.2):
-  - Añadir un log de compras/consumo de ingredientes (nuevo campo en `AppState` + `types.ts` duplicado + seed): fecha, ingrediente, cantidad, unidad, precio total y perfil.
-  - Registrar automáticamente al añadir ingredientes con precio a la despensa y al consumirlos/eliminarlos.
-  - Nueva vista de reporte por período (semana, mes, año): total gastado, desglose por ingrediente y por categoría, y tendencia.
-- **Aceptación**: desde la nueva página se puede ver cuánto se gastó en la semana y en el mes, desglosado por ingrediente.
+- **Estado actual**: ✅ Implementado. Nuevo `AppState.purchaseLog` (`PurchaseLogEntry[]` con `kind: "compra" | "consumo"`) en tipos, seed y `db.json`. Se registra automáticamente al añadir ingredientes con precio (`POST /api/pantry`) y al eliminarlos (`DELETE`). Nueva página **Gastos** (`client/src/pages/Spending.tsx`, ruta `#/spending`) con `GET /api/spending?period=week|month|year`: total gastado, nº de compras, desglose por ingrediente y por categoría, tendencia y movimientos recientes.
+- **Cambio**: log de compras/consumo de ingredientes (nuevo campo en `AppState` + `types.ts` duplicado + seed); registro automático; vista de reporte por período (semana, mes, año).
+- **Aceptación**: ✅ desde la nueva página se puede ver cuánto se gastó en la semana y en el mes, desglosado por ingrediente.
 
 ### 3.4 Búsqueda de equivalencias en internet (evaluar y expandir)
-- **Cambio**: feature experimental. Al añadir un ingrediente con medida ambigua ("1 taza", "1 cabeza"), buscar equivalencia a gramos/ml vía fuente externa y guardar un valor normalizado. Requiere decidir la fuente (API abierta vs scraping), manejo de fallos offline y cache.
-- **Aceptación (piloto)**: un set acotado de ingredientes comunes (harina, arroz, azúcar…) resuelve equivalencias "taza → g" con el dato guardado en despensa.
+- **Estado actual**: ✅ Piloto implementado con fuente offline. En vez de una API externa, se usa una tabla estática (`server/data/equivalentias.json`, ~26 ingredientes comunes: harina, arroz, azúcar…) servida por `server/src/services/equivalentias.ts` (endpoint `GET /api/ingredients/equivalent`). Al añadir un ingrediente con medida ambigua ("2 tazas de harina"), `POST /api/pantry` guarda `PantryItem.grams` normalizado y la UI muestra "≈ 250 g" y la pista en el form. El catálogo (`ingredients.json`) ahora incluye `tazas`/`cucharadas`/`cucharaditas` en los ingredientes con equivalencia. **Pendiente de evaluar**: fuente externa (API vs scraping), caché y expansión del set.
+- **Cambio**: feature experimental. Al añadir un ingrediente con medida ambigua ("1 taza", "1 cabeza"), buscar equivalencia a gramos/ml vía fuente externa y guardar un valor normalizado.
+- **Aceptación (piloto)**: ✅ un set acotado de ingredientes comunes (harina, arroz, azúcar…) resuelve equivalencias "taza → g" con el dato guardado en despensa.
 
 ## Fase 4 — Perfiles
 
@@ -114,3 +113,14 @@ Fases ordenadas por impacto/esfuerzo. Cada ítem incluye el estado actual, qué 
 - **Estado actual**: la creación/edición de perfil ya captura las comidas como chips (`Profiles.tsx:102`, `MealType[]` con `desayuno/almuerzo/cena`), pero solo se marca a mano. No hay forma de "decirle" las comidas que se comen habitualmente y que se usen como base de la config inicial (la config de un perfil nuevo parte de defaults hardcodeados en `Profiles.tsx:102`).
 - **Cambio** (depende de 3.1): en el paso de comidas al día del flujo de perfil (nuevo y edición), añadir dictado por voz (Web Speech API en español) que transcriba frases tipo "desayuno, almuerzo y cena" o "como desayuno y cena" y las parsee a `MealType[]`, marcando los chips correspondientes. Sinónimos: "desayunar" → desayuno, "comer/almuerzo" → almuerzo, "cenar" → cena. El parseo debe ser tolerante a comas, "y", "o", artículos y pausas de dictado. Lo seleccionado queda como base persistida en el perfil (ya lo usa `planner.ts:98` para generar el plan).
 - **Aceptación**: al crear un perfil, decir "desayuno, almuerzo y cena" (o "solo desayuno y cena") rellena la selección de comidas correctamente y el plan semanal de ese perfil se genera solo con esas comidas.
+
+## Fase 5 — Presentación de recetas
+
+### 5.1 Vista de recetas más llamativa con fotos reales
+- **Estado actual**: todas las recetas se muestran solo con un emoji en un recuadro de color: `RecipeCard.tsx:22` (`.recipe-thumb`, 62px, CSS `index.css:482`), `RecipeDetail.tsx:96` (`.detail-emoji`, 52px), `CookingMode.tsx:106` y `Dashboard.tsx:99`. El campo `Recipe.image` ya existe en `types.ts:112` (server + espejo cliente), pero solo lo rellenan las importaciones de TheMealDB (`server/src/services/themealdb.ts:149`); ninguna receta local de `server/data/recipes.json` tiene `image`, así que las tarjetas nunca muestran fotos.
+- **Cambio**:
+  - Poblar `image` en las recetas locales con fotos reales de la comida (p. ej. URLs de fuentes con licencia libre como TheMealDB/Unsplash/Openverse añadidas a `recipes.json`, o búsqueda por título).
+  - Rediseñar `RecipeCard` con foto destacada (imagen de fondo/portada con título encima o foto en la tarjeta), manteniendo el emoji como fallback si no hay imagen.
+  - Mostrar la foto en el detalle (`RecipeDetail`), modo cocina y plan semanal cuando exista.
+  - Decidir si las fotos se sirven proxied desde el server (evitar hotlinking/CSP) o se cargan directo desde el cliente con fallback a emoji.
+- **Aceptación**: las tarjetas del catálogo muestran una foto real del plato; el detalle y el modo cocina muestran la imagen grande; sin imagen se mantiene el emoji actual y no rompe.

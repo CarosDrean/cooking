@@ -13,6 +13,7 @@ interface SeedData {
     pantry: AppState["pantry"];
     weeklyPlan: AppState["weeklyPlan"];
     history: AppState["history"];
+    purchaseLog: AppState["purchaseLog"];
     shoppingList: AppState["shoppingList"];
     location: AppState["location"];
 }
@@ -47,8 +48,10 @@ export function seedState(): AppState {
         return token;
     };
 
+    const resolved = resolveDates(raw, resolve) as SeedData;
     return {
-        ...(resolveDates(raw, resolve) as SeedData),
+        ...resolved,
+        purchaseLog: resolved.purchaseLog ?? [],
         recipes: seedRecipes,
     };
 }

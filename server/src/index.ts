@@ -9,6 +9,7 @@ import { recipesRouter } from "./routes/recipes.js";
 import { recommendationsRouter } from "./routes/recommendations.js";
 import { settingsRouter } from "./routes/settings.js";
 import { shoppingRouter } from "./routes/shopping.js";
+import { spendingRouter } from "./routes/spending.js";
 import { themealdbRouter } from "./routes/themealdb.js";
 import { tipsRouter } from "./routes/tips.js";
 
@@ -37,6 +38,7 @@ app.use("/api/ingredients", ingredientsRouter);
 app.use("/api/plan", planRouter);
 app.use("/api/history", historyRouter);
 app.use("/api/shopping", shoppingRouter);
+app.use("/api/spending", spendingRouter);
 app.use("/api/recommendations", recommendationsRouter);
 app.use("/api/settings", settingsRouter);
 app.use("/api/tips", tipsRouter);

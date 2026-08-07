@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
-import { currentWeekStart, generateWeekPlan, regenerateSlot } from "../services/planner.js";
+import { currentWeekStart, generateWeekPlan, needsDrink, randomDrink, regenerateSlot } from "../services/planner.js";
 import type { Day, MealSlot, MealType, WeeklyPlan } from "../types.js";
 import { DAYS, MEALS } from "../types.js";
 
@@ -35,6 +35,7 @@ planRouter.put("/", (req, res) => {
             meal: s.meal,
             recipeId: s.recipeId,
             servings: Math.max(1, s.servings ?? 2),
+            drink: needsDrink(s.meal) ? s.drink?.trim() || randomDrink() : undefined,
         })),
     };
     state.weeklyPlan = plan;
@@ -78,12 +79,19 @@ planRouter.put("/slots/:slotId", (req, res) => {
         return;
     }
     const body = req.body as Partial<MealSlot>;
+    const meal = body.meal ?? plan.slots[index].meal;
     plan.slots[index] = {
         ...plan.slots[index],
         day: body.day ?? plan.slots[index].day,
-        meal: body.meal ?? plan.slots[index].meal,
+        meal,
         recipeId: body.recipeId ?? plan.slots[index].recipeId,
         servings: body.servings != null ? Math.max(1, body.servings) : plan.slots[index].servings,
+        drink:
+            body.drink !== undefined
+                ? body.drink.trim() || undefined
+                : needsDrink(meal)
+                  ? (plan.slots[index].drink ?? randomDrink())
+                  : undefined,
     };
     saveState();
     res.json(plan);

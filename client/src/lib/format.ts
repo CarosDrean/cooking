@@ -4,6 +4,11 @@ export function fmtQty(n: number): string {
     return rounded.toLocaleString("es-ES", { maximumFractionDigits: 2 });
 }
 
+export function fmtCurrency(n: number): string {
+    if (!Number.isFinite(n)) n = 0;
+    return n.toLocaleString("es-PE", { style: "currency", currency: "PEN" });
+}
+
 export function toISODate(d: Date): string {
     return d.toISOString().slice(0, 10);
 }

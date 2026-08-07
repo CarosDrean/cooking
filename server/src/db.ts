@@ -17,7 +17,10 @@ function load(): AppState {
         try {
             const raw = readFileSync(DATA_FILE, "utf8");
             const parsed = JSON.parse(raw) as AppState;
-            if (parsed && Array.isArray(parsed.recipes)) return parsed;
+            if (parsed && Array.isArray(parsed.recipes)) {
+                parsed.purchaseLog ??= [];
+                return parsed;
+            }
         } catch {
             // corrupted file: fall back to seed
         }

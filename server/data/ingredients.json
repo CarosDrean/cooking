@@ -1,1456 +1,1493 @@
 [
-    {
-        "name": "aceite de oliva",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "aceite de sésamo",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "aceite vegetal",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "aceitunas",
-        "category": "otros",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "aguacate",
-        "category": "frutas",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "ají amarillo",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "ají limo",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "ají panca",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "ajo",
-        "category": "verduras",
-        "defaultUnit": "dientes",
-        "units": [
-            "unidades",
-            "dientes"
-        ]
-    },
-    {
-        "name": "albahaca fresca",
-        "category": "verduras",
-        "defaultUnit": "puñados",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca",
-            "puñados"
-        ]
-    },
-    {
-        "name": "alverjas",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "anís",
-        "category": "condimentos",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "apio",
-        "category": "verduras",
-        "defaultUnit": "tallos",
-        "units": [
-            "unidades",
-            "tallos"
-        ]
-    },
-    {
-        "name": "arroz",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "arroz cocido",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "atún en lata",
-        "category": "proteinas",
-        "defaultUnit": "lata",
-        "units": [
-            "unidades",
-            "lata"
-        ]
-    },
-    {
-        "name": "avena",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "azúcar",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "azúcar morena",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "brócoli",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "café",
-        "category": "despensa",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "calabacín",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "calamar",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "caldo de pollo",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "camarón",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "camote",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "canela",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "canela en rama",
-        "category": "condimentos",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "carne",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "carne de cerdo",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "carne de res",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "carne molida",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "cebolla",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "cebolla china",
-        "category": "verduras",
-        "defaultUnit": "tallos",
-        "units": [
-            "unidades",
-            "tallos"
-        ]
-    },
-    {
-        "name": "cebolla morada",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "cebolla roja",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "cerveza rubia",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "charqui",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "chicharrón de cerdo",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "choclo",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "chocolate",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "cilantro",
-        "category": "verduras",
-        "defaultUnit": "puñados",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca",
-            "puñados"
-        ]
-    },
-    {
-        "name": "cilantro fresco",
-        "category": "verduras",
-        "defaultUnit": "puñados",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca",
-            "puñados"
-        ]
-    },
-    {
-        "name": "clavo de olor",
-        "category": "condimentos",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "coco rallado",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "comino",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "conchas",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "culantro fresco",
-        "category": "verduras",
-        "defaultUnit": "puñados",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca",
-            "puñados"
-        ]
-    },
-    {
-        "name": "cúrcuma",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "curry en polvo",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "espaguetis",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "espinaca",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "fideos",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "filete de pescado blanco",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "frejoles refritos",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "frijoles",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "frijoles negros cocidos",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "frutos rojos",
-        "category": "frutas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "galletas de soda",
-        "category": "granos",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "garbanzos cocidos",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "granola",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "guisantes",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "habas cocidas",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "harina",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "harina de maíz",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "harina de trigo",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "hielo",
-        "category": "otros",
-        "defaultUnit": "puñados",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca",
-            "puñados"
-        ]
-    },
-    {
-        "name": "hojas de bijao",
-        "category": "otros",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "hojas de choclo",
-        "category": "otros",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "huevo",
-        "category": "proteinas",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "jengibre fresco",
-        "category": "condimentos",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "kétchup",
-        "category": "condimentos",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "laurel",
-        "category": "condimentos",
-        "defaultUnit": "hoja",
-        "units": [
-            "unidades",
-            "hoja"
-        ]
-    },
-    {
-        "name": "leche",
-        "category": "lacteos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "leche de almendras",
-        "category": "lacteos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "leche de coco",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "leche de soja",
-        "category": "lacteos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "leche evaporada",
-        "category": "lacteos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "lechuga",
-        "category": "verduras",
-        "defaultUnit": "hojas",
-        "units": [
-            "unidades",
-            "hojas"
-        ]
-    },
-    {
-        "name": "lentejas",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "lentejas cocidas",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "lentejas rojas",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "limón",
-        "category": "frutas",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "lomo de res",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "maicena",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "maíz molido",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "mango congelado",
-        "category": "frutas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "maní tostado",
-        "category": "otros",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "mantequilla",
-        "category": "lacteos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "mantequilla de maní",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "mariscos mixtos",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "masa para empanadas",
-        "category": "granos",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "mayonesa",
-        "category": "despensa",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "mermelada",
-        "category": "despensa",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "miel",
-        "category": "despensa",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "mostaza",
-        "category": "condimentos",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "nueces",
-        "category": "otros",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "olluco",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "orégano",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "orégano seco",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "pallares verdes",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "palta",
-        "category": "frutas",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "pan",
-        "category": "granos",
-        "defaultUnit": "rebanadas",
-        "units": [
-            "unidades",
-            "rebanadas"
-        ]
-    },
-    {
-        "name": "pan de hamburguesa",
-        "category": "granos",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "pan de molde",
-        "category": "granos",
-        "defaultUnit": "rebanadas",
-        "units": [
-            "unidades",
-            "rebanadas"
-        ]
-    },
-    {
-        "name": "pan francés",
-        "category": "granos",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "papa",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "g",
-            "unidades"
-        ]
-    },
-    {
-        "name": "papa amarilla",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "unidades"
-        ]
-    },
-    {
-        "name": "papa seca",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "parmesano",
-        "category": "lacteos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "pasta",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "pechuga de pollo",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "pepino",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "perejil fresco",
-        "category": "verduras",
-        "defaultUnit": "puñados",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca",
-            "puñados"
-        ]
-    },
-    {
-        "name": "pescado blanco",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "pimentón dulce",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "pimienta",
-        "category": "condimentos",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "pimienta negra",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "pimiento picante",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "pimiento rojo",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "pisco",
-        "category": "despensa",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "plátano",
-        "category": "frutas",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "pollo",
-        "category": "proteinas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "pollo entero o presas",
-        "category": "proteinas",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "polvo de hornear",
-        "category": "despensa",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "pulpa de lúcuma",
-        "category": "frutas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "queso",
-        "category": "lacteos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "queso feta",
-        "category": "lacteos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "queso fresco",
-        "category": "lacteos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "quinoa",
-        "category": "granos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "romero seco",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "sal",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "sal y comino",
-        "category": "condimentos",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "sal y pimienta",
-        "category": "despensa",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "sal, comino y pimienta",
-        "category": "condimentos",
-        "defaultUnit": "cucharaditas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "salmón",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "salsa de soja",
-        "category": "condimentos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "semillas de chía",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "té",
-        "category": "despensa",
-        "defaultUnit": "bolsas",
-        "units": [
-            "unidades",
-            "bolsas"
-        ]
-    },
-    {
-        "name": "tofu firme",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "tomate",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "tomate cherry",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "tomate triturado",
-        "category": "despensa",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "tomates maduros",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "tomillo fresco",
-        "category": "condimentos",
-        "defaultUnit": "ramitas",
-        "units": [
-            "unidades",
-            "ramitas"
-        ]
-    },
-    {
-        "name": "tomillo seco",
-        "category": "condimentos",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg",
-            "cucharaditas"
-        ]
-    },
-    {
-        "name": "tortillas de harina grandes",
-        "category": "otros",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "tortillas de maíz",
-        "category": "otros",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "uvas pasas",
-        "category": "frutas",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    },
-    {
-        "name": "vinagre",
-        "category": "condimentos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l",
-            "cucharadas"
-        ]
-    },
-    {
-        "name": "vinagre de vino",
-        "category": "condimentos",
-        "defaultUnit": "cucharadas",
-        "units": [
-            "g",
-            "kg",
-            "cucharadas",
-            "cucharaditas",
-            "pizca"
-        ]
-    },
-    {
-        "name": "vinagre tinto",
-        "category": "condimentos",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "vino tinto",
-        "category": "despensa",
-        "defaultUnit": "ml",
-        "units": [
-            "ml",
-            "l"
-        ]
-    },
-    {
-        "name": "zanahoria",
-        "category": "verduras",
-        "defaultUnit": "unidades",
-        "units": [
-            "unidades"
-        ]
-    },
-    {
-        "name": "zapallo",
-        "category": "verduras",
-        "defaultUnit": "g",
-        "units": [
-            "g",
-            "kg"
-        ]
-    }
+  {
+    "name": "aceite de oliva",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "cucharadas",
+      "tazas"
+    ]
+  },
+  {
+    "name": "aceite de sésamo",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "aceite vegetal",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "cucharadas",
+      "tazas"
+    ]
+  },
+  {
+    "name": "aceitunas",
+    "category": "otros",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "aguacate",
+    "category": "frutas",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "ají amarillo",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "ají limo",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "ají panca",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "ajo",
+    "category": "verduras",
+    "defaultUnit": "dientes",
+    "units": [
+      "unidades",
+      "dientes"
+    ]
+  },
+  {
+    "name": "albahaca fresca",
+    "category": "verduras",
+    "defaultUnit": "puñados",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca",
+      "puñados"
+    ]
+  },
+  {
+    "name": "alverjas",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "anís",
+    "category": "condimentos",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "apio",
+    "category": "verduras",
+    "defaultUnit": "tallos",
+    "units": [
+      "unidades",
+      "tallos"
+    ]
+  },
+  {
+    "name": "arroz",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "arroz cocido",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas"
+    ]
+  },
+  {
+    "name": "atún en lata",
+    "category": "proteinas",
+    "defaultUnit": "lata",
+    "units": [
+      "unidades",
+      "lata"
+    ]
+  },
+  {
+    "name": "avena",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "azúcar",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "tazas",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "azúcar morena",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "brócoli",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "café",
+    "category": "despensa",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "calabacín",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "calamar",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "caldo de pollo",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l"
+    ]
+  },
+  {
+    "name": "camarón",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "camote",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "canela",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "canela en rama",
+    "category": "condimentos",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "carne",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "carne de cerdo",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "carne de res",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "carne molida",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "cebolla",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "cebolla china",
+    "category": "verduras",
+    "defaultUnit": "tallos",
+    "units": [
+      "unidades",
+      "tallos"
+    ]
+  },
+  {
+    "name": "cebolla morada",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "cebolla roja",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "cerveza rubia",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l"
+    ]
+  },
+  {
+    "name": "charqui",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "chicharrón de cerdo",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "choclo",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "chocolate",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "cilantro",
+    "category": "verduras",
+    "defaultUnit": "puñados",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca",
+      "puñados"
+    ]
+  },
+  {
+    "name": "cilantro fresco",
+    "category": "verduras",
+    "defaultUnit": "puñados",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca",
+      "puñados"
+    ]
+  },
+  {
+    "name": "clavo de olor",
+    "category": "condimentos",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "coco rallado",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "comino",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "conchas",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "culantro fresco",
+    "category": "verduras",
+    "defaultUnit": "puñados",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca",
+      "puñados"
+    ]
+  },
+  {
+    "name": "cúrcuma",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "curry en polvo",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "espaguetis",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "espinaca",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "fideos",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "filete de pescado blanco",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "frejoles refritos",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "frijoles",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "frijoles negros cocidos",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "frutos rojos",
+    "category": "frutas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "galletas de soda",
+    "category": "granos",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "garbanzos cocidos",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "granola",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "guisantes",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "habas cocidas",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "harina",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "harina de maíz",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "harina de trigo",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "hielo",
+    "category": "otros",
+    "defaultUnit": "puñados",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca",
+      "puñados"
+    ]
+  },
+  {
+    "name": "hojas de bijao",
+    "category": "otros",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "hojas de choclo",
+    "category": "otros",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "huevo",
+    "category": "proteinas",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "jengibre fresco",
+    "category": "condimentos",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "kétchup",
+    "category": "condimentos",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "laurel",
+    "category": "condimentos",
+    "defaultUnit": "hoja",
+    "units": [
+      "unidades",
+      "hoja"
+    ]
+  },
+  {
+    "name": "leche",
+    "category": "lacteos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "leche de almendras",
+    "category": "lacteos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "tazas"
+    ]
+  },
+  {
+    "name": "leche de coco",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "tazas"
+    ]
+  },
+  {
+    "name": "leche de soja",
+    "category": "lacteos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l"
+    ]
+  },
+  {
+    "name": "leche evaporada",
+    "category": "lacteos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l"
+    ]
+  },
+  {
+    "name": "lechuga",
+    "category": "verduras",
+    "defaultUnit": "hojas",
+    "units": [
+      "unidades",
+      "hojas"
+    ]
+  },
+  {
+    "name": "lentejas",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "lentejas cocidas",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "lentejas rojas",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas"
+    ]
+  },
+  {
+    "name": "limón",
+    "category": "frutas",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "lomo de res",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "maicena",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "maíz molido",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "mango congelado",
+    "category": "frutas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "maní tostado",
+    "category": "otros",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "mantequilla",
+    "category": "lacteos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "mantequilla de maní",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "tazas"
+    ]
+  },
+  {
+    "name": "mariscos mixtos",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "masa para empanadas",
+    "category": "granos",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "mayonesa",
+    "category": "despensa",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "mermelada",
+    "category": "despensa",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "miel",
+    "category": "despensa",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "mostaza",
+    "category": "condimentos",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "nueces",
+    "category": "otros",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "olluco",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "orégano",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "orégano seco",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "pallares verdes",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "palta",
+    "category": "frutas",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "pan",
+    "category": "granos",
+    "defaultUnit": "rebanadas",
+    "units": [
+      "unidades",
+      "rebanadas"
+    ]
+  },
+  {
+    "name": "pan de hamburguesa",
+    "category": "granos",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "pan de molde",
+    "category": "granos",
+    "defaultUnit": "rebanadas",
+    "units": [
+      "unidades",
+      "rebanadas"
+    ]
+  },
+  {
+    "name": "pan francés",
+    "category": "granos",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "papa",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "g",
+      "unidades"
+    ]
+  },
+  {
+    "name": "papa amarilla",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "unidades"
+    ]
+  },
+  {
+    "name": "papa seca",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "parmesano",
+    "category": "lacteos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "pasta",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "pechuga de pollo",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "unidades"
+    ]
+  },
+  {
+    "name": "pepino",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "perejil fresco",
+    "category": "verduras",
+    "defaultUnit": "puñados",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca",
+      "puñados"
+    ]
+  },
+  {
+    "name": "pescado blanco",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "pimentón dulce",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "pimienta",
+    "category": "condimentos",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "pimienta negra",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "pimiento picante",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "pimiento rojo",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "pisco",
+    "category": "despensa",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "plátano",
+    "category": "frutas",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "pollo",
+    "category": "proteinas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "unidades"
+    ]
+  },
+  {
+    "name": "pollo entero o presas",
+    "category": "proteinas",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "polvo de hornear",
+    "category": "despensa",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "pulpa de lúcuma",
+    "category": "frutas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "queso",
+    "category": "lacteos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "queso feta",
+    "category": "lacteos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "queso fresco",
+    "category": "lacteos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "quinoa",
+    "category": "granos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "romero seco",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "sal",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas",
+      "pizca",
+      "tazas",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "sal y comino",
+    "category": "condimentos",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "sal y pimienta",
+    "category": "despensa",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "sal, comino y pimienta",
+    "category": "condimentos",
+    "defaultUnit": "cucharaditas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "salmón",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "salsa de soja",
+    "category": "condimentos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "semillas de chía",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "té",
+    "category": "despensa",
+    "defaultUnit": "bolsas",
+    "units": [
+      "unidades",
+      "bolsas"
+    ]
+  },
+  {
+    "name": "tofu firme",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "tomate",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "tomate cherry",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "tomate triturado",
+    "category": "despensa",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "tomates maduros",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "tomillo fresco",
+    "category": "condimentos",
+    "defaultUnit": "ramitas",
+    "units": [
+      "unidades",
+      "ramitas"
+    ]
+  },
+  {
+    "name": "tomillo seco",
+    "category": "condimentos",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg",
+      "cucharaditas"
+    ]
+  },
+  {
+    "name": "tortillas de harina grandes",
+    "category": "otros",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "tortillas de maíz",
+    "category": "otros",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "uvas pasas",
+    "category": "frutas",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  },
+  {
+    "name": "vinagre",
+    "category": "condimentos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l",
+      "cucharadas"
+    ]
+  },
+  {
+    "name": "vinagre de vino",
+    "category": "condimentos",
+    "defaultUnit": "cucharadas",
+    "units": [
+      "g",
+      "kg",
+      "cucharadas",
+      "cucharaditas",
+      "pizca"
+    ]
+  },
+  {
+    "name": "vinagre tinto",
+    "category": "condimentos",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l"
+    ]
+  },
+  {
+    "name": "vino tinto",
+    "category": "despensa",
+    "defaultUnit": "ml",
+    "units": [
+      "ml",
+      "l"
+    ]
+  },
+  {
+    "name": "zanahoria",
+    "category": "verduras",
+    "defaultUnit": "unidades",
+    "units": [
+      "unidades"
+    ]
+  },
+  {
+    "name": "zapallo",
+    "category": "verduras",
+    "defaultUnit": "g",
+    "units": [
+      "g",
+      "kg"
+    ]
+  }
 ]

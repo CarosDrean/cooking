@@ -8,6 +8,7 @@ import type {
     MealType,
     PantryItem,
     Profile,
+    PurchaseLogEntry,
     Recipe,
     Recommendation,
     Season,
@@ -201,6 +202,50 @@ export function useIngredientCatalog() {
     });
 }
 
+export interface EquivalentResult {
+    ingredientName: string;
+    quantity: number;
+    unit: string;
+    matched: boolean;
+    equivalentUnit?: "g";
+    equivalentValue?: number;
+}
+
+export function useEquivalent(ingredient: string, quantity: number, unit: string) {
+    const enabled = Boolean(ingredient.trim()) && Boolean(unit) && !["g", "kg", "ml", "l"].includes(unit);
+    const params = new URLSearchParams({ ingredient, quantity: String(quantity || 1), unit });
+    return useQuery({
+        queryKey: ["equivalent", ingredient, quantity, unit],
+        queryFn: () => api.get<EquivalentResult>(`/ingredients/equivalent?${params}`),
+        enabled,
+        staleTime: 60_000,
+    });
+}
+
+export type SpendingPeriod = "week" | "month" | "year";
+
+export interface SpendingReport {
+    period: SpendingPeriod;
+    periodLabel: string;
+    startDate: string;
+    endDate: string;
+    spentTotal: number;
+    consumedTotal: number;
+    purchaseCount: number;
+    byIngredient: { name: string; total: number }[];
+    byCategory: { category: string; total: number }[];
+    trend: { label: string; total: number }[];
+    movements: PurchaseLogEntry[];
+}
+
+export function useSpending(period: SpendingPeriod) {
+    return useQuery({
+        queryKey: ["spending", period],
+        queryFn: () => api.get<SpendingReport>(`/spending?period=${period}`),
+        staleTime: 30_000,
+    });
+}
+
 export function usePantry() {
     const { data } = useAppState();
     return useQuery({
@@ -232,8 +277,13 @@ export function useAddPantry() {
 export function useUpdatePantry() {
     const qc = useQueryClient();
     return useMutation({
-        mutationFn: ({ id, body }: { id: string; body: Partial<PantryItem> }) =>
-            api.put<PantryItem>(`/pantry/${id}`, body),
+        mutationFn: ({
+            id,
+            body,
+        }: {
+            id: string;
+            body: Partial<Omit<PantryItem, "unitPrice">> & { unitPrice?: number | null };
+        }) => api.put<PantryItem>(`/pantry/${id}`, body),
         onSuccess: () => {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["pantry"] });
@@ -310,7 +360,7 @@ export function useUpdateSlot() {
             body,
         }: {
             slotId: string;
-            body: Partial<{ day: Day; meal: MealType; recipeId: string; servings: number }>;
+            body: Partial<{ day: Day; meal: MealType; recipeId: string; servings: number; drink?: string }>;
         }) => api.put<WeeklyPlan>(`/plan/slots/${slotId}`, body),
         onSuccess: () => invalidatePlan(qc),
     });
