@@ -4,13 +4,28 @@
       "id": "p1",
       "name": "Oscar",
       "emoji": "👨‍👩‍👧‍👦",
-      "dietPreferences": [],
-      "restrictions": [],
-      "householdSize": 4,
+      "dietPreferences": [
+        "sin-lactosa"
+      ],
+      "restrictions": [
+        {
+          "name": "leche",
+          "level": "no-principal"
+        },
+        {
+          "name": "aji",
+          "level": "no"
+        },
+        {
+          "name": "sillao",
+          "level": "no"
+        }
+      ],
+      "householdSize": 2,
       "mealsPerDay": [
-        "desayuno",
         "almuerzo",
-        "cena"
+        "cena",
+        "desayuno"
       ],
       "favoriteRecipeIds": [
         "r4",
@@ -29,8 +44,18 @@
       "isComplete": true,
       "recipeOverrides": {},
       "usualDishes": {
-        "desayuno": [],
-        "almuerzo": [],
+        "desayuno": [
+          "avena con pan",
+          "pan con huevo y avena",
+          "pan con palta y avena"
+        ],
+        "almuerzo": [
+          "estofado de pollo",
+          "estofado de res",
+          "seco de pollo",
+          "seco de res",
+          "pallares secos con arroz"
+        ],
         "cena": []
       }
     }
@@ -6026,7 +6051,7 @@
         "meal": "almuerzo",
         "recipeId": "r4",
         "servings": 4,
-        "drink": "Agua de manzanilla"
+        "drink": "Refresco de naranja"
       },
       {
         "id": "1a5067a5-8fe0-415c-bf58-675296817d20",
