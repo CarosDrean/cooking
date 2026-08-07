@@ -12,7 +12,7 @@ export type IngredientCategory =
     | "despensa"
     | "otros";
 
-export type RecipeSource = "local" | "themealdb";
+export type RecipeSource = "local" | "themealdb" | "cocktaildb" | "spoonacular" | "ai";
 
 export type Season = "primavera" | "verano" | "otonio" | "invierno";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSettings, useUpdateSettings } from "../api/hooks";
+import { useApiKeys, useSettings, useUpdateApiKeys, useUpdateSettings } from "../api/hooks";
 import { COUNTRY_NAMES, getCitiesForCountry } from "../data/countries";
 import { useToast } from "../lib/toast";
 import { SEASON_LABELS, type Season } from "../types";
@@ -22,6 +22,14 @@ export default function Settings() {
     const [city, setCity] = useState(data?.location.city ?? "");
     const [locating, setLocating] = useState(false);
 
+    const { data: keys } = useApiKeys();
+    const updateKeys = useUpdateApiKeys();
+    const [openaiKey, setOpenaiKey] = useState("");
+    const [anthropicKey, setAnthropicKey] = useState("");
+    const [googleKey, setGoogleKey] = useState("");
+    const [spoonacularKey, setSpoonacularKey] = useState("");
+    const [ollamaHost, setOllamaHost] = useState("");
+
     const citySuggestions = getCitiesForCountry(country);
 
     const save = () => {
@@ -33,6 +41,29 @@ export default function Settings() {
                     setCountry(info.location.country);
                     setCity(info.location.city);
                 },
+            },
+        );
+    };
+
+    const saveKeys = () => {
+        updateKeys.mutate(
+            {
+                openai: openaiKey.trim() || null,
+                anthropic: anthropicKey.trim() || null,
+                google: googleKey.trim() || null,
+                spoonacular: spoonacularKey.trim() || null,
+                ollamaHost: ollamaHost.trim() || null,
+            },
+            {
+                onSuccess: () => {
+                    toast("Claves API guardadas ✓");
+                    setOpenaiKey("");
+                    setAnthropicKey("");
+                    setGoogleKey("");
+                    setSpoonacularKey("");
+                    setOllamaHost("");
+                },
+                onError: () => toast("Error al guardar claves.", "error"),
             },
         );
     };
@@ -180,6 +211,70 @@ export default function Settings() {
                     )}
                 </section>
             </div>
+
+            <section className="card" style={{ marginTop: 24 }}>
+                <h2>Claves de API (opcional)</h2>
+                <p className="muted small">
+                    Configura claves para fuentes externas. Las claves se guardan solo en memoria del servidor y nunca
+                    se persisten en la base de datos.
+                </p>
+                <div className="profile-form">
+                    <label className="field">
+                        <span>OpenAI {keys?.openai ? "✓" : ""}</span>
+                        <input
+                            className="input"
+                            type="password"
+                            value={openaiKey}
+                            onChange={(e) => setOpenaiKey(e.target.value)}
+                            placeholder={keys?.openai ? "clave configurada ···" : "sk-..."}
+                        />
+                    </label>
+                    <label className="field">
+                        <span>Anthropic {keys?.anthropic ? "✓" : ""}</span>
+                        <input
+                            className="input"
+                            type="password"
+                            value={anthropicKey}
+                            onChange={(e) => setAnthropicKey(e.target.value)}
+                            placeholder={keys?.anthropic ? "clave configurada ···" : "sk-ant-..."}
+                        />
+                    </label>
+                    <label className="field">
+                        <span>Google Gemini {keys?.google ? "✓" : ""}</span>
+                        <input
+                            className="input"
+                            type="password"
+                            value={googleKey}
+                            onChange={(e) => setGoogleKey(e.target.value)}
+                            placeholder={keys?.google ? "clave configurada ···" : "AIza..."}
+                        />
+                    </label>
+                    <label className="field">
+                        <span>Spoonacular {keys?.spoonacular ? "✓" : ""}</span>
+                        <input
+                            className="input"
+                            type="password"
+                            value={spoonacularKey}
+                            onChange={(e) => setSpoonacularKey(e.target.value)}
+                            placeholder={keys?.spoonacular ? "clave configurada ···" : "..."}
+                        />
+                    </label>
+                    <label className="field">
+                        <span>Ollama (host local) {keys?.ollama ? "✓" : ""}</span>
+                        <input
+                            className="input"
+                            value={ollamaHost}
+                            onChange={(e) => setOllamaHost(e.target.value)}
+                            placeholder={keys?.ollama ? (keys.ollama ? "configurado" : "") : "http://localhost:11434"}
+                        />
+                    </label>
+                    <div className="settings-actions">
+                        <button className="btn primary" onClick={saveKeys} disabled={updateKeys.isPending}>
+                            Guardar claves
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }

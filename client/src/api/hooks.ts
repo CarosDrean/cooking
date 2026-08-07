@@ -245,6 +245,41 @@ export function useThemealdbAutoImport() {
     });
 }
 
+/* ---------- Import (multi-source) ---------- */
+
+export interface ImportResponse {
+    recipes: Array<{
+        id: string;
+        title: string;
+        score: number;
+        reasons: string[];
+        source: string;
+        matchedMeal: string;
+    }>;
+    drinks: Array<{
+        name: string;
+        score: number;
+        reasons: string[];
+    }>;
+    importedRecipeCount: number;
+    importedDrinkCount: number;
+    count: number;
+}
+
+export function useAutoImport() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: (body?: { sources?: string[]; maxResults?: number; pantryBonus?: boolean }) =>
+            api.post<ImportResponse>("/import/auto-import", body),
+        onSuccess: () => {
+            invalidateState(qc);
+            qc.invalidateQueries({ queryKey: ["recipes"] });
+            qc.invalidateQueries({ queryKey: ["makeable"] });
+            qc.invalidateQueries({ queryKey: ["drinks"] });
+        },
+    });
+}
+
 /* ---------- Pantry ---------- */
 export function useIngredientCatalog() {
     return useQuery({
@@ -558,6 +593,14 @@ export interface SettingsInfo {
     season: Season;
 }
 
+export interface ApiKeysInfo {
+    openai: boolean;
+    anthropic: boolean;
+    google: boolean;
+    spoonacular: boolean;
+    ollama: boolean;
+}
+
 export function useSettings() {
     return useQuery({
         queryKey: ["settings"],
@@ -574,6 +617,30 @@ export function useUpdateSettings() {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["settings"] });
             qc.invalidateQueries({ queryKey: ["recommendations"] });
+        },
+    });
+}
+
+export function useApiKeys() {
+    return useQuery({
+        queryKey: ["settings", "keys"],
+        queryFn: () => api.get<ApiKeysInfo>("/settings/keys"),
+        staleTime: 30_000,
+    });
+}
+
+export function useUpdateApiKeys() {
+    const qc = useQueryClient();
+    return useMutation({
+        mutationFn: (body: {
+            openai?: string | null;
+            anthropic?: string | null;
+            google?: string | null;
+            spoonacular?: string | null;
+            ollamaHost?: string | null;
+        }) => api.put<ApiKeysInfo>("/settings/keys", body),
+        onSuccess: () => {
+            qc.invalidateQueries({ queryKey: ["settings", "keys"] });
         },
     });
 }

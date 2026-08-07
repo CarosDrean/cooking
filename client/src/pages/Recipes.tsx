@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-    useActiveProfile,
-    useMakeable,
-    useRecipes,
-    useSetRating,
-    useThemealdbAutoImport,
-    useUpdateProfile,
-} from "../api/hooks";
+import { useActiveProfile, useAutoImport, useMakeable, useRecipes, useSetRating, useUpdateProfile } from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
 import { useToast } from "../lib/toast";
 import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "../types";
@@ -18,7 +11,7 @@ export default function Recipes() {
     const [meal, setMeal] = useState("");
     const [season, setSeason] = useState("");
     const [allRecipes, setAllRecipes] = useState(false);
-    const autoImport = useThemealdbAutoImport();
+    const autoImport = useAutoImport();
     const activeProfile = useActiveProfile();
     const setRating = useSetRating();
     const updateProfile = useUpdateProfile();
@@ -118,18 +111,21 @@ export default function Recipes() {
                     <button
                         className="btn ghost"
                         onClick={() =>
-                            autoImport.mutate(undefined, {
-                                onSuccess: (res) =>
-                                    toast(
-                                        res.count > 0
-                                            ? `Se importaron ${res.count} recetas según tu perfil ✓`
-                                            : "No se encontraron recetas nuevas compatibles con tu perfil.",
-                                    ),
-                                onError: () => toast("No se pudo importar del catálogo.", "error"),
-                            })
+                            autoImport.mutate(
+                                { pantryBonus: makeableOnly },
+                                {
+                                    onSuccess: (res) =>
+                                        toast(
+                                            res.count > 0
+                                                ? `Se importaron ${res.importedRecipeCount} recetas y ${res.importedDrinkCount} bebidas según tu perfil ✓`
+                                                : "No se encontraron recetas nuevas compatibles con tu perfil.",
+                                        ),
+                                    onError: () => toast("No se pudo importar del catálogo.", "error"),
+                                },
+                            )
                         }
                         disabled={autoImport.isPending}
-                        title="Importar recetas compatibles con tu perfil desde TheMealDB"
+                        title="Importar recetas y bebidas desde múltiples fuentes según tu perfil"
                     >
                         {autoImport.isPending ? "Importando…" : "⬇ Importar según mi perfil"}
                     </button>

@@ -2,6 +2,7 @@ import express from "express";
 import { getState } from "./db.js";
 import { drinksRouter } from "./routes/drinks.js";
 import { historyRouter } from "./routes/history.js";
+import { importRouter } from "./routes/import.js";
 import { ingredientsRouter } from "./routes/ingredients.js";
 import { openverseRouter } from "./routes/openverse.js";
 import { pantryRouter } from "./routes/pantry.js";
@@ -48,6 +49,7 @@ app.use("/api/settings", settingsRouter);
 app.use("/api/tips", tipsRouter);
 app.use("/api/drinks", drinksRouter);
 app.use("/api/themealdb", themealdbRouter);
+app.use("/api/import", importRouter);
 app.use("/api/openverse", openverseRouter);
 
 app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

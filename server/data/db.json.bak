@@ -6132,66 +6132,58 @@
     }
   ],
   "weeklyPlan": {
-    "id": "452e8775-d787-4947-bae7-64643b70ed81",
+    "id": "388be368-00d8-4517-ad3e-6daa4155ca31",
     "weekStart": "2026-08-03",
     "slots": [
       {
-        "id": "d0c48d17-6689-40e3-b307-57c2ddb93173",
+        "id": "08dbe886-4c85-4b9b-b2c6-0fe869d623a4",
         "day": "viernes",
-        "meal": "almuerzo",
+        "meal": "cena",
         "recipeId": "r13",
         "servings": 2,
-        "drink": "Chicha morada"
+        "drink": "Refresco de naranja"
       },
       {
-        "id": "4eacf78b-77f3-4987-ba31-c6c4fa405ac8",
-        "day": "viernes",
-        "meal": "cena",
-        "recipeId": "r2",
-        "servings": 2,
-        "drink": "Emoliente"
-      },
-      {
-        "id": "36259b05-8217-4d47-a6a4-45e206d9b53f",
+        "id": "10ea78c8-b66b-48ab-b4d4-1283e068423c",
         "day": "sabado",
         "meal": "almuerzo",
-        "recipeId": "r37",
+        "recipeId": "r2",
         "servings": 2,
-        "drink": "Limonada"
+        "drink": "Jugo de papaya"
       },
       {
-        "id": "54f3c9ab-2136-4841-8465-1c9878d21817",
+        "id": "165cd317-0f7e-4afb-a307-f3aaa09e1092",
         "day": "sabado",
         "meal": "cena",
-        "recipeId": "r8",
+        "recipeId": "r37",
         "servings": 2,
-        "drink": "Café pasado"
+        "drink": "Jugo de papaya"
       },
       {
-        "id": "2a320e1a-9748-42e4-b517-5af2938d2a86",
+        "id": "9bbff71a-c11b-4ba5-a01f-5e2845b75d54",
         "day": "sabado",
         "meal": "desayuno",
         "recipeId": "r11",
         "servings": 2
       },
       {
-        "id": "479959fa-44e9-44e3-a8c4-1e3c3c0a5424",
+        "id": "20510c86-4f48-4068-81b3-611bb62fd083",
         "day": "domingo",
         "meal": "almuerzo",
-        "recipeId": "r49",
+        "recipeId": "r8",
         "servings": 2,
-        "drink": "Emoliente"
+        "drink": "Mate de anís"
       },
       {
-        "id": "2751f77d-c58e-4844-b643-66b6adc2e8e6",
+        "id": "511ef0f5-f1df-4ab8-960e-13bff034d31c",
         "day": "domingo",
         "meal": "cena",
         "recipeId": "r12",
         "servings": 2,
-        "drink": "Emoliente"
+        "drink": "Refresco de maracuyá"
       },
       {
-        "id": "0e14732f-8c64-4d99-8914-3e36a0c12a5b",
+        "id": "ee4d8b3c-a326-4470-95b1-62400ba46128",
         "day": "domingo",
         "meal": "desayuno",
         "recipeId": "r16",
@@ -6395,6 +6387,263 @@
       "kind": "refresco",
       "suitableFor": [
         "desayuno"
+      ]
+    },
+    {
+      "id": "ctdb-12786",
+      "name": "Thai Iced Tea",
+      "emoji": "☕",
+      "kind": "bebida",
+      "suitableFor": [
+        "desayuno"
+      ]
+    },
+    {
+      "id": "ctdb-11002",
+      "name": "Long Island Tea",
+      "emoji": "🍵",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno"
+      ]
+    },
+    {
+      "id": "ctdb-13204",
+      "name": "New York Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-11205",
+      "name": "California Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-13036",
+      "name": "Strawberry Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-17174",
+      "name": "Cherry Electric Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12710",
+      "name": "Apple Berry Smoothie",
+      "emoji": "🥤",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12714",
+      "name": "Kiwi Papaya Smoothie",
+      "emoji": "🥤",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-14978",
+      "name": "Rum Punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-13058",
+      "name": "Wine Punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-14364",
+      "name": "Aztec Punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-178312",
+      "name": "Bloody Punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-15849",
+      "name": "Apricot punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12716",
+      "name": "Mango Orange Smoothie",
+      "emoji": "🥤",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12720",
+      "name": "Kill the cold Smoothie",
+      "emoji": "🥤",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12708",
+      "name": "Banana Cantaloupe Smoothie",
+      "emoji": "🥤",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-13328",
+      "name": "Chocolate Milk",
+      "emoji": "🍫",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12734",
+      "name": "Chocolate Drink",
+      "emoji": "🍫",
+      "kind": "bebida",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-15615",
+      "name": "Chocolate Monkey",
+      "emoji": "🍫",
+      "kind": "jugo",
+      "suitableFor": [
+        "desayuno",
+        "desayuno",
+        "almuerzo",
+        "cena",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12750",
+      "name": "Spanish chocolate",
+      "emoji": "🍫",
+      "kind": "bebida",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12732",
+      "name": "Chocolate Beverage",
+      "emoji": "🍫",
+      "kind": "bebida",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-12418",
+      "name": "Turf Cocktail",
+      "emoji": "🍸",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-17834",
+      "name": "Abbey Cocktail",
+      "emoji": "🍸",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-11019",
+      "name": "Alfie Cocktail",
+      "emoji": "🍸",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
       ]
     }
   ],
