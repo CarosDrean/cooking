@@ -16,7 +16,7 @@ export type RecipeSource = "local" | "themealdb";
 
 export type Season = "primavera" | "verano" | "otonio" | "invierno";
 
-export type RestrictionLevel = "no" | "poco";
+export type RestrictionLevel = "no" | "poco" | "no-principal";
 
 export interface IngredientRestriction {
     name: string;
@@ -109,6 +109,8 @@ export interface Recipe {
     regions?: string[];
     /** Temporadas en las que sus ingredientes frescos están en temporada (ausente = todo el año). */
     seasonal?: Season[];
+    /** Ingredientes que son el protagonista del plato (anula la heurística automática). */
+    protagonist?: string[];
     suitableFor: MealType[];
     prepMinutes: number;
     cookMinutes: number;

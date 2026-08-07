@@ -12,7 +12,10 @@ function cleanRestrictions(value: unknown): IngredientRestriction[] {
         const { name, level } = r as { name?: unknown; level?: unknown };
         const trimmed = typeof name === "string" ? name.trim() : "";
         if (!trimmed) continue;
-        result.push({ name: trimmed, level: level === "poco" ? "poco" : "no" });
+        result.push({
+            name: trimmed,
+            level: level === "poco" ? "poco" : level === "no-principal" ? "no-principal" : "no",
+        });
     }
     return result;
 }

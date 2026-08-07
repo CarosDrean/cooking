@@ -1,6 +1,6 @@
 import type { AppState, Recommendation } from "../types.js";
 import { SEASON_LABELS } from "../types.js";
-import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
+import { isDietCompatible, isForbidden, isProtagonist, normalize, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays, timesEaten } from "./history.js";
 import { availability, currentSeason, seasonFit } from "./location.js";
 import { isMakeable, missingIngredients } from "./shoppingList.js";
@@ -27,10 +27,14 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
         const limited = restrictedCount(recipe, profile);
         if (limited > 0) {
             score -= limited * 3;
+            const ingredientNames = new Set(recipe.ingredients.map((i) => normalize(i.name)));
             const names = profile.restrictions
-                .filter((r) => r.level === "poco")
-                .map((r) => r.name)
-                .filter((n) => recipe.ingredients.some((i) => i.name === n));
+                .filter(
+                    (r) =>
+                        ingredientNames.has(r.name) &&
+                        (r.level === "poco" || (r.level === "no-principal" && !isProtagonist(recipe, r.name))),
+                )
+                .map((r) => r.name);
             reasons.push(`Contiene ${names.join(", ")} (consume con moderación)`);
         }
 

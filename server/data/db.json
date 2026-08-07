@@ -11,6 +11,30 @@
         {
           "name": "pimiento picante",
           "level": "no"
+        },
+        {
+          "name": "leche",
+          "level": "no-principal"
+        },
+        {
+          "name": "leche evaporada",
+          "level": "no-principal"
+        },
+        {
+          "name": "leche deslactosada",
+          "level": "poco"
+        },
+        {
+          "name": "queso",
+          "level": "no"
+        },
+        {
+          "name": "queso fresco",
+          "level": "no"
+        },
+        {
+          "name": "queso feta",
+          "level": "no"
         }
       ],
       "householdSize": 2,
@@ -2028,7 +2052,10 @@
         "fat": 5
       },
       "id": "r20",
-      "source": "local"
+      "source": "local",
+      "protagonist": [
+        "leche evaporada"
+      ]
     },
     {
       "title": "Pan con palta y huevo",
@@ -2766,7 +2793,10 @@
         "fat": 21
       },
       "id": "r27",
-      "source": "local"
+      "source": "local",
+      "protagonist": [
+        "queso fresco"
+      ]
     },
     {
       "title": "Seco de res",
@@ -5571,7 +5601,10 @@
         "fat": 12
       },
       "id": "r53",
-      "source": "local"
+      "source": "local",
+      "protagonist": [
+        "leche"
+      ]
     },
     {
       "title": "Curry de garbanzos",
@@ -6274,63 +6307,154 @@
     }
   ],
   "weeklyPlan": {
-    "id": "w1",
+    "id": "8db590e4-62d1-4a2c-8b2e-b55b638eb0ae",
     "weekStart": "2026-08-04",
     "slots": [
       {
-        "id": "s1",
+        "id": "3849090f-d03c-44da-b20a-373f1d068ae5",
+        "day": "lunes",
+        "meal": "desayuno",
+        "recipeId": "r11",
+        "servings": 2
+      },
+      {
+        "id": "ee9b21d9-83bc-4528-ab63-3df36e2ca544",
         "day": "lunes",
         "meal": "almuerzo",
+        "recipeId": "r4",
+        "servings": 2
+      },
+      {
+        "id": "0d09258e-7bbf-4199-91d1-a750bca509a6",
+        "day": "lunes",
+        "meal": "cena",
         "recipeId": "r1",
         "servings": 2
       },
       {
-        "id": "s2",
-        "day": "lunes",
-        "meal": "cena",
-        "recipeId": "r2",
+        "id": "91aec501-6f87-4c1a-b5ea-87be3f713470",
+        "day": "martes",
+        "meal": "desayuno",
+        "recipeId": "r18",
         "servings": 2
       },
       {
-        "id": "s3",
+        "id": "c18b4fcc-a3de-4c26-8d0e-418443b89bbb",
         "day": "martes",
-        "meal": "desayuno",
-        "recipeId": "r6",
-        "servings": 1
+        "meal": "almuerzo",
+        "recipeId": "r49",
+        "servings": 2
       },
       {
-        "id": "s4",
+        "id": "e681f53c-71b9-4ba7-8047-dfa537036793",
         "day": "martes",
+        "meal": "cena",
+        "recipeId": "r40",
+        "servings": 2
+      },
+      {
+        "id": "6b73374c-0dd4-492b-bc53-016bb4934733",
+        "day": "miercoles",
+        "meal": "desayuno",
+        "recipeId": "r3",
+        "servings": 2
+      },
+      {
+        "id": "4d3b2278-3be8-4edd-9fce-9327d0ac6efe",
+        "day": "miercoles",
+        "meal": "almuerzo",
+        "recipeId": "r47",
+        "servings": 2
+      },
+      {
+        "id": "ccca8de3-aac8-4f88-b4be-1d9a1751aa9c",
+        "day": "miercoles",
+        "meal": "cena",
+        "recipeId": "r54",
+        "servings": 2
+      },
+      {
+        "id": "97b8e940-989a-46c8-ad23-834ec5a86526",
+        "day": "jueves",
+        "meal": "desayuno",
+        "recipeId": "r21",
+        "servings": 2
+      },
+      {
+        "id": "e4baec70-58da-485c-940c-11915bf72d2a",
+        "day": "jueves",
+        "meal": "almuerzo",
+        "recipeId": "r12",
+        "servings": 2
+      },
+      {
+        "id": "b9da6d9e-40e7-4c9c-b4dd-7a5462bcdb6c",
+        "day": "jueves",
+        "meal": "cena",
+        "recipeId": "r43",
+        "servings": 2
+      },
+      {
+        "id": "ea2aa52a-dea4-4aa8-b2e7-874b4608bf29",
+        "day": "viernes",
+        "meal": "desayuno",
+        "recipeId": "r52",
+        "servings": 2
+      },
+      {
+        "id": "6bf7b81f-d7b7-4d99-9c66-846e34d71b91",
+        "day": "viernes",
+        "meal": "almuerzo",
+        "recipeId": "r44",
+        "servings": 2
+      },
+      {
+        "id": "724e771b-bc95-4069-bbab-2cf41cb046bd",
+        "day": "viernes",
+        "meal": "cena",
+        "recipeId": "r41",
+        "servings": 2
+      },
+      {
+        "id": "9f7773cf-77f4-4fbb-8a56-0ddf5ec5bde1",
+        "day": "sabado",
+        "meal": "desayuno",
+        "recipeId": "r6",
+        "servings": 2
+      },
+      {
+        "id": "e6ae6121-b687-4484-9cb3-4070daf62b6c",
+        "day": "sabado",
+        "meal": "almuerzo",
+        "recipeId": "r5",
+        "servings": 2
+      },
+      {
+        "id": "9417dfb5-ee27-4fd4-912a-dd6a2ffb07a1",
+        "day": "sabado",
         "meal": "cena",
         "recipeId": "r4",
         "servings": 2
       },
       {
-        "id": "s5",
-        "day": "miercoles",
+        "id": "66a6484c-a06b-4cb8-984a-3b6894d14e0e",
+        "day": "domingo",
+        "meal": "desayuno",
+        "recipeId": "r11",
+        "servings": 2
+      },
+      {
+        "id": "5084b78b-080d-41e9-aff3-41eea18410ba",
+        "day": "domingo",
         "meal": "almuerzo",
-        "recipeId": "r3",
+        "recipeId": "r4",
         "servings": 2
       },
       {
-        "id": "s6",
-        "day": "jueves",
+        "id": "a5ae77a8-c7d2-49ea-8b2c-2befa13decb2",
+        "day": "domingo",
         "meal": "cena",
-        "recipeId": "r13",
-        "servings": 2
-      },
-      {
-        "id": "s7",
-        "day": "viernes",
-        "meal": "almuerzo",
-        "recipeId": "r9",
-        "servings": 2
-      },
-      {
-        "id": "s8",
-        "day": "sabado",
-        "meal": "cena",
-        "recipeId": "r12",
+        "recipeId": "r4",
         "servings": 2
       }
     ]

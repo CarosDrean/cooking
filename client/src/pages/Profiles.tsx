@@ -13,6 +13,7 @@ import { DIETS, type IngredientRestriction, MEAL_LABELS, MEALS, type MealType } 
 const LEVEL_LABELS: Record<IngredientRestriction["level"], string> = {
     no: "No come",
     poco: "Come poco",
+    "no-principal": "No como protagonista",
 };
 
 function RestrictionsEditor({
@@ -56,6 +57,7 @@ function RestrictionsEditor({
                 >
                     <option value="no">No come</option>
                     <option value="poco">Come poco</option>
+                    <option value="no-principal">No como protagonista</option>
                 </select>
                 <button className="btn ghost" type="button" onClick={add}>
                     Añadir

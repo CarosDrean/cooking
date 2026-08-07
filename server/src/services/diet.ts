@@ -42,19 +42,45 @@ function matchingRestrictions(recipe: Recipe, profile: Profile): IngredientRestr
 
 /** A recipe is excluded when it contains an ingredient the profile cannot eat. */
 export function isForbidden(recipe: Recipe, profile: Profile): boolean {
-    return matchingRestrictions(recipe, profile).some((r) => r.level === "no");
+    return matchingRestrictions(recipe, profile).some(
+        (r) => r.level === "no" || (r.level === "no-principal" && isProtagonist(recipe, r.name)),
+    );
 }
 
 /** Number of ingredients the profile should eat sparingly ("poco"). */
 export function restrictedCount(recipe: Recipe, profile: Profile): number {
-    return matchingRestrictions(recipe, profile).filter((r) => r.level === "poco").length;
+    return matchingRestrictions(recipe, profile).filter(
+        (r) => r.level === "poco" || (r.level === "no-principal" && !isProtagonist(recipe, r.name)),
+    ).length;
 }
 
 /** Ingredients (normalized) the profile cannot eat, matching a recipe. */
 export function forbiddenNames(recipe: Recipe, profile: Profile): string[] {
     return matchingRestrictions(recipe, profile)
-        .filter((r) => r.level === "no")
+        .filter((r) => r.level === "no" || (r.level === "no-principal" && isProtagonist(recipe, r.name)))
         .map((r) => r.name);
+}
+
+/** True when an ingredient is the protagonist of the dish, not just a background touch. */
+export function isProtagonist(recipe: Recipe, name: string): boolean {
+    const n = normalize(name);
+
+    if (recipe.protagonist?.some((p) => normalize(p) === n)) return true;
+
+    const ingredient = recipe.ingredients.find((i) => normalize(i.name) === n);
+    if (ingredient?.category === "proteinas") return true;
+
+    const titleWords = new Set(normalize(recipe.title).split(/\s+/).map(stem).filter(Boolean));
+    if (titleWords.has(stem(n))) return true;
+    return n
+        .split(/\s+/)
+        .filter(Boolean)
+        .some((w) => titleWords.has(stem(w)));
+}
+
+/** Lowercase, remove diacritics and trailing plural "s" so "huevos" matches "huevo". */
+function stem(word: string): string {
+    return normalize(word).replace(/s$/, "");
 }
 
 export function normalize(value: string): string {

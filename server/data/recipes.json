@@ -1962,7 +1962,8 @@
             "fat": 5
         },
         "id": "r20",
-        "source": "local"
+        "source": "local",
+        "protagonist": ["leche evaporada"]
     },
     {
         "title": "Pan con palta y huevo",
@@ -2700,7 +2701,8 @@
             "fat": 21
         },
         "id": "r27",
-        "source": "local"
+        "source": "local",
+        "protagonist": ["queso fresco"]
     },
     {
         "title": "Seco de res",
@@ -5505,7 +5507,8 @@
             "fat": 12
         },
         "id": "r53",
-        "source": "local"
+        "source": "local",
+        "protagonist": ["leche"]
     },
     {
         "title": "Curry de garbanzos",
