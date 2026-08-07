@@ -171,6 +171,8 @@ pantryRouter.put("/:id", (req, res) => {
         return;
     }
 
+    const newUnitPrice = body.unitPrice !== undefined ? toUnitPrice(body.unitPrice) : current.unitPrice;
+
     state.pantry[index] = {
         ...current,
         ingredientName: name,
@@ -178,9 +180,25 @@ pantryRouter.put("/:id", (req, res) => {
         unit,
         expiryDate: body.expiryDate !== undefined ? body.expiryDate || undefined : current.expiryDate,
         category: body.category ?? categoryFor(name, catalog?.category) ?? current.category,
-        unitPrice: body.unitPrice !== undefined ? toUnitPrice(body.unitPrice) : current.unitPrice,
+        unitPrice: newUnitPrice,
         grams: convertToGrams(name, quantity, unit).equivalentValue ?? current.grams,
     };
+
+    // Al añadir precio a un ítem que no lo tenía (p. ej. registrado sin precio),
+    // se registra la compra para que aparezca en Gastos.
+    if (newUnitPrice != null && current.unitPrice == null) {
+        logMovement(state, {
+            profileId: state.activeProfileId,
+            ingredientName: name,
+            quantity,
+            unit,
+            unitPrice: newUnitPrice,
+            total: round(quantity * newUnitPrice),
+            category: state.pantry[index].category,
+            kind: "compra",
+        });
+    }
+
     saveState();
     res.json(state.pantry[index]);
 });

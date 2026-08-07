@@ -2,27 +2,33 @@
 
 Fases ordenadas por impacto/esfuerzo. Cada ítem incluye el estado actual, qué cambiar y criterios de aceptación. UI y tipos en español (convención del repo).
 
-## Fase 1 — Pulido de UX (quick wins)
+## ✅ Fase 1 — Pulido de UX (quick wins) — COMPLETADA
 
-### 1.1 Quitar el subtítulo "Perfil activo" de la topbar
-- **Estado actual**: `client/src/App.tsx:134-144` muestra "Hola, {nombre}" y debajo el subtítulo "Perfil activo: {nombre}". El saludo se mantiene; el subtítulo es redundante porque el perfil activo ya se identifica en el avatar y en su menú desplegable.
+Completada el 2026-08-07. Todos los criterios de aceptación verificados en navegador y `pnpm check` en verde.
+
+### ✅ 1.1 Quitar el subtítulo "Perfil activo" de la topbar
+- **Estado actual**: `client/src/App.tsx` muestra "Hola, {nombre}" y debajo el subtítulo "Perfil activo: {nombre}". El saludo se mantiene; el subtítulo es redundante porque el perfil activo ya se identifica en el avatar y en su menú desplegable.
 - **Cambio**: eliminar solo el `<span className="topbar-sub">Perfil activo: {nombre}</span>` de la topbar; conservar "Hola, {nombre}".
 - **Aceptación**: la topbar muestra "Hola, {nombre}" sin el subtítulo "Perfil activo: …".
+- **✅ Completado**: subtítulo eliminado; además se añadió un reloj en vivo (`viernes, 7 ago · 11:08`) en `App.tsx` con CSS `.topbar-date`.
 
-### 1.2 Menú de perfil con acciones (ver perfil, ajustes, etc.)
+### ✅ 1.2 Menú de perfil con acciones (ver perfil, ajustes, etc.)
 - **Estado actual**: `client/src/components/ProfileMenu.tsx` abre un dropdown con el perfil activo, la lista de perfiles para cambiar a 1 click y el enlace "Gestionar perfiles →". No tiene opciones de navegación como "Ver mi perfil" o "Ajustes".
 - **Cambio**: ampliar el dropdown con una sección de acciones: "Ver mi perfil" (→ `#/profiles`), "Ajustes" (→ `#/settings`) y mantener el cambio de perfil y "Gestionar perfiles".
 - **Aceptación**: al desplegar el avatar salen opciones claras: ver perfil, cambiar de perfil, gestionar perfiles y ajustes, cada una navegando a su página.
+- **✅ Completado**: acciones añadidas en `ProfileMenu.tsx` con CSS `.profile-dropdown-actions`.
 
-### 1.3 Gastos: movimientos ordenados por más reciente
+### ✅ 1.3 Gastos: movimientos ordenados por más reciente
 - **Estado actual**: `server/src/services/spending.ts:117` ordena `movements` solo por `date` (ISO de día) de forma descendente. Como `PurchaseLogEntry` guarda solo la fecha (`logMovement`, `spending.ts:135-141`), los movimientos del mismo día mantienen el orden de inserción: lo último ingresado queda al final, no al inicio. El usuario reportó que "sal", su último ingreso, aparece como tercero.
 - **Cambio**: añadir un timestamp/orden de creación a `PurchaseLogEntry` (p. ej. `createdAt` ISO con hora, o un contador) en tipos duplicados + seed + `db.json`, y ordenar `movements` por `createdAt` descendente (con `date` como fallback). Reflejarlo también en el sort de `byIngredient`/tendencia si aplica.
 - **Aceptación**: en la página Gastos, el movimiento más reciente (incluidos los del mismo día) aparece primero.
+- **✅ Completado**: `createdAt` añadido a `PurchaseLogEntry` (tipos duplicados + seed + `db.json`), `logMovement` lo setea y `movements` se ordena por `createdAt` desc con fallback `date`. Además se arreglaron dos bugs derivados: editar un ítem sin precio para ponerle precio ahora registra la compra (`PUT /api/pantry/:id`), y las mutaciones de despensa invalidan la query `["spending"]` para que Gastos se actualice sin recargar.
 
-### 1.4 Dictado de despensa: cantidad y unidad contables ("2 bolsas de sal")
+### ✅ 1.4 Dictado de despensa: cantidad y unidad contables ("2 bolsas de sal")
 - **Estado actual**: reportado por el usuario: al dictar "2 bolsas de sal" no se rellena la cantidad. El parseo vive en `client/src/lib/speech.ts` (`parseSpokenIngredient`, `parseQuantityPrefix`): el caso aislado "2 bolsas de sal" resuelve (cant. 2, "bolsas"), pero es frágil ante variantes reales del dictado (números transcritos como ordinales/"a dos", relleno al final como "por favor", unidades contables compuestas, fracciones "y media", "unidades de X").
 - **Cambio**: robustecer `parseSpokenIngredient` para que cualquier patrón "cantidad + unidad contable + de + ingrediente" rellene siempre cantidad y unidad (normalizando singular/plural, símbolos y relleno en cualquier posición). Asegurar que la unidad reconocida (p. ej. "bolsas") aparezca en el select de unidades de `client/src/pages/Pantry.tsx` (hoy `DEFAULT_UNITS` no la incluye, aunque `unitOptions` la agrega al vuelo). Añadir pruebas manuales de los casos típicos.
 - **Aceptación**: dictar "2 bolsas de sal", "dos bolsas de sal", "compré 2 bolsas de sal por favor" rellena cantidad=2, unidad=bolsas, nombre=sal; "2 bolsas de sal y media" rellena cantidad=2.5; el guardado suma correctamente.
+- **✅ Completado**: `parseSpokenIngredient` robustecido en `speech.ts` (`stripFillerEdges`, `parseQuantityUnitAnywhere`, unidades contables nuevas, fracciones, rellenos). Extras: compra por moneda ("50 céntimos de culantro", "2 soles de canela" → precio, céntimos ÷100) y fix de unidad al dictar solo precio (ya no rellena "g" por defecto). El toast muestra la transcripción cruda para diagnóstico.
 
 ## Fase 2 — Restricciones y sugerencias de platos habituales
 

@@ -320,6 +320,7 @@ export function useAddPantry() {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["pantry"] });
             qc.invalidateQueries({ queryKey: ["expiring"] });
+            qc.invalidateQueries({ queryKey: ["spending"] });
         },
     });
 }
@@ -338,6 +339,7 @@ export function useUpdatePantry() {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["pantry"] });
             qc.invalidateQueries({ queryKey: ["expiring"] });
+            qc.invalidateQueries({ queryKey: ["spending"] });
         },
     });
 }
@@ -361,6 +363,7 @@ export function useDeletePantry() {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["pantry"] });
             qc.invalidateQueries({ queryKey: ["expiring"] });
+            qc.invalidateQueries({ queryKey: ["spending"] });
         },
         onError: (_err, _id, ctx) => {
             if (ctx?.prev) qc.setQueryData<PantryItem[]>(["pantry"], ctx.prev);

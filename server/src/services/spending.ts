@@ -114,7 +114,9 @@ export function buildSpendingReport(state: AppState, period: SpendingPeriod): Sp
     const byIngredient = sumBy(purchases, (e) => e.ingredientName).map((b) => ({ name: b.key, total: b.total }));
     const byCategory = sumBy(purchases, (e) => e.category ?? "otros").map((b) => ({ category: b.key, total: b.total }));
 
-    const movements = [...mine].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 40);
+    const movements = [...mine]
+        .sort((a, b) => (b.createdAt ?? b.date).localeCompare(a.createdAt ?? a.date))
+        .slice(0, 40);
 
     return {
         period,
@@ -131,11 +133,12 @@ export function buildSpendingReport(state: AppState, period: SpendingPeriod): Sp
     };
 }
 
-/** Appends a purchase/consumption movement with a fresh id and today's date. */
-export function logMovement(state: AppState, entry: Omit<PurchaseLogEntry, "id" | "date">): void {
+/** Appends a purchase/consumption movement with a fresh id, today's date and creation timestamp. */
+export function logMovement(state: AppState, entry: Omit<PurchaseLogEntry, "id" | "date" | "createdAt">): void {
     state.purchaseLog.push({
         ...entry,
         id: crypto.randomUUID(),
         date: new Date().toISOString().slice(0, 10),
+        createdAt: new Date().toISOString(),
     });
 }

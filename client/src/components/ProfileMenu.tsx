@@ -3,7 +3,7 @@ import { useActivateProfile, useActiveProfile, useAppState } from "../api/hooks"
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
 
-/** Menú desplegable de la topbar: cambia de perfil y da acceso a la página de Perfiles. */
+/** Menú desplegable de la topbar: ver perfil, ajustes, cambiar de perfil y gestionar perfiles. */
 export default function ProfileMenu() {
     const { data: state } = useAppState();
     const active = useActiveProfile();
@@ -57,6 +57,26 @@ export default function ProfileMenu() {
                                     {active?.id === p.id ? <span className="profile-menu-check">✓</span> : null}
                                 </button>
                             ))}
+                        </div>
+                        <div className="profile-dropdown-actions">
+                            <button
+                                className="profile-menu-item"
+                                onClick={() => {
+                                    setOpen(false);
+                                    navigate("profiles");
+                                }}
+                            >
+                                <span className="profile-menu-name">Ver mi perfil</span>
+                            </button>
+                            <button
+                                className="profile-menu-item"
+                                onClick={() => {
+                                    setOpen(false);
+                                    navigate("settings");
+                                }}
+                            >
+                                <span className="profile-menu-name">Ajustes</span>
+                            </button>
                         </div>
                         <div className="profile-dropdown-foot">
                             <button

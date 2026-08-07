@@ -5971,67 +5971,49 @@
   ],
   "pantry": [
     {
-      "id": "d0f9a490-6ce0-4b93-9b56-b772eacf9c54",
-      "ingredientName": "aceite vegetal",
+      "id": "1f12d37e-b795-42c1-a239-b73499cef8d4",
+      "ingredientName": "paltas",
       "quantity": 3,
-      "unit": "l",
-      "dateAdded": "2026-08-07T02:31:21.001Z",
-      "category": "despensa",
-      "unitPrice": 9
-    },
-    {
-      "id": "4aea2f57-4c4a-45dd-a166-e7e2e2bf8dc4",
-      "ingredientName": "aceite",
-      "quantity": 2,
       "unit": "unidades",
-      "dateAdded": "2026-08-07T02:33:26.114Z",
-      "category": "despensa",
-      "unitPrice": 15
+      "dateAdded": "2026-08-07T16:00:54.757Z",
+      "category": "frutas",
+      "unitPrice": 2
     },
     {
-      "id": "0ef1aebf-5823-4d25-a34f-caa636c7b6af",
-      "ingredientName": "huevo",
-      "quantity": 5,
-      "unit": "unidades",
-      "dateAdded": "2026-08-07T02:33:48.682Z",
-      "category": "proteinas",
-      "unitPrice": 0.35
-    },
-    {
-      "id": "a4caad0e-2dfc-43b1-b8f7-3f1438e1007e",
-      "ingredientName": "arroz",
-      "quantity": 5,
-      "unit": "kg",
-      "dateAdded": "2026-08-07T02:34:07.207Z",
-      "category": "granos",
-      "unitPrice": 4.5
-    },
-    {
-      "id": "53d6ae7b-35c1-4280-a0e6-b3125521656a",
-      "ingredientName": "pollo",
-      "quantity": 1.5,
-      "unit": "kg",
-      "dateAdded": "2026-08-07T03:21:43.281Z",
-      "category": "proteinas",
-      "unitPrice": 10
-    },
-    {
-      "id": "b13d70f5-13e7-4379-9778-8a3e4f09a042",
-      "ingredientName": "avena",
-      "quantity": 5,
-      "unit": "kg",
-      "dateAdded": "2026-08-07T03:24:20.642Z",
-      "category": "granos",
-      "unitPrice": 5
-    },
-    {
-      "id": "47ae6ade-7d15-4c0d-ba0a-e3f436e08141",
+      "id": "24031938-2e08-4c4e-9c42-bb945874531d",
       "ingredientName": "sal",
       "quantity": 2,
       "unit": "bolsas",
-      "dateAdded": "2026-08-07T14:59:28.620Z",
+      "dateAdded": "2026-08-07T16:01:03.321Z",
+      "category": "despensa",
+      "unitPrice": 4
+    },
+    {
+      "id": "6f1a86d0-3767-4c9e-bb7a-5c12c4118465",
+      "ingredientName": "azucar",
+      "quantity": 5,
+      "unit": "kg",
+      "dateAdded": "2026-08-07T16:01:11.909Z",
       "category": "despensa",
       "unitPrice": 3
+    },
+    {
+      "id": "3bd478a7-c9f6-44f1-8a29-3da79b9db763",
+      "ingredientName": "pollo",
+      "quantity": 2,
+      "unit": "kg",
+      "dateAdded": "2026-08-07T16:05:16.638Z",
+      "category": "proteinas",
+      "unitPrice": 8
+    },
+    {
+      "id": "88a82682-c427-408a-9c64-af3b73e56e19",
+      "ingredientName": "pallares",
+      "quantity": 2,
+      "unit": "kg",
+      "dateAdded": "2026-08-07T16:05:40.081Z",
+      "category": "granos",
+      "unitPrice": 2.5
     }
   ],
   "weeklyPlan": {
@@ -6126,7 +6108,8 @@
       "total": 1.75,
       "category": "proteinas",
       "date": "2026-08-06",
-      "kind": "compra"
+      "kind": "compra",
+      "createdAt": "2026-08-06T09:00:00.000Z"
     },
     {
       "id": "pl2",
@@ -6138,7 +6121,8 @@
       "total": 30,
       "category": "despensa",
       "date": "2026-08-05",
-      "kind": "compra"
+      "kind": "compra",
+      "createdAt": "2026-08-05T09:00:00.000Z"
     },
     {
       "id": "pl3",
@@ -6150,7 +6134,8 @@
       "total": 27,
       "category": "despensa",
       "date": "2026-08-04",
-      "kind": "compra"
+      "kind": "compra",
+      "createdAt": "2026-08-04T09:00:00.000Z"
     },
     {
       "id": "pl4",
@@ -6162,7 +6147,8 @@
       "total": 22.5,
       "category": "granos",
       "date": "2026-08-01",
-      "kind": "compra"
+      "kind": "compra",
+      "createdAt": "2026-08-01T09:00:00.000Z"
     },
     {
       "id": "pl5",
@@ -6174,7 +6160,8 @@
       "total": 25,
       "category": "proteinas",
       "date": "2026-07-26",
-      "kind": "compra"
+      "kind": "compra",
+      "createdAt": "2026-07-26T09:00:00.000Z"
     },
     {
       "id": "pl6",
@@ -6186,7 +6173,8 @@
       "total": 40,
       "category": "despensa",
       "date": "2026-07-03",
-      "kind": "compra"
+      "kind": "compra",
+      "createdAt": "2026-07-03T09:00:00.000Z"
     },
     {
       "id": "pl7",
@@ -6198,7 +6186,8 @@
       "total": 0.7,
       "category": "proteinas",
       "date": "2026-08-06",
-      "kind": "consumo"
+      "kind": "consumo",
+      "createdAt": "2026-08-06T10:00:00.000Z"
     },
     {
       "profileId": "p1",
@@ -6210,7 +6199,8 @@
       "category": "proteinas",
       "kind": "compra",
       "id": "3ca8843e-65e7-4db1-9bc7-5eab15d99ea4",
-      "date": "2026-08-07"
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T14:00:00.000Z"
     },
     {
       "profileId": "p1",
@@ -6222,7 +6212,8 @@
       "category": "granos",
       "kind": "compra",
       "id": "90e5c3ca-ba08-4a3b-a66e-a87bdb2bfecd",
-      "date": "2026-08-07"
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T15:00:00.000Z"
     },
     {
       "profileId": "p1",
@@ -6234,7 +6225,190 @@
       "category": "despensa",
       "kind": "compra",
       "id": "364f573e-8e09-492f-898f-58034edd2580",
-      "date": "2026-08-07"
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:00.000Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "canela",
+      "quantity": 1,
+      "unit": "g",
+      "unitPrice": 2,
+      "total": 2,
+      "category": "condimentos",
+      "kind": "compra",
+      "id": "6d461d51-7ef2-4768-a4ec-a6aa9c2409a4",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T15:56:23.196Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "canela",
+      "quantity": 1,
+      "unit": "unidades",
+      "unitPrice": 2,
+      "total": 2,
+      "category": "condimentos",
+      "kind": "compra",
+      "id": "d33441de-7747-4499-a078-73d21637ef3c",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T15:59:08.906Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "canela",
+      "quantity": 1,
+      "unit": "g",
+      "unitPrice": 2,
+      "total": 2,
+      "category": "condimentos",
+      "kind": "consumo",
+      "id": "532d4eed-4d49-4b99-8cc2-08231805d26a",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T15:59:26.129Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "canela",
+      "quantity": 1,
+      "unit": "unidades",
+      "unitPrice": 3,
+      "total": 3,
+      "category": "condimentos",
+      "kind": "compra",
+      "id": "418bd2fc-49a0-4aba-bad2-526c07a376df",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T15:59:31.480Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "aceite vegetal",
+      "quantity": 3,
+      "unit": "l",
+      "unitPrice": 9,
+      "total": 27,
+      "category": "despensa",
+      "kind": "consumo",
+      "id": "0e2a3884-99e4-4bf7-b58e-da1e45925d69",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:13.821Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "aceite",
+      "quantity": 2,
+      "unit": "unidades",
+      "unitPrice": 15,
+      "total": 30,
+      "category": "despensa",
+      "kind": "consumo",
+      "id": "37c26c42-ae35-435a-9419-4f692cd04012",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:15.694Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "huevo",
+      "quantity": 5,
+      "unit": "unidades",
+      "unitPrice": 0.35,
+      "total": 1.75,
+      "category": "proteinas",
+      "kind": "consumo",
+      "id": "4e7bab9b-94e6-4bac-815e-d9cef7404e8c",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:17.255Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "arroz",
+      "quantity": 5,
+      "unit": "kg",
+      "unitPrice": 4.5,
+      "total": 22.5,
+      "category": "granos",
+      "kind": "consumo",
+      "id": "cad5ecb4-1142-4031-a8b6-0f2c7045d16e",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:19.127Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "pollo",
+      "quantity": 1.5,
+      "unit": "kg",
+      "unitPrice": 10,
+      "total": 15,
+      "category": "proteinas",
+      "kind": "consumo",
+      "id": "1965f0d4-f3fe-445c-a383-ca382ee6956c",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:21.608Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "avena",
+      "quantity": 5,
+      "unit": "kg",
+      "unitPrice": 5,
+      "total": 25,
+      "category": "granos",
+      "kind": "consumo",
+      "id": "da6184f6-5391-423b-8bee-e6da02704e70",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:23.790Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "sal",
+      "quantity": 2,
+      "unit": "bolsas",
+      "unitPrice": 3,
+      "total": 6,
+      "category": "despensa",
+      "kind": "consumo",
+      "id": "22af5933-c87c-4986-8c9b-b058dd3ad344",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:26.292Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "canela",
+      "quantity": 2,
+      "unit": "unidades",
+      "unitPrice": 3,
+      "total": 6,
+      "category": "condimentos",
+      "kind": "consumo",
+      "id": "1ccc0c53-65db-4f5c-8f4d-f107d957a1d3",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:00:28.277Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "pallares",
+      "quantity": 2,
+      "unit": "kg",
+      "unitPrice": 2.5,
+      "total": 5,
+      "category": "granos",
+      "kind": "compra",
+      "id": "68c1a07b-c37d-427f-8e94-b5cc2dafbf1b",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:05:40.082Z"
+    },
+    {
+      "profileId": "p1",
+      "ingredientName": "pollo",
+      "quantity": 2,
+      "unit": "kg",
+      "unitPrice": 8,
+      "total": 16,
+      "category": "proteinas",
+      "kind": "compra",
+      "id": "91038869-7925-4857-b4ff-546745c069d4",
+      "date": "2026-08-07",
+      "createdAt": "2026-08-07T16:06:00.045Z"
     }
   ]
 }

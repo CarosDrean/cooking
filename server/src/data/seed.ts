@@ -39,12 +39,15 @@ export function seedState(): AppState {
     const today = toISODate(now);
     const weekStart = startOfWeek(now);
     const daysAgo = (n: number) => toISODate(new Date(Date.now() - n * 86400000));
+    const daysAgoIso = (n: number) => new Date(Date.now() - n * 86400000).toISOString();
 
     const resolve = (token: string): string => {
         if (token === "today") return today;
         if (token === "weekStart") return weekStart;
         const match = token.match(/^daysAgo\((\d+)\)$/);
         if (match) return daysAgo(Number(match[1]));
+        const matchIso = token.match(/^daysAgoIso\((\d+)\)$/);
+        if (matchIso) return daysAgoIso(Number(matchIso[1]));
         return token;
     };
 

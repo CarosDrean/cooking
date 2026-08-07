@@ -96,6 +96,16 @@ const UNITS: Record<string, string> = {
     latas: "latas",
     bolsa: "bolsas",
     bolsas: "bolsas",
+    caja: "cajas",
+    cajas: "cajas",
+    botella: "botellas",
+    botellas: "botellas",
+    frasco: "frascos",
+    frascos: "frascos",
+    atado: "atados",
+    atados: "atados",
+    barra: "barras",
+    barras: "barras",
     cabeza: "cabezas",
     cabezas: "cabezas",
     manojo: "manojos",
@@ -205,6 +215,8 @@ const FILLERS = [
     "compra",
     "comprar",
     "compré",
+    "compro",
+    "comprado",
     "agrega",
     "agrego",
     "agregar",
@@ -225,6 +237,12 @@ const FILLERS = [
     "por favor",
     "agregue",
     "anota",
+    "he",
+    "me",
+    "yo",
+    "a",
+    "por",
+    "para",
 ];
 
 function normalize(text: string): string {
@@ -232,7 +250,7 @@ function normalize(text: string): string {
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[.,;!¿?]+/g, " ")
+        .replace(/[.,;!¿?()"'«»]+/g, " ")
         .replace(/\s+/g, " ")
         .trim();
 }
@@ -243,40 +261,111 @@ function tokenNumber(token: string): number | undefined {
     return NUMBER_WORDS[token];
 }
 
+/** Elimina rellenos ("compré", "por favor", "a", "para"…) del inicio y del final. */
+function stripFillerEdges(text: string): string {
+    let changed = true;
+    while (changed) {
+        changed = false;
+        for (const filler of FILLERS) {
+            const f = normalize(filler);
+            if (!f) continue;
+            if (text === f) {
+                text = "";
+                changed = true;
+            } else if (text.startsWith(`${f} `)) {
+                text = text.slice(f.length).trim();
+                changed = true;
+            } else if (text.endsWith(` ${f}`)) {
+                text = text.slice(0, -(f.length + 1)).trim();
+                changed = true;
+            }
+        }
+    }
+    return text;
+}
+
+/**
+ * Busca el patrón "cantidad + unidad + de + ingrediente" en cualquier posición,
+ * para transcripciones reales con relleno ("he comprado 2 bolsas de sal",
+ * "me faltan dos bolsas de sal", "quiero 2 bolsas de sal").
+ */
+function parseQuantityUnitAnywhere(text: string): { quantity: number; unit: string; name: string } | null {
+    const m = text.match(/(?:^|\s)([a-z0-9.,]+|[a-zñ]+)\s+([a-zñ]+)\s+(?:de|del)\s+([a-zñ][a-zñ0-9\s]*)$/);
+    if (!m) return null;
+    const quantity = tokenNumber(m[1]);
+    const unit = canonicalUnit(m[2]);
+    if (quantity == null || unit == null) return null;
+    const name = m[3].trim();
+    if (!name) return null;
+    return { quantity, unit, name };
+}
+
 /**
  * Convierte frases dictadas como "compré un kilo de arroz" o "1 sol de huevo"
- * en cantidad, unidad, precio e ingrediente.
+ * en cantidad, unidad, precio e ingrediente. Soporta unidades contables
+ * ("2 bolsas de sal"), rellenos en cualquier posición ("compré 2 bolsas de sal
+ * por favor") y fracciones al final ("2 bolsas de sal y media").
  */
 export function parseSpokenIngredient(raw: string): ParsedSpokenIngredient {
-    let text = normalize(raw);
+    let text = stripFillerEdges(normalize(raw));
     let unitPrice: number | undefined;
 
-    for (const filler of FILLERS) {
-        const f = normalize(filler);
-        if (text.startsWith(`${f} `)) {
-            text = text.slice(f.length).trim();
-            break;
+    // Precio: "N sol(es)" o "N céntimo(s)/centavo(s)" en cualquier parte de la frase
+    // (p. ej. "50 céntimos de culantro", "2 soles de canela").
+    const priceMatch = text.match(/(?:^|\s)([a-z0-9.,]+)\s+(sol(?:es)?|centimos?|centavos?)(?=\s|$)/);
+    if (priceMatch) {
+        const value = tokenNumber(priceMatch[1]);
+        if (value != null) {
+            // "50 céntimos" = medio sol (0.50).
+            unitPrice = priceMatch[2].startsWith("cen") ? Math.round((value / 100) * 100) / 100 : value;
+        }
+        text = text.replace(priceMatch[0], " ").replace(/\s+/g, " ").trim();
+        // Relleno que pueda quedar junto al precio ("... por favor a 3 soles").
+        text = stripFillerEdges(text);
+        // Fracción después del precio: "2 soles y medio de canela".
+        const priceFrac = text.match(/^y\s+(medio|media|cuarto|cuarta|tres\s+cuartos|tres\s+cuartas)\s+/);
+        if (priceFrac && unitPrice != null) {
+            unitPrice += FRACTIONS[priceFrac[1]] ?? 0;
+            text = text.slice(priceFrac[0].length).trim();
         }
     }
 
-    // Precio: "N sol(es)" en cualquier parte de la frase.
-    const priceMatch = text.match(/(?:^|\s)([a-z0-9.,]+)\s+(?:sol|soles)(?=\s|$)/);
-    if (priceMatch) {
-        const value = tokenNumber(priceMatch[1]);
-        if (value != null) unitPrice = value;
-        text = text.replace(priceMatch[0], " ").replace(/\s+/g, " ").trim();
+    // Cantidad, unidad y fracción ("y medio") al inicio.
+    let { quantity, unit, rest } = parseQuantityPrefix(text);
+
+    let name: string;
+    if (quantity != null && unit != null) {
+        // Patrón canónico al inicio: "2 bolsas de sal".
+        name = rest.replace(/^(?:de|del|un|una|unos|unas)\s+/, "").trim();
+    } else if (quantity == null) {
+        // Sin cantidad al inicio: buscar el patrón en cualquier posición.
+        const anywhere = parseQuantityUnitAnywhere(text);
+        if (anywhere) {
+            quantity = anywhere.quantity;
+            unit = anywhere.unit;
+            name = anywhere.name;
+        } else {
+            name = rest.replace(/^(?:de|del|un|una|unos|unas)\s+/, "").trim();
+        }
+    } else {
+        name = rest.replace(/^(?:de|del|un|una|unos|unas)\s+/, "").trim();
     }
 
-    // Cantidad, unidad y fracción ("y medio") al inicio.
-    const { quantity, unit, rest } = parseQuantityPrefix(text);
+    // Fracción tras el ingrediente: "2 bolsas de sal y media" → cantidad 2.5.
+    const trailing = name.match(/(?:^|\s)y\s+(medio|media|cuarto|cuarta|tres\s+cuartos|tres\s+cuartas)$/);
+    if (trailing && quantity != null) {
+        const frac = FRACTIONS[trailing[1]];
+        if (frac != null) {
+            quantity = (quantity ?? 1) + frac;
+            name = name.slice(0, trailing.index ?? name.length).trim();
+        }
+    }
 
     // Si se dictó una cantidad sin unidad ("un pollo"), es un conteo por unidad.
     const resolvedUnit = unit ?? (quantity != null ? "unidades" : undefined);
 
-    text = rest.replace(/^(?:de|del|un|una|unos|unas)\s+/, "").trim();
-
     return {
-        ingredientName: text,
+        ingredientName: name,
         quantity,
         unit: resolvedUnit,
         unitPrice,

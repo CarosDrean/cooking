@@ -3,7 +3,23 @@ import { fmtQty } from "../lib/format";
 import type { CatalogIngredient, PantryItem } from "../types";
 import { normalizeText } from "../types";
 
-const DEFAULT_UNITS = ["g", "kg", "ml", "l", "cucharadas", "cucharaditas", "puñados", "unidades", "lata", "paquete"];
+const DEFAULT_UNITS = [
+    "g",
+    "kg",
+    "ml",
+    "l",
+    "cucharadas",
+    "cucharaditas",
+    "puñados",
+    "unidades",
+    "bolsas",
+    "cajas",
+    "botellas",
+    "frascos",
+    "latas",
+    "paquetes",
+    "docenas",
+];
 
 export default function PantryEditModal({
     item,

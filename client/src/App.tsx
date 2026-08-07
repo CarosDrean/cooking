@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useActiveProfile, useAppState } from "./api/hooks";
 import ProfileMenu from "./components/ProfileMenu";
 import ProfileWizard from "./components/ProfileWizard";
@@ -29,6 +29,12 @@ export default function App() {
     const { data: state } = useAppState();
     const activeProfile = useActiveProfile();
     const [showWizard, setShowWizard] = useState(false);
+    const [now, setNow] = useState(() => new Date());
+
+    useEffect(() => {
+        const id = window.setInterval(() => setNow(new Date()), 30_000);
+        return () => window.clearInterval(id);
+    }, []);
 
     const setPage = (page: string) => {
         window.location.hash = `/${page}`;
@@ -136,7 +142,14 @@ export default function App() {
                             <>
                                 <span className="avatar">{activeProfile.name.slice(0, 1).toUpperCase()}</span>
                                 <span>Hola, {activeProfile.name.split(" ")[0]}</span>
-                                <span className="topbar-sub">Perfil activo: {activeProfile.name}</span>
+                                <span className="topbar-date">
+                                    {now.toLocaleDateString("es-ES", {
+                                        weekday: "long",
+                                        day: "numeric",
+                                        month: "short",
+                                    })}{" "}
+                                    · {now.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}
+                                </span>
                             </>
                         ) : (
                             <span>Hola</span>

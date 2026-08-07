@@ -169,6 +169,8 @@ export interface PurchaseLogEntry {
     category?: IngredientCategory;
     /** Fecha ISO (yyyy-mm-dd). */
     date: string;
+    /** Marca de creación ISO con hora; ordena los movimientos del mismo día (más reciente primero). */
+    createdAt: string;
     kind: PurchaseKind;
 }
 

@@ -186,10 +186,11 @@ code {
     font-weight: 600;
 }
 
-.topbar-sub {
+.topbar-date {
     color: var(--muted);
     font-size: 13px;
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 .topbar-actions {
@@ -1994,6 +1995,13 @@ code {
 .profile-menu-check {
     color: var(--accent);
     font-weight: 700;
+}
+
+.profile-dropdown-actions {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    border-top: 1px solid var(--line);
 }
 
 .profile-dropdown-foot {

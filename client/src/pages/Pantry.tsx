@@ -17,7 +17,23 @@ import { useToast } from "../lib/toast";
 import type { CatalogIngredient, PantryItem } from "../types";
 import { normalizeText } from "../types";
 
-const DEFAULT_UNITS = ["g", "kg", "ml", "l", "cucharadas", "cucharaditas", "puñados", "unidades", "lata", "paquete"];
+const DEFAULT_UNITS = [
+    "g",
+    "kg",
+    "ml",
+    "l",
+    "cucharadas",
+    "cucharaditas",
+    "puñados",
+    "unidades",
+    "bolsas",
+    "cajas",
+    "botellas",
+    "frascos",
+    "latas",
+    "paquetes",
+    "docenas",
+];
 
 const CATEGORY_LABELS: Record<string, string> = {
     verduras: "🥬 Verduras",
@@ -114,7 +130,7 @@ export default function PantryPage() {
         if (parsed.quantity != null) setQty(String(parsed.quantity));
         if (parsed.unit) {
             setUnit(parsed.unit);
-        } else {
+        } else if (parsed.unitPrice == null) {
             const entry = catalog.data?.find((i) => normalizeText(i.name) === normalizeText(parsed.ingredientName));
             if (entry) setUnit(entry.defaultUnit);
         }
@@ -126,7 +142,7 @@ export default function PantryPage() {
         const pieces = [parsed.ingredientName || "?"];
         if (parsed.quantity != null) pieces.push(`${fmtQty(parsed.quantity)} ${parsed.unit ?? ""}`.trim());
         if (parsed.unitPrice != null) pieces.push(fmtCurrency(parsed.unitPrice));
-        toast(`Reconocido: ${pieces.join(" · ")}`);
+        toast(`Reconocido: ${text} → ${pieces.join(" · ")}`);
     };
 
     const submit = (e: React.FormEvent) => {
