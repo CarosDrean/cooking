@@ -83,12 +83,15 @@ Completada el 2026-08-07. Todos los criterios de aceptación verificados en nave
 - **Aceptación**: al abrir una receta, la foto del plato es el elemento central y visible de inmediato; sin imagen se mantiene el fallback emoji sin romper.
 - **✅ Completado**: `.detail-head` rediseñado con foto hero + `.detail-body`; `.cooking-hero` añadido en `CookingMode.tsx`; `.detail-body` y `.recipe-grid` colapsan en móvil.
 
-## Fase 4 — Ajustes y localización
+## ✅ Fase 4 — Ajustes y localización — COMPLETADA
 
-### 4.1 País y ciudad seleccionables o con autorelleno
+Completada el 2026-08-07. Todos los criterios de aceptación verificados en navegador y `pnpm check` en verde.
+
+### ✅ 4.1 País y ciudad seleccionables o con autorelleno
 - **Estado actual**: `client/src/pages/Settings.tsx:53-70` usa dos inputs de texto libre (País, Ciudad). No hay lista de países ni ciudades, ni geolocalización.
-- **Cambio**: convertir País en un select/datalist de países y Ciudad en un combobox con autorelleno (datalist de ciudades, priorizando las del país elegido); opcional: botón "Usar mi ubicación" con la API de geolocalización para precargar país/ciudad. El valor guardado sigue yendo a `PUT /api/settings`.
-- **Aceptación**: el usuario puede elegir país/ciudad sin teclear a ciegas, con sugerencias según lo que escribe; seleccionar país filtra las ciudades sugeridas.
+- **Cambio**: País convertido en `<input list>` con `<datalist>` de 30 países (foco en Latinoamérica + España + países clave). Ciudad ahora es un combobox con datalist filtrado por el país elegido: al seleccionar "Perú", las sugerencias son Ica, Lima, Cusco, etc. Además se añadió el botón "📍 Usar mi ubicación" que usa la API de geolocalización del navegador + reverse geocoding gratuito de BigDataCloud (sin clave) para precargar país y ciudad automáticamente. Los datos de países/ciudades viven en `client/src/data/countries.ts`. El valor guardado sigue yendo a `PUT /api/settings`.
+- **Aceptación**: el usuario puede elegir país/ciudad sin teclear a ciegas, con sugerencias según lo que escribe; seleccionar país filtra las ciudades sugeridas; el botón de geolocalización detecta país y ciudad reales.
+- **✅ Completado**: `CountriesData` con 30 países y ~200 ciudades; `<datalist>` en país y ciudad; ciudad se resetea al cambiar de país si no pertenece al nuevo; botón "Usar mi ubicación" con `navigator.geolocation` + BigDataCloud reverse geocode; estilos `.settings-actions` en CSS.
 
 ## Fase 5 — Bebidas
 

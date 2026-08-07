@@ -770,6 +770,17 @@ code {
 
 /* ================= Settings / season banner ================= */
 
+.settings-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.settings-actions .btn:last-child {
+    margin-left: auto;
+}
+
 .season-banner {
     display: flex;
     gap: 14px;
