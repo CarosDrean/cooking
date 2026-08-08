@@ -52,6 +52,13 @@ export function ensureStateDefaults(state: AppState): AppState {
         }
     }
 
+    // Dedupe drink suitableFor (previene duplicados vía importaciones o API)
+    for (const drink of state.drinks ?? []) {
+        if (drink.suitableFor && drink.suitableFor.length > 0) {
+            drink.suitableFor = [...new Set(drink.suitableFor)];
+        }
+    }
+
     return state;
 }
 

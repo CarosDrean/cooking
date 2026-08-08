@@ -79,7 +79,7 @@ export default function ThemealdbImporter({ onClose }: { onClose: () => void }) 
                                         });
                                     }}
                                 >
-                                    Importar
+                                    {importRecipe.isPending ? "Importando…" : "Importar"}
                                 </button>
                             </div>
                         ))

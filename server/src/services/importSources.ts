@@ -120,7 +120,7 @@ function mapCocktailToDrink(drink: CtbDrink): Drink {
         name: drink.strDrink,
         emoji: guessDrinkEmoji(drink.strDrink, category),
         kind: guessDrinkKind(category),
-        suitableFor: inferDrinkSuitableFor(drink.strDrink, category),
+        suitableFor: [...new Set(inferDrinkSuitableFor(drink.strDrink, category))],
     };
 }
 

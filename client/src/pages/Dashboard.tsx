@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import {
     useActiveProfile,
     useAppState,
@@ -10,7 +11,25 @@ import {
 import RecipeCard from "../components/RecipeCard";
 import { dayKeyOf, toISODate, weekdayOf } from "../lib/format";
 import { navigate } from "../lib/router";
+import type { Recipe } from "../types";
 import { DRINKS, MEAL_LABELS } from "../types";
+
+const RecommendationRow = memo(function RecommendationRow({ recipe, reasons }: { recipe: Recipe; reasons: string[] }) {
+    const right = useMemo(
+        () => (
+            <div className="rec-reasons">
+                {reasons.slice(0, 3).map((r, i) => (
+                    <span key={i} className="reason-chip">
+                        {r}
+                    </span>
+                ))}
+            </div>
+        ),
+        [reasons],
+    );
+
+    return <RecipeCard recipe={recipe} right={right} />;
+});
 
 export default function Dashboard() {
     const profile = useActiveProfile();
@@ -204,19 +223,7 @@ export default function Dashboard() {
                 </div>
                 <div className="recipe-grid">
                     {(recommendations.data ?? []).map((rec) => (
-                        <RecipeCard
-                            key={rec.recipe.id}
-                            recipe={rec.recipe}
-                            right={
-                                <div className="rec-reasons">
-                                    {rec.reasons.slice(0, 3).map((r, i) => (
-                                        <span key={i} className="reason-chip">
-                                            {r}
-                                        </span>
-                                    ))}
-                                </div>
-                            }
-                        />
+                        <RecommendationRow key={rec.recipe.id} recipe={rec.recipe} reasons={rec.reasons} />
                     ))}
                     {(recommendations.data ?? []).length === 0 && !recommendations.isLoading ? (
                         <p className="muted">Sin recomendaciones todavía.</p>

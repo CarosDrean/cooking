@@ -43,7 +43,14 @@ historyRouter.put("/:id", (req, res) => {
     }
     const body = req.body as Partial<MealLogEntry>;
     const entry = state.history[index];
-    entry.rating = body.rating !== undefined ? body.rating : entry.rating;
+    if (body.rating !== undefined) {
+        entry.rating = body.rating;
+        const profile = state.profiles.find((p) => p.id === entry.profileId);
+        if (profile) {
+            if (body.rating === null) delete profile.ratingByRecipe[entry.recipeId];
+            else profile.ratingByRecipe[entry.recipeId] = body.rating;
+        }
+    }
     entry.notes = body.notes !== undefined ? body.notes : entry.notes;
     entry.meal = body.meal ?? entry.meal;
     entry.servings = body.servings ?? entry.servings;

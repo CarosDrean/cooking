@@ -1,10 +1,88 @@
-import { useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { useActiveProfile, useAutoImport, useMakeable, useRecipes, useSetRating, useUpdateProfile } from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
 import ThemealdbImporter from "../components/ThemealdbImporter";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
+import type { Recipe } from "../types";
 import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "../types";
+
+const RecipeRow = memo(function RecipeRow({
+    recipe,
+    rating,
+    hidden,
+    onRate,
+    onVote,
+    onHide,
+}: {
+    recipe: Recipe;
+    rating?: number;
+    hidden: boolean;
+    onRate: (recipeId: string, rating: number | null) => void;
+    onVote: (recipeId: string, patch: { hide?: boolean; weight?: number }) => void;
+    onHide: (recipeId: string) => void;
+}) {
+    const handleRate = useCallback((n: number) => onRate(recipe.id, n), [onRate, recipe.id]);
+
+    const right = useMemo(
+        () => (
+            <span className="suggestion-votes">
+                <button
+                    className="icon-btn vote-btn"
+                    type="button"
+                    title="No sugerir más"
+                    aria-label="No sugerir más"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onVote(recipe.id, { hide: true });
+                        onHide(recipe.id);
+                    }}
+                >
+                    🙅
+                </button>
+                <button
+                    className="icon-btn vote-btn"
+                    type="button"
+                    title="Menos similares"
+                    aria-label="Menos similares"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onVote(recipe.id, { weight: 0.5 });
+                    }}
+                >
+                    ↓
+                </button>
+                <button
+                    className="icon-btn vote-btn"
+                    type="button"
+                    title="Más similares"
+                    aria-label="Más similares"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onVote(recipe.id, { weight: 2 });
+                    }}
+                >
+                    ↑
+                </button>
+                <button
+                    className="icon-btn vote-btn"
+                    type="button"
+                    title="Quitar"
+                    aria-label="Quitar"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onHide(recipe.id);
+                    }}
+                >
+                    ✕
+                </button>
+            </span>
+        ),
+        [recipe.id, hidden, onVote, onHide],
+    );
+
+    return <RecipeCard recipe={recipe} rating={rating} onRate={handleRate} right={right} />;
+});
 
 export default function Recipes() {
     const [q, setQ] = useState("");
@@ -24,19 +102,34 @@ export default function Recipes() {
 
     const feedback = activeProfile?.suggestionFeedback ?? {};
 
-    const saveFeedback = (recipeId: string, patch: { hide?: boolean; weight?: number }) => {
-        if (!activeProfile) return;
-        const current = feedback;
-        const next: Record<string, { hide: boolean; weight: number }> = {};
-        for (const [key, val] of Object.entries(current)) {
-            next[key] = { ...val };
-        }
-        next[recipeId] = {
-            hide: patch.hide ?? current[recipeId]?.hide ?? false,
-            weight: patch.weight ?? current[recipeId]?.weight ?? 1,
-        };
-        updateProfile.mutate({ id: activeProfile.id, body: { suggestionFeedback: next } });
-    };
+    const handleRate = useCallback(
+        (recipeId: string, rating: number | null) => {
+            if (!activeProfile) return;
+            setRating.mutate({ profileId: activeProfile.id, recipeId, rating });
+        },
+        [activeProfile, setRating],
+    );
+
+    const handleVote = useCallback(
+        (recipeId: string, patch: { hide?: boolean; weight?: number }) => {
+            if (!activeProfile) return;
+            const current = feedback;
+            const next: Record<string, { hide: boolean; weight: number }> = {};
+            for (const [key, val] of Object.entries(current)) {
+                next[key] = { ...val };
+            }
+            next[recipeId] = {
+                hide: patch.hide ?? current[recipeId]?.hide ?? false,
+                weight: patch.weight ?? current[recipeId]?.weight ?? 1,
+            };
+            updateProfile.mutate({ id: activeProfile.id, body: { suggestionFeedback: next } });
+        },
+        [activeProfile, feedback, updateProfile],
+    );
+
+    const handleHide = useCallback((recipeId: string) => {
+        setHiddenIds((prev) => new Set(prev).add(recipeId));
+    }, []);
 
     const toggleDiet = (d: string) => setDiets((cur) => (cur.includes(d) ? cur.filter((x) => x !== d) : [...cur, d]));
 
@@ -178,67 +271,14 @@ export default function Recipes() {
 
             <div className="recipe-grid">
                 {shown.map((r) => (
-                    <RecipeCard
+                    <RecipeRow
                         key={r.id}
                         recipe={r}
                         rating={activeProfile?.ratingByRecipe?.[r.id]}
-                        onRate={(rating) => {
-                            if (activeProfile)
-                                setRating.mutate({ profileId: activeProfile.id, recipeId: r.id, rating });
-                        }}
-                        right={
-                            <span className="suggestion-votes">
-                                <button
-                                    className="icon-btn vote-btn"
-                                    type="button"
-                                    title="No sugerir más"
-                                    aria-label="No sugerir más"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        saveFeedback(r.id, { hide: true });
-                                        setHiddenIds((prev) => new Set(prev).add(r.id));
-                                    }}
-                                >
-                                    🙅
-                                </button>
-                                <button
-                                    className="icon-btn vote-btn"
-                                    type="button"
-                                    title="Menos similares"
-                                    aria-label="Menos similares"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        saveFeedback(r.id, { weight: 0.5 });
-                                    }}
-                                >
-                                    ↓
-                                </button>
-                                <button
-                                    className="icon-btn vote-btn"
-                                    type="button"
-                                    title="Más similares"
-                                    aria-label="Más similares"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        saveFeedback(r.id, { weight: 2 });
-                                    }}
-                                >
-                                    ↑
-                                </button>
-                                <button
-                                    className="icon-btn vote-btn"
-                                    type="button"
-                                    title="Quitar"
-                                    aria-label="Quitar"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setHiddenIds((prev) => new Set(prev).add(r.id));
-                                    }}
-                                >
-                                    ✕
-                                </button>
-                            </span>
-                        }
+                        hidden={hiddenIds.has(r.id)}
+                        onRate={handleRate}
+                        onVote={handleVote}
+                        onHide={handleHide}
                     />
                 ))}{" "}
                 {recipes.isLoading ? <p className="muted">Cargando recetas…</p> : null}

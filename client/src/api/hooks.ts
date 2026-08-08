@@ -519,8 +519,13 @@ export function useAddHistory() {
 export function useUpdateHistoryEntry() {
     const qc = useQueryClient();
     return useMutation({
-        mutationFn: ({ id, body }: { id: string; body: Partial<MealLogEntry> }) =>
-            api.put<MealLogEntry>(`/history/${id}`, body),
+        mutationFn: ({
+            id,
+            body,
+        }: {
+            id: string;
+            body: Partial<Omit<MealLogEntry, "rating">> & { rating?: number | null };
+        }) => api.put<MealLogEntry>(`/history/${id}`, body),
         onSuccess: () => {
             invalidateState(qc);
             qc.invalidateQueries({ queryKey: ["history"] });

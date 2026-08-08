@@ -1,11 +1,4 @@
-import {
-    useActiveProfile,
-    useAppState,
-    useDeleteHistoryEntry,
-    useHistory,
-    useSetRating,
-    useUpdateHistoryEntry,
-} from "../api/hooks";
+import { useActiveProfile, useAppState, useDeleteHistoryEntry, useHistory, useUpdateHistoryEntry } from "../api/hooks";
 import Stars from "../components/Stars";
 import { useConfirm } from "../lib/confirm";
 import { dateLabel } from "../lib/format";
@@ -17,7 +10,6 @@ export default function HistoryPage() {
     const history = useHistory(profile?.id);
     const remove = useDeleteHistoryEntry();
     const confirm = useConfirm();
-    const setRating = useSetRating();
     const updateEntry = useUpdateHistoryEntry();
     const { data: state } = useAppState();
     const names = new Map((state?.recipes ?? []).map((r) => [r.id, r.title]));
@@ -78,12 +70,11 @@ export default function HistoryPage() {
                                 size="sm"
                                 value={e.rating}
                                 onChange={
-                                    setRating.isPending
+                                    updateEntry.isPending
                                         ? undefined
                                         : (rating) => {
                                               if (!profile) return;
-                                              setRating.mutate({ profileId: profile.id, recipeId: e.recipeId, rating });
-                                              updateEntry.mutate({ id: e.id, body: { rating: rating ?? undefined } });
+                                              updateEntry.mutate({ id: e.id, body: { rating } });
                                           }
                                 }
                             />

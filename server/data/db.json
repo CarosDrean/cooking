@@ -12996,8 +12996,6 @@
       "image": "https://www.themealdb.com/images/media/meals/c6ghxm1763335584.jpg",
       "source": "themealdb",
       "diets": [
-        "vegano",
-        "vegetariano",
         "sin-lactosa"
       ],
       "cuisine": "spanish",
@@ -21947,8 +21945,6 @@
       "suitableFor": [
         "desayuno",
         "almuerzo",
-        "cena",
-        "almuerzo",
         "cena"
       ]
     },
@@ -22097,9 +22093,6 @@
       "kind": "jugo",
       "suitableFor": [
         "desayuno",
-        "desayuno",
-        "almuerzo",
-        "cena",
         "almuerzo",
         "cena"
       ]
