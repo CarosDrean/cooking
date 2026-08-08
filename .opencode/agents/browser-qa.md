@@ -30,8 +30,8 @@ Si NO recibiste qué probar ni la URL, **pídelo antes de empezar**.
 
 ## Antes de empezar
 
-1. Lee `.ai/tasks.md` para entender qué funcionalidades deberían estar implementadas.
-2. Lee `.ai/architecture.md` para entender los endpoints y flujos esperados.
+1. Si `.ai/tasks.md` existe, léelo para entender qué funcionalidades deberían estar implementadas. Si no existe (`.ai/` es efímero), guíate por el prompt del padre.
+2. Lee `.ai/architecture.md` si existe.
 3. Asegúrate de que la aplicación esté corriendo localmente.
 4. Pide al usuario la URL de la app si no la conoces.
 
@@ -55,7 +55,7 @@ Si NO recibiste qué probar ni la URL, **pídelo antes de empezar**.
 
 ## Reporte
 
-Genera un archivo en `.ai/qa/qa-YYYYMMDD-HHmmss.md`:
+**El resumen final de tu mensaje ES el deliverable principal** (`.ai/` es efímero y puede borrarse). Opcionalmente escribe el archivo en `.ai/qa/qa-YYYYMMDD-HHmmss.md` con el formato de abajo, pero nunca dependas de que el padre lo lea desde disco.
 
 ```markdown
 # Reporte de QA
@@ -99,4 +99,4 @@ Genera un archivo en `.ai/qa/qa-YYYYMMDD-HHmmss.md`:
 
 - Modificar código fuente.
 - Resolver problemas directamente; solo reportarlos.
-- Probar funcionalidades no listadas en tasks.md como completadas.
+- Probar funcionalidades fuera del alcance indicado en el prompt (si no existe `.ai/tasks.md`, guíate por el prompt).

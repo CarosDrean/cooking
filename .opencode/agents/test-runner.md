@@ -36,11 +36,13 @@ Si NO recibiste al menos los IDs de tareas o qué validar, **pídelo antes de ej
 
 ## Comandos a ejecutar (según aplique)
 
-1. `npm test` o equivalente
-2. `npm run build`
-3. `npm run lint`
-4. `npx tsc --noEmit` (TypeScript type-check)
-5. `npm run typecheck` si existe
+Este repo NO tiene `npm test`/`npm run build`; la verificación es `pnpm check`. Usa:
+1. `pnpm check` — puerta completa: `pnpm check:types-sync` + `pnpm typecheck` + `pnpm lint` + `pnpm security:audit`.
+2. `pnpm typecheck` (o `pnpm --filter @cooking/<pkg> typecheck` para un paquete).
+3. `pnpm lint` (biome).
+4. `npx biome check --write <archivos>` solo para formatear si te lo piden (no corrijo código).
+
+Nota: eres **manual-only** (te invoca el usuario, no el agente principal). Entre tandas de builders, el padre ejecuta `pnpm check` por sí mismo.
 
 ## Comunicación con el agente principal
 

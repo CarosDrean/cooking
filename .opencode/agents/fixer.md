@@ -35,18 +35,20 @@ Si NO recibiste los reportes o errores a resolver, **pídelos**. No resuelvas pr
 
 ## Al terminar cada fix
 
-1. Ejecuta `npm test` o los tests relevantes.
-2. Ejecuta `npm run build` para verificar compilación.
-3. Ejecuta `npm run lint` si existe.
+1. Formatea tus archivos: `npx biome check --write <archivos modificados>`.
+2. Valida: `pnpm --filter @cooking/<pkg> typecheck` (pkg = server o client según el fix).
+3. Si es de alto impacto, corre `pnpm check` completo (el padre lo corre de todos modos).
 4. Si es un problema de UI, indica que se necesita re-validación de QA.
 
 ## Al terminar todos los fixes
 
-Actualiza los reportes en `.ai/qa/`:
+Actualiza los reportes en `.ai/qa/` si aún existen:
 - Marca los problemas como resueltos.
 - Agrega un resumen de cambios realizados.
 
-Actualiza `.ai/tasks.md` si es necesario reflejar re-trabajo.
+Actualiza `.ai/tasks.md` si existe y es necesario reflejar re-trabajo.
+
+**`.ai/` es efímero**: tu mensaje final (resumen de fixes + validación) es el deliverable real.
 
 ## Reporte de fix
 

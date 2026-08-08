@@ -71,6 +71,8 @@ Si NO recibiste suficiente información para planificar, **pregunta antes de gen
 - Cada tarea debe tener criterios de aceptación claros y verificables.
 - Prioriza simplicidad: empieza con un MVP mínimo y evoluciona desde ahí.
 - Si el proyecto ya tiene archivos .ai/, léelos antes de proponer cambios.
+- **Mantén `.ai/tasks.md` navegable**: el SPEC de cada tarea (Estado/Criterios/Notas) debe quedar intacto. Los builders añadirán un bloque `**Resumen:**` al completar — indícalo obligatorio y compacto (3-6 líneas: archivos, decisiones, pruebas), sin repetir el cuerpo de la tarea. Si el archivo se vuelve demasiado grande por los resúmenes, sugiere archivar los logs en un archivo aparte.
+- Recuerda que **`.ai/` es efímero** (puede borrarse al cerrar el trabajo); el contenido de roadmap/tasks es material de trabajo, no documentación permanente.
 
 ## Flujo de trabajo
 
