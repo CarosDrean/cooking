@@ -86,6 +86,12 @@ const DIET_QUERY_TERMS: Record<string, string[]> = {
     "alta-proteina": ["chicken", "high protein"],
 };
 
+const FALLBACK_KEYWORDS: Record<string, string[]> = {
+    almuerzo: ["chicken", "salad", "pasta", "soup"],
+    cena: ["stew", "soup", "curry", "pasta", "roast", "seafood", "salad"],
+    desayuno: ["pancake", "omelette", "oatmeal", "toast", "cereal", "yogurt"],
+};
+
 function translate(term: string): string {
     return TRANSLATIONS[term.toLowerCase()] ?? term;
 }
@@ -120,6 +126,14 @@ export function buildQueries(profile: Profile, _season: Season, _country: string
                 const en = translate(kw);
                 queries.push({ terms: en, meal, source: "themealdb", lang: "en" });
                 queries.push({ terms: en, meal, source: "spoonacular", lang: "en" });
+            }
+        }
+
+        if (dishes.length === 0) {
+            const fallbacks = FALLBACK_KEYWORDS[meal] ?? [];
+            for (const term of fallbacks) {
+                queries.push({ terms: term, meal, source: "themealdb", lang: "en" });
+                queries.push({ terms: term, meal, source: "spoonacular", lang: "en" });
             }
         }
     }

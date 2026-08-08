@@ -602,6 +602,7 @@ function inferSuitableFor(title: string, meal: MealType): MealType[] {
 
     const result = [...meals];
     if (result.length === 1) {
+        if (result[0] === "desayuno") result.push("almuerzo");
         if (result[0] === "almuerzo") result.push("cena");
         if (result[0] === "cena") result.push("almuerzo");
     }

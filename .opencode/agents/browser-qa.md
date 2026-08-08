@@ -3,7 +3,7 @@ description: Valida la aplicación como usuario final usando Chrome DevTools. Pr
 mode: subagent
 model: opencode-go/deepseek-v4-pro
 permission:
-    edit: deny
+    edit: allow
     bash: allow
     task: deny
 ---

@@ -28,6 +28,33 @@ const DRINK_QUERIES: ImportQuery[] = [
     { terms: "cocktail", meal: "cena", source: "cocktaildb", lang: "en" },
 ];
 
+function diverseTop(candidates: ImportRecipeCandidate[], maxResults: number): ImportRecipeCandidate[] {
+    const perMeal = Math.max(1, Math.floor(maxResults / 3));
+    const result: ImportRecipeCandidate[] = [];
+    const used = new Set<string>();
+
+    for (const meal of ["desayuno", "almuerzo", "cena"]) {
+        let count = 0;
+        for (const c of candidates) {
+            if (count >= perMeal) break;
+            if (used.has(c.recipe.id)) continue;
+            if (c.matchedMeal !== meal) continue;
+            result.push(c);
+            used.add(c.recipe.id);
+            count++;
+        }
+    }
+
+    for (const c of candidates) {
+        if (result.length >= maxResults) break;
+        if (used.has(c.recipe.id)) continue;
+        result.push(c);
+        used.add(c.recipe.id);
+    }
+
+    return result;
+}
+
 function unique<T>(items: T[], keyFn: (item: T) => string): T[] {
     const seen = new Set<string>();
     return items.filter((item) => {
@@ -68,6 +95,28 @@ async function tryOllama(host: string): Promise<boolean> {
     } finally {
         clearTimeout(timer);
     }
+}
+
+function termMatchesTitle(terms: string, title: string): boolean {
+    const t = title.toLowerCase();
+    return terms
+        .toLowerCase()
+        .split(/\s+/)
+        .every((word) => new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(t));
+}
+
+function getMatchQuery(queries: ImportQuery[], recipe: { title: string; suitableFor: string[] }): ImportQuery {
+    const byWord = queries.find((q) => termMatchesTitle(q.terms, recipe.title));
+    if (byWord) return byWord;
+    const byMeal = queries.find((q) => recipe.suitableFor.includes(q.meal));
+    return byMeal ?? queries[0];
+}
+
+function getScoringQuery(queries: ImportQuery[], recipe: { title: string; suitableFor: string[] }): ImportQuery {
+    const byWord = queries.find((q) => termMatchesTitle(q.terms, recipe.title));
+    if (byWord) return byWord;
+    const byMeal = queries.find((q) => recipe.suitableFor.includes(q.meal));
+    return byMeal ?? queries[0];
 }
 
 function profileDescription(profile: AppState["profiles"][number], season: string): string {
@@ -142,16 +191,12 @@ export async function runImport(state: AppState, config: ImportConfig): Promise<
             for (const recipe of result.value) {
                 const { score, reasons } = scoreRecipe(
                     recipe,
-                    filteredQueries.find(
-                        (q) => recipe.title.toLowerCase().includes(q.terms.toLowerCase()) || q.meal === "almuerzo",
-                    ) ?? filteredQueries[0],
+                    getScoringQuery(filteredQueries, recipe),
                     state,
                     profile,
                     season,
                 );
-                const matchQuery =
-                    filteredQueries.find((q) => recipe.title.toLowerCase().includes(q.terms.toLowerCase())) ??
-                    filteredQueries[0];
+                const matchQuery = getMatchQuery(filteredQueries, recipe);
                 const sourceMap: Record<string, import("./importTypes.js").ImportSource> = {
                     themealdb: "themealdb",
                     spoonacular: "spoonacular",
@@ -180,7 +225,7 @@ export async function runImport(state: AppState, config: ImportConfig): Promise<
 
     const deduped = deduplicateResults(scored, state.recipes);
 
-    const topCandidates = deduped.slice(0, config.maxResults);
+    const topCandidates = diverseTop(deduped, config.maxResults);
 
     for (const c of topCandidates) {
         const pantryInfo = pantriesBonus(c.recipe, state, config.pantryBonus);

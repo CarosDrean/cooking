@@ -81,7 +81,7 @@ function guessDiet(ingredients: string[]): string[] {
     if (!hasAnimal) diets.push("vegano", "vegetariano", "sin-lactosa");
     else if (!hasMeat) diets.push("vegetariano");
     if (!hasDairy) diets.push("sin-lactosa");
-    return diets;
+    return [...new Set(diets)];
 }
 
 function categorize(name: string): IngredientCategory {
