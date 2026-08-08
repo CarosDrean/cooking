@@ -18,6 +18,7 @@ export default function Dashboard() {
     const tip = useDailyTip();
     const makeable = useMakeable();
     const expiring = useExpiring(5);
+    const expiring1 = useExpiring(1);
     const plan = usePlan();
     const { data: state } = useAppState();
     const recipeNames = new Map((state?.recipes ?? []).map((r) => [r.id, r.title]));
@@ -27,6 +28,17 @@ export default function Dashboard() {
         plan.data?.plan?.slots.filter((s) => s.day === todayKey).sort((a, b) => a.meal.localeCompare(b.meal)) ?? [];
 
     const expiringSoon = (expiring.data ?? []).filter((p) => p.daysLeft >= 0);
+
+    // Stats
+    const totalRecetas = state?.recipes.length ?? 0;
+    const itemsDespensa = state?.pantry.length ?? 0;
+    const slotsPlan = plan.data?.plan?.slots.length ?? 0;
+    const firstExpiring = expiring1.data?.[0];
+    const proximaCaducidad = firstExpiring
+        ? firstExpiring.daysLeft === 0
+            ? "hoy"
+            : `${firstExpiring.daysLeft} d`
+        : "—";
 
     return (
         <div className="page">
@@ -47,13 +59,52 @@ export default function Dashboard() {
                 </button>
             </div>
 
+            <div className="stats-bar">
+                <div className="stat-item">
+                    <span className="stat-value">{totalRecetas}</span>
+                    <span className="stat-label">Recetas</span>
+                </div>
+                <div className="stat-item">
+                    <span className="stat-value">{itemsDespensa}</span>
+                    <span className="stat-label">En despensa</span>
+                </div>
+                <div className="stat-item">
+                    <span className="stat-value">{slotsPlan}</span>
+                    <span className="stat-label">Comidas planeadas</span>
+                </div>
+                <div className="stat-item">
+                    <span className="stat-value">{proximaCaducidad}</span>
+                    <span className="stat-label">Próx. caducidad</span>
+                </div>
+            </div>
+
+            <div className="quick-actions">
+                <button className="btn primary" onClick={() => navigate("pantry")}>
+                    🧺 Añadir a despensa
+                </button>
+                <button className="btn" onClick={() => navigate("plan")}>
+                    📅 Planificar semana
+                </button>
+                <button className="btn primary" onClick={() => navigate("recipes")}>
+                    📖 Buscar recetas
+                </button>
+            </div>
+
             {tip.data ? (
                 <div className="card tip-card">
-                    <span className="tip-icon">💡</span>
-                    <div>
-                        <strong>Consejo de hoy</strong>
-                        <p>{tip.data.tip}</p>
+                    <div className="tip-card-header">
+                        <span className="tip-card-icon">💡</span>
+                        <span className="tip-card-title">Consejo de hoy</span>
+                        <button
+                            className="icon-btn"
+                            onClick={() => tip.refetch()}
+                            title="Obtener otro consejo"
+                            style={{ marginLeft: "auto" }}
+                        >
+                            🔄
+                        </button>
                     </div>
+                    <p>{tip.data.tip}</p>
                 </div>
             ) : null}
 

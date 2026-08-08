@@ -98,6 +98,7 @@ code {
     height: 100vh;
     padding: 20px 14px;
     gap: 18px;
+    z-index: 100;
 }
 
 .brand {
@@ -121,6 +122,15 @@ code {
     flex: 1;
 }
 
+.nav-group-label {
+    padding: 12px 12px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a99f94;
+}
+
 .nav-item {
     display: flex;
     align-items: center;
@@ -131,6 +141,14 @@ code {
     color: #d9d2c9;
     font-weight: 500;
     text-align: left;
+}
+
+.nav-icon {
+    font-size: 16px;
+    line-height: 1;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
 }
 
 .nav-item:hover {
@@ -823,19 +841,59 @@ code {
 
 /* ================= Dashboard ================= */
 
-.tip-card {
+.stats-bar {
     display: flex;
-    gap: 14px;
-    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
-.tip-icon {
-    font-size: 24px;
+.stats-bar .stat-item {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    text-align: center;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.quick-actions button {
+    flex: 1;
+}
+
+.tip-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    border-left: 4px solid var(--gold);
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.tip-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.tip-card-icon {
+    font-size: 1.5rem;
     flex-shrink: 0;
 }
 
+.tip-card-title {
+    font-weight: 600;
+}
+
 .tip-card p {
-    margin: 4px 0 0;
+    margin: 0;
 }
 
 .today-list {
@@ -1595,6 +1653,23 @@ code {
     color: var(--accent-strong);
 }
 
+/* Dashboard stats overrides */
+.stats-bar .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.stats-bar .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+}
+
 .bars {
     display: flex;
     flex-direction: column;
@@ -2219,17 +2294,66 @@ code {
     justify-content: space-between;
 }
 
+/* ================= Mobile menu toggle ================= */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 200;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid var(--line);
+}
+
+.menu-toggle-bar {
+    width: 20px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 99;
+}
+
 @media (max-width: 900px) {
     .layout {
         flex-direction: column;
     }
 
+    .menu-toggle {
+        display: flex;
+    }
+
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: static;
-        padding: 10px 14px;
-        gap: 8px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: var(--sidebar);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .menu-overlay {
+        display: block;
     }
 
     .brand,
@@ -2238,18 +2362,20 @@ code {
     }
 
     .nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 4px;
+        flex-direction: column;
+        gap: 2px;
     }
 
     .nav-item {
-        width: auto;
-        padding: 7px 12px;
+        width: 100%;
+    }
+
+    .nav-group-label {
+        padding: 12px 12px 4px;
     }
 
     .main {
-        padding: 20px 16px 60px;
+        padding: 60px 16px 60px;
     }
 
     .grid-2,
@@ -2568,4 +2694,50 @@ code {
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+/* ================= Recipe card compact (Fase 2) ================= */
+
+.recipe-card-compact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.recipe-card-compact:hover {
+    background: var(--bg);
+}
+
+.recipe-card-compact-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.recipe-card-compact-emoji {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.recipe-card-compact-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
 }

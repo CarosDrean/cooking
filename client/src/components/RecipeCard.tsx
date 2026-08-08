@@ -13,6 +13,7 @@ export default function RecipeCard({
     restrictedIngredients,
     rating,
     onRate,
+    compact,
 }: {
     recipe: Recipe;
     makeable?: boolean;
@@ -21,8 +22,24 @@ export default function RecipeCard({
     restrictedIngredients?: string[];
     rating?: number;
     onRate?: (rating: number) => void;
+    compact?: boolean;
 }) {
     const open = () => navigate(`recipes/${recipe.id}`);
+
+    if (compact) {
+        return (
+            <article className="recipe-card recipe-card-compact" onClick={onClick ?? open}>
+                {recipe.image ? (
+                    <img src={recipe.image} alt="" className="recipe-card-compact-img" />
+                ) : (
+                    <span className="recipe-card-compact-emoji">{recipe.emoji || "🍽️"}</span>
+                )}
+                <span className="recipe-card-compact-title">{recipe.title}</span>
+                {right}
+            </article>
+        );
+    }
+
     return (
         <article className={`recipe-card ${makeable ? "makeable" : ""}`} onClick={onClick ?? open}>
             <div className="recipe-card-hero" aria-hidden>

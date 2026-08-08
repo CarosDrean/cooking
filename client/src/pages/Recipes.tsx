@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useActiveProfile, useAutoImport, useMakeable, useRecipes, useSetRating, useUpdateProfile } from "../api/hooks";
 import RecipeCard from "../components/RecipeCard";
+import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
 import { DIETS, MEAL_OPTIONS, type MealType, SEASON_LABELS, SEASONS, type Season } from "../types";
 
@@ -70,6 +71,9 @@ export default function Recipes() {
                             {showHidden ? "👁 Ocultas" : "🙈 Mostrar ocultas"}
                         </button>
                     ) : null}
+                    <button className="btn primary sm" onClick={() => navigate("recipes/new")}>
+                        + Crear receta
+                    </button>
                 </div>
                 <div className="filters">
                     <input

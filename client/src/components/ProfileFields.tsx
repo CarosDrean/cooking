@@ -300,6 +300,7 @@ export function ProfileFields({
                 <RecipeCard
                     key={recipe.id}
                     recipe={recipe}
+                    compact
                     restrictedIngredients={restrictedIngredients}
                     right={
                         <div className="suggestion-right">

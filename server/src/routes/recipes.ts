@@ -8,6 +8,11 @@ import { SEASONS } from "../types.js";
 
 export const recipesRouter = Router();
 
+function extractJson(text: string): string {
+    const jsonBlock = text.match(/```(?:json)?\s*\n?([\s\S]*?)```/);
+    return (jsonBlock?.[1] ?? text).trim();
+}
+
 function findRecipe(state: { recipes: Recipe[] }, id: string): Recipe | undefined {
     return state.recipes.find((r) => r.id === id);
 }
@@ -89,6 +94,91 @@ recipesRouter.get("/makeable", (_req, res) => {
         });
     info.sort((a, b) => a.missingCount - b.missingCount);
     res.json(info);
+});
+
+recipesRouter.post("/generate", async (req, res) => {
+    const apiKey = process.env.OPENROUTER_API_KEY;
+    if (!apiKey) {
+        res.json({ available: false });
+        return;
+    }
+
+    const { description } = req.body as { description?: string };
+    if (!description?.trim()) {
+        res.status(400).json({ error: "El campo description es obligatorio" });
+        return;
+    }
+
+    const systemPrompt =
+        "Eres un asistente que genera recetas de cocina en formato JSON. Responde ÚNICAMENTE con un objeto JSON válido, sin markdown, sin explicaciones.";
+
+    const userPrompt = `Genera una receta basada en esta descripción: "${description.trim()}"
+
+El JSON debe tener esta estructura exacta:
+{
+  "title": "string",
+  "emoji": "string (un solo emoji)",
+  "description": "string",
+  "diets": ["vegetariano" | "vegano" | "sin-gluten" | "keto" | "alta-proteina" | "sin-lactosa"],
+  "suitableFor": ["desayuno" | "almuerzo" | "cena"],
+  "cuisine": "string",
+  "regions": ["string"],
+  "seasonal": ["primavera" | "verano" | "otonio" | "invierno"],
+  "prepMinutes": number,
+  "cookMinutes": number,
+  "servings": number,
+  "ingredients": [{ "name": "string", "quantity": number, "unit": "string", "category": "verduras" | "frutas" | "proteinas" | "lacteos" | "granos" | "condimentos" | "despensa" | "otros" }],
+  "steps": [{ "text": "string", "tip": "string (opcional, omitir si no hay)" }],
+  "tips": ["string"],
+  "nutrition": { "kcal": number, "protein": number, "carbs": number, "fat": number }
+}`;
+
+    try {
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${apiKey}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                model: "google/gemini-2.0-flash-exp:free",
+                messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: userPrompt },
+                ],
+                temperature: 0.7,
+            }),
+        });
+
+        if (!response.ok) {
+            const errText = await response.text().catch(() => "");
+            console.error("OpenRouter error:", response.status, errText);
+            res.status(502).json({ error: "Error al comunicarse con el servicio de IA" });
+            return;
+        }
+
+        const data = (await response.json()) as {
+            choices?: { message?: { content?: string } }[];
+        };
+
+        const content = data.choices?.[0]?.message?.content;
+        if (!content) {
+            res.status(500).json({ error: "Respuesta vacía del modelo de IA" });
+            return;
+        }
+
+        const jsonStr = extractJson(content);
+        const recipe = JSON.parse(jsonStr);
+
+        res.json({ recipe });
+    } catch (err) {
+        if (err instanceof SyntaxError) {
+            res.status(500).json({ error: "Error al interpretar la respuesta del modelo de IA" });
+            return;
+        }
+        console.error("generate error:", err);
+        res.status(500).json({ error: "Error interno al generar la receta" });
+    }
 });
 
 recipesRouter.get("/:id", (req, res) => {

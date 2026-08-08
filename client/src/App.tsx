@@ -5,6 +5,7 @@ import ProfileWizard from "./components/ProfileWizard";
 import { dayKeyOf, toISODate } from "./lib/format";
 import { useRoute } from "./lib/router";
 import CookingMode from "./pages/CookingMode";
+import CreateRecipe from "./pages/CreateRecipe";
 import Dashboard from "./pages/Dashboard";
 import DrinksPage from "./pages/DrinksPage";
 import HistoryPage from "./pages/History";
@@ -17,10 +18,34 @@ import ShoppingPage from "./pages/Shopping";
 import SpendingPage from "./pages/Spending";
 import WeeklyPlan from "./pages/WeeklyPlan";
 
-function NavItem({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+const NAV_ICONS: Record<string, string> = {
+    dashboard: "🏠",
+    recipes: "📖",
+    plan: "📅",
+    history: "🕒",
+    pantry: "🧺",
+    shopping: "🛒",
+    spending: "💰",
+    profiles: "👥",
+    drinks: "🧃",
+    settings: "⚙️",
+};
+
+function NavItem({
+    active,
+    onClick,
+    icon,
+    children,
+}: {
+    active: boolean;
+    onClick: () => void;
+    icon: string;
+    children: React.ReactNode;
+}) {
     return (
         <button className={`nav-item ${active ? "active" : ""}`} onClick={onClick}>
-            {children}
+            <span className="nav-icon">{icon}</span>
+            <span>{children}</span>
         </button>
     );
 }
@@ -31,6 +56,7 @@ export default function App() {
     const activeProfile = useActiveProfile();
     const [showWizard, setShowWizard] = useState(false);
     const [now, setNow] = useState(() => new Date());
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const id = window.setInterval(() => setNow(new Date()), 30_000);
@@ -39,6 +65,7 @@ export default function App() {
 
     const setPage = (page: string) => {
         window.location.hash = `/${page}`;
+        setMenuOpen(false);
     };
 
     const loading = !state;
@@ -65,7 +92,13 @@ export default function App() {
                 content = <Dashboard />;
                 break;
             case "recipes":
-                content = route.params.length ? <RecipeDetail recipeId={route.params[0]} /> : <Recipes />;
+                if (route.params[0] === "new") {
+                    content = <CreateRecipe />;
+                } else if (route.params.length) {
+                    content = <RecipeDetail recipeId={route.params[0]} />;
+                } else {
+                    content = <Recipes />;
+                }
                 break;
             case "cook":
                 content = <CookingMode recipeId={route.params[0]} />;
@@ -101,40 +134,81 @@ export default function App() {
 
     return (
         <div className="layout">
-            <aside className="sidebar">
+            <button
+                className="menu-toggle"
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            >
+                <span className="menu-toggle-bar" />
+                <span className="menu-toggle-bar" />
+                <span className="menu-toggle-bar" />
+            </button>
+            {menuOpen ? <div className="menu-overlay" onClick={() => setMenuOpen(false)} /> : null}
+            <aside className={`sidebar ${menuOpen ? "open" : ""}`}>
                 <div className="brand">
                     <span className="brand-mark">🍳</span>
                     <span className="brand-name">Cocina Inteligente</span>
                 </div>
                 <nav className="nav">
-                    <NavItem active={route.page === "dashboard"} onClick={() => setPage("dashboard")}>
+                    <div className="nav-group-label">Principal</div>
+                    <NavItem
+                        icon={NAV_ICONS.dashboard}
+                        active={route.page === "dashboard"}
+                        onClick={() => setPage("dashboard")}
+                    >
                         Inicio
                     </NavItem>
-                    <NavItem active={route.page === "recipes"} onClick={() => setPage("recipes")}>
+                    <NavItem
+                        icon={NAV_ICONS.recipes}
+                        active={route.page === "recipes"}
+                        onClick={() => setPage("recipes")}
+                    >
                         Recetas
                     </NavItem>
-                    <NavItem active={route.page === "plan"} onClick={() => setPage("plan")}>
+                    <NavItem icon={NAV_ICONS.plan} active={route.page === "plan"} onClick={() => setPage("plan")}>
                         Plan semanal
                     </NavItem>
-                    <NavItem active={route.page === "history"} onClick={() => setPage("history")}>
+                    <NavItem
+                        icon={NAV_ICONS.history}
+                        active={route.page === "history"}
+                        onClick={() => setPage("history")}
+                    >
                         Historial
                     </NavItem>
-                    <NavItem active={route.page === "pantry"} onClick={() => setPage("pantry")}>
+                    <div className="nav-group-label">Cocina</div>
+                    <NavItem icon={NAV_ICONS.pantry} active={route.page === "pantry"} onClick={() => setPage("pantry")}>
                         Despensa
                     </NavItem>
-                    <NavItem active={route.page === "shopping"} onClick={() => setPage("shopping")}>
+                    <NavItem
+                        icon={NAV_ICONS.shopping}
+                        active={route.page === "shopping"}
+                        onClick={() => setPage("shopping")}
+                    >
                         Compras
                     </NavItem>
-                    <NavItem active={route.page === "spending"} onClick={() => setPage("spending")}>
+                    <NavItem
+                        icon={NAV_ICONS.spending}
+                        active={route.page === "spending"}
+                        onClick={() => setPage("spending")}
+                    >
                         Gastos
                     </NavItem>
-                    <NavItem active={route.page === "profiles"} onClick={() => setPage("profiles")}>
+                    <div className="nav-group-label">Más</div>
+                    <NavItem
+                        icon={NAV_ICONS.profiles}
+                        active={route.page === "profiles"}
+                        onClick={() => setPage("profiles")}
+                    >
                         Perfiles
                     </NavItem>
-                    <NavItem active={route.page === "drinks"} onClick={() => setPage("drinks")}>
+                    <NavItem icon={NAV_ICONS.drinks} active={route.page === "drinks"} onClick={() => setPage("drinks")}>
                         Bebidas
                     </NavItem>
-                    <NavItem active={route.page === "settings"} onClick={() => setPage("settings")}>
+                    <NavItem
+                        icon={NAV_ICONS.settings}
+                        active={route.page === "settings"}
+                        onClick={() => setPage("settings")}
+                    >
                         Ajustes
                     </NavItem>
                 </nav>

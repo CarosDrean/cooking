@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useMakeable } from "../api/hooks";
 import type { Recipe } from "../types";
 import RecipeCard from "./RecipeCard";
@@ -6,11 +6,13 @@ import RecipeCard from "./RecipeCard";
 export default function RecipePicker({
     title,
     selectedId,
+    localOnly = false,
     onPick,
     onClose,
 }: {
     title: string;
     selectedId?: string;
+    localOnly?: boolean;
     onPick: (recipe: Recipe) => void;
     onClose: () => void;
 }) {
@@ -19,13 +21,16 @@ export default function RecipePicker({
     const makeable = useMakeable();
     const allRecipes = makeable.data?.map((m) => m.recipe) ?? [];
 
-    const list = (() => {
-        let base = tab === "makeable" ? allRecipes : allRecipes;
-        if (query.trim()) {
-            base = base.filter((r) => r.title.toLowerCase().includes(query.toLowerCase()));
-        }
-        return base;
-    })();
+    const baseList = useMemo(() => {
+        return localOnly ? allRecipes.filter((r) => r.source === "local") : allRecipes;
+    }, [allRecipes, localOnly]);
+
+    const list = useMemo(() => {
+        if (!query.trim()) return baseList;
+        return baseList.filter((r) => r.title.toLowerCase().includes(query.toLowerCase()));
+    }, [baseList, query]);
+
+    const totalCount = localOnly ? allRecipes.filter((r) => r.source === "local").length : allRecipes.length;
 
     return (
         <div className="modal-backdrop" onClick={onClose}>
@@ -38,7 +43,7 @@ export default function RecipePicker({
                 </div>
                 <div className="modal-tabs">
                     <button className={`tab ${tab === "todas" ? "active" : ""}`} onClick={() => setTab("todas")}>
-                        Todas ({allRecipes.length})
+                        Todas ({totalCount})
                     </button>
                     <button className={`tab ${tab === "makeable" ? "active" : ""}`} onClick={() => setTab("makeable")}>
                         Hacer hoy

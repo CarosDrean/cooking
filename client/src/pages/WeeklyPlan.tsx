@@ -44,6 +44,7 @@ export default function WeeklyPlan() {
     const confirm = useConfirm();
 
     const [picker, setPicker] = useState<{ day: Day; meal: MealType } | null>(null);
+    const [localOnly, setLocalOnly] = useState(false);
 
     const weekStart = plan.data?.weekStart ?? startOfWeek(new Date());
     const slots = plan.data?.plan?.slots ?? [];
@@ -130,6 +131,12 @@ export default function WeeklyPlan() {
                     </p>
                 </div>
                 <div className="page-actions">
+                    <button
+                        className={`btn-secondary ${localOnly ? "active" : ""}`}
+                        onClick={() => setLocalOnly((v) => !v)}
+                    >
+                        📝 Solo mis recetas
+                    </button>
                     <button className="btn" onClick={onGenerate}>
                         🎲 Generar semana
                     </button>
@@ -245,6 +252,7 @@ export default function WeeklyPlan() {
                     title={`${DAY_LABELS[picker.day]} · ${MEAL_LABELS[picker.meal]}`}
                     onPick={(r) => onPickRecipe(r.id)}
                     onClose={() => setPicker(null)}
+                    localOnly={localOnly}
                 />
             ) : null}
         </div>

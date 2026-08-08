@@ -6132,66 +6132,58 @@
     }
   ],
   "weeklyPlan": {
-    "id": "452e8775-d787-4947-bae7-64643b70ed81",
-    "weekStart": "2026-08-03",
+    "id": "a1763979-4ee6-45da-a236-90b46b61a349",
+    "weekStart": "2026-08-04",
     "slots": [
       {
-        "id": "d0c48d17-6689-40e3-b307-57c2ddb93173",
+        "id": "3950a6b3-69fb-4cd4-bfc4-a20d1938e8c6",
         "day": "viernes",
-        "meal": "almuerzo",
+        "meal": "cena",
         "recipeId": "r13",
         "servings": 2,
-        "drink": "Chicha morada"
+        "drink": "Refresco de maracuyá"
       },
       {
-        "id": "4eacf78b-77f3-4987-ba31-c6c4fa405ac8",
-        "day": "viernes",
-        "meal": "cena",
-        "recipeId": "r2",
-        "servings": 2,
-        "drink": "Emoliente"
-      },
-      {
-        "id": "36259b05-8217-4d47-a6a4-45e206d9b53f",
+        "id": "75835076-d7cc-4e54-ac5a-e578212cd9f7",
         "day": "sabado",
         "meal": "almuerzo",
-        "recipeId": "r37",
+        "recipeId": "r2",
         "servings": 2,
-        "drink": "Limonada"
+        "drink": "Agua de manzanilla"
       },
       {
-        "id": "54f3c9ab-2136-4841-8465-1c9878d21817",
+        "id": "c9a43b1a-d3cc-4c56-9d40-14633848dfcf",
         "day": "sabado",
         "meal": "cena",
-        "recipeId": "r8",
+        "recipeId": "r37",
         "servings": 2,
-        "drink": "Café pasado"
+        "drink": "Refresco de maracuyá"
       },
       {
-        "id": "2a320e1a-9748-42e4-b517-5af2938d2a86",
+        "id": "75c6f5e4-12a5-4adf-b5f1-a1a6986d55a4",
         "day": "sabado",
         "meal": "desayuno",
         "recipeId": "r11",
         "servings": 2
       },
       {
-        "id": "479959fa-44e9-44e3-a8c4-1e3c3c0a5424",
+        "id": "9c26bd7b-b174-4432-95fc-ea81286b242a",
         "day": "domingo",
         "meal": "almuerzo",
-        "recipeId": "r49",
+        "recipeId": "r8",
         "servings": 2,
-        "drink": "Emoliente"
+        "drink": "Chicha morada"
       },
       {
-        "id": "2751f77d-c58e-4844-b643-66b6adc2e8e6",
+        "id": "d5bef15d-ae70-48c6-8738-dc7b0a88b142",
         "day": "domingo",
         "meal": "cena",
-        "recipeId": "r12",
+        "recipeId": "tmdb-53250",
         "servings": 2,
-        "drink": "Emoliente"
+        "drink": "Mate de anís"
       },
       {
-        "id": "0e14732f-8c64-4d99-8914-3e36a0c12a5b",
+        "id": "8a86b5f4-f626-4d0f-91d2-5af7ea44c545",
         "day": "domingo",
         "meal": "desayuno",
         "recipeId": "r16",
@@ -6395,6 +6387,90 @@
       "kind": "refresco",
       "suitableFor": [
         "desayuno"
+      ]
+    },
+    {
+      "id": "ctdb-12786",
+      "name": "Thai Iced Tea",
+      "emoji": "☕",
+      "kind": "bebida",
+      "suitableFor": [
+        "desayuno"
+      ]
+    },
+    {
+      "id": "ctdb-11002",
+      "name": "Long Island Tea",
+      "emoji": "🍵",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno"
+      ]
+    },
+    {
+      "id": "ctdb-13204",
+      "name": "New York Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-11205",
+      "name": "California Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-13036",
+      "name": "Strawberry Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-17174",
+      "name": "Cherry Electric Lemonade",
+      "emoji": "🍋",
+      "kind": "refresco",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-14978",
+      "name": "Rum Punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "id": "ctdb-13058",
+      "name": "Wine Punch",
+      "emoji": "🍹",
+      "kind": "refresco",
+      "suitableFor": [
+        "almuerzo",
+        "cena"
       ]
     }
   ],

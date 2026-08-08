@@ -210,6 +210,33 @@ export function useDeleteRecipe() {
     });
 }
 
+export interface GenerateRecipeResponse {
+    available?: boolean;
+    recipe?: {
+        title: string;
+        emoji: string;
+        description: string;
+        diets: string[];
+        suitableFor: string[];
+        cuisine: string;
+        regions: string[];
+        seasonal: string[];
+        prepMinutes: number;
+        cookMinutes: number;
+        servings: number;
+        ingredients: { name: string; quantity: number; unit: string; category: string }[];
+        steps: { text: string; tip?: string }[];
+        tips: string[];
+        nutrition: { kcal: number; protein: number; carbs: number; fat: number };
+    };
+}
+
+export function useGenerateRecipe() {
+    return useMutation({
+        mutationFn: (description: string) => api.post<GenerateRecipeResponse>("/recipes/generate", { description }),
+    });
+}
+
 /* ---------- TheMealDB ---------- */
 export function useThemealdbSearch(q: string, enabled: boolean) {
     return useQuery({
