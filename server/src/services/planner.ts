@@ -4,6 +4,7 @@ import { isDietCompatible, isForbidden, restrictedCount } from "./diet.js";
 import { averageRating, lastEatenDays } from "./history.js";
 import { availability, currentSeason } from "./location.js";
 import { recipeForProfile, recipesForProfile } from "./recipeVariants.js";
+import { simpleHash } from "./recommender.js";
 import { isMakeable, missingIngredients } from "./shoppingList.js";
 
 export interface PickContext {
@@ -97,7 +98,7 @@ function scoreRecipe(state: AppState, recipe: Recipe, ctx: PickContext): number 
     const avail = availability(recipe, season, state.location.country);
     score += avail.score;
 
-    score += Math.random() * 0.6;
+    score += (simpleHash(recipe.id) % 600) / 1000;
     return score;
 }
 

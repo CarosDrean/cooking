@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 import { currentWeekStart, generateWeekPlan, needsDrink, randomDrink, regenerateSlot } from "../services/planner.js";
+import { parsePositiveNumber } from "../services/validation.js";
 import type { Day, MealSlot, MealType, WeeklyPlan } from "../types.js";
 import { DAYS, MEALS } from "../types.js";
 
@@ -24,6 +25,19 @@ planRouter.put("/", (req, res) => {
     if (!valid) {
         res.status(400).json({ error: "Slots inválidos" });
         return;
+    }
+
+    // Validar servings en cada slot
+    for (const s of body.slots ?? []) {
+        if (s.servings != null) {
+            const parsed = parsePositiveNumber(s.servings, 1);
+            if (parsed === null) {
+                res.status(400).json({
+                    error: `servings inválido en slot (${s.day} ${s.meal}): debe ser un número finito ≥ 1`,
+                });
+                return;
+            }
+        }
     }
 
     const plan: WeeklyPlan = {
@@ -80,12 +94,25 @@ planRouter.put("/slots/:slotId", (req, res) => {
     }
     const body = req.body as Partial<MealSlot>;
     const meal = body.meal ?? plan.slots[index].meal;
+
+    let servings: number;
+    if (body.servings != null) {
+        const parsed = parsePositiveNumber(body.servings, 1);
+        if (parsed === null) {
+            res.status(400).json({ error: "servings inválido (debe ser un número finito ≥ 1)" });
+            return;
+        }
+        servings = Math.max(1, parsed);
+    } else {
+        servings = plan.slots[index].servings;
+    }
+
     plan.slots[index] = {
         ...plan.slots[index],
         day: body.day ?? plan.slots[index].day,
         meal,
         recipeId: body.recipeId ?? plan.slots[index].recipeId,
-        servings: body.servings != null ? Math.max(1, body.servings) : plan.slots[index].servings,
+        servings,
         drink:
             body.drink !== undefined
                 ? body.drink.trim() || undefined

@@ -18,7 +18,6 @@ export default function Dashboard() {
     const tip = useDailyTip();
     const makeable = useMakeable();
     const expiring = useExpiring(5);
-    const expiring1 = useExpiring(1);
     const plan = usePlan();
     const { data: state } = useAppState();
     const recipeNames = new Map((state?.recipes ?? []).map((r) => [r.id, r.title]));
@@ -33,12 +32,8 @@ export default function Dashboard() {
     const totalRecetas = state?.recipes.length ?? 0;
     const itemsDespensa = state?.pantry.length ?? 0;
     const slotsPlan = plan.data?.plan?.slots.length ?? 0;
-    const firstExpiring = expiring1.data?.[0];
-    const proximaCaducidad = firstExpiring
-        ? firstExpiring.daysLeft === 0
-            ? "hoy"
-            : `${firstExpiring.daysLeft} d`
-        : "—";
+    const firstUrgent = (expiring.data ?? []).find((p) => p.daysLeft === 0 || p.daysLeft === 1);
+    const proximaCaducidad = firstUrgent ? (firstUrgent.daysLeft === 0 ? "hoy" : "1 d") : "—";
 
     return (
         <div className="page">
@@ -99,6 +94,7 @@ export default function Dashboard() {
                             className="icon-btn"
                             onClick={() => tip.refetch()}
                             title="Obtener otro consejo"
+                            aria-label="Obtener otro consejo"
                             style={{ marginLeft: "auto" }}
                         >
                             🔄
@@ -154,7 +150,14 @@ export default function Dashboard() {
                                     <button className="link-btn" onClick={() => navigate(`recipes/${recipe.id}`)}>
                                         {recipe.image ? (
                                             <span className="mini-thumb">
-                                                <img src={recipe.image} alt="" loading="lazy" />
+                                                <img
+                                                    src={recipe.image}
+                                                    alt={recipe.title}
+                                                    loading="lazy"
+                                                    onError={(e) => {
+                                                        e.currentTarget.style.display = "none";
+                                                    }}
+                                                />
                                             </span>
                                         ) : (
                                             <span className="mini-thumb emoji">{recipe.emoji ?? "🍲"}</span>

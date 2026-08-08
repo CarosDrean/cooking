@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCreateProfile } from "../api/hooks";
 import { useToast } from "../lib/toast";
+import { useModalClose } from "../lib/useModalClose";
 import type { Profile } from "../types";
 import { defaultProfileForm, ProfileFields, type ProfileFormState } from "./ProfileFields";
 
@@ -42,9 +43,11 @@ export default function ProfileWizard({
 
     const patch = (next: Partial<ProfileFormState>) => setForm((f) => ({ ...f, ...next }));
 
+    useModalClose(() => onClose?.());
+
     return (
         <div className="modal-backdrop" onClick={onClose}>
-            <div className="modal modal-wizard" onClick={(e) => e.stopPropagation()}>
+            <div className="modal modal-wizard" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-head">
                     <h3>Crea tu perfil</h3>
                     {onClose ? (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCreateRecipe, useGenerateRecipe } from "../api/hooks";
+import { dietLabel } from "../components/DietBadge";
 import { navigate } from "../lib/router";
 import { useToast } from "../lib/toast";
 import {
@@ -195,8 +196,8 @@ export default function CreateRecipe() {
             <div className="card">
                 <div
                     style={{
-                        background: "var(--accent-bg, #f0f4ff)",
-                        border: "1px solid var(--accent, #6366f1)",
+                        background: "var(--accent-soft)",
+                        border: "1px solid var(--accent)",
                         borderRadius: "8px",
                         padding: "16px",
                         marginBottom: "16px",
@@ -299,7 +300,7 @@ export default function CreateRecipe() {
                                 className={`chip ${diets.includes(d) ? "active" : ""}`}
                                 onClick={() => toggleDiet(d)}
                             >
-                                {d}
+                                {dietLabel(d)}
                             </button>
                         ))}
                     </div>
@@ -383,7 +384,7 @@ export default function CreateRecipe() {
                                 type="number"
                                 min="0"
                                 step="any"
-                                placeholder="Cant."
+                                placeholder="Cantidad"
                                 value={ing.quantity}
                                 onChange={(e) =>
                                     updateIngredient(i, { quantity: Number.parseFloat(e.target.value) || 0 })
@@ -391,7 +392,7 @@ export default function CreateRecipe() {
                             />
                             <input
                                 className="input"
-                                placeholder="Und."
+                                placeholder="Unidad"
                                 value={ing.unit}
                                 onChange={(e) => updateIngredient(i, { unit: e.target.value })}
                             />
@@ -455,7 +456,7 @@ export default function CreateRecipe() {
                             />
                             <input
                                 className="input"
-                                placeholder="Tip (opcional)"
+                                placeholder="Consejo (opcional)"
                                 value={s.tip ?? ""}
                                 onChange={(e) => updateStep(i, { tip: e.target.value })}
                             />
@@ -471,7 +472,7 @@ export default function CreateRecipe() {
                 </div>
 
                 <label className="field">
-                    <span>Tips (uno por línea)</span>
+                    <span>Consejos (uno por línea)</span>
                     <textarea className="input" rows={3} value={tips} onChange={(e) => setTips(e.target.value)} />
                 </label>
 

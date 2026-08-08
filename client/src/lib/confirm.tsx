@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useCallback, useContext, useState } from "react";
+import { useModalClose } from "./useModalClose";
 
 interface ConfirmOptions {
     title?: string;
@@ -28,12 +29,14 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
         setCurrent(null);
     };
 
+    useModalClose(() => close(false));
+
     return (
         <ConfirmContext.Provider value={confirm}>
             {children}
             {current ? (
                 <div className="modal-backdrop" onClick={() => close(false)}>
-                    <div className="modal" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal" role="alertdialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
                         {current.title ? (
                             <div className="modal-head">
                                 <h3>{current.title}</h3>

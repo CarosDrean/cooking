@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
+import { validateRecipe } from "../services/recipeValidation.js";
 import { recipeForProfile } from "../services/recipeVariants.js";
+import { parsePositiveNumber } from "../services/validation.js";
 import type { IngredientRestriction, MealType, Profile, Recipe } from "../types.js";
 import { isProfileComplete } from "../types.js";
 
@@ -57,8 +59,18 @@ profilesRouter.post("/", (req, res) => {
         res.status(400).json({ error: "El nombre es obligatorio" });
         return;
     }
+    let householdSize: number;
+    if (body.householdSize == null) {
+        householdSize = 0;
+    } else {
+        const parsed = parsePositiveNumber(body.householdSize, 1);
+        if (parsed === null) {
+            res.status(400).json({ error: "householdSize inválido (debe ser un número finito ≥ 1)" });
+            return;
+        }
+        householdSize = Math.max(1, parsed);
+    }
     const state = getState();
-    const householdSize = body.householdSize == null ? 0 : Math.max(1, body.householdSize);
     const profile: Profile = {
         id: crypto.randomUUID(),
         name: body.name.trim(),
@@ -90,7 +102,17 @@ profilesRouter.put("/:id", (req, res) => {
     const current = state.profiles[index];
     const body = req.body as Partial<Profile>;
     const name = body.name?.trim() || current.name;
-    const householdSize = body.householdSize == null ? current.householdSize : Math.max(1, body.householdSize);
+    let householdSize: number;
+    if (body.householdSize == null) {
+        householdSize = current.householdSize;
+    } else {
+        const parsed = parsePositiveNumber(body.householdSize, 1);
+        if (parsed === null) {
+            res.status(400).json({ error: "householdSize inválido (debe ser un número finito ≥ 1)" });
+            return;
+        }
+        householdSize = Math.max(1, parsed);
+    }
     state.profiles[index] = {
         ...current,
         name,
@@ -116,6 +138,7 @@ profilesRouter.delete("/:id", (req, res) => {
     }
     state.profiles = state.profiles.filter((p) => p.id !== id);
     state.history = state.history.filter((h) => h.profileId !== id);
+    state.purchaseLog = state.purchaseLog.filter((e) => e.profileId !== id);
     if (state.activeProfileId === id) {
         state.activeProfileId = state.profiles[0].id;
     }
@@ -161,7 +184,12 @@ profilesRouter.post("/:id/rating", (req, res) => {
     if (rating == null) {
         delete profile.ratingByRecipe[recipeId];
     } else {
-        profile.ratingByRecipe[recipeId] = Math.min(5, Math.max(1, rating));
+        const parsed = parsePositiveNumber(rating, 1);
+        if (parsed === null || parsed > 5) {
+            res.status(400).json({ error: "rating inválido (debe ser un número entre 1 y 5)" });
+            return;
+        }
+        profile.ratingByRecipe[recipeId] = Math.min(5, Math.max(1, parsed));
     }
     saveState();
     res.json(profile);
@@ -181,8 +209,15 @@ profilesRouter.put("/:id/recipe-overrides/:recipeId", (req, res) => {
         return;
     }
     const body = req.body as Partial<Recipe>;
-    if (!body.title?.trim() || !Array.isArray(body.ingredients) || !Array.isArray(body.steps)) {
-        res.status(400).json({ error: "Faltan campos obligatorios (title, ingredients, steps)" });
+
+    if (!body.title?.trim()) {
+        res.status(400).json({ error: "Falta el título de la receta" });
+        return;
+    }
+
+    const errores = validateRecipe(body);
+    if (errores.length > 0) {
+        res.status(400).json({ error: errores[0] });
         return;
     }
     profile.recipeOverrides[recipeId] = {

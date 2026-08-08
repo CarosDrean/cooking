@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useClearRecipeOverride, useSaveRecipeOverride } from "../api/hooks";
 import { useToast } from "../lib/toast";
+import { useModalClose } from "../lib/useModalClose";
 import { DIETS, type IngredientCategory, type Recipe, type RecipeIngredient, type RecipeStep } from "../types";
 
 const CATEGORIES: IngredientCategory[] = [
@@ -84,9 +85,11 @@ export default function RecipeEditModal({
         );
     };
 
+    useModalClose(onClose);
+
     return (
         <div className="modal-backdrop" onClick={onClose}>
-            <div className="modal modal-wide" onClick={(e) => e.stopPropagation()}>
+            <div className="modal modal-wide" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-head">
                     <h3>Adaptar receta a tu familia</h3>
                     <button className="icon-btn" onClick={onClose} aria-label="Cerrar">
@@ -167,7 +170,7 @@ export default function RecipeEditModal({
                                 type="number"
                                 min="0"
                                 step="any"
-                                placeholder="Cant."
+                                placeholder="Cantidad"
                                 value={ing.quantity}
                                 onChange={(e) =>
                                     updateIngredient(i, { quantity: Number.parseFloat(e.target.value) || 0 })
@@ -175,7 +178,7 @@ export default function RecipeEditModal({
                             />
                             <input
                                 className="input"
-                                placeholder="Und."
+                                placeholder="Unidad"
                                 value={ing.unit}
                                 onChange={(e) => updateIngredient(i, { unit: e.target.value })}
                             />
@@ -239,7 +242,7 @@ export default function RecipeEditModal({
                             />
                             <input
                                 className="input"
-                                placeholder="Tip (opcional)"
+                                placeholder="Consejo (opcional)"
                                 value={s.tip ?? ""}
                                 onChange={(e) => updateStep(i, { tip: e.target.value })}
                             />

@@ -388,7 +388,9 @@ export default function PantryPage() {
                         </div>
                     );
                 })}
-                {filtered.length === 0 ? (
+                {pantry.isLoading ? (
+                    <p className="muted">Cargando…</p>
+                ) : filtered.length === 0 ? (
                     <p className="muted">
                         {items.length === 0
                             ? "La despensa está vacía. Añade ingredientes."

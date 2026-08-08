@@ -1,17 +1,11 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 import type { Drink, MealType } from "../types.js";
-import { DRINKS } from "../types.js";
 
 export const drinksRouter = Router();
 
 function allDrinks(): Drink[] {
-    const state = getState();
-    if (state.drinks.length === 0) {
-        state.drinks = DRINKS.map((d) => ({ ...d }));
-        saveState();
-    }
-    return state.drinks;
+    return getState().drinks;
 }
 
 drinksRouter.get("/", (_req, res) => {

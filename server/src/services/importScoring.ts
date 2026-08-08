@@ -234,7 +234,7 @@ export function pantriesBonus(
     pantryBonus: boolean,
 ): { score: number; reason: string } | null {
     if (!pantryBonus) return null;
-    const pantry = state.pantry;
+    const pantry = state.pantry.filter((p) => p.profileId === state.activeProfileId);
     if (pantry.length === 0) return null;
 
     let matched = 0;

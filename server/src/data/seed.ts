@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { ensureStateDefaults } from "../db.js";
 import type { AppState, Recipe } from "../types.js";
 
 const recipesFile = fileURLToPath(new URL("../../data/recipes.json", import.meta.url));
@@ -53,12 +54,10 @@ export function seedState(): AppState {
     };
 
     const resolved = resolveDates(raw, resolve) as SeedData;
-    return {
+    return ensureStateDefaults({
         ...resolved,
-        purchaseLog: resolved.purchaseLog ?? [],
         recipes: seedRecipes,
-        drinks: resolved.drinks ?? [],
-    };
+    });
 }
 
 function toISODate(d: Date): string {

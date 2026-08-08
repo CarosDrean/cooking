@@ -154,9 +154,11 @@ export interface Profile {
     suggestionFeedback: Record<string, { hide: boolean; weight: number }>;
 }
 
+// @client-omit-start
 export function isProfileComplete(profile: Pick<Profile, "name" | "householdSize">): boolean {
     return profile.name.trim().length > 0 && profile.householdSize >= 1;
 }
+// @client-omit-end
 
 export interface Location {
     country: string;
@@ -222,6 +224,8 @@ export interface PantryItem {
     unit: string;
     expiryDate?: string;
     dateAdded: string;
+    /** Perfil al que pertenece este ítem de despensa. */
+    profileId: string;
     /** Category from the ingredient catalog (optional: legacy/custom items). */
     category?: IngredientCategory;
     /** Precio por unidad en moneda local (opcional, p. ej. soles). */

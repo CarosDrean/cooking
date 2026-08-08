@@ -59,12 +59,35 @@
         "cena": []
       },
       "suggestionFeedback": {}
+    },
+    {
+      "id": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "name": "test valid",
+      "emoji": "🙂",
+      "dietPreferences": [],
+      "restrictions": [],
+      "householdSize": 4,
+      "mealsPerDay": [
+        "desayuno",
+        "almuerzo",
+        "cena"
+      ],
+      "favoriteRecipeIds": [],
+      "ratingByRecipe": {},
+      "isComplete": true,
+      "recipeOverrides": {},
+      "usualDishes": {
+        "desayuno": [],
+        "almuerzo": [],
+        "cena": []
+      },
+      "suggestionFeedback": {}
     }
   ],
   "activeProfileId": "p1",
   "recipes": [
     {
-      "title": "Ensalada de quinoa y garbanzos",
+      "title": "X",
       "description": "Quinoa esponjosa, garbanzos, pepino, tomate y un aderezo de limón. Fresca, completa y lista en minutos.",
       "emoji": "🥗",
       "diets": [
@@ -292,7 +315,7 @@
       },
       "id": "r2",
       "source": "local",
-      "image": "https://api.openverse.org/v1/images/63216b70-3908-45d3-bc69-30664b6d45fb/thumb/"
+      "image": "https://images.unsplash.com/photo-1598103442097-8b743a9d9527?w=800"
     },
     {
       "title": "Tortilla española",
@@ -5979,7 +6002,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "vietnamese",
@@ -7787,7 +7809,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "kenyan",
@@ -10571,7 +10592,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "japanese",
@@ -11105,7 +11125,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "algerian",
@@ -11627,7 +11646,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "internacional",
@@ -12980,7 +12998,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "spanish",
@@ -13635,7 +13652,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "syrian",
@@ -13922,7 +13938,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "internacional",
@@ -15634,7 +15649,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "internacional",
@@ -15712,7 +15726,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "australian",
@@ -16325,7 +16338,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "internacional",
@@ -16542,7 +16554,6 @@
       "diets": [
         "vegano",
         "vegetariano",
-        "sin-lactosa",
         "sin-lactosa"
       ],
       "cuisine": "turkish",
@@ -21580,7 +21591,8 @@
       "unit": "unidades",
       "dateAdded": "2026-08-07T16:00:54.757Z",
       "category": "frutas",
-      "unitPrice": 2
+      "unitPrice": 2,
+      "profileId": "p1"
     },
     {
       "id": "24031938-2e08-4c4e-9c42-bb945874531d",
@@ -21589,7 +21601,8 @@
       "unit": "bolsas",
       "dateAdded": "2026-08-07T16:01:03.321Z",
       "category": "despensa",
-      "unitPrice": 4
+      "unitPrice": 4,
+      "profileId": "p1"
     },
     {
       "id": "6f1a86d0-3767-4c9e-bb7a-5c12c4118465",
@@ -21598,7 +21611,8 @@
       "unit": "kg",
       "dateAdded": "2026-08-07T16:01:11.909Z",
       "category": "despensa",
-      "unitPrice": 3
+      "unitPrice": 3,
+      "profileId": "p1"
     },
     {
       "id": "3bd478a7-c9f6-44f1-8a29-3da79b9db763",
@@ -21607,7 +21621,8 @@
       "unit": "kg",
       "dateAdded": "2026-08-07T16:05:16.638Z",
       "category": "proteinas",
-      "unitPrice": 8
+      "unitPrice": 8,
+      "profileId": "p1"
     },
     {
       "id": "88a82682-c427-408a-9c64-af3b73e56e19",
@@ -21616,71 +21631,78 @@
       "unit": "kg",
       "dateAdded": "2026-08-07T16:05:40.081Z",
       "category": "granos",
-      "unitPrice": 2.5
+      "unitPrice": 2.5,
+      "profileId": "p1"
+    },
+    {
+      "id": "cc8aa93a-aec3-4dbd-a3ae-cc749a78867a",
+      "ingredientName": "test arroz",
+      "quantity": 5,
+      "unit": "kg",
+      "dateAdded": "2026-08-08T03:26:38.298Z",
+      "category": "granos",
+      "profileId": "p1"
     }
   ],
   "weeklyPlan": {
-    "id": "a1763979-4ee6-45da-a236-90b46b61a349",
+    "id": "08784c30-c076-4e66-8ce8-fbad937cb218",
     "weekStart": "2026-08-04",
     "slots": [
       {
-        "id": "3950a6b3-69fb-4cd4-bfc4-a20d1938e8c6",
-        "day": "viernes",
-        "meal": "cena",
-        "recipeId": "r13",
-        "servings": 2,
-        "drink": "Refresco de maracuyá"
-      },
-      {
-        "id": "75835076-d7cc-4e54-ac5a-e578212cd9f7",
-        "day": "sabado",
-        "meal": "almuerzo",
-        "recipeId": "r2",
-        "servings": 2,
-        "drink": "Agua de manzanilla"
-      },
-      {
-        "id": "c9a43b1a-d3cc-4c56-9d40-14633848dfcf",
-        "day": "sabado",
-        "meal": "cena",
-        "recipeId": "r37",
-        "servings": 2,
-        "drink": "Refresco de maracuyá"
-      },
-      {
-        "id": "75c6f5e4-12a5-4adf-b5f1-a1a6986d55a4",
+        "id": "e6e7615d-64a2-4c29-bf99-88cac471226c",
         "day": "sabado",
         "meal": "desayuno",
-        "recipeId": "r11",
-        "servings": 2
+        "recipeId": "r20",
+        "servings": 4
       },
       {
-        "id": "9c26bd7b-b174-4432-95fc-ea81286b242a",
-        "day": "domingo",
+        "id": "e35b60ef-9efb-4252-882e-bcbf00072ba3",
+        "day": "sabado",
         "meal": "almuerzo",
-        "recipeId": "r8",
-        "servings": 2,
+        "recipeId": "r51",
+        "servings": 4,
+        "drink": "Aztec Punch"
+      },
+      {
+        "id": "50aaf367-844f-43fa-bc21-d7a298cf2c6a",
+        "day": "sabado",
+        "meal": "cena",
+        "recipeId": "tmdb-52925",
+        "servings": 4,
         "drink": "Chicha morada"
       },
       {
-        "id": "d5bef15d-ae70-48c6-8738-dc7b0a88b142",
-        "day": "domingo",
-        "meal": "cena",
-        "recipeId": "tmdb-53250",
-        "servings": 2,
-        "drink": "Mate de anís"
-      },
-      {
-        "id": "8a86b5f4-f626-4d0f-91d2-5af7ea44c545",
+        "id": "20399de7-b427-4a16-a45c-6da4eb849818",
         "day": "domingo",
         "meal": "desayuno",
-        "recipeId": "r16",
-        "servings": 2
+        "recipeId": "tmdb-53456",
+        "servings": 4
+      },
+      {
+        "id": "30c52ba0-1edd-441c-866e-765907ac14b5",
+        "day": "domingo",
+        "meal": "almuerzo",
+        "recipeId": "tmdb-52920",
+        "servings": 4,
+        "drink": "Cherry Electric Lemonade"
+      },
+      {
+        "id": "38c2322f-d955-4d92-ab6b-605cc38bd113",
+        "day": "domingo",
+        "meal": "cena",
+        "recipeId": "r54",
+        "servings": 4,
+        "drink": "Kiwi Papaya Smoothie"
       }
     ]
   },
   "history": [],
-  "shoppingList": null,
+  "shoppingList": {
+    "id": "6a17dd59-c8b8-4085-a543-b2c13625a44e",
+    "weekStart": "2026-08-04",
+    "items": [],
+    "generatedAt": "2026-08-08T04:07:12.925Z"
+  },
   "location": {
     "country": "Perú",
     "city": "Ica"
@@ -22467,6 +22489,97 @@
       "id": "91038869-7925-4857-b4ff-546745c069d4",
       "date": "2026-08-07",
       "createdAt": "2026-08-07T16:06:00.045Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "tomate",
+      "quantity": 2,
+      "unit": "unidades",
+      "unitPrice": 3,
+      "total": 6,
+      "category": "verduras",
+      "kind": "compra",
+      "id": "bdb03407-afb4-4700-a375-7b2f91a4f708",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:15:39.454Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "tomate",
+      "quantity": 2,
+      "unit": "unidades",
+      "unitPrice": 3,
+      "total": 6,
+      "category": "verduras",
+      "kind": "consumo",
+      "id": "b2b05268-b60a-4a38-83a7-0fe4ef7ce170",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:15:51.086Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "arroz",
+      "quantity": 2,
+      "unit": "kg",
+      "unitPrice": 5,
+      "total": 10,
+      "category": "granos",
+      "kind": "compra",
+      "id": "48d47400-7ff6-4a0b-a841-9c3c523c64fc",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:18:31.918Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "arroz",
+      "quantity": 2,
+      "unit": "kg",
+      "unitPrice": 5,
+      "total": 10,
+      "category": "granos",
+      "kind": "consumo",
+      "id": "d81d5daf-5f9a-4f26-8e8d-08d235ded17e",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:18:42.191Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "auto-assign-test",
+      "quantity": 1,
+      "unit": "kg",
+      "unitPrice": 1,
+      "total": 1,
+      "category": "despensa",
+      "kind": "compra",
+      "id": "504d5561-5025-4fa7-b9fd-f094fa5513ab",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:18:55.068Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "auto-assign-test",
+      "quantity": 1,
+      "unit": "kg",
+      "unitPrice": 1,
+      "total": 1,
+      "category": "despensa",
+      "kind": "compra",
+      "id": "13065ebd-e34b-4687-80a5-a3424848e1d9",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:18:55.108Z"
+    },
+    {
+      "profileId": "e0f1e3ce-2396-4de7-9a3a-ed42a186dd8a",
+      "ingredientName": "auto-assign-test",
+      "quantity": 2,
+      "unit": "kg",
+      "unitPrice": 1,
+      "total": 2,
+      "category": "despensa",
+      "kind": "consumo",
+      "id": "63f62fbf-c1c1-45db-99ff-a89338cb1dec",
+      "date": "2026-08-08",
+      "createdAt": "2026-08-08T04:18:55.149Z"
     }
   ]
 }

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useActiveProfile, useAppState } from "./api/hooks";
 import ProfileMenu from "./components/ProfileMenu";
 import ProfileWizard from "./components/ProfileWizard";
+import TopBarClock from "./components/TopBarClock";
 import { dayKeyOf, toISODate } from "./lib/format";
 import { useRoute } from "./lib/router";
 import CookingMode from "./pages/CookingMode";
@@ -17,6 +18,7 @@ import Settings from "./pages/Settings";
 import ShoppingPage from "./pages/Shopping";
 import SpendingPage from "./pages/Spending";
 import WeeklyPlan from "./pages/WeeklyPlan";
+import { DAY_LABELS } from "./types";
 
 const NAV_ICONS: Record<string, string> = {
     dashboard: "🏠",
@@ -55,13 +57,7 @@ export default function App() {
     const { data: state } = useAppState();
     const activeProfile = useActiveProfile();
     const [showWizard, setShowWizard] = useState(false);
-    const [now, setNow] = useState(() => new Date());
     const [menuOpen, setMenuOpen] = useState(false);
-
-    useEffect(() => {
-        const id = window.setInterval(() => setNow(new Date()), 30_000);
-        return () => window.clearInterval(id);
-    }, []);
 
     const setPage = (page: string) => {
         window.location.hash = `/${page}`;
@@ -213,7 +209,7 @@ export default function App() {
                     </NavItem>
                 </nav>
                 <div className="sidebar-foot">
-                    <div className="week-dot">Hoy · {dayKeyOf(toISODate(new Date()))}</div>
+                    <div className="week-dot">Hoy · {DAY_LABELS[dayKeyOf(toISODate(new Date()))]}</div>
                 </div>
             </aside>
             <main className="main">
@@ -223,14 +219,7 @@ export default function App() {
                             <>
                                 <span className="avatar">{activeProfile.name.slice(0, 1).toUpperCase()}</span>
                                 <span>Hola, {activeProfile.name.split(" ")[0]}</span>
-                                <span className="topbar-date">
-                                    {now.toLocaleDateString("es-ES", {
-                                        weekday: "long",
-                                        day: "numeric",
-                                        month: "short",
-                                    })}{" "}
-                                    · {now.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}
-                                </span>
+                                <TopBarClock />
                             </>
                         ) : (
                             <span>Hola</span>

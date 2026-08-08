@@ -33,7 +33,11 @@ app.get("/api/health", (_req, res) => {
 
 app.get("/api/state", (_req, res) => {
     const state = getState();
-    res.json({ ...state, recipes: recipesForProfile(state, state.activeProfileId) });
+    res.json({
+        ...state,
+        recipes: recipesForProfile(state, state.activeProfileId),
+        pantry: state.pantry.filter((i) => i.profileId === state.activeProfileId),
+    });
 });
 
 app.use("/api/profiles", profilesRouter);
@@ -52,7 +56,22 @@ app.use("/api/themealdb", themealdbRouter);
 app.use("/api/import", importRouter);
 app.use("/api/openverse", openverseRouter);
 
+app.use("/api", (_req, res) => {
+    res.status(404).json({ error: "Ruta no encontrada" });
+});
+
 app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    if (err && typeof err === "object" && "type" in err) {
+        const typedErr = err as { type?: string };
+        if (typedErr.type === "entity.parse.failed") {
+            res.status(400).json({ error: "Cuerpo JSON inválido" });
+            return;
+        }
+        if (typedErr.type === "entity.too.large") {
+            res.status(413).json({ error: "Cuerpo demasiado grande (máx 1MB)" });
+            return;
+        }
+    }
     console.error(err);
     res.status(500).json({ error: "Error interno del servidor" });
 });

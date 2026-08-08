@@ -2,8 +2,9 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { seedState } from "./data/seed.js";
+import { convertToGrams } from "./services/equivalentias.js";
 import type { AppState } from "./types.js";
-import { isProfileComplete } from "./types.js";
+import { DRINKS, isProfileComplete } from "./types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SERVER_ROOT = path.resolve(__dirname, "..");
@@ -13,19 +14,54 @@ const DATA_FILE = path.join(DATA_DIR, "db.json");
 let state: AppState | null = null;
 let saveTimer: NodeJS.Timeout | null = null;
 
+export function ensureStateDefaults(state: AppState): AppState {
+    // State-level defaults
+    if (!state.drinks || state.drinks.length === 0) {
+        state.drinks = DRINKS.map((d) => ({ ...d }));
+    }
+    state.purchaseLog ??= [];
+
+    // Per-profile defaults
+    for (const p of state.profiles ?? []) {
+        p.suggestionFeedback ??= {};
+        p.mealsPerDay ??= ["desayuno", "almuerzo", "cena"];
+        p.isComplete ??= isProfileComplete(p);
+        p.recipeOverrides ??= {};
+        p.usualDishes ??= { desayuno: [], almuerzo: [], cena: [] };
+    }
+
+    // Per-pantry-item: grams fallback via equivalencias + profileId backfill (despensa legacy → primer perfil)
+    for (const item of state.pantry ?? []) {
+        item.profileId ??= state.profiles[0]?.id ?? state.activeProfileId;
+        if (item.grams === undefined) {
+            try {
+                const result = convertToGrams(item.ingredientName, item.quantity, item.unit);
+                if (result.equivalentValue !== undefined) {
+                    item.grams = result.equivalentValue;
+                }
+            } catch {
+                // Si falla la conversión, dejamos grams sin definir
+            }
+        }
+    }
+
+    // Dedupe recipe diets (arregla duplicados como "sin-lactosa","sin-lactosa")
+    for (const recipe of state.recipes ?? []) {
+        if (recipe.diets && recipe.diets.length > 0) {
+            recipe.diets = [...new Set(recipe.diets)];
+        }
+    }
+
+    return state;
+}
+
 function load(): AppState {
     if (existsSync(DATA_FILE)) {
         try {
             const raw = readFileSync(DATA_FILE, "utf8");
             const parsed = JSON.parse(raw) as AppState;
             if (parsed && Array.isArray(parsed.recipes)) {
-                parsed.purchaseLog ??= [];
-                for (const p of parsed.profiles ?? []) {
-                    p.isComplete ??= isProfileComplete(p);
-                    p.recipeOverrides ??= {};
-                    p.usualDishes ??= { desayuno: [], almuerzo: [], cena: [] };
-                }
-                return parsed;
+                return ensureStateDefaults(parsed);
             }
         } catch {
             // corrupted file: fall back to seed

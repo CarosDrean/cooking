@@ -110,14 +110,20 @@ export default function CookingMode({ recipeId }: { recipeId?: string }) {
                     <button className="btn ghost sm" onClick={() => setServings((s) => Math.min(12, s + 1))}>
                         +
                     </button>
-                    <span className="muted">rac.</span>
+                    <span className="muted">raciones</span>
                 </div>
             </div>
 
             <div className="cooking-hero" aria-hidden>
                 {r.image ? (
                     <>
-                        <img src={r.image} alt="" />
+                        <img
+                            src={r.image}
+                            alt={r.title}
+                            onError={(e) => {
+                                e.currentTarget.style.display = "none";
+                            }}
+                        />
                         <div className="detail-hero-overlay" />
                         <div className="detail-hero-content">
                             <h1>{r.title}</h1>

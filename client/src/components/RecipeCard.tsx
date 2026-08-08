@@ -1,3 +1,5 @@
+import { memo } from "react";
+import { useAppState, useSettings } from "../api/hooks";
 import { totalMinutes } from "../lib/format";
 import { navigate } from "../lib/router";
 import { findReplacements } from "../lib/speech";
@@ -5,7 +7,7 @@ import type { Recipe } from "../types";
 import { DietChips } from "./DietBadge";
 import { RecipeContextBadges } from "./RecipeContextBadges";
 
-export default function RecipeCard({
+export default memo(function RecipeCard({
     recipe,
     makeable,
     right,
@@ -25,12 +27,24 @@ export default function RecipeCard({
     compact?: boolean;
 }) {
     const open = () => navigate(`recipes/${recipe.id}`);
+    const { data: state } = useAppState();
+    const { data: settings } = useSettings();
+    const country = state?.location.country ?? "";
+    const season = settings?.season;
 
     if (compact) {
         return (
             <article className="recipe-card recipe-card-compact" onClick={onClick ?? open}>
                 {recipe.image ? (
-                    <img src={recipe.image} alt="" className="recipe-card-compact-img" />
+                    <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="recipe-card-compact-img"
+                        loading="lazy"
+                        onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                        }}
+                    />
                 ) : (
                     <span className="recipe-card-compact-emoji">{recipe.emoji || "🍽️"}</span>
                 )}
@@ -43,14 +57,25 @@ export default function RecipeCard({
     return (
         <article className={`recipe-card ${makeable ? "makeable" : ""}`} onClick={onClick ?? open}>
             <div className="recipe-card-hero" aria-hidden>
-                {recipe.image ? <img src={recipe.image} alt="" loading="lazy" /> : (recipe.emoji ?? "🍲")}
+                {recipe.image ? (
+                    <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        loading="lazy"
+                        onError={(e) => {
+                            e.currentTarget.style.display = "none";
+                        }}
+                    />
+                ) : (
+                    (recipe.emoji ?? "🍲")
+                )}
             </div>
             <div className="recipe-card-body">
                 <h3 className="recipe-name">{recipe.title}</h3>
                 <div className="recipe-meta">
                     <span>⏱ {totalMinutes(recipe)} min</span>
                     <span>·</span>
-                    <span>{recipe.servings} rac.</span>
+                    <span>{recipe.servings} raciones</span>
                     {onRate ? (
                         <span
                             className="recipe-stars"
@@ -77,7 +102,7 @@ export default function RecipeCard({
                     ) : null}
                 </div>
                 <DietChips diets={recipe.diets} />
-                <RecipeContextBadges recipe={recipe} />
+                <RecipeContextBadges recipe={recipe} country={country} season={season} />
                 {restrictedIngredients?.length ? (
                     <div className="restricted-ingredient-warn">
                         {restrictedIngredients.map((ing) => {
@@ -108,4 +133,4 @@ export default function RecipeCard({
             </div>
         </article>
     );
-}
+});

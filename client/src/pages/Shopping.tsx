@@ -59,6 +59,20 @@ export default function ShoppingPage() {
         });
     };
 
+    if (shopping.isLoading) {
+        return (
+            <div className="page">
+                <div className="page-head">
+                    <div>
+                        <h1>Lista de la compra</h1>
+                        <p className="muted">Se genera a partir de tu plan semanal y tu despensa.</p>
+                    </div>
+                </div>
+                <p className="muted">Cargando…</p>
+            </div>
+        );
+    }
+
     if (!list || list.items.length === 0) {
         return (
             <div className="page">
@@ -84,7 +98,7 @@ export default function ShoppingPage() {
                 <div>
                     <h1>Lista de la compra</h1>
                     <p className="muted">
-                        {checked}/{list.items.length} marcados · {fmtQty(total)} items por comprar
+                        {checked}/{list.items.length} marcados · {fmtQty(total)} productos por comprar
                     </p>
                 </div>
                 <div className="page-actions">
@@ -112,7 +126,7 @@ export default function ShoppingPage() {
             </div>
 
             {list.items.some((i) => i.toBuy <= 0) ? (
-                <p className="muted">Los items en verde ya los tienes en la despensa.</p>
+                <p className="muted">Los productos en verde ya los tienes en la despensa.</p>
             ) : null}
 
             {categories.map(([cat, items]) => (

@@ -1,13 +1,15 @@
-import { useAppState, useSettings } from "../api/hooks";
-import { isLocalRecipe, type Recipe, SEASON_LABELS, seasonFit } from "../types";
+import { memo } from "react";
+import { isLocalRecipe, type Recipe, SEASON_LABELS, type Season, seasonFit } from "../types";
 
-export function RecipeContextBadges({ recipe }: { recipe: Recipe }) {
-    const { data: state } = useAppState();
-    const { data: settings } = useSettings();
-
-    const country = state?.location.country ?? "";
-    const season = settings?.season;
-
+export const RecipeContextBadges = memo(function RecipeContextBadges({
+    recipe,
+    country,
+    season,
+}: {
+    recipe: Recipe;
+    country: string;
+    season?: Season;
+}) {
     if (!country && !season) return null;
 
     const local = country ? isLocalRecipe(recipe, country) : false;
@@ -40,4 +42,4 @@ export function RecipeContextBadges({ recipe }: { recipe: Recipe }) {
             ))}
         </div>
     );
-}
+});

@@ -218,6 +218,8 @@ export interface PantryItem {
     unit: string;
     expiryDate?: string;
     dateAdded: string;
+    /** Perfil al que pertenece este ítem de despensa. */
+    profileId: string;
     /** Category from the ingredient catalog (optional: legacy/custom items). */
     category?: IngredientCategory;
     /** Precio por unidad en moneda local (opcional, p. ej. soles). */

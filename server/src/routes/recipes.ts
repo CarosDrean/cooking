@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { getState, saveState } from "../db.js";
 import { isDietCompatible, isForbidden, normalize } from "../services/diet.js";
+import { sanitizeRecipe } from "../services/recipeSanitizer.js";
+import { validateIngredient, validateRecipe, validateStep } from "../services/recipeValidation.js";
 import { recipeForProfile, recipesForProfile } from "../services/recipeVariants.js";
 import { isMakeable, missingIngredients } from "../services/shoppingList.js";
 import type { MakeableInfo, MealType, Recipe, Season } from "../types.js";
@@ -168,7 +170,12 @@ El JSON debe tener esta estructura exacta:
         }
 
         const jsonStr = extractJson(content);
-        const recipe = JSON.parse(jsonStr);
+        const recipe = sanitizeRecipe(JSON.parse(jsonStr));
+
+        if (!recipe) {
+            res.status(500).json({ error: "La IA no devolvió una receta válida" });
+            return;
+        }
 
         res.json({ recipe });
     } catch (err) {
@@ -193,8 +200,15 @@ recipesRouter.get("/:id", (req, res) => {
 
 recipesRouter.post("/", (req, res) => {
     const body = req.body as Recipe;
-    if (!body.title?.trim() || !Array.isArray(body.ingredients) || !Array.isArray(body.steps)) {
-        res.status(400).json({ error: "Faltan campos obligatorios (title, ingredients, steps)" });
+
+    if (!body.title?.trim()) {
+        res.status(400).json({ error: "Falta el título de la receta" });
+        return;
+    }
+
+    const errores = validateRecipe(body);
+    if (errores.length > 0) {
+        res.status(400).json({ error: errores[0] });
         return;
     }
     const state = getState();
@@ -225,6 +239,45 @@ recipesRouter.put("/:id", (req, res) => {
         return;
     }
     const body = req.body as Partial<Recipe>;
+
+    // Validar ingredientes solo si vienen en el body
+    if ("ingredients" in body) {
+        if (!Array.isArray(body.ingredients)) {
+            res.status(400).json({ error: "ingredients debe ser un array" });
+            return;
+        }
+        if (body.ingredients.length === 0) {
+            res.status(400).json({ error: "Se requiere al menos un ingrediente" });
+            return;
+        }
+        for (let i = 0; i < body.ingredients.length; i++) {
+            const err = validateIngredient(body.ingredients[i], i);
+            if (err) {
+                res.status(400).json({ error: err });
+                return;
+            }
+        }
+    }
+
+    // Validar pasos solo si vienen en el body
+    if ("steps" in body) {
+        if (!Array.isArray(body.steps)) {
+            res.status(400).json({ error: "steps debe ser un array" });
+            return;
+        }
+        if (body.steps.length === 0) {
+            res.status(400).json({ error: "Se requiere al menos un paso" });
+            return;
+        }
+        for (let i = 0; i < body.steps.length; i++) {
+            const err = validateStep(body.steps[i], i);
+            if (err) {
+                res.status(400).json({ error: err });
+                return;
+            }
+        }
+    }
+
     state.recipes[index] = {
         ...state.recipes[index],
         ...body,
@@ -267,6 +320,8 @@ recipesRouter.delete("/:id", (req, res) => {
     for (const p of state.profiles) {
         p.favoriteRecipeIds = p.favoriteRecipeIds.filter((f) => f !== id);
         delete p.recipeOverrides[id];
+        delete p.ratingByRecipe[id];
+        delete p.suggestionFeedback[id];
     }
     saveState();
     res.json({ ok: true });

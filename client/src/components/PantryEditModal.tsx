@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { fmtQty } from "../lib/format";
+import { useModalClose } from "../lib/useModalClose";
 import type { CatalogIngredient, PantryItem } from "../types";
 import { normalizeText } from "../types";
 
@@ -55,6 +56,8 @@ export default function PantryEditModal({
         ? Math.round((item.quantity + (parseFloat(quantity) || 0)) * 1000) / 1000
         : Math.max(0, parseFloat(quantity) || 0);
 
+    useModalClose(onClose);
+
     const save = () => {
         if (!name.trim()) return;
         onSave({
@@ -68,7 +71,7 @@ export default function PantryEditModal({
 
     return (
         <div className="modal-backdrop" onClick={onClose}>
-            <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-head">
                     <h3>Editar ingrediente</h3>
                     <button className="icon-btn" onClick={onClose} aria-label="Cerrar">

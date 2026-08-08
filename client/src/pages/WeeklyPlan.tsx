@@ -137,8 +137,8 @@ export default function WeeklyPlan() {
                     >
                         📝 Solo mis recetas
                     </button>
-                    <button className="btn" onClick={onGenerate}>
-                        🎲 Generar semana
+                    <button className="btn" onClick={onGenerate} disabled={generate.isPending}>
+                        {generate.isPending ? "Generando…" : "🎲 Generar semana"}
                     </button>
                 </div>
             </div>
@@ -166,14 +166,51 @@ export default function WeeklyPlan() {
                                                         <span className="mini-thumb">
                                                             <img
                                                                 src={recipeById.get(slot.recipeId)?.image}
-                                                                alt=""
+                                                                alt={recipeById.get(slot.recipeId)?.title ?? "Receta"}
                                                                 loading="lazy"
+                                                                onError={(e) => {
+                                                                    e.currentTarget.style.display = "none";
+                                                                }}
                                                             />
                                                         </span>
                                                     ) : null}
                                                     {recipeNames.get(slot.recipeId) ?? "Receta"}
                                                 </button>
-                                                <span className="muted">×{slot.servings}</span>
+                                                <div className="serving-stepper">
+                                                    <button
+                                                        className="btn ghost sm"
+                                                        disabled={updateSlot.isPending}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            const next = Math.max(1, slot.servings - 1);
+                                                            if (next !== slot.servings) {
+                                                                updateSlot.mutate({
+                                                                    slotId: slot.id,
+                                                                    body: { servings: next },
+                                                                });
+                                                            }
+                                                        }}
+                                                    >
+                                                        −
+                                                    </button>
+                                                    <span className="serving-num">×{slot.servings}</span>
+                                                    <button
+                                                        className="btn ghost sm"
+                                                        disabled={updateSlot.isPending}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            const next = Math.min(12, slot.servings + 1);
+                                                            if (next !== slot.servings) {
+                                                                updateSlot.mutate({
+                                                                    slotId: slot.id,
+                                                                    body: { servings: next },
+                                                                });
+                                                            }
+                                                        }}
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
                                             </div>
                                             {slot.drink || needsDrink(slot.meal) ? (
                                                 <div className="plan-drink">
@@ -185,6 +222,8 @@ export default function WeeklyPlan() {
                                                     <button
                                                         className="icon-btn drink-btn"
                                                         title="Cambiar bebida"
+                                                        aria-label="Cambiar bebida"
+                                                        disabled={updateSlot.isPending}
                                                         onClick={() => cycleDrink(slot)}
                                                     >
                                                         ↻
@@ -195,6 +234,7 @@ export default function WeeklyPlan() {
                                                 <button
                                                     className="icon-btn"
                                                     title="Cambiar receta"
+                                                    aria-label="Cambiar receta"
                                                     onClick={() => setPicker({ day, meal })}
                                                 >
                                                     ↻
@@ -202,6 +242,8 @@ export default function WeeklyPlan() {
                                                 <button
                                                     className="icon-btn"
                                                     title="Otra al azar"
+                                                    aria-label="Otra al azar"
+                                                    disabled={regenerate.isPending}
                                                     onClick={() =>
                                                         regenerate.mutate({ day, meal, excludeId: slot.recipeId })
                                                     }
@@ -211,6 +253,8 @@ export default function WeeklyPlan() {
                                                 <button
                                                     className="icon-btn"
                                                     title="Ya la comí"
+                                                    aria-label="Ya la comí"
+                                                    disabled={addHistory.isPending}
                                                     onClick={() => onEaten(day, meal)}
                                                 >
                                                     ✅
@@ -218,6 +262,8 @@ export default function WeeklyPlan() {
                                                 <button
                                                     className="icon-btn danger"
                                                     title="Quitar"
+                                                    aria-label="Quitar"
+                                                    disabled={deleteSlot.isPending}
                                                     onClick={async () => {
                                                         if (
                                                             await confirm({

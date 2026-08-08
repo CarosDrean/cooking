@@ -1,15 +1,70 @@
 import type { AppState, Recommendation } from "../types.js";
 import { SEASON_LABELS } from "../types.js";
 import { isDietCompatible, isForbidden, isProtagonist, normalize, restrictedCount } from "./diet.js";
-import { averageRating, lastEatenDays, timesEaten } from "./history.js";
 import { availability, currentSeason, seasonFit } from "./location.js";
 import { recipesForProfile } from "./recipeVariants.js";
-import { isMakeable, missingIngredients } from "./shoppingList.js";
+import { isMakeable, missingIngredients, pantryTotals } from "./shoppingList.js";
+
+/** Deterministic hash (djb2) for stable jitter. */
+export function simpleHash(str: string): number {
+    let hash = 5381;
+    for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) + hash + str.charCodeAt(i)) | 0;
+    }
+    return hash >>> 0;
+}
+
+interface HistoryStats {
+    dates: number[];
+    ratings: number[];
+}
+
+interface HistoryByRecipe {
+    lastEatenDays: number;
+    timesEaten: number;
+    averageRating: number | undefined;
+}
 
 export function recommendRecipes(state: AppState, limit = 10): Recommendation[] {
     const profile = state.profiles.find((p) => p.id === state.activeProfileId) ?? state.profiles[0];
     const plannedIds = new Set(state.weeklyPlan?.slots.map((s) => s.recipeId) ?? []);
     const season = currentSeason(new Date(), state.location.country);
+
+    // Precompute pantry totals once (avoid O(R × P) in the loop).
+    const pantry = pantryTotals(state);
+
+    // Precompute history stats per recipe once (avoid O(R × H) in the loop).
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const todayMs = todayStart.getTime();
+    const rawHistory = new Map<string, HistoryStats>();
+    for (const h of state.history) {
+        if (h.profileId !== profile.id) continue;
+        const stats = rawHistory.get(h.recipeId);
+        if (stats) {
+            stats.dates.push(Date.parse(h.date));
+            if (h.rating != null) stats.ratings.push(h.rating);
+        } else {
+            rawHistory.set(h.recipeId, {
+                dates: [Date.parse(h.date)],
+                ratings: h.rating != null ? [h.rating] : [],
+            });
+        }
+    }
+    const historyByRecipe = new Map<string, HistoryByRecipe>();
+    for (const [rid, stats] of rawHistory) {
+        let minDays = Infinity;
+        for (const d of stats.dates) {
+            const diff = Math.floor((todayMs - d) / 86400000);
+            if (diff < minDays) minDays = diff;
+        }
+        historyByRecipe.set(rid, {
+            lastEatenDays: stats.dates.length === 0 ? Infinity : Math.max(0, minDays),
+            timesEaten: stats.dates.length,
+            averageRating:
+                stats.ratings.length > 0 ? stats.ratings.reduce((a, b) => a + b, 0) / stats.ratings.length : undefined,
+        });
+    }
 
     const results: Recommendation[] = [];
 
@@ -53,11 +108,11 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
             reasons.push("Es una de tus favoritas");
         }
 
-        if (isMakeable(state, recipe)) {
+        if (isMakeable(state, recipe, pantry)) {
             score += 2;
             reasons.push("La puedes hacer con lo que tienes");
         } else {
-            const missing = missingIngredients(state, recipe);
+            const missing = missingIngredients(state, recipe, pantry);
             if (missing.length <= 2) {
                 score += 1;
                 reasons.push(`Solo te faltan ${missing.length} ingrediente(s)`);
@@ -66,7 +121,8 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
             }
         }
 
-        const fresh = lastEatenDays(state, state.activeProfileId, recipe.id);
+        const h = historyByRecipe.get(recipe.id);
+        const fresh = h?.lastEatenDays ?? Infinity;
         if (fresh === Infinity) {
             score += 1.5;
             reasons.push("Aún no la has probado");
@@ -77,13 +133,13 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
             score -= 3;
         }
 
-        const eaten = timesEaten(state, state.activeProfileId, recipe.id);
+        const eaten = h?.timesEaten ?? 0;
         if (eaten >= 3) {
             score -= 1;
             reasons.push("La has comido varias veces");
         }
 
-        const rating = averageRating(state, state.activeProfileId, recipe.id) ?? profile.ratingByRecipe[recipe.id];
+        const rating = h?.averageRating ?? profile.ratingByRecipe[recipe.id];
         if (rating) {
             score += rating * 0.4;
             if (rating >= 4) reasons.push(`La puntuaste ${rating}/5`);
@@ -94,7 +150,8 @@ export function recommendRecipes(state: AppState, limit = 10): Recommendation[] 
             reasons.push("Ya está en tu plan semanal");
         }
 
-        score += Math.random() * 0.4;
+        // Deterministic jitter based on recipe id (replaces Math.random()).
+        score += (simpleHash(recipe.id) % 400) / 1000;
         results.push({ recipe, score, reasons });
     }
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCreateDrink, useDeleteDrink, useDrinks, useUpdateDrink } from "../api/hooks";
 import { useConfirm } from "../lib/confirm";
 import { useToast } from "../lib/toast";
+import { useModalClose } from "../lib/useModalClose";
 import { type Drink, type DrinkKind, MEAL_LABELS, type MealType } from "../types";
 
 const DRINK_KINDS: { value: DrinkKind; label: string; emoji: string }[] = [
@@ -22,7 +23,7 @@ const MEAL_EMOJI: Record<MealType, string> = {
 type ModalMode = "new" | "edit" | null;
 
 export default function DrinksPage() {
-    const { data: drinks } = useDrinks();
+    const { data: drinks, isLoading } = useDrinks();
     const createDrink = useCreateDrink();
     const updateDrink = useUpdateDrink();
     const deleteDrink = useDeleteDrink();
@@ -78,6 +79,7 @@ export default function DrinksPage() {
     };
 
     const closeModal = () => setModal(null);
+    useModalClose(closeModal);
 
     const save = () => {
         if (!name.trim() || !emoji.trim() || suitableFor.length === 0) {
@@ -172,7 +174,9 @@ export default function DrinksPage() {
                 ))}
             </div>
 
-            {filtered.length === 0 ? (
+            {isLoading ? (
+                <p className="muted">Cargando…</p>
+            ) : filtered.length === 0 ? (
                 <div className="empty-state">
                     <p>No hay bebidas con esos filtros.</p>
                     <button
@@ -225,7 +229,7 @@ export default function DrinksPage() {
 
             {modal ? (
                 <div className="modal-backdrop" onClick={closeModal}>
-                    <div className="modal" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal" role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-head">
                             <h2>{modalTitle}</h2>
                             <button className="icon-btn" onClick={closeModal}>

@@ -35,10 +35,11 @@ interface PantryTotal {
     unit: string;
 }
 
-/** Aggregate pantry quantities by normalized name + comparable unit group. */
+/** Aggregate pantry quantities by normalized name + comparable unit group (active profile only). */
 export function pantryTotals(state: AppState): Map<string, PantryTotal> {
     const map = new Map<string, PantryTotal>();
     for (const item of state.pantry) {
+        if (item.profileId !== state.activeProfileId) continue;
         const key = keyOf(item.ingredientName, item.unit);
         const existing = map.get(key);
         if (existing) {
@@ -58,8 +59,12 @@ export interface MissingIngredient {
 }
 
 /** Which recipe ingredients are not fully covered by the pantry? */
-export function missingIngredients(state: AppState, recipe: Recipe): MissingIngredient[] {
-    const pantry = pantryTotals(state);
+export function missingIngredients(
+    state: AppState,
+    recipe: Recipe,
+    precomputedPantry?: Map<string, PantryTotal>,
+): MissingIngredient[] {
+    const pantry = precomputedPantry ?? pantryTotals(state);
     const scaled = scaleRecipe(recipe, Math.max(recipe.servings, 1));
     const missing: MissingIngredient[] = [];
     for (const ing of scaled) {
@@ -77,8 +82,8 @@ export function missingIngredients(state: AppState, recipe: Recipe): MissingIngr
     return missing;
 }
 
-export function isMakeable(state: AppState, recipe: Recipe): boolean {
-    return missingIngredients(state, recipe).length === 0;
+export function isMakeable(state: AppState, recipe: Recipe, precomputedPantry?: Map<string, PantryTotal>): boolean {
+    return missingIngredients(state, recipe, precomputedPantry).length === 0;
 }
 
 const CATEGORY_ORDER: IngredientCategory[] = [

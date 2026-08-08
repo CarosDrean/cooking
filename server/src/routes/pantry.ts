@@ -3,6 +3,7 @@ import { getState, saveState } from "../db.js";
 import { convertToGrams } from "../services/equivalentias.js";
 import { findCatalogIngredient, inferCategory } from "../services/ingredients.js";
 import { logMovement } from "../services/spending.js";
+import { parsePositiveNumber } from "../services/validation.js";
 import type { IngredientCategory, PantryItem } from "../types.js";
 
 export const pantryRouter = Router();
@@ -51,6 +52,11 @@ function round(n: number): number {
 }
 
 /** Merge key: same normalized name + same unit (inconsistent units never sum). */
+/** Devuelve los ítems de la despensa que pertenecen al perfil activo. */
+function mine(state: ReturnType<typeof getState>): PantryItem[] {
+    return state.pantry.filter((i) => i.profileId === state.activeProfileId);
+}
+
 function sameItem(nameA: string, unitA: string, nameB: string, unitB: string): boolean {
     return normalize(nameA) === normalize(nameB) && normalizeUnit(unitA) === normalizeUnit(unitB);
 }
@@ -66,13 +72,13 @@ function toUnitPrice(value: unknown): number | undefined {
 
 pantryRouter.get("/", (_req, res) => {
     const state = getState();
-    res.json(state.pantry);
+    res.json(mine(state));
 });
 
 pantryRouter.get("/expiring", (req, res) => {
     const state = getState();
     const days = Number.parseInt(req.query.days as string, 10) || 7;
-    const items = state.pantry.filter((i) => {
+    const items = mine(state).filter((i) => {
         const d = daysUntil(i.expiryDate);
         return d !== null && d <= days;
     });
@@ -89,12 +95,17 @@ pantryRouter.post("/", (req, res) => {
     }
     const catalog = findCatalogIngredient(name);
     const unit = (body.unit?.trim() || catalog?.defaultUnit || "unidades").toLowerCase();
-    const quantity = Math.max(0, body.quantity ?? 1);
+    const quantityRaw = parsePositiveNumber(body.quantity ?? 1, 0);
+    if (quantityRaw === null) {
+        res.status(400).json({ error: "quantity inválido (debe ser un número finito ≥ 0)" });
+        return;
+    }
+    const quantity = Math.max(0, quantityRaw);
     const unitPrice = toUnitPrice(body.unitPrice);
     const grams = convertToGrams(name, quantity, unit).equivalentValue;
     const state = getState();
 
-    const existing = state.pantry.find((i) => sameItem(i.ingredientName, i.unit, name, unit));
+    const existing = mine(state).find((i) => sameItem(i.ingredientName, i.unit, name, unit));
     if (existing) {
         existing.quantity = round(existing.quantity + quantity);
         existing.expiryDate = body.expiryDate || existing.expiryDate;
@@ -125,6 +136,7 @@ pantryRouter.post("/", (req, res) => {
         unit,
         expiryDate: body.expiryDate || undefined,
         dateAdded: new Date().toISOString(),
+        profileId: state.activeProfileId,
         category: categoryFor(name, catalog?.category),
         unitPrice,
         grams,
@@ -148,24 +160,37 @@ pantryRouter.post("/", (req, res) => {
 
 pantryRouter.put("/:id", (req, res) => {
     const state = getState();
-    const index = state.pantry.findIndex((i) => i.id === req.params.id);
+    const myItems = mine(state);
+    const index = myItems.findIndex((i) => i.id === req.params.id);
     if (index === -1) {
         res.status(404).json({ error: "Ítem no encontrado" });
         return;
     }
     const body = req.body as Partial<PantryItem>;
-    const current = state.pantry[index];
+    const current = myItems[index];
     const name = body.ingredientName?.trim() || current.ingredientName;
     const unit = (body.unit?.trim() || current.unit).toLowerCase();
-    const quantity = body.quantity != null ? Math.max(0, body.quantity) : current.quantity;
+    let quantity: number;
+    if (body.quantity != null) {
+        const parsed = parsePositiveNumber(body.quantity, 0);
+        if (parsed === null) {
+            res.status(400).json({ error: "quantity inválido (debe ser un número finito ≥ 0)" });
+            return;
+        }
+        quantity = Math.max(0, parsed);
+    } else {
+        quantity = current.quantity;
+    }
     const catalog = findCatalogIngredient(name);
 
     // If the edited item collides with another one (same name + unit), merge into it.
-    const other = state.pantry.find((i, idx) => idx !== index && sameItem(i.ingredientName, i.unit, name, unit));
+    const other = myItems.find((i, idx) => idx !== index && sameItem(i.ingredientName, i.unit, name, unit));
     if (other) {
         other.quantity = round(other.quantity + quantity);
         other.category = other.category ?? categoryFor(name, catalog?.category);
-        state.pantry.splice(index, 1);
+        // Remove current item from state.pantry (use the original pantry array)
+        const realIndex = state.pantry.findIndex((i) => i.id === current.id);
+        if (realIndex !== -1) state.pantry.splice(realIndex, 1);
         saveState();
         res.json(other);
         return;
@@ -173,7 +198,13 @@ pantryRouter.put("/:id", (req, res) => {
 
     const newUnitPrice = body.unitPrice !== undefined ? toUnitPrice(body.unitPrice) : current.unitPrice;
 
-    state.pantry[index] = {
+    const realIndex = state.pantry.findIndex((i) => i.id === current.id);
+    if (realIndex === -1) {
+        res.status(500).json({ error: "Error interno: ítem desapareció" });
+        return;
+    }
+
+    state.pantry[realIndex] = {
         ...current,
         ingredientName: name,
         quantity,
@@ -194,24 +225,30 @@ pantryRouter.put("/:id", (req, res) => {
             unit,
             unitPrice: newUnitPrice,
             total: round(quantity * newUnitPrice),
-            category: state.pantry[index].category,
+            category: state.pantry[realIndex].category,
             kind: "compra",
         });
     }
 
     saveState();
-    res.json(state.pantry[index]);
+    res.json(state.pantry[realIndex]);
 });
 
 pantryRouter.delete("/:id", (req, res) => {
     const state = getState();
-    const index = state.pantry.findIndex((i) => i.id === req.params.id);
-    if (index === -1) {
+    const myItems = mine(state);
+    const myIndex = myItems.findIndex((i) => i.id === req.params.id);
+    if (myIndex === -1) {
         res.status(404).json({ error: "Ítem no encontrado" });
         return;
     }
-    const removed = state.pantry[index];
-    state.pantry.splice(index, 1);
+    const removed = myItems[myIndex];
+    const realIndex = state.pantry.findIndex((i) => i.id === removed.id);
+    if (realIndex === -1) {
+        res.status(500).json({ error: "Error interno: ítem desapareció" });
+        return;
+    }
+    state.pantry.splice(realIndex, 1);
     if (removed.unitPrice != null) {
         logMovement(state, {
             profileId: state.activeProfileId,

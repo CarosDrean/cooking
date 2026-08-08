@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useDebouncedValue } from "../lib/useDebouncedValue";
 import type {
     AppState,
     CatalogIngredient,
@@ -326,10 +327,15 @@ export interface EquivalentResult {
 }
 
 export function useEquivalent(ingredient: string, quantity: number, unit: string) {
-    const enabled = Boolean(ingredient.trim()) && Boolean(unit) && !["g", "kg", "ml", "l"].includes(unit);
-    const params = new URLSearchParams({ ingredient, quantity: String(quantity || 1), unit });
+    const debouncedIngredient = useDebouncedValue(ingredient, 300);
+    const enabled = Boolean(debouncedIngredient.trim()) && Boolean(unit) && !["g", "kg", "ml", "l"].includes(unit);
+    const params = new URLSearchParams({
+        ingredient: debouncedIngredient,
+        quantity: String(quantity || 1),
+        unit,
+    });
     return useQuery({
-        queryKey: ["equivalent", ingredient, quantity, unit],
+        queryKey: ["equivalent", debouncedIngredient, quantity, unit],
         queryFn: () => api.get<EquivalentResult>(`/ingredients/equivalent?${params}`),
         enabled,
         staleTime: 60_000,

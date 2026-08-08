@@ -140,7 +140,7 @@ export function mapMealToRecipe(meal: TmbMeal): Recipe {
         });
     }
 
-    const diets = guessDiet(ingredients.map((i) => i.name));
+    const diets = [...new Set(guessDiet(ingredients.map((i) => i.name)))];
 
     return {
         id: `tmdb-${meal.idMeal}`,

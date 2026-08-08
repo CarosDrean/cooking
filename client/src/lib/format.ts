@@ -52,3 +52,7 @@ export function dayKeyOf(iso: string): (typeof DAY_KEYS)[number] {
 export function totalMinutes(r: { prepMinutes: number; cookMinutes: number }): number {
     return r.prepMinutes + r.cookMinutes;
 }
+
+export function hasNutrition(n: { kcal: number; protein: number; carbs: number; fat: number }): boolean {
+    return n.kcal > 0 || n.protein > 0 || n.carbs > 0 || n.fat > 0;
+}
