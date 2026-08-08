@@ -13719,6 +13719,1597 @@
         "carbs": 0,
         "fat": 0
       }
+    },
+    {
+      "id": "tmdb-53374",
+      "title": "Sichuan Eggplant",
+      "description": "Receta de Chinese (categoría: Vegetarian). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "chinese",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Egg plants",
+          "quantity": 1.5,
+          "unit": "pounds sliced",
+          "category": "proteinas"
+        },
+        {
+          "name": "Peanut oil",
+          "quantity": 2,
+          "unit": "tablespoons",
+          "category": "despensa"
+        },
+        {
+          "name": "Chicken stock",
+          "quantity": 0.25,
+          "unit": "cup",
+          "category": "proteinas"
+        },
+        {
+          "name": "Sugar",
+          "quantity": 2,
+          "unit": "tsp",
+          "category": "despensa"
+        },
+        {
+          "name": "Soy sauce",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Chilli bean paste",
+          "quantity": 1.5,
+          "unit": "tbsp",
+          "category": "granos"
+        },
+        {
+          "name": "Sichuan pepper",
+          "quantity": 2,
+          "unit": "tsp",
+          "category": "verduras"
+        },
+        {
+          "name": "Ginger",
+          "quantity": 2,
+          "unit": "tsp",
+          "category": "otros"
+        },
+        {
+          "name": "Garlic",
+          "quantity": 5,
+          "unit": "cloves",
+          "category": "verduras"
+        },
+        {
+          "name": "Cornstarch",
+          "quantity": 1,
+          "unit": "tsp",
+          "category": "granos"
+        },
+        {
+          "name": "Apple cider vinegar",
+          "quantity": 2,
+          "unit": "tsp",
+          "category": "frutas"
+        },
+        {
+          "name": "Scallions",
+          "quantity": 4,
+          "unit": "Chopped",
+          "category": "otros"
+        },
+        {
+          "name": "Cilantro",
+          "quantity": 1,
+          "unit": "Garnish",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "This recipe calls for asian eggplants, or Japanese eggplants"
+        },
+        {
+          "text": "They are long and thin compared to a European or globe eggplant, and much more tender and delicate"
+        },
+        {
+          "text": "If you can't find them you can substitute globe eggplant, but the dish is really best with the asian eggplant"
+        },
+        {
+          "text": "*A lot of grocery stores have Asian ingredient aisles now"
+        },
+        {
+          "text": "You should be able to find chili-bean paste, a mixture of preserved chilies mixed with mashed soybeans, there or at any Asian market"
+        },
+        {
+          "text": "(Do not confuse with black bean paste or chili-garlic paste.)"
+        },
+        {
+          "text": "**Sichuan peppercorns are available at some stores and online for quite cheap"
+        },
+        {
+          "text": "They aren't spicy like other peppers but rather have a citrusy flavor and induce a tingly, numbing sensation like a carbonated drink"
+        },
+        {
+          "text": "Prep eggplant, chili sauce, cornstarch slurry, vinegar and scallions:"
+        },
+        {
+          "text": "Begin your mise en place"
+        },
+        {
+          "text": "Quarter the eggplant lengthwise and chop into large batons and set aside"
+        },
+        {
+          "text": "In a small bowl, mix together the chicken stock, sugar, and soy sauce and set it aside"
+        },
+        {
+          "text": "In a second bowl, mix together the chili bean paste, garlic, ginger, and sichuan peppercorns and set it aside"
+        },
+        {
+          "text": "In a third bowl, mix together the cornstarch with a tablespoon of water and set it aside"
+        },
+        {
+          "text": "Lastly, in a fourth bowl, mix together the scallions and vinegar and set it aside"
+        },
+        {
+          "text": "Sauté eggplant:"
+        },
+        {
+          "text": "Place the oil in a wok or large sauté pan over medium-high heat until the oil is almost smoking"
+        },
+        {
+          "text": "Add the eggplant and sauté, allowing it to sit for a few seconds each time you move it to allow it to brown and blister"
+        },
+        {
+          "text": "If the eggplant absorbs all the oil and some pieces don't get any then add a little more oil"
+        },
+        {
+          "text": "Add the chili bean paste, garlic, ginger, and sichuan peppercorns and sauté:"
+        },
+        {
+          "text": "until fragrant, about 30 seconds"
+        },
+        {
+          "text": "Add the chicken stock mixture:"
+        },
+        {
+          "text": "turn the heat to medium-low and simmer for 90 seconds"
+        },
+        {
+          "text": "Add the cornstarch mixture:"
+        },
+        {
+          "text": "and stir together until the sauce thickens a bit"
+        },
+        {
+          "text": "Add the scallions and vinegar:"
+        },
+        {
+          "text": "and cook for 15 seconds to diffuse their harsh flavors a bit"
+        },
+        {
+          "text": "Garnish with cilantro and serve."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53456",
+      "title": "Bajan Salt Bread Recipe",
+      "description": "Receta de cocina internacional (categoría: Side). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/sr7chd1780264758.jpg",
+      "source": "themealdb",
+      "diets": [
+        "vegano",
+        "vegetariano",
+        "sin-lactosa",
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Yeast",
+          "quantity": 2,
+          "unit": "tubs",
+          "category": "otros"
+        },
+        {
+          "name": "Sugar",
+          "quantity": 2,
+          "unit": "tsp",
+          "category": "despensa"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1,
+          "unit": "tsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Vegetable oil",
+          "quantity": 2,
+          "unit": "tablespoons",
+          "category": "despensa"
+        },
+        {
+          "name": "Flour",
+          "quantity": 6,
+          "unit": "cups",
+          "category": "granos"
+        },
+        {
+          "name": "Warm water",
+          "quantity": 1,
+          "unit": "cups",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Sift half the flour, mix with salt and yeast in a large mixing bowl, and slowly add warm water until the mixture forms a stiff dough"
+        },
+        {
+          "text": "Add more sifted flour until you have a stiff enough dough to knead"
+        },
+        {
+          "text": "Lightly flour the work surface, knead the dough for 10 minutes until it is smooth and elastic, and then place it in a greased bowl"
+        },
+        {
+          "text": "Now place the bowl warmly for 40-50 minutes until it has doubled"
+        },
+        {
+          "text": "You know the dough is ready when you poke a finger, and the indentation remains"
+        },
+        {
+          "text": "Preheat oven to 425 degrees F or 220 degrees C"
+        },
+        {
+          "text": "Now divide the dough into 12 equal portions, roll each into a fist size ball, and place on a greased baking sheet"
+        },
+        {
+          "text": "Now place in a warm place again for a further 40 minutes or again until the dough has doubled in size"
+        },
+        {
+          "text": "Now place in the oven’s center and bake for 25-30 minutes until golden brown rolls sound hollow when tapped."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53056",
+      "title": "Croatian lamb peka",
+      "description": "Receta de Croatian (categoría: Beef). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/pn59o51628769837.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "croatian",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Potatoes",
+          "quantity": 600,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "Courgettes",
+          "quantity": 1,
+          "unit": "chopped",
+          "category": "otros"
+        },
+        {
+          "name": "Carrots",
+          "quantity": 1,
+          "unit": "chopped",
+          "category": "verduras"
+        },
+        {
+          "name": "Green pepper",
+          "quantity": 1,
+          "unit": "chopped",
+          "category": "verduras"
+        },
+        {
+          "name": "Aubergine",
+          "quantity": 1,
+          "unit": "small",
+          "category": "otros"
+        },
+        {
+          "name": "Onion",
+          "quantity": 1,
+          "unit": "Large Chopped",
+          "category": "verduras"
+        },
+        {
+          "name": "Lamb shoulder",
+          "quantity": 800,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "Garlic sauce",
+          "quantity": 1,
+          "unit": "tbs",
+          "category": "verduras"
+        },
+        {
+          "name": "Tomato puree",
+          "quantity": 1,
+          "unit": "tbs",
+          "category": "verduras"
+        },
+        {
+          "name": "Olive oil",
+          "quantity": 80,
+          "unit": "ml",
+          "category": "despensa"
+        },
+        {
+          "name": "Thyme",
+          "quantity": 1,
+          "unit": "Sprinking",
+          "category": "condimentos"
+        },
+        {
+          "name": "White wine",
+          "quantity": 250,
+          "unit": "ml",
+          "category": "otros"
+        },
+        {
+          "name": "Pepper",
+          "quantity": 1,
+          "unit": "Pinch",
+          "category": "verduras"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Preheat oven to 200°C fan / 220°C / 425°F / Gas mark 7"
+        },
+        {
+          "text": "If you have not bought diced lamb, cut your lamb shoulder or leg into large chunks and place to one side"
+        },
+        {
+          "text": "Chunks of chopped lamb of a red chopping board"
+        },
+        {
+          "text": "Make oil marinade -"
+        },
+        {
+          "text": "Mix 80ml of olive oil in a bowl with garlic puree, sundried tomato puree ,black pepper and salt"
+        },
+        {
+          "text": "olive oil, gia sundried tomato puree and gia garlic puree and black pepper mixed together in a silver bowl to make Croatian peka"
+        },
+        {
+          "text": "Add potatoes and vegetables into a large lidded casserole dish"
+        },
+        {
+          "text": "Chopped up vegetables which consist of chopped up red onion, courgette, potatoes red peppers in a cast iron pan"
+        },
+        {
+          "text": "Place diced lamb on top of the vegetables, pour the marinade and wine over the top"
+        },
+        {
+          "text": "Chunks of lamb covered in in a sundried tomato oil sauce which is on top of chopped red onion, aubergine, courgette and potatoes in a cast iron pan"
+        },
+        {
+          "text": "Add the rosemary, thyme and sage, trying to keep the herbs on top"
+        },
+        {
+          "text": "So you can easily remove the herb stalks once cooked"
+        },
+        {
+          "text": "Chunks of lamb coated in a sundried tomato oil sauce and covered with thyme, rosemary and sage which is on top of chopped red onion, aubergine, courgette and potatoes in a cast iron pan"
+        },
+        {
+          "text": "Place lid on the casserole dish and cook for 1hr 30 minute"
+        },
+        {
+          "text": "If you do not have a lid cover very well with kitchen foil"
+        },
+        {
+          "text": "Cast iron dish with lid on in the oven"
+        },
+        {
+          "text": "Take the lid off, remove any thick herb stems"
+        },
+        {
+          "text": "Stir in 2 tbsp of olive oil"
+        },
+        {
+          "text": "Cook for a further 20-30 mins"
+        },
+        {
+          "text": "Cooked Croatian Lamb Peka in a cast iron pan in the oven"
+        },
+        {
+          "text": "Serve with fresh homemade bread to dip into the juices."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53308",
+      "title": "Rye bread",
+      "description": "Receta de Polish (categoría: Side). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/lmc6r51764365554.jpg",
+      "source": "themealdb",
+      "diets": [
+        "vegetariano",
+        "sin-lactosa"
+      ],
+      "cuisine": "polish",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Rye",
+          "quantity": 200,
+          "unit": "g",
+          "category": "otros"
+        },
+        {
+          "name": "Strong white bread flour",
+          "quantity": 200,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "Yeast",
+          "quantity": 10,
+          "unit": "g",
+          "category": "otros"
+        },
+        {
+          "name": "Salt",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Honey",
+          "quantity": 1,
+          "unit": "tablespoon",
+          "category": "despensa"
+        },
+        {
+          "name": "Caraway seed",
+          "quantity": 1,
+          "unit": "tsp",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "step 1"
+        },
+        {
+          "text": "Tip the flours, yeast and salt into a bowl"
+        },
+        {
+          "text": "In a jug, mix the honey with 250ml warm water, pour the liquid into the bowl and mix to form a dough"
+        },
+        {
+          "text": "Rye flour can be quite dry and absorbs lots of water, if the dough looks too dry add more warm water until you have a soft dough Tip out onto your work surface and knead for 10 mins until smooth"
+        },
+        {
+          "text": "Rye contains less gluten than white flour so the dough will not feel as springy as a conventional white loaf"
+        },
+        {
+          "text": "step 2"
+        },
+        {
+          "text": "Place the dough in a well oiled bowl, cover with cling film and leave to rise in a warm place for 1-2 hrs, or until roughly doubled in size"
+        },
+        {
+          "text": "Dust a 2lb/900g loaf tin with flour"
+        },
+        {
+          "text": "step 3"
+        },
+        {
+          "text": "Tip the dough back onto your work surface and knead briefly to knock out any air bubbles"
+        },
+        {
+          "text": "If using caraway seeds work these in to the dough"
+        },
+        {
+          "text": "Shape into a smooth oval loaf and pop into your tin"
+        },
+        {
+          "text": "Cover the tin with oiled cling film and leave to rise somewhere warm for a further 1 – 1.5 hr, or until doubled in size"
+        },
+        {
+          "text": "step 4"
+        },
+        {
+          "text": "Heat oven to 220C/200C fan/gas 7"
+        },
+        {
+          "text": "Remove the cling film and dust the surface of the loaf with rye flour"
+        },
+        {
+          "text": "Slash a few incisions on an angle then bake for 30 mins until dark brown and hollow sounding when tapped"
+        },
+        {
+          "text": "Transfer to a wire cooling rack and leave to cool for at least 20 mins before serving"
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53525",
+      "title": "Ají de Aguacate Recipe (Colombian Spicy Avocado Sauce)",
+      "description": "Receta de cocina internacional (categoría: Miscellaneous). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/jyvy8u1783800448.jpg",
+      "source": "themealdb",
+      "diets": [
+        "vegetariano",
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Avocado",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "Habanero pepper",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "Egg",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "Lime",
+          "quantity": 1,
+          "unit": "Juice of 2",
+          "category": "otros"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1,
+          "unit": "To taste",
+          "category": "condimentos"
+        },
+        {
+          "name": "Vinegar",
+          "quantity": 2,
+          "unit": "tablespoons",
+          "category": "condimentos"
+        },
+        {
+          "name": "Onion",
+          "quantity": 1,
+          "unit": "chopped",
+          "category": "verduras"
+        },
+        {
+          "name": "Scallions",
+          "quantity": 2,
+          "unit": "chopped",
+          "category": "otros"
+        },
+        {
+          "name": "Cilantro",
+          "quantity": 4,
+          "unit": "tablespoons",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Place all the ingredients in a food processor"
+        },
+        {
+          "text": "Process until the mixture is well combined"
+        },
+        {
+          "text": "If the mixture is too thick, add more lime juice until you reach the desired consistency."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-52960",
+      "title": "Salmon Avocado Salad",
+      "description": "Receta de British (categoría: Seafood). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/1549542994.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "british",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Salmon",
+          "quantity": 400,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "Avocado",
+          "quantity": 3,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "Cucumber",
+          "quantity": 1,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "Spinach",
+          "quantity": 400,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "Mint",
+          "quantity": 4,
+          "unit": "tbs",
+          "category": "otros"
+        },
+        {
+          "name": "Lime",
+          "quantity": 1,
+          "unit": "zest and juice of 1",
+          "category": "otros"
+        },
+        {
+          "name": "Honey",
+          "quantity": 2,
+          "unit": "tsp",
+          "category": "despensa"
+        },
+        {
+          "name": "Olive oil",
+          "quantity": 3,
+          "unit": "tbs",
+          "category": "despensa"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Season the salmon, then rub with oil"
+        },
+        {
+          "text": "Mix the dressing ingredients together"
+        },
+        {
+          "text": "Halve, stone, peel and slice the avocados"
+        },
+        {
+          "text": "Halve and quarter the cucumber lengthways, then cut into slices"
+        },
+        {
+          "text": "Divide salad, avocado and cucumber between four plates, then drizzle with half the dressing"
+        },
+        {
+          "text": "Heat a non-stick pan"
+        },
+        {
+          "text": "Add the salmon and fry for 3-4 mins on each side until crisp but still moist inside"
+        },
+        {
+          "text": "Put a salmon fillet on top of each salad and drizzle over the remaining dressing"
+        },
+        {
+          "text": "Serve warm."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53157",
+      "title": "Chorizo & soft-boiled egg salad",
+      "description": "Receta de Spanish (categoría: Pork). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/v8eaed1763257313.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "spanish",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Baby new potatoes",
+          "quantity": 500,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "Egg",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "Green beans",
+          "quantity": 225,
+          "unit": "g",
+          "category": "granos"
+        },
+        {
+          "name": "Chorizo",
+          "quantity": 225,
+          "unit": "g",
+          "category": "proteinas"
+        },
+        {
+          "name": "Garlic clove",
+          "quantity": 1,
+          "unit": "sliced",
+          "category": "verduras"
+        },
+        {
+          "name": "Sherry vinegar",
+          "quantity": 2,
+          "unit": "tbsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Parsley",
+          "quantity": 2,
+          "unit": "tbsp chopped",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "step 1"
+        },
+        {
+          "text": "Cook the potatoes in a large pan of boiling salted water for 12 mins, adding the eggs after 6 mins, and the beans for the final 2 mins"
+        },
+        {
+          "text": "Drain everything and cool the eggs under cold running water"
+        },
+        {
+          "text": "step 2"
+        },
+        {
+          "text": "Meanwhile fry chorizo slices for 1-2 mins, until beginning to crisp"
+        },
+        {
+          "text": "Remove from the pan with a slotted spoon and set aside, leaving the oil from the chorizo in the pan"
+        },
+        {
+          "text": "Add the garlic to the pan and cook gently for 1 min"
+        },
+        {
+          "text": "step 3"
+        },
+        {
+          "text": "Remove the pan from the heat, stir in the vinegar and parsley, then toss with the potatoes, beans, chorizo and seasoning"
+        },
+        {
+          "text": "Shell the eggs, cut into quarters and add to the salad."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53373",
+      "title": "Air Fryer Egg Rolls",
+      "description": "Receta de Chinese (categoría: Side). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "chinese",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Olive oil",
+          "quantity": 1,
+          "unit": "tablespoon",
+          "category": "despensa"
+        },
+        {
+          "name": "Ground pork",
+          "quantity": 1,
+          "unit": "lb",
+          "category": "proteinas"
+        },
+        {
+          "name": "Garlic",
+          "quantity": 1,
+          "unit": "clove peeled crushed",
+          "category": "verduras"
+        },
+        {
+          "name": "Ginger",
+          "quantity": 1,
+          "unit": "tablespoon",
+          "category": "otros"
+        },
+        {
+          "name": "Carrots",
+          "quantity": 1,
+          "unit": "medium",
+          "category": "verduras"
+        },
+        {
+          "name": "Scallions",
+          "quantity": 3,
+          "unit": "chopped",
+          "category": "otros"
+        },
+        {
+          "name": "Cabbage",
+          "quantity": 3,
+          "unit": "Cups",
+          "category": "otros"
+        },
+        {
+          "name": "Soy sauce",
+          "quantity": 1,
+          "unit": "tablespoon",
+          "category": "condimentos"
+        },
+        {
+          "name": "Rice vinegar",
+          "quantity": 1,
+          "unit": "tablespoon",
+          "category": "granos"
+        },
+        {
+          "name": "Egg roll wrappers",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "Oil",
+          "quantity": 1,
+          "unit": "For brushing",
+          "category": "despensa"
+        },
+        {
+          "name": "Duck sauce",
+          "quantity": 1,
+          "unit": "To serve",
+          "category": "otros"
+        },
+        {
+          "name": "Plum sauce",
+          "quantity": 1,
+          "unit": "To serve",
+          "category": "otros"
+        },
+        {
+          "name": "Soy sauce",
+          "quantity": 1,
+          "unit": "To serve",
+          "category": "condimentos"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Alternative Pan Fry Method: If you don’t have access to an air fryer, you can make these egg rolls using a traditional pan fry method"
+        },
+        {
+          "text": "Add enough oil to a medium skillet with high walls so the oil is about 1/2 inch up the side of the skillet"
+        },
+        {
+          "text": "Heat oil on medium high heat until it reaches 350°F"
+        },
+        {
+          "text": "Add egg rolls and fry for 3 to 4 minutes, flip, and fry for another 3 to 4 minutes until golden brown"
+        },
+        {
+          "text": "Remove and let them drain and cool on a few paper towels"
+        },
+        {
+          "text": "Cook the filling:"
+        },
+        {
+          "text": "In a large skillet over medium heat, add the olive oil along with the ground pork or chicken"
+        },
+        {
+          "text": "Break apart the meat with a spatula or wooden spoon as it cooks"
+        },
+        {
+          "text": "Cook until the meat is cooked through, 6 to 8 minutes"
+        },
+        {
+          "text": "Add garlic, ginger, carrot, scallions, and cabbage"
+        },
+        {
+          "text": "Continue to cook until cabbage wilts down and is soft, another 3 to 4 minutes, stirring regularly"
+        },
+        {
+          "text": "Season the filling with soy sauce and rice wine vinegar, and take off the heat to cool"
+        },
+        {
+          "text": "(This filling can be made in advance.)"
+        },
+        {
+          "text": "Assemble the egg rolls:"
+        },
+        {
+          "text": "Place a single egg roll wrapper on a dry surface with one point of the square facing you (like a diamond)"
+        },
+        {
+          "text": "Place about 1/4 cup of the egg roll filling mixture in the middle of the wrapper"
+        },
+        {
+          "text": "Dip your fingers in water and run around the edges of the wrapper"
+        },
+        {
+          "text": "Then fold the edges of the wrapper over the center and start rolling the egg roll away from you to form a tight cylinder"
+        },
+        {
+          "text": "Place on a plate and repeat until you are out of filling"
+        },
+        {
+          "text": "You should get at least a dozen egg rolls"
+        },
+        {
+          "text": "Air fry the egg rolls:"
+        },
+        {
+          "text": "Place the egg rolls in the basket of your air fryer"
+        },
+        {
+          "text": "Spray or brush them lightly with oil"
+        },
+        {
+          "text": "Add as many as you can without stacking the egg rolls, making sure they don’t touch"
+        },
+        {
+          "text": "Air needs to circulate around them"
+        },
+        {
+          "text": "Brush the egg rolls lightly with oil"
+        },
+        {
+          "text": "Place the basket in the air fryer and turn the air fryer to 350°F"
+        },
+        {
+          "text": "Cook for 6 to 7 minutes, then flip the egg rolls, spray or brush with oil a second time on the bottom side, and cook for another 4 to 5 minutes"
+        },
+        {
+          "text": "Finished egg rolls should be golden brown and crispy! Serve immediately."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53383",
+      "title": "Ramen Noodles with Boiled Egg",
+      "description": "Receta de Chinese (categoría: Miscellaneous). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/ip5xtp1769779958.jpg",
+      "source": "themealdb",
+      "diets": [
+        "vegetariano",
+        "sin-lactosa"
+      ],
+      "cuisine": "chinese",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Noodles",
+          "quantity": 1,
+          "unit": "Packet",
+          "category": "granos"
+        },
+        {
+          "name": "Water",
+          "quantity": 2,
+          "unit": "cups",
+          "category": "despensa"
+        },
+        {
+          "name": "Egg",
+          "quantity": 1,
+          "unit": "large",
+          "category": "proteinas"
+        },
+        {
+          "name": "Soy sauce",
+          "quantity": 1,
+          "unit": "tbsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Chilli sauce",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "category": "otros"
+        },
+        {
+          "name": "Spring onions",
+          "quantity": 1,
+          "unit": "tbls",
+          "category": "verduras"
+        },
+        {
+          "name": "Salt",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Pepper",
+          "quantity": 0.5,
+          "unit": "tbs",
+          "category": "verduras"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Boil: Bring water to a boil, gently add eggs, and cook for exactly 6½ to 7 minutes"
+        },
+        {
+          "text": "Ice Bath: Immediately transfer the eggs to a bowl of ice water for 3–5 minutes to stop cooking"
+        },
+        {
+          "text": "Marinate (Optional but recommended): Peel the eggs and marinate in a mix of 2 tbsp soy sauce, 2 tbsp mirin, 1 tsp sugar, and 4 tbsp water for at least 4 hours (or overnight)"
+        },
+        {
+          "text": "Serve: Slice in half, letting the yolk flow into the broth"
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53448",
+      "title": "Tendir Choreyi (Tandoori Bread)",
+      "description": "Receta de cocina internacional (categoría: Side). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/5mfmh01780158856.jpg",
+      "source": "themealdb",
+      "diets": [
+        "vegetariano",
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Yeast",
+          "quantity": 1,
+          "unit": "Tsp",
+          "category": "otros"
+        },
+        {
+          "name": "Warm water",
+          "quantity": 0.5,
+          "unit": "cups",
+          "category": "despensa"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1,
+          "unit": "tsp",
+          "category": "condimentos"
+        },
+        {
+          "name": "Flour",
+          "quantity": 3,
+          "unit": "Cups",
+          "category": "granos"
+        },
+        {
+          "name": "Egg yolks",
+          "quantity": 1,
+          "unit": "For brushing",
+          "category": "proteinas"
+        },
+        {
+          "name": "Poppy seeds",
+          "quantity": 1,
+          "unit": "tsp",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "First a quick note about tandoori bread (or tandoori anything, really)"
+        },
+        {
+          "text": "The name comes from the clay oven, or \"tandoor\" that it is traditionally cooked in, and you will never be able to duplicate the flavor of any tandoori recipe without one of those ovens, no matter how hard you try"
+        },
+        {
+          "text": "Now, a tandoor oven is actually a part of my dream kitchen (I love naan bread and tandoori chicken) but I don't have one in my current kitchen, so this bread just goes in a plain oven, which makes it not very authentic"
+        },
+        {
+          "text": "However, this is how an Azerbaijani stranded in the US would make a tandoori bread, so I guess I don't feel too bad about including it in my meal"
+        },
+        {
+          "text": "The ingredients for this bread are roughly similar to the ingredients for a basic french bread, but the shape is different and it is topped with poppy seeds which actually makes it quite beautiful in appearance"
+        },
+        {
+          "text": "In fact this bread is quite possibly the most beautiful thing I've ever baked (my cakes certainly don't fall into that category)"
+        },
+        {
+          "text": "So as always I used my bread machine, but this time I didn't proof the yeast first"
+        },
+        {
+          "text": "I just put it in the little yeast dispenser at the top of my machine, then added the water, flour and salt to the bucket"
+        },
+        {
+          "text": "I put it on the dough cycle and then went and picked my kids up from school"
+        },
+        {
+          "text": "This bread uses very basic ingredients, including bread flour and salt"
+        },
+        {
+          "text": "If you want to do it the old-fashioned way:"
+        },
+        {
+          "text": "Mix the yeast with the water and let stand for a few minutes"
+        },
+        {
+          "text": "Then sift the flour with the salt into a large bowl"
+        },
+        {
+          "text": "Gradually add the water and yeast and mix with your hand until the dough forms a ball"
+        },
+        {
+          "text": "Turn out onto a lightly floured surface"
+        },
+        {
+          "text": "Knead the dough for 8 to 10 minutes, or until it is smooth"
+        },
+        {
+          "text": "Put it in a large bowl and cover, then let it rise in a warm spot until doubled (this typically takes 1 to 1 1/2 hours)"
+        },
+        {
+          "text": "The dough after it has risen"
+        },
+        {
+          "text": "Punch down and turn out onto a lightly floured surface"
+        },
+        {
+          "text": "Stretch the dough until it is an oblong shape, then with a rolling pin roll it until it is about 1/2 inch thick"
+        },
+        {
+          "text": "Transfer to a greased or non-stick baking sheet and let stand for another 15 minutes"
+        },
+        {
+          "text": "After stretching and rolling, your dough should be roughly this shape"
+        },
+        {
+          "text": "Cut crosshatches in the top of the dough, about four in either direction"
+        },
+        {
+          "text": "Brush with the beaten egg yolk (I mixed mine with a little bit of water to make it easier to work with) and sprinkle with poppy seeds"
+        },
+        {
+          "text": "Crosshatches, egg wash and poppy seeds give this bread its distinctive look"
+        },
+        {
+          "text": "Bake in a preheated oven at about 400 degrees for 20 to 25 minutes, until golden on top"
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-52975",
+      "title": "Tuna and Egg Briks",
+      "description": "Receta de Tunisian (categoría: Seafood). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "tunisian",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Olive oil",
+          "quantity": 2,
+          "unit": "tbs",
+          "category": "despensa"
+        },
+        {
+          "name": "Spring onions",
+          "quantity": 8,
+          "unit": "unidades",
+          "category": "verduras"
+        },
+        {
+          "name": "Spinach",
+          "quantity": 200,
+          "unit": "g",
+          "category": "verduras"
+        },
+        {
+          "name": "Filo pastry",
+          "quantity": 4,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "Tuna",
+          "quantity": 1,
+          "unit": "can",
+          "category": "proteinas"
+        },
+        {
+          "name": "Eggs",
+          "quantity": 2,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "Hotsauce",
+          "quantity": 1,
+          "unit": "Dash",
+          "category": "otros"
+        },
+        {
+          "name": "Tomatoes",
+          "quantity": 4,
+          "unit": "Chopped",
+          "category": "verduras"
+        },
+        {
+          "name": "Cucumber",
+          "quantity": 0.25,
+          "unit": "unidades",
+          "category": "otros"
+        },
+        {
+          "name": "Lemon juice",
+          "quantity": 1,
+          "unit": "tbs",
+          "category": "frutas"
+        },
+        {
+          "name": "Apricot jam",
+          "quantity": 4,
+          "unit": "tbs",
+          "category": "otros"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Heat 2 tsp of the oil in a large saucepan and cook the spring onions over a low heat for 3 minutes or until beginning to soften"
+        },
+        {
+          "text": "Add the spinach, cover with a tight-fitting lid and cook for a further 2–3 minutes or until tender and wilted, stirring once or twice"
+        },
+        {
+          "text": "Tip the mixture into a sieve or colander and leave to drain and cool"
+        },
+        {
+          "text": "Using a saucer as a guide, cut out 24 rounds about 12.5 cm (5 in) in diameter from the filo pastry, cutting 6 rounds from each sheet"
+        },
+        {
+          "text": "Stack the filo rounds in a pile, then cover with cling film to prevent them from drying out"
+        },
+        {
+          "text": "When the spinach mixture is cool, squeeze out as much excess liquid as possible, then transfer to a bowl"
+        },
+        {
+          "text": "Add the tuna, eggs, hot pepper sauce, and salt and pepper to taste"
+        },
+        {
+          "text": "Mix well"
+        },
+        {
+          "text": "Preheat the oven to 200°C (400°F, gas mark 6)"
+        },
+        {
+          "text": "Take one filo round and very lightly brush with some of the remaining oil"
+        },
+        {
+          "text": "Top with a second round and brush with a little oil, then place a third round on top and brush with oil"
+        },
+        {
+          "text": "Place a heaped tbsp of the filling in the middle of the round, then fold the pastry over to make a half-moon shape"
+        },
+        {
+          "text": "Fold in the edges, twisting them to seal, and place on a non-stick baking sheet"
+        },
+        {
+          "text": "Repeat with the remaining pastry and filling to make 8 briks in all"
+        },
+        {
+          "text": "Lightly brush the briks with the remaining oil"
+        },
+        {
+          "text": "Bake for 12–15 minutes or until the pastry is crisp and golden brown"
+        },
+        {
+          "text": "Meanwhile, combine the tomatoes and cucumber in a bowl and sprinkle with the lemon juice and seasoning to taste"
+        },
+        {
+          "text": "Serve the briks hot with this salad and the chutney."
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
+    },
+    {
+      "id": "tmdb-53561",
+      "title": "Codfish deviled eggs",
+      "description": "Receta de cocina internacional (categoría: Seafood). Importada de TheMealDB.",
+      "emoji": "🍽️",
+      "image": "https://www.themealdb.com/images/media/meals/vayi021784668764.jpg",
+      "source": "themealdb",
+      "diets": [
+        "sin-lactosa"
+      ],
+      "cuisine": "internacional",
+      "suitableFor": [
+        "desayuno",
+        "almuerzo"
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 4,
+      "ingredients": [
+        {
+          "name": "Eggs",
+          "quantity": 12,
+          "unit": "unidades",
+          "category": "proteinas"
+        },
+        {
+          "name": "Mayonnaise",
+          "quantity": 7,
+          "unit": "tablespoons",
+          "category": "otros"
+        },
+        {
+          "name": "Mustard",
+          "quantity": 1,
+          "unit": "tsp",
+          "category": "otros"
+        },
+        {
+          "name": "Pepper",
+          "quantity": 1,
+          "unit": "To taste",
+          "category": "verduras"
+        },
+        {
+          "name": "Salt",
+          "quantity": 1,
+          "unit": "To taste",
+          "category": "condimentos"
+        },
+        {
+          "name": "Paprika",
+          "quantity": 1,
+          "unit": "Pinch",
+          "category": "condimentos"
+        },
+        {
+          "name": "Chives",
+          "quantity": 1,
+          "unit": "Garnish",
+          "category": "otros"
+        },
+        {
+          "name": "Black pepper",
+          "quantity": 1,
+          "unit": "Garnish",
+          "category": "verduras"
+        },
+        {
+          "name": "Codfish bulljaw",
+          "quantity": 1,
+          "unit": "Topping",
+          "category": "proteinas"
+        }
+      ],
+      "steps": [
+        {
+          "text": "Bring eggs to a boil for 15 minutes"
+        },
+        {
+          "text": "Let eggs sit in the water for another 5"
+        },
+        {
+          "text": "Run under cold water"
+        },
+        {
+          "text": "let eggs further cool"
+        },
+        {
+          "text": "Rest eggs"
+        },
+        {
+          "text": "Peel eggs"
+        },
+        {
+          "text": "Cut eggs in half and remove egg yolks, place them in bowl"
+        },
+        {
+          "text": "Mash egg yolks in a bowl"
+        },
+        {
+          "text": "Combine all ingredients except for chives and peppercorns"
+        },
+        {
+          "text": "Put the mixture in a piping bag or plastic bag"
+        },
+        {
+          "text": "Fill egg slices with the mixture"
+        },
+        {
+          "text": "Add codfish on the wider side of the egg"
+        },
+        {
+          "text": "Garnish with crushed peppercorn and chive"
+        }
+      ],
+      "tips": [],
+      "nutrition": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
     }
   ],
   "pantry": [

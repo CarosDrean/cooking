@@ -25,3 +25,28 @@ PNPM workspaces monorepo (`server` + `client`), app in Spanish (UI strings, type
 - Both packages: TypeScript strict. Client has `noUnusedLocals`/`noUnusedParameters` — unused vars fail `typecheck`.
 - Day/week keys and meal types use lowercase Spanish identifiers (e.g. `"lunes"`, `"almuerzo"`), defined in `types.ts` with `DAY_LABELS`/`MEAL_LABELS` maps.
 - Recipe availability/season logic lives in `server/src/types.ts` (`seasonFit`, `availability`, `normalizeText`).
+
+## Subagent orchestration
+
+When delegating work to subagents via `task`, the parent agent MUST pass explicit context in the prompt. Do NOT assume the subagent knows what to do just by reading files.
+
+### Required context per subagent
+
+| Subagent | Must include in prompt |
+|---|---|
+| `planner` | Project/feature description, stack, constraints |
+| `backend-builder` | Task ID (from `.ai/tasks.md`), relevant files |
+| `frontend-builder` | Task ID (from `.ai/tasks.md`), relevant files |
+| `test-runner` | Task IDs to validate, which commands to run |
+| `browser-qa` | App URL, specific flows/features to test, completed task IDs |
+| `fixer` | Report file paths, error details, related task IDs |
+
+### Workflow sequence
+
+1. **Planner** → generates `.ai/tasks.md` with task IDs
+2. **Builder** (frontend/backend) → reads task by ID, marks `en_progreso`, implements, marks `completado`
+3. **Test-runner** → receives task IDs, runs `pnpm check`, generates validation report
+4. **QA** (browser-qa) → receives URL + flows, tests manually, generates QA report
+5. **Fixer** → receives report paths + errors, fixes issues, re-runs validation
+
+Each subagent's `.opencode/agents/*.md` file lists the exact context it expects.
