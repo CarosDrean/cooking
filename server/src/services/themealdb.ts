@@ -73,13 +73,14 @@ const VEGAN_WORDS = ["honey", "miel", "gelatina", "gelatin"];
 function guessDiet(ingredients: string[]): string[] {
     const joined = ingredients.join(" ").toLowerCase();
     const hasMeat = MEAT_WORDS.some((w) => joined.includes(w));
-    const hasDairyOrEgg = DAIRY_WORDS.some((w) => joined.includes(w)) || /egg|huevo/.test(joined);
-    const hasAnimal = hasMeat || hasDairyOrEgg || VEGAN_WORDS.some((w) => joined.includes(w));
+    const hasDairy = DAIRY_WORDS.some((w) => joined.includes(w));
+    const hasEgg = /egg|huevo/.test(joined);
+    const hasAnimal = hasMeat || hasDairy || hasEgg || VEGAN_WORDS.some((w) => joined.includes(w));
 
     const diets: string[] = [];
     if (!hasAnimal) diets.push("vegano", "vegetariano", "sin-lactosa");
     else if (!hasMeat) diets.push("vegetariano");
-    if (!hasMeat && !hasDairyOrEgg) diets.push("sin-lactosa");
+    if (!hasDairy) diets.push("sin-lactosa");
     return diets;
 }
 

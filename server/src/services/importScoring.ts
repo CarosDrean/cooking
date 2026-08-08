@@ -15,7 +15,67 @@ const TRANSLATIONS: Record<string, string> = {
     sopa: "soup",
     arroz: "rice",
     pasta: "pasta",
+    huevo: "egg",
+    huevos: "egg",
+    res: "beef",
+    estofado: "stew",
+    pan: "bread",
+    avena: "oat",
+    palta: "avocado",
+    queso: "cheese",
+    papa: "potato",
+    papas: "potato",
+    lentejas: "lentil",
+    fideos: "noodle",
+    camarones: "shrimp",
+    cerdo: "pork",
 };
+
+const STOP_WORDS = new Set([
+    "con",
+    "del",
+    "las",
+    "los",
+    "para",
+    "por",
+    "una",
+    "uno",
+    "que",
+    "como",
+    "mas",
+    "sus",
+    "sin",
+    "cada",
+    "entre",
+    "hacia",
+    "desde",
+    "sobre",
+    "bajo",
+    "ante",
+    "tras",
+    "hasta",
+    "tiene",
+    "haber",
+    "ser",
+    "estar",
+    "tener",
+    "pero",
+    "donde",
+    "cuando",
+    "porque",
+    "este",
+    "esta",
+    "estos",
+    "estas",
+    "ese",
+    "esa",
+    "esos",
+    "esas",
+    "todo",
+    "toda",
+    "todos",
+    "todas",
+]);
 
 const DIET_QUERY_TERMS: Record<string, string[]> = {
     "sin-gluten": ["gluten free", "gluten-free"],
@@ -51,6 +111,16 @@ export function buildQueries(profile: Profile, _season: Season, _country: string
 
             queries.push({ terms: term, meal, source: "local", lang: "es" });
             queries.push({ terms: term, meal, source: "ai", lang: "es" });
+
+            const keywords = dish
+                .split(/\s+/)
+                .filter((w) => w.length > 2 && !STOP_WORDS.has(w.toLowerCase()))
+                .slice(0, 3);
+            for (const kw of keywords) {
+                const en = translate(kw);
+                queries.push({ terms: en, meal, source: "themealdb", lang: "en" });
+                queries.push({ terms: en, meal, source: "spoonacular", lang: "en" });
+            }
         }
     }
 
